@@ -10,7 +10,6 @@ export default {
     pages: [
       'pages/index/index',
       'pages/index/index',
-      'pages/activity/\u6D3B\u52A8',
       'pages/activity/index',
       'pages/wode/index',
       'pages/wode/hyzx',

@@ -1,7 +1,8 @@
 <view>
-  <block wx:for="{{imgUrls}}">
-    <swiper-item>
-      <image src="{{item}}" class="slide-image" width="355" height="150" />
-    </swiper-item>
-  </block>
+  <view>
+    <image src="../../static/images/13.png" style="width: 100%; height:400rpx" />
+  </view>
+  <view class="box1">
+
+  </view>
 </view>

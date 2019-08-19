@@ -942,6 +942,6 @@ button[type="success"][plain] {
 .icon-tread:before {
   content: "\e9bd";
 }
-swiper-item image {
-  height: 20rem;
+.box1 {
+  height: 8.5rem;
 }
