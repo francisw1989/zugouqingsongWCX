@@ -943,7 +943,7 @@ button[type="success"][plain] {
   content: "\e9bd";
 }
 .box1 {
-  height: 8.5rem;
+  height: 85rpx;
 }
 text,
 view,
@@ -1470,10 +1470,22 @@ button[type="primary"] {
 }
 .title::after {
   content: '';
-  width: 20rpx;
+  width: 26rpx;
   height: 2px;
   background-color: #459E8A;
   position: absolute;
   bottom: 0;
   left: 0;
+}
+.ico14 {
+  width: 199rpx;
+  height: 33rpx;
+}
+.ico15 {
+  width: 11rpx;
+  height: 21rpx;
+}
+.ico1 {
+  width: 110rpx;
+  height: 110rpx;
 }

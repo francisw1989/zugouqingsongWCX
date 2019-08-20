@@ -1,14 +1,33 @@
 <template>
 <view style="background-color:#F3F3F3;">
     <view>
-        <image src='../../static/images/13.png' style="width: 100%; height:400rpx"></image>
+        <image src='../../static/images/13.png' style="width: 100%; height:400rpx" ></image>
     </view>
-    <view class="box1 bgfff">
+    <view class="box1 bgfff claerfix">
+        <image src='../../static/images/15.png' class="right ico15"></image>
+        <image src='../../static/images/14.png' class="ico14"></image>
+        <text class="left20">今日有更多套餐可享受优惠活动</text>
 
     </view>
     <view class="pad10">
         <view class="title">服务分类</view>
-
+        <ui-row>
+            <ui-col align="center" vertical-align="middle">
+                <image src='../../static/images/1.png' class="ico1"></image>
+                <view class="top5 col999">休闲项目</view>
+            </ui-col>
+            <ui-col align="center" vertical-align="middle">
+                <image src='../../static/images/2.png' class="ico2"></image>
+                <view class="top5 col999">休闲项目</view>
+            </ui-col>
+            <ui-col align="center" vertical-align="middle">
+                <image src='../../static/images/3.png' class="ico3"></image>
+                <view class="top5 col999">休闲项目</view>
+            </ui-col>
+        </ui-row>
+    </view>
+    <view class="pad10">
+        <view class="title">推荐项目</view>
     </view>
 </view>
 </template>
