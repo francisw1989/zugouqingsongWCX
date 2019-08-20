@@ -1,4 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "ui-popup": "../../packages/touchui-wx-components/ui-popup/dist/index",
+    "ui-timeline": "../../packages/touchui-wx-components/ui-timeline/dist/index",
+    "ui-timeline-item": "../../packages/touchui-wx-components/ui-timeline-item/dist/index"
+  },
   "navigationBarTitleText": "足够轻松"
 }

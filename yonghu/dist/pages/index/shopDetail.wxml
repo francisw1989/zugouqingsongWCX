@@ -1,0 +1,20 @@
+<view style="min-height:100%; background-color: rgba(243,243,243,1) ">
+  <image src="../../static/images/20.png" style="width: 100%; height:386rpx; " />
+  <view class="shopInfWap">
+    <view class="pad20 bor_btm_so">
+      <view class="ui-row" style="height:80px;">
+        <view class="ui-col ui-col-align-center align-center valign-middle" style="flex:0 0 60px;">
+          <view class="ui-col-content align-center valign-middle">
+            <image src="../../static/images/20.png" class="tx2" mode="aspectFill" />
+          </view>
+        </view>
+        <view class="text ui-col ui-col-align-left align-left valign-middle" style="padding-left: 15px; padding-right: 15px;">
+          <view class="ui-col-content align-left valign-middle">
+            <view class="col333 font2">中央商场（旗舰店）</view>
+            <view class="font0 top5">这是门店的介绍，这是门店的介绍，这是门店的介绍，这是门店的介绍，这是门店的介绍，这是门店的介绍，这是门店的介绍</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

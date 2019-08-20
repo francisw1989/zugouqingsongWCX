@@ -1,0 +1,69 @@
+<view class="pad20">
+  <view class="clearfix">
+    <view class="seachWap left top5">
+      <image src="../../static/images/18.png" class="icoAll ico18 " />
+      <input placeholder="搜索门店" class="input1 verMid" style="padding-left: 60rpx;"></input>
+    </view>
+    <view class="center left left10">
+      <image src="../../static/images/19.png" class="icoAll ico19 " />
+      <view>地图</view>
+    </view>
+  </view>
+  <view class="fjmdWap fjmdWap2 bgfff bor_btm_so">
+    <image src="../../static/images/13.png" class="img left right10" />
+    <view class="font2">
+      <text class="col000">中央商场 旗舰店</text>
+      <view class="right ">
+        <text class="col999 verMid font0">距您132m | </text>
+        <image src="../../static/images/16.png" class="icoAll ico16 left5" />
+        <text class="colGreen left5 verMid font0">咨询</text>
+      </view>
+    </view>
+    <view class="">
+      <image src="../../static/images/12.png" class="ico12 icoAll" />
+      <text class="col999 left5 font0 verMid">9:00-23:00</text>
+    </view>
+    <view class="line0 ">
+      <image src="../../static/images/11.png" class="ico11 icoAll" />
+      <text class="col999 left5 font0 verMid">南京市新街口淮海路2号3楼22号</text>
+    </view>
+  </view>
+  <view class="fjmdWap fjmdWap2 bgfff bor_btm_so">
+    <image src="../../static/images/13.png" class="img left right10" />
+    <view class="font2">
+      <text class="col000">中央商场 旗舰店</text>
+      <view class="right ">
+        <text class="col999 verMid font0">距您132m | </text>
+        <image src="../../static/images/16.png" class="icoAll ico16 left5" />
+        <text class="colGreen left5 verMid font0">咨询</text>
+      </view>
+    </view>
+    <view class="">
+      <image src="../../static/images/12.png" class="ico12 icoAll" />
+      <text class="col999 left5 font0 verMid">9:00-23:00</text>
+    </view>
+    <view class="line0 ">
+      <image src="../../static/images/11.png" class="ico11 icoAll" />
+      <text class="col999 left5 font0 verMid">南京市新街口淮海路2号3楼22号</text>
+    </view>
+  </view>
+  <view class="fjmdWap fjmdWap2 bgfff bor_btm_so">
+    <image src="../../static/images/13.png" class="img left right10" />
+    <view class="font2">
+      <text class="col000">中央商场 旗舰店</text>
+      <view class="right ">
+        <text class="col999 verMid font0">距您132m | </text>
+        <image src="../../static/images/16.png" class="icoAll ico16 left5" />
+        <text class="colGreen left5 verMid font0">咨询</text>
+      </view>
+    </view>
+    <view class="">
+      <image src="../../static/images/12.png" class="ico12 icoAll" />
+      <text class="col999 left5 font0 verMid">9:00-23:00</text>
+    </view>
+    <view class="line0 ">
+      <image src="../../static/images/11.png" class="ico11 icoAll" />
+      <text class="col999 left5 font0 verMid">南京市新街口淮海路2号3楼22号</text>
+    </view>
+  </view>
+</view>

@@ -8,12 +8,14 @@ export default {
   config: {
     usingComponents: {},
     pages: [
-      'pages/index/index',
+      'pages/index/shopDetail',
+      'pages/index/shopList',
       'pages/index/index',
       'pages/activity/index',
       'pages/wode/index',
       'pages/wode/hyzx',
-      'pages/wode/wdyy'
+      'pages/wode/wdyy',
+      
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -28,30 +30,29 @@ export default {
     theme: {
       'theme-color': '#459e8c'
     },
-    "tabBar": {
-        "color": "#333",
-        "selectedColor": "#459E8A",
-        "borderStyle": "white",
-        "list": [
-            {
-                "selectedIconPath": "static/images/5.png",
-                "iconPath": "static/images/6.png",
-                "pagePath": "pages/index/index",
-                "text": "首页"
-            },
-            {
-                "selectedIconPath": "static/images/7.png",
-                "iconPath": "static/images/8.png",
-                "pagePath": "pages/activity/index",
-                "text": "活动"
-            },
-            {
-                "selectedIconPath": "static/images/9.png",
-                "iconPath": "static/images/10.png",
-                "pagePath": "pages/wode/index",
-                "text": "我的"
-            }
-        ]
+    tabBar: {
+      color: '#333',
+      selectedColor: '#459E8A',
+      borderStyle: 'white',
+      list: [{
+          selectedIconPath: 'static/images/5.png',
+          iconPath: 'static/images/6.png',
+          pagePath: 'pages/index/index',
+          text: '首页'
+        },
+        {
+          selectedIconPath: 'static/images/7.png',
+          iconPath: 'static/images/8.png',
+          pagePath: 'pages/activity/index',
+          text: '活动'
+        },
+        {
+          selectedIconPath: 'static/images/9.png',
+          iconPath: 'static/images/10.png',
+          pagePath: 'pages/wode/index',
+          text: '我的'
+        }
+      ]
     }
   },
   globalData: {},

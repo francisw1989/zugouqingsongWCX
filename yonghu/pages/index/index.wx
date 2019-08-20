@@ -4,31 +4,167 @@
         <image src='../../static/images/13.png' style="width: 100%; height:400rpx" ></image>
     </view>
     <view class="box1 bgfff claerfix">
-        <image src='../../static/images/15.png' class="right ico15"></image>
-        <image src='../../static/images/14.png' class="ico14"></image>
+        <image src='../../static/images/15.png' class="right ico15 top18 right20"></image>
+        <image src='../../static/images/14.png' class="ico14 left top12 left20"></image>
         <text class="left20">今日有更多套餐可享受优惠活动</text>
 
     </view>
-    <view class="pad10">
-        <view class="title">服务分类</view>
-        <ui-row>
+    <view class="padSp1">
+        <view class="title font2 col000">服务分类</view>
+        <ui-row class="top15">
             <ui-col align="center" vertical-align="middle">
                 <image src='../../static/images/1.png' class="ico1"></image>
                 <view class="top5 col999">休闲项目</view>
             </ui-col>
             <ui-col align="center" vertical-align="middle">
-                <image src='../../static/images/2.png' class="ico2"></image>
+                <image src='../../static/images/2.png' class="ico1"></image>
                 <view class="top5 col999">休闲项目</view>
             </ui-col>
             <ui-col align="center" vertical-align="middle">
-                <image src='../../static/images/3.png' class="ico3"></image>
+                <image src='../../static/images/3.png' class="ico1"></image>
                 <view class="top5 col999">休闲项目</view>
             </ui-col>
         </ui-row>
+        <view class="title top10 font2 col000">推荐项目</view>
     </view>
-    <view class="pad10">
-        <view class="title">推荐项目</view>
+    <view class="pad10 tjxmWap bgfff clearfix">
+        <view class=" right10 left" style="width: 183rpx">
+            <image src='../../static/images/13.png' class="img " ></image>
+        </view>
+        <view style="width: 490rpx" class="left">
+            <view class=" bor_btm_so" style="padding-bottom: 10rpx"><text class="col000 ">【颈椎放松】</text><text class="left10  col000">默认：60分钟</text><text class="left15 colPink font3">¥168</text></view>
+            <view class="top5 line24">这些疗程都利用了按摩使肌肉得以放松的原理，再配合精油或刮痧等中医治疗方法，对肩颈疼痛有一定的缓解作用。</view>
+        </view>
     </view>
+    <view class="pad10 tjxmWap bgfff clearfix top5">
+        <view class=" right10 left" style="width: 183rpx">
+            <image src='../../static/images/13.png' class="img " ></image>
+        </view>
+        <view style="width: 490rpx" class="left">
+            <view class="bor_btm_so" style="padding-bottom: 10rpx"><text class="col000 ">【颈椎放松】</text><text class="left10  col000">默认：60分钟</text><text class="left15 colPink font3">¥168</text></view>
+            <view class="top5 line24">这些疗程都利用了按摩使肌肉得以放松的原理，再配合精油或刮痧等中医治疗方法，对肩颈疼痛有一定的缓解作用。</view>
+        </view>
+    </view>
+    <view class="pad10 tjxmWap bgfff clearfix top5">
+        <view class=" right10 left" style="width: 183rpx">
+            <image src='../../static/images/13.png' class="img " ></image>
+        </view>
+        <view style="width: 490rpx" class="left">
+            <view class=" bor_btm_so" style="padding-bottom: 10rpx"><text class="col000 ">【颈椎放松】</text><text class="left10  col000">默认：60分钟</text><text class="left15 colPink font3">¥168</text></view>
+            <view class="top5 line24">这些疗程都利用了按摩使肌肉得以放松的原理，再配合精油或刮痧等中医治疗方法，对肩颈疼痛有一定的缓解作用。</view>
+        </view>
+    </view>
+    <view  class="padSp1 clearfix">
+        <navigator url='shopList' class="right">更多 ></navigator>
+        <text class="title font2 col000 ">附近门店</text>
+    </view>
+    <view class="bgfff" style="padding: 0 40rpx">
+        <view class="fjmdWap bgfff bor_btm_so">
+            <image src='../../static/images/13.png' class="img left right10"></image>
+            <view class="font2">
+                <text class="col000">中央商场  旗舰店</text>
+                <view class="right ">
+                    <text class="col999 verMid font0">距您132m | </text>
+                    <image src='../../static/images/16.png' class="icoAll ico16 left5"></image>
+                    <text class="colGreen left5 verMid font0">咨询</text>
+                </view>
+            </view>
+            <view class="">
+                <image src='../../static/images/12.png' class="ico12 icoAll"></image>
+                <text class="col999 left5 font0 verMid">9:00-23:00</text>
+            </view>
+            <view class="line0 ">
+                <image src='../../static/images/11.png' class="ico11 icoAll"></image>
+                <text class="col999 left5 font0 verMid">南京市新街口淮海路2号3楼22号</text>
+            </view>
+        </view>
+        <view class="fjmdWap bgfff bor_btm_so">
+            <image src='../../static/images/13.png' class="img left right10"></image>
+            <view class="font2">
+                <text class="col000">中央商场  旗舰店</text>
+                <view class="right ">
+                    <text class="col999 verMid font0">距您132m |</text>
+                    <image src='../../static/images/16.png' class="icoAll ico16 left5"></image>
+                    <text class="colGreen left5 verMid font0">咨询</text>
+                </view>
+            </view>
+            <view class=" ">
+                <image src='../../static/images/12.png' class="ico12 icoAll"></image>
+                <text class="col999 left5 font0 verMid">9:00-23:00</text>
+            </view>
+            <view class="line0 ">
+                <image src='../../static/images/11.png' class="ico11 icoAll"></image>
+                <text class="col999 left5 font0 verMid">南京市新街口淮海路2号3楼22号</text>
+            </view>
+        </view>
+        <view class="fjmdWap bgfff bor_btm_so">
+            <image src='../../static/images/13.png' class="img left right10"></image>
+            <view class="font2">
+                <text class="col000">中央商场  旗舰店</text>
+                <view class="right ">
+                    <text class="col999 verMid font0">距您132m |</text>
+                    <image src='../../static/images/16.png' class="icoAll ico16 left5"></image>
+                    <text class="colGreen left5 verMid font0">咨询</text>
+                </view>
+            </view>
+            <view class=" ">
+                <image src='../../static/images/12.png' class="ico12 icoAll"></image>
+                <text class="col999 left5 font0 verMid">9:00-23:00</text>
+            </view>
+            <view class="line0 ">
+                <image src='../../static/images/11.png' class="ico11 icoAll"></image>
+                <text class="col999 left5 font0 verMid">南京市新街口淮海路2号3楼22号</text>
+            </view>
+        </view>
+        
+    </view>
+    <image src='../../static/images/4.png' class="ico4 icoAll"></image>
+    <ui-popup show="{{jxzShow}}">
+        <view class="padSp1 clearfix">
+            <view class="bor_btm_so" style="padding-bottom: 20rpx;">
+                <text class="font2 bold col333">进行中</text>
+                <image src='../../static/images/17.png' class="ico17 top5 right"></image>
+            </view>
+            <view class="col333 font2 top15 bold">编号：Z100201916049325</view>
+            <view class="clearfix top15">
+                <image src='../../static/images/13.png' class="tx1 left right15" ></image>
+                <view class="top10">
+                    <text class="col333 font2">【颈椎放松】</text>
+                    <image src='../../static/images/12.png' class="ico12 icoAll left10"></image>
+                    <text class="left5 verMid">推荐：</text>
+                    <text class="colRed">60分钟</text>
+                </view>
+                <view class="top5 font0">这是一段介绍，足疗30分钟，颈部按摩20分钟</view>
+            </view>
+            <view class="top15 col333 font2 bold">
+                中央商场 旗舰店
+            </view>
+            <ui-timeline class="top10" style="width:100%">
+                <ui-timeline-item wx:for="{{lcList}}"  
+                wx:key="index" 
+                point-color="#459E8C"  
+                line-color="#BFBFBF"
+                show-line="{{index === (lcList.length - 1) ? false : true}}"
+                shadow="{{false}}"
+                >
+                <view class="left40 relative" style="padding: 30rpx 0">
+                    <view class="absolute" style="top: -8rpx">{{item.content}}</view>
+                </view>
+                </ui-timeline-item>
+            </ui-timeline>
+            <view class=" col333 font2 bold" style="margin-top: -10rpx">
+                已购商品：
+            </view>
+            <view class="top5 ">矿泉水*2</view>
+            <view class="">矿泉水*2</view>
+            <view class="top10 align-right">
+                <view class="btns btns-small btns-green">续时</view>
+                <view class="btns btns-small btns-green left20">商品</view>
+            </view>
+        </view>
+        
+
+    </ui-popup>
 </view>
 </template>
 
@@ -38,11 +174,16 @@ export default {
         navigationBarTitleText: '足够轻松'
     },
     data: {
-      
-
+        jxzShow: false,
+        lcList: [
+            {time: '', content: '预约开始时间：2019-06-11 12:00'},
+            {time: '', content: '预约时长：50分钟'},
+            {time: '', content: '预计结束时间：2019-06-11 12:50'},
+        ]
     }
 }
 </script>
 
 <style lang="less">
+
 </style>
