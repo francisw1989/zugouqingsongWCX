@@ -15,6 +15,7 @@
                     <view class="checkBtn left10 {{cIndex==1?'active':''}}" data-index='1' bindtap='chose'>明天</view>
                 </picker>
                 
+                
             </view>
         </view>
     </view>
