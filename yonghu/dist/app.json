@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/shopListMap",
     "pages/index/appointment",
     "pages/index/shopDetail",
     "pages/index/shopList",
@@ -9,6 +10,11 @@
     "pages/wode/hyzx",
     "pages/wode/wdyy"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "backgroundColor": "#459e8c",

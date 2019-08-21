@@ -1,0 +1,85 @@
+<template>
+    <view style="height: 100%">
+        <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location="true" markers="{{markers}}" bindmarkertap="makertap"></map>
+        <!-- <view class="rgc_info">
+            <text>经度：{{longitude}}</text>
+            <text>纬度：{{latitude}}</text>
+        </view> -->
+    </view>
+</template>
+
+<script>
+var bmap = require("../../static/utils/bmap-wx.min.js");
+var wxMarkerData = [];
+export default {
+  config: {
+    navigationBarTitleText: "附近门店"
+  },
+  data: {
+    markers: [
+        
+    ],
+    latitude: "",
+    longitude: "",
+  },
+  makertap(e){
+      console.log(e)
+  },
+  onLoad() {
+    const t = this;
+    var BMap = new bmap.BMapWX({
+      ak: "1kjiGRSGCWINwk4F0WzSVEibiQhOE0Eo"
+    });
+    t.setData({
+        markers: [
+            {
+                latitude: 32.061829,
+                longitude: 118.797863,
+                shopName: '中央门店',
+                id: '213dfd1231232',
+                iconPath: "../../static/images/24.png",
+                iconTapPath: "../../static/images/24.png"
+            },
+            {
+                latitude: 32.07,
+                longitude: 118.82,
+                shopName: '中央门店2',
+                id: '213dfd1231232',
+                iconPath: "../../static/images/24.png",
+                iconTapPath: "../../static/images/24.png"
+            },
+            {
+                latitude: 32.10,
+                longitude: 118.82,
+                shopName: '中央门店3',
+                id: '213dfd1231232',
+                iconPath: "../../static/images/24.png",
+                iconTapPath: "../../static/images/24.png"
+            }
+        ]
+    })
+    // 设置中心点
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        console.log(res)
+        var latitude = res.latitude
+        var longitude = res.longitude
+        // var speed =res.speed
+        // var accuracy = res.accuracy
+        t.setData({
+            latitude: latitude,
+            longitude: longitude,
+        });
+      }
+    })
+    
+
+
+
+  }
+};
+</script>
+
+<style lang="less">
+</style>

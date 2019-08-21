@@ -1561,3 +1561,7 @@ button[type="primary"] {
   background: #459e8c;
   color: #fff;
 }
+.map {
+  width: 100%;
+  height: 100%;
+}

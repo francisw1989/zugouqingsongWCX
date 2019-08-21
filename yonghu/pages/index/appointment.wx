@@ -14,10 +14,12 @@
                     <view class="checkBtn {{cIndex==0?'active':''}}" data-index='0' bindtap='chose'>今天</view>
                     <view class="checkBtn left10 {{cIndex==1?'active':''}}" data-index='1' bindtap='chose'>明天</view>
                 </picker>
-                
+                <text class="left10">{{time}}</text>
+
                 
             </view>
         </view>
+        <view class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">立即预约</view>
     </view>
 </template>
 
@@ -37,9 +39,11 @@ export default {
           cIndex: e.target.dataset.index
       })
   },
-  bindTimeChange(){
-      
-  }
+  bindTimeChange: function(e) {
+    this.setData({
+      time: e.detail.value
+    })
+  },
 }
 </script>
 
