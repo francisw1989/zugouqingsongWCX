@@ -10,7 +10,7 @@
         <view>地图</view>
       </view>
     </view>
-    <view class="fjmdWap fjmdWap2 bgfff bor_btm_so">
+    <navigator url='shopDetail' class="fjmdWap fjmdWap2 bgfff bor_btm_so">
       <image src='../../static/images/13.png' class="img left right10"></image>
       <view class="font2">
           <text class="col000">中央商场  旗舰店</text>
@@ -28,8 +28,8 @@
           <image src='../../static/images/11.png' class="ico11 icoAll"></image>
           <text class="col999 left5 font0 verMid">南京市新街口淮海路2号3楼22号</text>
       </view>
-    </view>
-    <view class="fjmdWap fjmdWap2 bgfff bor_btm_so">
+    </navigator>
+    <navigator url='shopDetail' class="fjmdWap fjmdWap2 bgfff bor_btm_so">
       <image src='../../static/images/13.png' class="img left right10"></image>
       <view class="font2">
           <text class="col000">中央商场  旗舰店</text>
@@ -47,8 +47,8 @@
           <image src='../../static/images/11.png' class="ico11 icoAll"></image>
           <text class="col999 left5 font0 verMid">南京市新街口淮海路2号3楼22号</text>
       </view>
-    </view>
-    <view class="fjmdWap fjmdWap2 bgfff bor_btm_so">
+    </navigator>
+    <navigator url='shopDetail' class="fjmdWap fjmdWap2 bgfff bor_btm_so">
       <image src='../../static/images/13.png' class="img left right10"></image>
       <view class="font2">
           <text class="col000">中央商场  旗舰店</text>
@@ -66,7 +66,7 @@
           <image src='../../static/images/11.png' class="ico11 icoAll"></image>
           <text class="col999 left5 font0 verMid">南京市新街口淮海路2号3楼22号</text>
       </view>
-    </view>
+    </navigator>
   </view>
 </template>
 

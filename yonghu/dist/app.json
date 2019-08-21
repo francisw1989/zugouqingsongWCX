@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/appointment",
     "pages/index/shopDetail",
     "pages/index/shopList",
     "pages/index/index",

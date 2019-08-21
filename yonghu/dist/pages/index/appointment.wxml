@@ -1,0 +1,19 @@
+<view style="min-height:100%; background-color: rgba(243,243,243,1) ">
+  <image src="../../static/images/20.png" style="width: 100%; height:386rpx; " />
+  <view class=" pad20">
+    <view>
+      <text class="col333">服务门店：</text>中央商场旗舰店
+    </view>
+    <view class="top10">
+      <text class="col333">营业时间：</text>10:00-10:00
+    </view>
+    <view class="top10">
+      <text class="col333">预约时间：</text>
+      <picker class="inline" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+        <view class="checkBtn {{cIndex==0?'active':''}}" data-index="0" bindtap="chose">今天</view>
+        <view class="checkBtn left10 {{cIndex==1?'active':''}}" data-index="1" bindtap="chose">明天</view>
+      </picker>
+
+    </view>
+  </view>
+</view>
