@@ -1,0 +1,15 @@
+<template>
+  <view></view>
+</template>
+
+<script>
+export default {
+  config: {
+    navigationBarTitleText: '项目详情'
+  },
+  data: {}
+}
+</script>
+
+<style lang="less">
+</style>

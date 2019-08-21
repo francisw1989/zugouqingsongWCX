@@ -1,7 +1,28 @@
 <view style="height: 100%">
-  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location="true" markers="{{markers}}" bindmarkertap="makertap"></map>
-  <!-- <view class="rgc_info">
-            <text>经度：{{longitude}}</text>
-            <text>纬度：{{latitude}}</text>
-        </view> -->
+  <map class="map" polyline="{{polyline}}" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location="true" markers="{{markers}}" bindmarkertap="makertap"></map>
+  <ui-popup show="{{show}}" background="transparent" mask-style="{{ maskStyle}}" _pid="{{_pid}}">
+    <view class="yyMapMap clearfix">
+      <view class="align-right top10">
+        <image src="../../static/images/28.png" bindtap="close" class="icoAll ico28 right10" />
+      </view>
+      <view class="pad20RL top10">
+        <picker class="inline" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+          <view class="checkBtn {{cIndex==0?'active':''}}" data-index="0" bindtap="chose">今天</view>
+          <view class="checkBtn left10 {{cIndex==1?'active':''}}" data-index="1" bindtap="chose">明天</view>
+        </picker>
+        <view class="pad15TB bor_btm_so">
+          <image src="../../static/images/26.png" class="icoAll ico26" />
+          <text class="col333 left10 verMid">开始时间：</text>
+          <text>{{day}}{{time}}</text>
+        </view>
+        <view class="top10 clearfix">
+          <image src="../../static/images/29.png" class="icoAll ico29 right" bindtap="phone" />
+          <image src="../../static/images/27.png" class="icoAll ico27" />
+          <text class="col333 left10 verMid">门店：</text>
+        </view>
+        <view class="font0 top5" style="margin-left: 45rpx">营业时间：9:00-23:00</view>
+      </view>
+      <view class="btns btns-biggest btns-green top20">立即预约</view>
+    </view>
+  </ui-popup>
 </view>

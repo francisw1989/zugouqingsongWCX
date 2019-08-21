@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "ui-popup": "../../packages/touchui-wx-components/ui-popup/dist/index"
+  },
   "navigationBarTitleText": "附近门店"
 }

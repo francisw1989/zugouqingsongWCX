@@ -1,3 +1,7 @@
+'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 /**
  * lodash (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="npm" -o ./`
@@ -46,10 +50,10 @@ var reUnicode = RegExp(rsFitz + '(?=' + rsFitz + ')|' + rsSymbol + rsSeq, 'g');
 var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange + rsComboMarksRange + rsComboSymbolsRange + rsVarRange + ']');
 
 /** Detect free variable `global` from Node.js. */
-var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
 
 /** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
 
 /** Used as a reference to the global object. */
 var root = freeGlobal || freeSelf || Function('return this')();
@@ -200,10 +204,10 @@ var objectProto = Object.prototype;
 var objectToString = objectProto.toString;
 
 /** Built-in value references. */
-var Symbol = root.Symbol;
+var _Symbol = root.Symbol;
 
 /** Used to convert symbols to primitives and strings. */
-var symbolProto = Symbol ? Symbol.prototype : undefined,
+var symbolProto = _Symbol ? _Symbol.prototype : undefined,
     symbolToString = symbolProto ? symbolProto.toString : undefined;
 
 /**
@@ -296,7 +300,7 @@ function castSlice(array, start, end) {
  * // => false
  */
 function isObjectLike(value) {
-  return !!value && typeof value == 'object';
+  return !!value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object';
 }
 
 /**
@@ -317,7 +321,7 @@ function isObjectLike(value) {
  * // => false
  */
 function isSymbol(value) {
-  return typeof value == 'symbol' || isObjectLike(value) && objectToString.call(value) == symbolTag;
+  return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'symbol' || isObjectLike(value) && objectToString.call(value) == symbolTag;
 }
 
 /**
