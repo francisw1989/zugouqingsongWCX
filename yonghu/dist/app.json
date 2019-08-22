@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/projectDetail",
     "pages/index/projects",
     "pages/index/shopListMap",
     "pages/index/appointment",
@@ -9,8 +10,7 @@
     "pages/activity/index",
     "pages/wode/index",
     "pages/wode/hyzx",
-    "pages/wode/wdyy",
-    "pages/index/projectDetail"
+    "pages/wode/wdyy"
   ],
   "permission": {
     "scope.userLocation": {

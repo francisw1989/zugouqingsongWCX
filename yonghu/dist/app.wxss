@@ -1137,7 +1137,7 @@ a.colfff,
 .colYe,
 a.colYe,
 .colYe a {
-  color: #ff9805;
+  color: #F88A0B;
 }
 .colBlue,
 a.colBlue,
@@ -1326,11 +1326,6 @@ a.colGreen,
 .padSp1 {
   padding: 20rpx 40rpx;
 }
-.underline {
-  border-bottom: 1px solid #ccc;
-  width: 50px;
-  display: inline-block;
-}
 .bor_btm_so {
   border-bottom: 1px solid #E0E0E0;
 }
@@ -1398,8 +1393,13 @@ button[type="primary"] {
   opacity: 0.8;
 }
 .btns-small {
-  width: 114rpx;
+  padding: 0 20rpx;
   line-height: 51rpx;
+  border-radius: 10rpx;
+}
+.btns-nomal {
+  padding: 0 20rpx;
+  line-height: 64rpx;
   border-radius: 10rpx;
 }
 .btns-biggest {
@@ -1424,6 +1424,9 @@ button[type="primary"] {
 }
 .verBtm {
   vertical-align: bottom;
+}
+.through {
+  text-decoration: line-through;
 }
 .title {
   position: relative;
@@ -1548,6 +1551,30 @@ button[type="primary"] {
   height: 60px;
   border-radius: 10rpx;
 }
+.tx3Wap {
+  position: relative;
+  padding: 2px;
+  border: 1px solid #fff;
+  display: inline-block;
+  border-radius: 50%;
+}
+.tx3Wap .btns {
+  position: absolute;
+  bottom: -10rpx;
+  border-radius: 15rpx;
+  left: 0;
+  width: 100%;
+  font-size: 20rpx;
+  text-align: center;
+}
+.tx3Wap.active {
+  border: 1px solid #459E8C;
+}
+.tx3 {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
 .seachWap {
   width: 593rpx;
   position: relative;
@@ -1594,4 +1621,31 @@ button[type="primary"] {
   line-height: 34rpx;
   background: rgba(242, 155, 118, 0.3);
   border-radius: 6rpx;
+}
+.tag2 {
+  width: 137rpx;
+  text-align: center;
+  line-height: 49rpx;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #459e8c;
+  border-radius: 24rpx;
+}
+.shaodwBox {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  background: #ffffff;
+  box-shadow: 0rpx 2rpx 29rpx 0rpx rgba(56, 55, 55, 0.15);
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.footerBox {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
 }

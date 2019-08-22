@@ -213,7 +213,7 @@ page {
 }
 
 .colYe, a.colYe, .colYe a {
-    color: #ff9805;
+    color: #F88A0B;
 }
 
 .colBlue, a.colBlue, .colBlue a {
@@ -453,11 +453,6 @@ page {
 }
 .padSp1{ padding: 20rpx 40rpx}
 
-.underline {
-    border-bottom: 1px solid #ccc;
-    width: 50px;
-    display: inline-block;
-}
 
 .bor_btm_so {
     border-bottom: 1px solid #E0E0E0;
@@ -543,12 +538,17 @@ button[type="primary"] {
 }
 
 .btns-small {
-    width:114rpx;
+    padding: 0 20rpx;
     line-height:51rpx;
     
     border-radius:10rpx;
 }
 
+.btns-nomal {
+    padding: 0 20rpx;
+    line-height:64rpx;
+    border-radius:10rpx;
+}
 .btns-biggest {
     width: 100%;
     line-height: 90rpx;
@@ -572,6 +572,7 @@ button[type="primary"] {
 .verBtm {
     vertical-align: bottom;
 }
+.through{text-decoration: line-through}
 .title{ position: relative; padding-bottom: 4rpx; display: inline-block}
 .title::after{ content: ''; width: 26rpx; height: 2px; background-color: #459E8A; position: absolute; bottom: 0; left: 0;}
 
@@ -606,6 +607,10 @@ button[type="primary"] {
 
 .tx1{ width: 136rpx; height: 136rpx; border-radius: 50%;}
 .tx2{ width: 60px; height: 60px; border-radius: 10rpx;}
+.tx3Wap{ position: relative; padding: 2px; border: 1px solid #fff; display: inline-block; border-radius: 50%;}
+.tx3Wap .btns{ position: absolute; bottom: -10rpx; border-radius: 15rpx; left: 0; width: 100%; font-size: 20rpx; text-align: center;}
+.tx3Wap.active{ border: 1px solid #459E8C}
+.tx3{ width: 70rpx; height: 70rpx; border-radius: 50%;}
 
 .seachWap{width:593rpx; position: relative; display: inline-block; height:61rpx; background:rgba(243,243,243,1); }
 .shopInfWap{width:693rpx; margin: 0 auto; margin-top: -40rpx;
@@ -625,7 +630,16 @@ button[type="primary"] {
     line-height:34rpx;
     background:rgba(242,155,118,0.3);
     border-radius:6rpx;}
-
+.tag2{width:137rpx; text-align: center;
+    line-height:49rpx; color: #fff; position: absolute; top: 0; left: 0;
+    background:rgba(69,158,140,1);
+    border-radius:24rpx;}
+.shaodwBox{
+    width:100%; box-sizing: border-box; position: relative; display: inline-block;
+background:rgba(255,255,255,1);
+box-shadow:0rpx 2rpx 29rpx 0rpx rgba(56,55,55,0.15);
+border-radius:10rpx; overflow: hidden;}
+.footerBox{ position: fixed; width: 100%; left: 0; bottom: 0;}
 
 
 

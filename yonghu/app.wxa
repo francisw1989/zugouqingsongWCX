@@ -8,6 +8,7 @@ export default {
   config: {
     usingComponents: {},
     pages: [
+      'pages/index/projectDetail',
       'pages/index/projects',
       'pages/index/shopListMap',
       'pages/index/appointment',
@@ -18,7 +19,7 @@ export default {
       'pages/wode/index',
       'pages/wode/hyzx',
       'pages/wode/wdyy',
-      'pages/index/projectDetail'
+      
     ],
     permission: {
       'scope.userLocation': {

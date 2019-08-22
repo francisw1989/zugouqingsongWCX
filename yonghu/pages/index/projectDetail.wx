@@ -1,5 +1,120 @@
 <template>
-  <view></view>
+    <view style="min-height:100%; background-color: rgba(243,243,243,1) ">
+        <image src='../../static/images/32.png' style="width: 100%; height:307rpx; "></image>
+        <view class="pad20">
+            <view class="shaodwBox" style="margin-top: -80rpx;">
+                <view class="pad10">
+                    <view class="font2 col000 bor_btm_so" style="padding-bottom: 20rpx;">适宜人群</view>
+                    <view class="top10">
+                        <image src='../../static/images/33.png' class="icoAll" style="width: 39rpx; height:39rpx; "></image>
+                        <text class="left10 verMid">适宜人群</text>
+                    </view>
+                    <view class="top10">
+                        <image src='../../static/images/33.png' class="icoAll" style="width: 39rpx; height:39rpx; "></image>
+                        <text class="left10 verMid">适宜人群</text>
+                    </view>
+                    <view class="top10">
+                        <image src='../../static/images/33.png' class="icoAll" style="width: 39rpx; height:39rpx; "></image>
+                        <text class="left10 verMid">适宜人群</text>
+                    </view>
+                </view>
+                
+
+            </view>
+            <view class="shaodwBox top10">
+                <view class="pad10">
+                    <view class="font2 col000 bor_btm_so" style="padding-bottom: 20rpx;">颈椎放松</view>
+                    <view class=" col333 top10">调理方法</view>
+                    <view class="font0">
+                        调理方法介绍调理方法介绍调理方法介绍，调理方法介绍调理方法介绍调理方法介绍调理方法介绍。调理方法介绍。
+                    </view>
+                    <view class=" col333 top10">调理方法</view>
+                    <view class="font0">
+                        调理方法介绍调理方法介绍调理方法介绍，调理方法介绍调理方法介绍调理方法介绍调理方法介绍。调理方法介绍。
+                    </view>
+                    <view class=" col333 top10">调理方法</view>
+                    <view class="font0">
+                        调理方法介绍调理方法介绍调理方法介绍，调理方法介绍调理方法介绍调理方法介绍调理方法介绍。调理方法介绍。
+                    </view>
+                    
+                </view>
+                
+
+            </view>
+            <view class="pad10 font2 col000">拼团列表</view>
+            <view class="shaodwBox">
+                <view class="tag2">进行中</view>
+                <image src='../../static/images/32.png' style="width: 100%; height: 270rpx; "></image>
+                <ui-row class="pad10">
+                    <ui-col class="line20">
+                        <view class="col333">【颈椎放松】</view>
+                        <view>拼团截止：2019.7.22</view>
+                        <view>5人团，还差2人</view>
+                        <view class="top5 through">¥388</view>
+                        <view class="colYe font3">¥188</view>
+                    </ui-col>
+                    <ui-col>
+                        <view class="align-right top10">
+                            <view class="tx3Wap active">
+                                <image src='../../static/images/32.png' class="tx3"></image>
+                                <view class="btns btns-green">团长</view>
+                            </view>
+                            <view class="tx3Wap left5">
+                                <image src='../../static/images/32.png' class="tx3"></image>
+                            </view>
+                            <view class="tx3Wap left5">
+                                <image src='../../static/images/32.png' class="tx3"></image>
+                            </view>
+                        </view>
+                        <view class="align-right top15">
+                            <view class="btns btns-nomal btns-green">继续拼图</view>
+                        </view>
+                    </ui-col>
+                </ui-row>
+            </view>
+            <view class="shaodwBox top10">
+                <view class="tag2">进行中</view>
+                <image src='../../static/images/32.png' style="width: 100%; height: 270rpx; "></image>
+                <ui-row class="pad10">
+                    <ui-col class="line20">
+                        <view class="col333">【颈椎放松】</view>
+                        <view>拼团截止：2019.7.22</view>
+                        <view>5人团，还差2人</view>
+                        <view class="top5 through">¥388</view>
+                        <view class="colYe font3">¥188</view>
+                    </ui-col>
+                    <ui-col>
+                        <view class="align-right top10">
+                            <view class="tx3Wap active">
+                                <image src='../../static/images/32.png' class="tx3"></image>
+                                <view class="btns btns-green">团长</view>
+                            </view>
+                            <view class="tx3Wap left5">
+                                <image src='../../static/images/32.png' class="tx3"></image>
+                            </view>
+                            <view class="tx3Wap left5">
+                                <image src='../../static/images/32.png' class="tx3"></image>
+                            </view>
+                        </view>
+                        <view class="align-right top15">
+                            <view class="btns btns-nomal btns-green">继续拼图</view>
+                        </view>
+                    </ui-col>
+                </ui-row>
+            </view>
+            
+        </view>
+        <view class="footerBox" style="background-color: #459E8C">
+            <ui-row>
+                <ui-col border-right align="center" >
+                    <view class="colfff pad20">立即预约</view>
+                </ui-col>
+                <ui-col align="center ">
+                    <view class="colfff pad20">我要拼团</view>
+                </ui-col>
+            </ui-row>
+        </view>
+    </view>
 </template>
 
 <script>
