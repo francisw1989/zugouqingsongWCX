@@ -1,0 +1,133 @@
+<view style="min-height: 100%; background-color:#F3F3F3;">
+  <view class="center clearfix" style="padding: 60rpx 0 100rpx 0; background-color: #459E8C">
+    <image src="../../static/images/41.png" class="icoAll" style="width: 107rpx; height: 100rpx;" />
+    <view class="inline verMid left20">
+      <view class="font2 colfff align-left">
+        支付成功！
+      </view>
+      <view class="colfff align-left">
+        感谢您的购买！
+      </view>
+    </view>
+  </view>
+  <view class="payInfo" style="margin-top: -40rpx;">
+    <view class="col333 font5 bold bor_btm_da center" style="padding-bottom: 20rpx;">¥ 588</view>
+    <view class="pad10 bor_btm_da">
+      <view>订单编号：656802164</view>
+      <view>预约门店：中华路店</view>
+      <view>开始时间：2019-07-20 09:20</view>
+    </view>
+    <view class="pad10 bor_btm_da relative">
+      <text class="font2">颈椎放松</text>
+      <view class="align-right absolute" style="top: 15rpx; right: 20rpx;">
+        <view>60分钟</view>
+        <view class="colGreen">¥120</view>
+      </view>
+    </view>
+    <view class="pad10 relative">
+      <text class="font2">颈椎放松</text>
+      <view class="align-right absolute" style="top: 15rpx; right: 20rpx;">
+        <view>60分钟</view>
+        <view class="colGreen">¥120</view>
+      </view>
+    </view>
+  </view>
+  <view class="padSp1 bgfff bor_btm_so clearfix top20 col333">
+    <view class="ui-row" style="">
+      <view class="ui-col" style="flex:0 0 40px;">
+        <view class="ui-col-content">
+          <image src="../../static/images/39.png" class="icoAll" style="width: 30px; height: 30px;" />
+        </view>
+      </view>
+      <view class="ui-col" style="">
+        <view class="ui-col-content">
+          <view class="font2 top2">储值账户</view>
+          <view class="font0">
+            当前余额：<text class="colYe">¥5879</text>
+            <text class="col999 left10">|</text>
+            <text class="left10">充值 >></text>
+          </view>
+        </view>
+      </view>
+      <view class="ui-col ui-col-align-right align-right" style="flex:0 0 50px;">
+        <view class="ui-col-content align-right">
+          <text class="colYe">-¥58</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="padSp1 bgfff bor_btm_so clearfix col333">
+    <view class="ui-row" style="">
+      <view class="ui-col" style="flex:0 0 40px;">
+        <view class="ui-col-content">
+          <image src="../../static/images/40.png" class="icoAll" style="width: 30px; height: 30px;" />
+        </view>
+      </view>
+      <view class="ui-col" style="">
+        <view class="ui-col-content">
+          <view class="font2 top2">微信支付</view>
+        </view>
+      </view>
+      <view class="ui-col ui-col-align-right align-right" style="flex:0 0 50px;">
+        <view class="ui-col-content align-right">
+          <text class="colYe">-¥58</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="padSp1">
+    <label class="checkbox">
+      <checkbox checked="{{jsChecked}}" color="#459e8c">
+        <text class="let10">接受短信预约提醒</text>
+      </checkbox>
+    </label>
+  </view>
+  <view style="padding: 10rpx 40rpx">
+    <view class="ui-row" style="">
+      <view class="ui-col ui-col-align-center align-center" style="flex:0 0 60px;">
+        <view class="ui-col-content align-center">
+          <image src="../../static/images/42.png" style="width: 40px; height: 40px;" />
+          <view class="center font0 col333">普通会员</view>
+        </view>
+      </view>
+      <view class="ui-col" style="">
+        <view class="ui-col-content">
+          <view class="line1 active top20"></view>
+        </view>
+      </view>
+      <view class="ui-col ui-col-align-center align-center" style="flex:0 0 60px;">
+        <view class="ui-col-content align-center">
+          <image src="../../static/images/43.png" style="width: 40px; height: 40px;" />
+          <view class="center font0 col333">一星会员</view>
+        </view>
+      </view>
+      <view class="ui-col" style="">
+        <view class="ui-col-content">
+          <view class="line1 top20"></view>
+        </view>
+      </view>
+      <view class="ui-col ui-col-align-center align-center" style="flex:0 0 60px;">
+        <view class="ui-col-content align-center">
+          <image src="../../static/images/44.png" style="width: 40px; height: 40px;" />
+          <view class="center font0 col333">二星会员</view>
+        </view>
+      </view>
+      <view class="ui-col" style="">
+        <view class="ui-col-content">
+          <view class="line1 top20"></view>
+        </view>
+      </view>
+      <view class="ui-col ui-col-align-center align-center" style="flex:0 0 60px;">
+        <view class="ui-col-content align-center">
+          <image src="../../static/images/45.png" style="width: 40px; height: 40px;" />
+          <view class="center font0 col333">三星会员</view>
+        </view>
+      </view>
+    </view>
+    <view class="top10 font0">*距离二星会员还需消费500元</view>
+  </view>
+  <view class="pad10 align-right">
+    <view class="btns btns-small btns-green-bor">继续下单</view>
+    <view class="btns btns-small btns-green left15">完成</view>
+  </view>
+</view>

@@ -1,0 +1,106 @@
+<template>
+    <view>
+        <view class="seachWap2" id="seachWap2">
+            <image class="img" src='../../static/images/18.png' style="width: 34rpx; height:34rpx; "></image>
+            <input class="input" placeholder="搜索商品" />
+        </view>
+        <ui-row height='{{height}}' style="overflow: hidden">
+            <ui-col span="3">
+                <ui-v-tabs height="{{height}}" index="{{ current }}" bindchange="handleChange">
+                    <ui-v-tab wx:for="{{ tabItems }}">
+                        {{ item.name }}
+                    </ui-v-tab>
+                </ui-v-tabs>
+            </ui-col>
+            <ui-col>
+                <view style="overflow: auto; height:{{height}}px">
+                    <ui-row space-top='20' space-bottom='20' wx:for='{{list}}'>
+                        <ui-col width='85' space-left='10'>
+                            <image src='../../static/images/32.png' mode="aspectFill" class="tx7"></image>
+                        </ui-col>
+                        <ui-col space-left='10' space-right='10'>
+                            <view class="col000 font2 text-over">怡宝 饮用纯净水555ml饮用纯净水555ml/瓶</view>
+                            <view class="top20 clearfix">
+                                <view class="right">
+                                    <ui-stepper></ui-stepper>
+                                </view>
+                                <text class="colPink font2">￥2</text><text class="col999">/瓶</text>
+                            </view>
+                        </ui-col>
+                    </ui-row>
+                </view>
+
+            </ui-col>
+        </ui-row>
+        <view class="footerBox">
+            <view class="btm10 pad20">
+                <ui-row>
+                    <ui-col span='6' class="relative">
+                        <view class="fBxo1">共 ¥6</view>
+                        <image class="fBxoImg" src='../../static/images/46.png' style="width: 106rpx; height:125rpx; "></image>
+                        <ui-badge text="9" custom-style="{{customStyle}}" class="badge1"></ui-badge>
+                    </ui-col>
+                    <ui-col>
+                        <view class="fBxo2">选好了</view>
+                    </ui-col>
+                </ui-row>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+export default {
+    config: {
+        navigationBarTitleText: '商品'
+    },
+    data: {
+        list: [{},{},{},{},{},{},{},{},{},{},{},{}],
+        current: 0,
+        tabStyle:{
+            'color':'#333',
+            'width:':'60px'
+        },
+        activeTabStyle:{
+            
+        },
+        tabItems: [
+            { name: '酒水' },
+            { name: '果盘' },
+            { name: '养身茶' },
+            { name: '小吃' },
+        ],
+        height: wx.DEFAULT_CONTENT_HEIGHT,
+        customStyle:{
+            'background-color': '#f71429',
+            'border':'2px solid #fff'
+        }
+
+    },
+    handleChange (e) {
+        console.log(e)
+        let index = e.detail.index
+        this.setData({
+            current:index
+        })
+    },
+    onLoad(){
+        const t = this;
+        var query = wx.createSelectorQuery();
+        query.select('#seachWap2').boundingClientRect();
+        query.exec(function (res) {
+            //res就是 所有标签为mjltest的元素的信息 的数组
+            console.log(res);
+            //取高度
+            t.setData({
+                height: t.data.height - res[0].height
+            })
+            console.log(t.data.height)
+        })
+    }
+}
+</script>
+
+<style lang="less">
+
+</style>

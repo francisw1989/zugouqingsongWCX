@@ -1,0 +1,45 @@
+<view style="min-height: 100%; background-color:#F3F3F3;">
+  <view class="pad15 bgfff">
+    <view class="font5 col000 bor_btm_so">¥ 3000</view>
+    <view class="col333 top5">当前账户余额<text class="colPink">888</text>，充值后<text class="colPink">4388</text></view>
+  </view>
+  <view class="pad15 bgfff top20">
+    <ui-divider _pid="{{_pid}}">请选择充值金额</ui-divider>
+    <view class="">
+      <view class="tag3 {{item.active?'active':''}}" wx:for="{{mList}}" data-index="{{index}}" catchtap="tagClick">
+        {{item.value}}
+        <text wx:if="{{item.zeng}}" class="la">赠{{item.zeng}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="padSp1">
+    <text class="font2">选择充值方式</text>
+  </view>
+  <view class="padSp1 bgfff bor_btm_so clearfix">
+    <view class="ui-row" style="">
+      <view class="ui-col" style="flex:0 0 40px;">
+        <view class="ui-col-content">
+          <image src="../../static/images/40.png" class="icoAll" style="width: 30px; height: 30px;" />
+        </view>
+      </view>
+      <view class="ui-col" style="">
+        <view class="ui-col-content">
+          <view class="font2 top2">微信支付</view>
+        </view>
+      </view>
+      <view class="ui-col ui-col-align-right align-right" style="flex:0 0 50px;">
+        <view class="ui-col-content align-right">
+          <radio checked="{{wxChecked}}" class="inline top5" color="#459e8c">
+          </radio>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="padSp1">
+    <view class="font2 btm5">选择充值方式</view>
+    <view class="col999">充值1000元<text class="left20">赠送300元</text></view>
+    <view class="col999">充值1000元<text class="left20">赠送300元</text></view>
+    <view class="col999">充值1000元<text class="left20">赠送300元</text></view>
+  </view>
+  <view class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">立即充值</view>
+</view>

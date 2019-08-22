@@ -125,6 +125,7 @@ page {
     line-height: 16rpx;
 }
 
+.line1{ line-height: 1}
 .line12 {
     line-height: 24rpx;
 }
@@ -149,7 +150,7 @@ page {
     line-height: 60rpx;
 }
 
-.font0 {
+.font0, .font0 text, .font0 view {
     font-size: 22rpx;
 }
 
@@ -157,7 +158,7 @@ page {
     font-size: 26rpx;
 }
 
-.font2 {
+.font2,.font2 text,.font2 view {
     font-size: 30rpx;
 }
 
@@ -187,8 +188,8 @@ page {
     color: #8e6d9a;
 }
 
-.col999, a.col999, .col999 a {
-    color: #999;
+.col999, a.col999, .col999 a, .col999 view, .col999 text {
+    color: #999!important;
 }
 
 .col777, a.col777, .col777 a {
@@ -204,7 +205,7 @@ page {
     color: #555;
 }
 
-.col333, a.col333, .col333 a {
+.col333, a.col333, .col333 a, .col333 view, .col333 text {
     color: #333;
 }
 
@@ -212,7 +213,7 @@ page {
     color: #fff;
 }
 
-.colYe, a.colYe, .colYe a {
+.colYe, a.colYe, .colYe a, text.colYe , view.colYe  {
     color: #F88A0B;
 }
 
@@ -221,7 +222,7 @@ page {
 }
 
 .colPink, a.colPink {
-    color: #FF547D;
+    color: #FF547D !important;
 }
 
 .colRed, a.colRed, .colRed a {
@@ -412,6 +413,9 @@ page {
 .pad10TB {
     padding: 20rpx 0;
 }
+.pad10RL {
+    padding: 0 20rpx;
+}
 
 .pad15 {
     padding: 30rpx;
@@ -453,9 +457,12 @@ page {
 }
 .padSp1{ padding: 20rpx 40rpx}
 
-
+.bor{ border: 1px solid #E0E0E0}
 .bor_btm_so {
-    border-bottom: 1px solid #E0E0E0;
+    border-bottom: 1px solid #F3F3F3;
+}
+.bor_btm_da {
+    border-bottom: 1px dashed #E5E5E5;
 }
 
 button {
@@ -538,30 +545,35 @@ button[type="primary"] {
 }
 
 .btns-small {
-    padding: 0 20rpx;
+    padding: 0 30rpx;
     line-height:51rpx;
     
     border-radius:10rpx;
 }
 
 .btns-nomal {
-    padding: 0 20rpx;
+    padding: 0 30rpx;
     line-height:64rpx;
     border-radius:10rpx;
 }
 .btns-biggest {
     width: 100%;
-    line-height: 90rpx;
-    border-radius: 6rpx;
-    font-size: 32rpx;
+    line-height: 77rpx;
+    font-size: 28rpx;
+    border-radius: 0;
 }
 
 .btns-ye {
     background-color: #ff9805;
 }
-
-.btns-green {
+.btns-green-bor {
+    border:1px solid rgba(69,158,140,1);
+    color: #459E8C;
+}
+.btns-green, view.btns-green {
+    border:1px solid rgba(69,158,140,1);
     background-color: rgba(69,158,140,1);
+    color: #fff;
 }
 
 .btns-fff {
@@ -572,7 +584,6 @@ button[type="primary"] {
 .verBtm {
     vertical-align: bottom;
 }
-.through{text-decoration: line-through}
 .title{ position: relative; padding-bottom: 4rpx; display: inline-block}
 .title::after{ content: ''; width: 26rpx; height: 2px; background-color: #459E8A; position: absolute; bottom: 0; left: 0;}
 
@@ -611,6 +622,15 @@ button[type="primary"] {
 .tx3Wap .btns{ position: absolute; bottom: -10rpx; border-radius: 15rpx; left: 0; width: 100%; font-size: 20rpx; text-align: center;}
 .tx3Wap.active{ border: 1px solid #459E8C}
 .tx3{ width: 70rpx; height: 70rpx; border-radius: 50%;}
+.tx4{ width: 100px; height: 100px; border-radius: 20rpx;}
+.tx5Wap{width: 70px; height: 70px; position: relative;}
+.tx5Wap .dj{ width: 100%; position: absolute; left: 0; bottom: 0; text-align: right;}
+.tx5Wap .dj .img{ width: 24rpx; height: 30rpx;}
+.tx5Wap .close{ position: absolute; top: 0; right: 0}
+.tx5{ width: 70px; height: 70px; border-radius: 50%;}
+.tx6{ width: 40px; height: 40px; border-radius: 10rpx;}
+.tx7{ width: 75px; height: 75px;}
+
 
 .seachWap{width:593rpx; position: relative; display: inline-block; height:61rpx; background:rgba(243,243,243,1); }
 .shopInfWap{width:693rpx; margin: 0 auto; margin-top: -40rpx;
@@ -634,12 +654,34 @@ button[type="primary"] {
     line-height:49rpx; color: #fff; position: absolute; top: 0; left: 0;
     background:rgba(69,158,140,1);
     border-radius:24rpx;}
+.tag3{
+    width:164rpx; line-height:80rpx; text-align: center; position: relative; display: inline-block;
+    border:2px solid rgba(221,221,221,1);
+    border-radius:15rpx; margin: 20rpx 34rpx 0 34rpx;
+}
+.tag3.active{ border-color: #FF7700;}
+.tag3 .la{ position: absolute; border-radius: 2px; color: #fff; top: 0; right: 0; padding: 5rpx 8rpx; line-height: 1; background:rgba(255,119,0,1); font-size: 20rpx;}
+
+
 .shaodwBox{
     width:100%; box-sizing: border-box; position: relative; display: inline-block;
 background:rgba(255,255,255,1);
 box-shadow:0rpx 2rpx 29rpx 0rpx rgba(56,55,55,0.15);
 border-radius:10rpx; overflow: hidden;}
-.footerBox{ position: fixed; width: 100%; left: 0; bottom: 0;}
+.footerBox{ position: fixed; width: 100%; left: 0; bottom: 0; box-sizing: border-box}
+.payInfo{ width:604rpx; padding: 60rpx 0 20rpx 0; margin: 0 auto;
+    background:rgba(255,255,255,1);
+    box-shadow:0rpx 4rpx 33rpx 0rpx rgba(48,47,47,0.18);}
+.line1{ width:100%;
+    height:2px;
+    background:rgba(103,86,76,1);
+    border-radius:1px;}
+.line1.active{ background: rgba(69,158,140,1) }
 
-
-
+.seachWap2{ background-color: #F3F3F3; }
+.seachWap2 .img{ position: absolute; top: 26rpx; left: 40rpx;}
+.seachWap2 .input{ width: 100%; padding: 20rpx 0 20rpx 90rpx;}
+.fBxo1{ width: 100%; font-size: 30rpx; line-height: 100rpx; text-align: center; color: #fff;background-color:#3A3635; border-radius: 53rpx 0 0 53rpx; }
+.fBxo2{ width: 100%; font-size: 30rpx; line-height: 100rpx; text-align: center; color: #fff;background-color:#50AE9B; border-radius: 0 53rpx 53rpx 0; }
+.fBxoImg{ position: absolute; bottom: 0; left: 0}
+.badge1{ position: absolute; top: -5rpx; left: 70rpx;}

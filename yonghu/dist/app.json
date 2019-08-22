@@ -1,7 +1,12 @@
 {
   "pages": [
-    "pages/index/projectDetail",
+    "pages/index/goods",
+    "pages/index/reCharge",
+    "pages/index/paySuccess",
+    "pages/index/pay",
+    "pages/index/chooseProjectJishi",
     "pages/index/projects",
+    "pages/index/projectDetail",
     "pages/index/shopListMap",
     "pages/index/appointment",
     "pages/index/shopDetail",

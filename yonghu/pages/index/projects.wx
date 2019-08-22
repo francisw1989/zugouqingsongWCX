@@ -43,6 +43,7 @@
                 </view>
             </view>
         </view>
+        <view class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">确认选择</view>
     </view>
 </template>
 

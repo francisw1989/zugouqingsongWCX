@@ -1,0 +1,71 @@
+<template>
+    <view style="min-height: 100%; background-color:#F3F3F3;">
+        <view class="pad15 bgfff">
+            <view class="font5 col000 bor_btm_so">¥ 3000</view>
+            <view class="col333 top5">当前账户余额<text class="colPink">888</text>，充值后<text class="colPink">4388</text></view>
+        </view>
+        <view class="pad15 bgfff top20">
+            <ui-divider>请选择充值金额</ui-divider>
+            <view class="">
+                <view class="tag3 {{item.active?'active':''}}" wx:for='{{mList}}' data-index='{{index}}' catchtap="tagClick">
+                    {{item.value}}
+                    <text wx:if="{{item.zeng}}" class="la">赠{{item.zeng}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="padSp1">
+            <text class="font2">选择充值方式</text>
+        </view>
+        <view class="padSp1 bgfff bor_btm_so clearfix">
+            <ui-row class="">
+                <ui-col width='40'>
+                    <image src='../../static/images/40.png' class="icoAll" style="width: 30px; height: 30px;"></image>
+                </ui-col>
+                <ui-col>
+                    <view class="font2 top2">微信支付</view>
+                </ui-col>
+                <ui-col width='50' align='right'>
+                    <radio checked="{{wxChecked}}" class="inline top5"/>
+                </ui-col>
+            </ui-row>
+        </view>
+        <view class="padSp1">
+            <view class="font2 btm5">选择充值方式</view>
+            <view class="col999">充值1000元<text class="left20">赠送300元</text></view>
+            <view class="col999">充值1000元<text class="left20">赠送300元</text></view>
+            <view class="col999">充值1000元<text class="left20">赠送300元</text></view>
+        </view>
+        <view class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">立即充值</view>
+    </view>
+</template>
+
+<script>
+export default {
+    config: {
+        navigationBarTitleText: '充值'
+    },
+    data: {
+        wxChecked: true,
+        mList:[
+            {value: '200', zeng: ''},
+            {value: '3000', zeng: '300'},
+            {value: '5000', zeng: '300'},
+            {value: '10000', zeng: '300'},
+            {value: '15000', zeng: '300'},
+        ]
+    },
+    tagClick(e){
+        const t = this;
+        for(const v of t.data.mList){
+            v.active = ''
+        }
+        t.data.mList[e.currentTarget.dataset.index].active = 'active';
+        t.setData({
+            mList: t.data.mList
+        })
+    }
+}
+</script>
+
+<style lang="less">
+</style>

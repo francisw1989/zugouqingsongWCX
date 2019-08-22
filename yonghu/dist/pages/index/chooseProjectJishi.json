@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "ui-slider": "../../packages/touchui-wx-components/ui-slider/dist/index",
+    "ui-tabs": "../../packages/touchui-wx-components/ui-tabs/dist/index",
+    "ui-tab": "../../packages/touchui-wx-components/ui-tab/dist/index",
+    "ui-mini-star": "../../packages/touchui-wx-components/ui-mini-star/dist/index",
+    "ui-popup": "../../packages/touchui-wx-components/ui-popup/dist/index"
+  },
+  "navigationBarTitleText": "选择项目"
+}
