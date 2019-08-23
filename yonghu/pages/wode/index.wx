@@ -1,17 +1,59 @@
 <template>
-<view>
-    <ui-row>
-        <ui-col>
-            <image src='../../static/images/a1.png' mode="aspectFit" class="img"></image>
+<view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
+    <view class="wInfo clearfix colfff ">
+        <view class="pad20">
+            <view class="font3 clearfix">
+                许三妹
+                <view class="btns font0 right">普通会员</view>
+            </view>
+            <view>1828784784</view>
+            <view class="top40">积分：500</view>
+            <view class="clearfix">
+                储蓄账户：¥500
+                <image src='../../static/images/48.png' class="icoAll right" style=" width:43rpx; height: 43rpx; margin-top: -10rpx;"></image>
+            </view>
+            <view class="clearfix">充值 > <text class="right colYe2 top5 font0">NO：Z1124565465</text></view>
+            
+            
+        </view>
+    </view>
+    <view class="top15 pad15RL">
+        <text class="title2">专属权益</text>
+    </view>
+    <ui-row class="top15">
+        <ui-col align='center'>
+            <image src='../../static/images/a1.png' mode="aspectFit" class="woIcoimg"></image>
+            <view class="top10">会员等级</view>
         </ui-col>
-        <ui-col>
-            <image src='../../static/images/a2.png' class="img"></image>
+        <ui-col align='center'>
+            <image src='../../static/images/a2.png' mode="aspectFit" class="woIcoimg"></image>
+            <view class="top10">我的预约</view>
         </ui-col>
-        <ui-col>
-            <image src='../../static/images/a3.png' class="img"></image>
+        <ui-col align='center'>
+            <image src='../../static/images/a3.png' mode="aspectFit" class="woIcoimg"></image>
+            <view class="top10">完善信息</view>
         </ui-col>
-        <ui-col>
-            <image src='../../static/images/a4.png' class="img"></image>
+        <ui-col align='center'>
+            <image src='../../static/images/a4.png' mode="aspectFit" class="woIcoimg"></image>
+            <view class="top10">我的优惠券</view>
+        </ui-col>
+    </ui-row>
+    <ui-row class="top15">
+        <ui-col align='center'>
+            <image src='../../static/images/a5.png' mode="aspectFit" class="woIcoimg"></image>
+            <view class="top10">我的拼团</view>
+        </ui-col>
+        <ui-col align='center'>
+            <image src='../../static/images/a6.png' mode="aspectFit" class="woIcoimg"></image>
+            <view class="top10">发起拼团</view>
+        </ui-col>
+        <ui-col align='center'>
+            <image src='../../static/images/a7.png' mode="aspectFit" class="woIcoimg"></image>
+            <view class="top10">邀请好友</view>
+        </ui-col>
+        <ui-col align='center'>
+            <image src='../../static/images/a8.png' mode="aspectFit" class="woIcoimg"></image>
+            <view class="top10">关于我们</view>
         </ui-col>
     </ui-row>
 </view>
@@ -27,5 +69,5 @@ export default {
 </script>
 
 <style lang="less">
-.img{ width: 80rpx; height: 80rpx;}
+
 </style>

@@ -1,0 +1,22 @@
+<template>
+  <view>
+      <view style='height: 667rpx; background:linear-gradient(268deg,rgba(65,65,78,1) 0%,rgba(62,63,74,1) 100%);'>
+          
+      </view>
+      <view class='pad20'>
+          
+      </view>
+  </view>
+</template>
+
+<script>
+export default {
+    config: {
+        navigationBarTitleText: '会员等级'
+    },
+    data: {}
+}
+</script>
+
+<style lang="less">
+</style>

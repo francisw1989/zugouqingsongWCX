@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/wode/memberGrade",
     "pages/wode/index",
     "pages/index/technician",
     "pages/index/goods",
@@ -15,7 +16,6 @@
     "pages/index/shopList",
     "pages/index/index",
     "pages/activity/index",
-    "pages/wode/hyzx",
     "pages/wode/wdyy"
   ],
   "permission": {
@@ -60,5 +60,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

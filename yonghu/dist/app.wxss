@@ -1154,6 +1154,13 @@ text.colYe,
 view.colYe {
   color: #F88A0B;
 }
+.colYe2,
+a.colYe2,
+.colYe2 a,
+text.colYe2,
+view.colYe2 {
+  color: #BE883D;
+}
 .colBlue,
 a.colBlue,
 .colBlue a {
@@ -1812,4 +1819,31 @@ view.btns-green {
   width: 7px;
   display: inline-block;
   background: rgba(69, 152, 135, 0.45);
+}
+.title2 {
+  display: inline-block;
+  line-height: 1;
+  color: #333;
+  border-left: 2px solid #459887;
+  padding-left: 10rpx;
+  font-weight: bold;
+}
+.woIcoimg {
+  width: 80rpx;
+  height: 80rpx;
+}
+.wInfo {
+  width: 730rpx;
+  margin: 0 auto;
+  background-color: #000;
+  position: relative;
+  margin-top: 40rpx;
+}
+.wInfo .btns {
+  width: 121rpx;
+  text-align: center;
+  line-height: 38rpx;
+  border: 1px solid #ffffff;
+  box-shadow: 0rpx 7rpx 6rpx 1rpx rgba(196, 157, 98, 0.22);
+  border-radius: 5rpx;
 }
