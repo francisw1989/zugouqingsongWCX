@@ -1,1 +1,24 @@
-<view></view>
+<view>
+  <view class="ui-row" style="">
+    <view class="ui-col" style="">
+      <view class="ui-col-content">
+        <image src="../../static/images/a1.png" mode="aspectFit" class="img" />
+      </view>
+    </view>
+    <view class="ui-col" style="">
+      <view class="ui-col-content">
+        <image src="../../static/images/a2.png" class="img" />
+      </view>
+    </view>
+    <view class="ui-col" style="">
+      <view class="ui-col-content">
+        <image src="../../static/images/a3.png" class="img" />
+      </view>
+    </view>
+    <view class="ui-col" style="">
+      <view class="ui-col-content">
+        <image src="../../static/images/a4.png" class="img" />
+      </view>
+    </view>
+  </view>
+</view>

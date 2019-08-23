@@ -8,6 +8,8 @@ export default {
   config: {
     usingComponents: {},
     pages: [
+      'pages/wode/index',
+      'pages/index/technician',
       'pages/index/goods',
       'pages/index/reCharge',
       'pages/index/paySuccess',
@@ -21,7 +23,7 @@ export default {
       'pages/index/shopList',
       'pages/index/index',
       'pages/activity/index',
-      'pages/wode/index',
+      
       'pages/wode/hyzx',
       'pages/wode/wdyy',
       

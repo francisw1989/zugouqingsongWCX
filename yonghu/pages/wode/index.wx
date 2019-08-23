@@ -1,15 +1,31 @@
 <template>
-  <view></view>
+<view>
+    <ui-row>
+        <ui-col>
+            <image src='../../static/images/a1.png' mode="aspectFit" class="img"></image>
+        </ui-col>
+        <ui-col>
+            <image src='../../static/images/a2.png' class="img"></image>
+        </ui-col>
+        <ui-col>
+            <image src='../../static/images/a3.png' class="img"></image>
+        </ui-col>
+        <ui-col>
+            <image src='../../static/images/a4.png' class="img"></image>
+        </ui-col>
+    </ui-row>
+</view>
 </template>
 
 <script>
 export default {
-  config: {
-    navigationBarTitleText: '个人中心'
-  },
-  data: {}
+    config: {
+        navigationBarTitleText: '个人中心'
+    },
+    data: {}
 }
 </script>
 
 <style lang="less">
+.img{ width: 80rpx; height: 80rpx;}
 </style>

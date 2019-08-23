@@ -61,8 +61,8 @@
     <view class="bgfff" style="padding: 0 40rpx">
         <view class="fjmdWap bgfff bor_btm_so">
             <image src='../../static/images/13.png' class="img left right10"></image>
-            <view class="font2">
-                <text class="col000">中央商场  旗舰店</text>
+            <view class="">
+                <text class="col000 font2">中央商场  旗舰店</text>
                 <view class="right ">
                     <text class="col999 verMid font0">距您132m | </text>
                     <image src='../../static/images/16.png' class="icoAll ico16 left5"></image>
@@ -80,8 +80,8 @@
         </view>
         <view class="fjmdWap bgfff bor_btm_so">
             <image src='../../static/images/13.png' class="img left right10"></image>
-            <view class="font2">
-                <text class="col000">中央商场  旗舰店</text>
+            <view class="">
+                <text class="col000 font2">中央商场  旗舰店</text>
                 <view class="right ">
                     <text class="col999 verMid font0">距您132m |</text>
                     <image src='../../static/images/16.png' class="icoAll ico16 left5"></image>
@@ -99,8 +99,8 @@
         </view>
         <view class="fjmdWap bgfff bor_btm_so">
             <image src='../../static/images/13.png' class="img left right10"></image>
-            <view class="font2">
-                <text class="col000">中央商场  旗舰店</text>
+            <view class="">
+                <text class="col000 font2">中央商场  旗舰店</text>
                 <view class="right ">
                     <text class="col999 verMid font0">距您132m |</text>
                     <image src='../../static/images/16.png' class="icoAll ico16 left5"></image>
@@ -174,7 +174,7 @@ export default {
         navigationBarTitleText: '足够轻松'
     },
     data: {
-        jxzShow: false,
+        jxzShow: true,
         lcList: [
             {time: '', content: '预约开始时间：2019-06-11 12:00'},
             {time: '', content: '预约时长：50分钟'},

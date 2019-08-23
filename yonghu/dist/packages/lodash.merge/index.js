@@ -1,7 +1,3 @@
-'use strict';
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 /**
  * Lodash (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="npm" -o ./`
@@ -74,19 +70,19 @@ typedArrayTags[float32Tag] = typedArrayTags[float64Tag] = typedArrayTags[int8Tag
 typedArrayTags[argsTag] = typedArrayTags[arrayTag] = typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] = typedArrayTags[dataViewTag] = typedArrayTags[dateTag] = typedArrayTags[errorTag] = typedArrayTags[funcTag] = typedArrayTags[mapTag] = typedArrayTags[numberTag] = typedArrayTags[objectTag] = typedArrayTags[regexpTag] = typedArrayTags[setTag] = typedArrayTags[stringTag] = typedArrayTags[weakMapTag] = false;
 
 /** Detect free variable `global` from Node.js. */
-var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
+var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
 
 /** Detect free variable `self`. */
-var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
 
 /** Used as a reference to the global object. */
 var root = freeGlobal || freeSelf || Function('return this')();
 
 /** Detect free variable `exports`. */
-var freeExports = (typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
+var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
 
 /** Detect free variable `module`. */
-var freeModule = freeExports && (typeof module === 'undefined' ? 'undefined' : _typeof(module)) == 'object' && module && !module.nodeType && module;
+var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
 
 /** Detect the popular CommonJS extension `module.exports`. */
 var moduleExports = freeModule && freeModule.exports === freeExports;
@@ -229,14 +225,14 @@ var reIsNative = RegExp('^' + funcToString.call(hasOwnProperty).replace(reRegExp
 
 /** Built-in value references. */
 var Buffer = moduleExports ? root.Buffer : undefined,
-    _Symbol = root.Symbol,
+    Symbol = root.Symbol,
     Uint8Array = root.Uint8Array,
     allocUnsafe = Buffer ? Buffer.allocUnsafe : undefined,
     getPrototype = overArg(Object.getPrototypeOf, Object),
     objectCreate = Object.create,
     propertyIsEnumerable = objectProto.propertyIsEnumerable,
     splice = arrayProto.splice,
-    symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
+    symToStringTag = Symbol ? Symbol.toStringTag : undefined;
 
 var defineProperty = function () {
   try {
@@ -1242,7 +1238,7 @@ function initCloneObject(object) {
  * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
  */
 function isIndex(value, length) {
-  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+  var type = typeof value;
   length = length == null ? MAX_SAFE_INTEGER : length;
 
   return !!length && (type == 'number' || type != 'symbol' && reIsUint.test(value)) && value > -1 && value % 1 == 0 && value < length;
@@ -1262,7 +1258,7 @@ function isIterateeCall(value, index, object) {
   if (!isObject(object)) {
     return false;
   }
-  var type = typeof index === 'undefined' ? 'undefined' : _typeof(index);
+  var type = typeof index;
   if (type == 'number' ? isArrayLike(object) && isIndex(index, object.length) : type == 'string' && index in object) {
     return eq(object[index], value);
   }
@@ -1277,7 +1273,7 @@ function isIterateeCall(value, index, object) {
  * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
  */
 function isKeyable(value) {
-  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+  var type = typeof value;
   return type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean' ? value !== '__proto__' : value === null;
 }
 
@@ -1689,7 +1685,7 @@ function isLength(value) {
  * // => false
  */
 function isObject(value) {
-  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+  var type = typeof value;
   return value != null && (type == 'object' || type == 'function');
 }
 
@@ -1718,7 +1714,7 @@ function isObject(value) {
  * // => false
  */
 function isObjectLike(value) {
-  return value != null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object';
+  return value != null && typeof value == 'object';
 }
 
 /**

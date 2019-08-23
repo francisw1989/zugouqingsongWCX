@@ -1142,7 +1142,9 @@ a.col333,
 }
 .colfff,
 a.colfff,
-.colfff a {
+.colfff a,
+.colfff text,
+.colfff view {
   color: #fff;
 }
 .colYe,
@@ -1346,10 +1348,10 @@ a.colGreen,
   border: 1px solid #E0E0E0;
 }
 .bor_btm_so {
-  border-bottom: 1px solid #F3F3F3;
+  border-bottom: 1px solid #E0E0E0;
 }
 .bor_btm_da {
-  border-bottom: 1px dashed #E5E5E5;
+  border-bottom: 1px dashed #E0E0E0;
 }
 button {
   border-radius: 0;
@@ -1558,7 +1560,7 @@ view.btns-green {
   border-radius: 5px;
 }
 .fjmdWap {
-  padding: 20rpx 0;
+  padding: 30rpx 0;
 }
 .fjmdWap2 {
   padding: 40rpx 0;
@@ -1628,8 +1630,8 @@ view.btns-green {
   right: 0;
 }
 .tx5 {
-  width: 70px;
-  height: 70px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
 }
 .tx6 {
@@ -1640,6 +1642,14 @@ view.btns-green {
 .tx7 {
   width: 75px;
   height: 75px;
+}
+.tx8 {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #459887;
+  text-align: center;
 }
 .seachWap {
   width: 593rpx;
@@ -1795,4 +1805,11 @@ view.btns-green {
   position: absolute;
   top: -5rpx;
   left: 70rpx;
+}
+.line2 {
+  height: 100%;
+  height: 50px;
+  width: 7px;
+  display: inline-block;
+  background: rgba(69, 152, 135, 0.45);
 }
