@@ -139,6 +139,14 @@ module.exports = Behavior({
     bufferColor: {
       type: String,
       value: 'green'
+    },
+    danwei: {
+      type: String,
+      value: '元'
+    },
+    mark: {
+      type: String,
+      value: ''
     }
   }
 });

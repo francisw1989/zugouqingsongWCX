@@ -1,8 +1,55 @@
 <view>
-  <view style="height: 667rpx; background:linear-gradient(268deg,rgba(65,65,78,1) 0%,rgba(62,63,74,1) 100%);">
-
-  </view>
+  <image src="../../static/images/h{{level+1}}.png" style="width: 100%; height: 553rpx" />
   <view class="pad20">
+    <view class="col333 font2">会员等级</view>
+    <view class="relative">
+      <ui-slider thumb-style="{{thumbStyle}}" danwei="元" show-tooltip width="330" bar-border-radius="2" value="{{value1}}" active-color="#B99063" background-color="#E5E2E3" min="0" max="1000" slider-weight="4" _pid="{{_pid}}"></ui-slider>
+      <view class="absolute" style=" width: 100%; height: 100%; top: 0; left: 0"></view>
+      <view class="absolute" style="left: 310px; top: 25px">
+        <image src="../../static/images/56.png" class="icoAll" style="width: 32rpx; height: 32rpx; " />
+        <view class="tag4" wx:if="{{xing[level+1]}}">{{xing[level+1]}}</view>
+      </view>
 
+    </view>
+    <view class="colYe2" style="margin-top: -40rpx;">{{xing[level]}}会员</view>
+    <view class="top10">
+      再消费3420元升级为
+      <text class="colYe2 left10">{{xing[level+1]}}会员</text>
+      <image src="../../static/images/55.png" class="icoAll left5" style="width: 10rpx; height: 20rpx" />
+    </view>
+    <view class="relative top10">
+      <ui-slider thumb-style="{{thumbStyle}}" mark="消费" danwei="次" show-tooltip width="330" bar-border-radius="2" value="{{value2}}" active-color="#B99063" background-color="#E5E2E3" min="0" max="20" slider-weight="4" _pid="{{_pid}}"></ui-slider>
+      <view class="absolute" style=" width: 100%; height: 100%; top: 0; left: 0"></view>
+      <view class="absolute" style="left: 310px; top: 25px">
+        <image src="../../static/images/56.png" class="icoAll" style="width: 32rpx; height: 32rpx; " />
+        <view class="tag4" wx:if="{{xing[level+1]}}">{{xing[level+1]}}</view>
+      </view>
+    </view>
+    <view class="colYe2" style="margin-top: -40rpx;">{{xing[level]}}会员</view>
+    <view class="top10">
+      再消费15次升级为
+      <text class="colYe2 left10">{{xing[level+1]}}会员</text>
+      <image src="../../static/images/55.png" class="icoAll left5" style="width: 10rpx; height: 20rpx" />
+    </view>
+    <view class="center top20">
+      <image src="../../static/images/50.png" class="icoAll" style="width: 27rpx; height: 17rpx" />
+      <text class="col000 font3 left10 right10 verMid">等级权益</text>
+      <image src="../../static/images/51.png" class="icoAll" style="width: 27rpx; height: 17rpx" />
+    </view>
+    <view class="center top20">
+      <text class="font2 verMid">会员礼物</text>
+      <text class="font2 left20 right20 verMid">|</text>
+      <image src="../../static/images/52.png" mode="aspectFit" class="icoAll" style="width: 60rpx; height: 60rpx" />
+    </view>
+    <view class="center top20">
+      <text class="font2 verMid">优先预约</text>
+      <text class="font2 left20 right20 verMid">|</text>
+      <image src="../../static/images/53.png" mode="aspectFit" class="icoAll" style="width: 60rpx; height: 60rpx" />
+    </view>
+    <view class="center top20">
+      <text class="font2 verMid">专属客服</text>
+      <text class="font2 left20 right20 verMid">|</text>
+      <image src="../../static/images/54.png" mode="aspectFit" class="icoAll" style="width: 60rpx; height: 60rpx" />
+    </view>
   </view>
 </view>

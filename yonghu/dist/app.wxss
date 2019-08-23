@@ -1740,6 +1740,14 @@ view.btns-green {
   background: #ff7700;
   font-size: 20rpx;
 }
+.tag4 {
+  font-size: 20rpx;
+  padding: 3rpx 6rpx;
+  border-radius: 5rpx;
+  display: inline-block;
+  background-color: #EED7AD;
+  color: #B28F5F;
+}
 .shaodwBox {
   width: 100%;
   box-sizing: border-box;
@@ -1835,7 +1843,6 @@ view.btns-green {
 .wInfo {
   width: 730rpx;
   margin: 0 auto;
-  background-color: #000;
   position: relative;
   margin-top: 40rpx;
 }

@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "ui-slider": "../../packages/touchui-wx-components/ui-slider/dist/index"
+  },
   "navigationBarTitleText": "会员等级"
 }

@@ -10,6 +10,8 @@ export default {
     pages: [
       'pages/wode/memberGrade',
       'pages/wode/index',
+      
+      
       'pages/index/technician',
       'pages/index/goods',
       'pages/index/reCharge',

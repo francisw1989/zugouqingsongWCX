@@ -29,13 +29,13 @@
 
 
   <view class="slider-bar-wrap1" id="wrap1" wx:if="{{showDoubleBarWrap}}" catchtouchmove="touchMoveHandler" catchtouchend="touchEndHandler" catchtouchstart="touchStartHandler" style="{{sliderBarWrapStyle}};{{sliderBarWrapDynamicStyle}};{{sliderBarAnimateStyle}}">
-    <view class="tooltip" style="{{tooltipStyle}};{{tooltipCustomStyle}};" wx:if="{{showTooltip}}">{{unlimited ? (showDoubleBarWrap ? value[0] : value) > max - step ? '不限' : (showDoubleBarWrap ? value[0] : value) : (showDoubleBarWrap ? value[0] : value)}}</view>
+    <view class="tooltip" style="{{tooltipStyle}};{{tooltipCustomStyle}};" wx:if="{{showTooltip}}">{{mark}}{{unlimited ? (showDoubleBarWrap ? value[0] : value) > max - step ? '不限' : (showDoubleBarWrap ? value[0] : value) : (showDoubleBarWrap ? value[0] : value)}}{{danwei}}</view>
     <view class="slider" style="{{sliderBarStyle}};{{thumbCustomStyle}};{{sliderBarAnimateStyle}};{{thumbDownCustomStyle}}"></view>
   </view>
 
 
   <view class="slider-bar-wrap2" id="wrap2" catchtouchmove="touchMove2Handler" catchtouchstart="touchStart2Handler" catchtouchend="touchEnd2Handler" style="{{sliderBarWrapStyle}};{{sliderBarWrap2DynamicStyle}};{{sliderBarAnimateStyle}}">
-    <view class="tooltip" style="{{tooltipStyle}};{{tooltipCustomStyle}};" wx:if="{{showTooltip}}">{{unlimited ? (showDoubleBarWrap ? value[1] : value) > max - step ? '不限' : (showDoubleBarWrap ? value[1] : value) : (showDoubleBarWrap ? value[1] : value)}}</view>
+    <view class="tooltip" style="{{tooltipStyle}};{{tooltipCustomStyle}};" wx:if="{{showTooltip}}">{{mark}}{{unlimited ? (showDoubleBarWrap ? value[1] : value) > max - step ? '不限' : (showDoubleBarWrap ? value[1] : value) : (showDoubleBarWrap ? value[1] : value)}}{{danwei}}</view>
     <view class="slider" style="{{sliderBarStyle}};{{thumbCustomStyle}};{{sliderBarAnimateStyle}};{{thumbDownCustomStyle}}">
     </view>
   </view>
