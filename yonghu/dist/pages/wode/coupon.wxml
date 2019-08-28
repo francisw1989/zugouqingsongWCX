@@ -1,0 +1,26 @@
+<view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
+  <view class="pad10 clearfix">
+    <view class="yhqWap bgfff top10 clearfix" wx:for="{{list}}">
+      <view class="left leftA " style="background-color: {{item.bgCol}}">
+        <image src="../../static/images/59.png" class="img" />
+        <view class="abCover colfff center">
+          <view>
+            <text class="font5">￥</text>
+            <text class="bold" style="font-size: 100rpx;">10</text>
+          </view>
+          <view class="center">满200元可用</view>
+        </view>
+      </view>
+      <view class="left" style="width: 380rpx">
+        <view class="left20">
+          <view class="col333 top20 font3 bold">优惠券</view>
+          <view class="top10 col999">有效期至2019-07-22</view>
+          <view class="colYe">*仅适用于颈椎放松</view>
+        </view>
+      </view>
+      <view class="right colYe center" style="padding: 0 20rpx; height: 204rpx; border-left: 1px solid #E6E6E6; writing-mode:tb-rl">
+        通用券
+      </view>
+    </view>
+  </view>
+</view>

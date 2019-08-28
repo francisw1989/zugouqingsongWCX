@@ -1,0 +1,41 @@
+<view style="width: 100%; height: 100%">
+  <image src="../../static/images/57.png" />
+  <view class="absolute clearfix" style="width: 100%; height: 100%; left:0; top: 0; overflow: auto">
+    <view class="yqCont">
+      <view class="top clearfix">
+        <view class="c"></view>
+      </view>
+      <view class="yC clearfix center">
+        <view class=" top20">
+          <image src="../../static/images/58.png" mode="aspectFit" class="icoAll right5" style="width: 34rpx; height: 23rpx" />
+          <text class="font3 verMid col333">分享健康·分享轻松</text>
+          <image src="../../static/images/58.png" mode="aspectFit" class="icoAll left5" style="width: 34rpx; height: 23rpx" />
+        </view>
+        <view class="top10">邀请好友进行健康体验</view>
+        <view class="top10">
+          <view class="btns-1">分享至好友</view>
+          <view class="btns-1 left20">分享至朋友圈</view>
+        </view>
+        <view class="top20">分享给新用户，对方注册，您可获得10元代金券</view>
+      </view>
+    </view>
+    <view class="center top20">
+      <image src="../../static/images/58.png" mode="aspectFit" class="icoAll right5" style="width: 34rpx; height: 23rpx" />
+      <text class="font3 verMid col333">已获奖励</text>
+      <image src="../../static/images/58.png" mode="aspectFit" class="icoAll left5" style="width: 34rpx; height: 23rpx" />
+    </view>
+    <view class="top10 center">还未获得奖励，快分享给好友一起足够轻松吧！</view>
+    <view style="width: 594rpx; margin: 0 auto;">
+      <view class="colfff" style="padding: 20rpx 0; border-bottom: 1px solid #fff;">
+        <view>2019-07-15 15:23</view>
+        <view>好友（张小花）已注册，赠送您10元优惠券！</view>
+      </view>
+      <view class="colfff" style="padding: 20rpx 0; border-bottom: 1px solid #fff;">
+        <view>2019-07-15 15:23</view>
+        <view>好友（张小花）已注册，赠送您10元优惠券！</view>
+      </view>
+
+    </view>
+  </view>
+
+</view>

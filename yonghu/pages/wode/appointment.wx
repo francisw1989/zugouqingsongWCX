@@ -1,0 +1,56 @@
+<template>
+    <view>
+        <ui-tabs index="{{ cIndex }}" bindchange="handleChange" ink-bar ink-bar-style="{{inkBarStyle}}">
+            <ui-tab wx:for='{{tabs}}'>{{item}}</ui-tab>
+        </ui-tabs>
+        <view>
+            <block wx:for='{{list}}'>
+                <view class="pad10 bor_btm_so relative">
+                    <ui-row>
+                        <ui-col width='50'>
+                            <image src='../../static/images/47.png' mode="aspectFill" class="tx6"></image>
+                        </ui-col>
+                        <ui-col class="">
+                            <view class="col333 font2 bold">颈部放松、胫骨放松</view>
+                            <view class="top5 font0 col999">门店：中华路旗舰店</view>
+                            <view class="col999 font0">时间：2019-07-23    16:50</view>
+                            <view class="col999 font0">技师：刘三妹</view>
+                            <view class="col999 font0">总价：¥599</view>
+                        </ui-col>
+                        <ui-col width='100' align='right'>
+                            <view class="btns btns-2">待支付</view>
+                            <view class="top50 font0"><text class="colYe">4:59</text>后自动取消</view>
+                            <view class="btns btns-green-bor top5 btns-small">继续支付</view>
+                        </ui-col>
+                    </ui-row>
+                </view>
+            </block>
+        </view>
+    </view>
+</template>
+
+<script>
+export default {
+    config: {
+        navigationBarTitleText: '我的预约'
+    },
+    data: {
+        tabs: ['待支付', '已支付', '已完成', '取消'],
+        current: 0,
+        inkBarStyle:{
+          'width': '30%',
+        },
+        list: [{},{},{}]
+    },
+    handleChange (e) {
+        console.log(e)
+        let index = e.detail.index
+        this.setData({
+            current:index
+        })
+    },
+}
+</script>
+
+<style lang="less">
+</style>

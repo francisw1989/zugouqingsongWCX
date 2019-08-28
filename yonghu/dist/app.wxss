@@ -965,7 +965,9 @@ page {
 .clearfix:after {
   clear: both;
 }
-.center {
+.center,
+.center text,
+.center view {
   text-align: center;
 }
 .m-flex-wap {
@@ -1227,6 +1229,9 @@ a.colGreen,
 .top40 {
   margin-top: 80rpx;
 }
+.top50 {
+  margin-top: 100rpx;
+}
 .left5 {
   margin-left: 10rpx;
 }
@@ -1456,12 +1461,50 @@ view.btns-green {
   background-color: #fff;
   color: #ff9805;
 }
+.btns-1 {
+  text-align: center;
+  color: #6A442F;
+  display: inline-block;
+  line-height: 72rpx;
+  width: 245rpx;
+  background: #f8c13d;
+  font-weight: bold;
+  box-shadow: -1rpx 10rpx 9rpx 0rpx rgba(40, 32, 184, 0.1);
+  border-radius: 36rpx;
+}
+.btns-2 {
+  width: 124rpx;
+  line-height: 53rpx;
+  color: #fff;
+  background: #459e8c;
+  border-radius: 27rpx 0 0 27rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.btns-3 {
+  width: 124rpx;
+  line-height: 53rpx;
+  color: #fff;
+  background: #459e8c;
+  border-radius: 0 27rpx 27rpx 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .box1 {
   height: 85rpx;
   line-height: 85rpx;
 }
 .verBtm {
   vertical-align: bottom;
+}
+.abCover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .title {
   position: relative;
@@ -1658,6 +1701,11 @@ view.btns-green {
   background: #459887;
   text-align: center;
 }
+.tx9 {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+}
 .seachWap {
   width: 593rpx;
   position: relative;
@@ -1714,7 +1762,7 @@ view.btns-green {
   top: 0;
   left: 0;
   background: #459e8c;
-  border-radius: 24rpx;
+  border-radius: 0 24rpx 24rpx 0;
 }
 .tag3 {
   width: 164rpx;
@@ -1853,4 +1901,18 @@ view.btns-green {
   border: 1px solid #ffffff;
   box-shadow: 0rpx 7rpx 6rpx 1rpx rgba(196, 157, 98, 0.22);
   border-radius: 5rpx;
+}
+.yhqWap .leftA {
+  width: 225rpx;
+  height: 204rpx;
+  position: relative;
+}
+.yhqWap .leftA .img {
+  width: 100%;
+  height: 100%;
+}
+.fqInf {
+  background: #ffffff;
+  box-shadow: 0rpx 5rpx 13rpx 0rpx rgba(33, 32, 32, 0.1);
+  border-radius: 10rpx;
 }

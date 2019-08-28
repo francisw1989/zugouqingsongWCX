@@ -1,0 +1,48 @@
+/* 1像素解决方案 */
+/*
+ * 清除1px
+ */
+/*
+ * 清除浮动
+ */
+/*
+ * mobile
+ */
+/*
+ * 1px
+ */
+/*
+ * text
+ */
+/* 垂直居中 */
+/* 水平居中 */
+/* 水平垂直居中 */
+/* 超出部分出省略号 */
+/* 多行文本超出部分省略号 */
+.yqCont {
+  width: 629rpx;
+  margin: 0 auto;
+  margin-top: 420rpx;
+}
+.yqCont .top {
+  width: 629rpx;
+  height: 43rpx;
+  background: #5c9afd;
+  border-radius: 22rpx;
+}
+.yqCont .top .c {
+  width: 602rpx;
+  height: 19rpx;
+  margin: 12rpx 0 0 15rpx;
+  background: #2465cc;
+  border-radius: 10rpx;
+}
+.yqCont .yC {
+  width: 594rpx;
+  margin: 0 auto;
+  margin-top: -20rpx;
+  height: 366rpx;
+  background: #ffffff;
+  box-shadow: 9rpx 13rpx 40rpx 0rpx rgba(52, 134, 242, 0.34);
+  border-radius: 0rpx 0rpx 20rpx 20rpx;
+}

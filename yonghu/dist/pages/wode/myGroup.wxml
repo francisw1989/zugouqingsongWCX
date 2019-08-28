@@ -1,0 +1,36 @@
+<view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
+  <view wx:for="{{list}}" class="shaodwBox top10">
+    <view class="tag2">进行中</view>
+    <image src="../../static/images/32.png" style="width: 100%; height: 270rpx; " />
+    <view class="pad10 ui-row" style="">
+      <view class="line20 ui-col" style="">
+        <view class="ui-col-content">
+          <view class="col333">【颈椎放松】</view>
+          <view>拼团截止：2019.7.22</view>
+          <view>5人团，还差2人</view>
+          <view class="top5 text-through">¥388</view>
+          <view class="colYe font3">¥188</view>
+        </view>
+      </view>
+      <view class="ui-col" style="">
+        <view class="ui-col-content">
+          <view class="align-right top10">
+            <view class="tx3Wap active">
+              <image src="../../static/images/32.png" class="tx3" />
+              <view class="btns btns-green">团长</view>
+            </view>
+            <view class="tx3Wap left5">
+              <image src="../../static/images/32.png" class="tx3" />
+            </view>
+            <view class="tx3Wap left5">
+              <image src="../../static/images/32.png" class="tx3" />
+            </view>
+          </view>
+          <view class="align-right top15">
+            <view class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

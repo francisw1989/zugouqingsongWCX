@@ -1,5 +1,12 @@
 {
   "pages": [
+    "pages/wode/groupSuccess",
+    "pages/wode/doGroup",
+    "pages/wode/myGroup",
+    "pages/index/projectDetail",
+    "pages/wode/appointment",
+    "pages/wode/coupon",
+    "pages/wode/invitation",
     "pages/wode/memberGrade",
     "pages/wode/index",
     "pages/index/technician",
@@ -9,14 +16,12 @@
     "pages/index/pay",
     "pages/index/chooseProjectJishi",
     "pages/index/projects",
-    "pages/index/projectDetail",
     "pages/index/shopListMap",
     "pages/index/appointment",
     "pages/index/shopDetail",
     "pages/index/shopList",
     "pages/index/index",
-    "pages/activity/index",
-    "pages/wode/wdyy"
+    "pages/activity/index"
   ],
   "permission": {
     "scope.userLocation": {

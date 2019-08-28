@@ -1,0 +1,83 @@
+<template>
+    <view style="padding-bottom: 100rpx">
+        <view class="pad10" style="background:rgba(68,147,131,0.7);">
+            <view class="colfff center font2">超划算！快来和我一起拼团！</view>
+            <view class="pad10 fqInf top10">
+                <ui-row>
+                    <ui-col width='110'>
+                        <image class="tx9" src='../../static/images/32.png' mode='aspectFill'></image>
+                    </ui-col>
+                    <ui-col>
+                        <view class="col333  bor_btm_so" style="padding-bottom: 10rpx">【颈椎放松】</view>
+                        <view class="top5 font0 bor_btm_so" style="padding-bottom: 10rpx">这些疗放松的原理，再配合精油治疗方法，对肩颈疼痛有一定的缓解作用。</view>
+                        <view class="top5 align-right">
+                            <text class="col999 font0">原价：</text>
+                            <text class="col999 text-through font0">¥598</text>
+                            <text class="left10 font2 colPink">拼团价：¥298</text>
+                        </view>
+                    </ui-col>
+                </ui-row>
+            </view>
+            
+        </view>
+        <view class="pad10 bor_btm_so">
+            <ui-row>
+                <ui-col width='90'>
+                    <view class="font2 col333">拼团须知：</view>
+                </ui-col>
+                <ui-col>
+                    <view class="col999 font0">支付开团并邀请好友参团，在活动时间内邀请好友人数达到参团人数则拼团成功。若在规定时间内达不到预先设置的参团人数，则拼团失败，系统自动将款项放入储值账户。</view>
+                </ui-col>
+            </ui-row>
+        </view>
+        <view class="pad10 bor_btm_so">
+            <ui-row>
+                <ui-col width='90'>
+                    <view class="font2 col333">拼团玩法：</view>
+                </ui-col>
+                <ui-col>
+                    <image src='../../static/images/60.png' style="width: 100%; height: 130rpx"></image>
+                </ui-col>
+            </ui-row>
+        </view>
+        <view class="pad10 bor_btm_so">
+            <ui-row>
+                <ui-col width='90'>
+                    <view class="font2 col333">拼团设置：</view>
+                </ui-col>
+                <ui-col>
+                    <view class="col999 font0">*参团人数越多，优惠越大。3人团享受9折。5人团享受8折。10人团享受6.5折</view>
+                    <view class="top10">
+                        <view class="btns btns-small btns-green-bor right20">3人团</view>
+                        <view class="btns btns-small btns-green-bor right20">5人团</view>
+                        <view class="btns btns-small btns-green-bor">10人团</view>
+                    </view>
+                </ui-col>
+            </ui-row>
+        </view>
+        <view class="pad10 bor_btm_so">
+            <ui-row>
+                <ui-col width='90'>
+                    <view class="font2 col333">拼团价：</view>
+                </ui-col>
+                <ui-col>
+                    
+                </ui-col>
+            </ui-row>
+        </view>
+        <view class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">发起拼团</view>
+    </view>
+</template>
+
+<script>
+export default {
+    config: {
+        navigationBarTitleText: '发起拼团'
+    },
+    data: {}
+}
+</script>
+
+<style lang="less">
+
+</style>
