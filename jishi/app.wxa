@@ -7,7 +7,13 @@ import system from './static/utils/system'
 export default {
   config: {
     usingComponents: {},
-    pages: ['pages/index/index', 'pages/wode/index', 'pages/appointment/index'],
+    pages: [
+      'pages/wode/workingTime',
+      'pages/wode/index',
+      'pages/index/index',
+      'pages/appointment/index'
+      
+    ],
     permission: {
       'scope.userLocation': {
         desc: '你的位置信息将用于小程序位置接口的效果展示' // 高速公路行驶持续后台定位
@@ -51,9 +57,23 @@ export default {
       ]
     }
   },
-  globalData: {},
+  globalData: {
+    leve: 1,
+    colors: ['#459E8C', '#FDBF78', '#8E6BFF'],
+    color: '#459E8C'
+  },
+  setBg() {
+    const t = this
+    let color = t.globalData.colors[t.globalData.leve - 1]
+    t.color = color
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: color
+    })
+  },
   onLaunch() {
     system.attachInfo()
+    this.setBg()
   },
   onShow() {},
   onHide() {}

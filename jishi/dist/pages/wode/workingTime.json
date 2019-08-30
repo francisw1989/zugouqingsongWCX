@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ui-calendar": "../../packages/touchui-wx-components/ui-calendar/dist/index"
+  },
+  "navigationBarTitleText": "考勤管理"
+}

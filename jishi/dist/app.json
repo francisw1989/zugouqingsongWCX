@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/wode/workingTime",
     "pages/wode/index",
+    "pages/index/index",
     "pages/appointment/index"
   ],
   "permission": {
@@ -46,6 +47,5 @@
         "text": "我的"
       }
     ]
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }

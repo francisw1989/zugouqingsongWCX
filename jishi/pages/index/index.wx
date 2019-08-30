@@ -1,15 +1,150 @@
 <template>
-    <view></view>
+    <view style="min-height: 100%; background-color:#F3F3F3;">
+        <view class="relative">
+            <image src="../../static/images/1-{{leve}}.png" mode='top' style="width: 100%; height: 200rpx;" ></image>
+            <view class="abCover clearfix center">
+                <view class="center colfff font2 top30">{{name}}</view>
+                <view class="inInf">
+                    <image src="../../static/images/2.png" class="icoAll" style="width: 27rpx; height: 32rpx;" ></image>
+                    <text class="col333 verMid font0 left10">今日考勤提醒：</text>
+                    <text class="verMid font0">还未上班打卡</text>
+                    <text class="left20 colGreen verMid">去打卡</text>
+                    <image src="../../static/images/3.png" class="icoAll left10" style="width: 11rpx; height: 19rpx;" ></image>
+                </view>
+            </view>
+        </view>
+        <view class="center top30">
+            <view class="inBox1 clearfix">
+                <view class="colfff top8">今日服务人次</view>
+                <view class="font5 colfff">2</view>
+            </view>
+            <view class="inBox1 inBox2 left20">
+                <view class="colfff top8">今日收益</view>
+                <view class="font5 colfff">2</view>
+            </view>
+            <view class="inBox1 inBox3 left20">
+                <view class="colfff top8">收到好评</view>
+                <view class="font5 colfff">2</view>
+            </view>
+        </view>
+        <view class="inWap1 pad15RL top15">
+            <ui-row>
+                <ui-col>
+                    <view>
+                        <text class="col000">李先生</text>
+                        <image src="../../static/images/4.png" class="icoAll left2" style="width: 12rpx; height: 16rpx; margin-top: -40rpx" ></image>
+                        <image src="../../static/images/4.png" class="icoAll left2" style="width: 12rpx; height: 16rpx;; margin-top: -40rpx" ></image>
+                    </view>
+                </ui-col>
+                <ui-col align='center'>
+                    <view>
+                        <text style="color: {{color}}">剩余</text>
+                        <ui-count-down number-style="color: {{color}}" class="inline" timetype="second" time="10000" format="{%h}:{%m}:{%s}"></ui-count-down>
+                        <text style="color: {{color}}">到店</text>
+                    </view>
+                </ui-col>
+                <ui-col align='right col000'>
+                    <view>
+                        <text class="col000">14:20</text>
+                        <view class="icoAll" style="width: 88rpx; height: 88rpx; margin-right: -30rpx;" ></view>
+                    </view>
+                </ui-col>
+            </ui-row>
+        </view>
+        <view class="inWap1 pad15RL" style="padding-bottom: 30rpx;">
+            <ui-row class="bor_btm_so">
+                <ui-col>
+                    <view>
+                        <text class="col000">李先生</text>
+                        <image src="../../static/images/4.png" class="icoAll left2" style="width: 12rpx; height: 16rpx; margin-top: -40rpx" ></image>
+                        <image src="../../static/images/4.png" class="icoAll left2" style="width: 12rpx; height: 16rpx;; margin-top: -40rpx" ></image>
+                    </view>
+                </ui-col>
+                <ui-col align='center'>
+                    <view>
+                        <text style="color: {{color}}">已到店</text>
+                    </view>
+                </ui-col>
+                <ui-col align='right '>
+                    <view>
+                        <text class="col000">14:20</text>
+                        <image src="../../static/images/12.png" class="icoAll" style="width: 88rpx; height: 88rpx; margin-right: -30rpx;" ></image>
+                    </view>
+
+                </ui-col>
+            </ui-row>
+            <view class="line30 top15">
+                <view>编号：Z100201916049325</view>
+                <view>
+                    <text class="verMid">服务项目：【颈椎放松】</text>
+                    <image src="../../static/images/11.png" class="icoAll left2" style="width: 22rpx; height: 22rpx;" ></image>
+                    <text class="colRed left5 verMid">60分钟</text>
+                </view>
+                <view>服务门店：中央商场旗舰店</view>
+                <view>偏好：</view>
+                <view>
+                    <view class="tag1" wx:for='{{tags}}' style="background-color: {{color}}">安静</view>
+                    <image src="../../static/images/13.png" class="icoAll" style="width: 84rpx; height: 40rpx;" ></image>
+                </view>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+            <view class="top15 line20">
+                <view class="col000 btm5">已购商品：</view>
+                <view class="font0">矿泉水*2</view>
+                <view class="font0">矿泉水*2</view>
+            </view>
+        </view>
+    </view>
 </template>
 
 <script>
+const app = getApp();
 export default {
     config: {
         navigationBarTitleText: "首页"
     },
-    data: {}
+    data: {
+        leve: 1,
+        name: '',
+        names: ['一星技师', '二星技师', '三星技师'],
+        tags: ['', '', '', ''],
+        color: ''
+    },
+    setting(){
+        const t = this;
+        t.setData({
+            leve: app.globalData.leve,
+            name: t.data.names[app.globalData.leve-1],
+            color: app.globalData.color
+        })
+    },
+    onShow(){
+        const t = this;
+        t.setting();
+    }
 };
 </script>
 
 <style lang="less">
+.inInf{ padding: 0 20rpx; display: inline-block;
+line-height:76rpx; margin-top: 55rpx;
+background:rgba(255,255,255,1);
+border-radius:38rpx;}
+.inBox1{ display: inline-block;
+    width:202rpx; vertical-align: middle;
+height:135rpx;
+background:rgba(109,85,246,1);
+border-radius:25rpx;
+}
+.inBox2{ background-color: #FEC07A}
+.inBox3{ background-color: #459E8C}
+
+.inWap1{ 
+line-height: 80rpx; 
+background:rgba(255,255,255,1);
+border-top:1px solid rgba(107,107,107,0.5);
+border-radius: 16rpx 16rpx 0 0;
+box-shadow:0px 3rpx 29rpx 0rpx rgba(48,47,47,0.18);}
 </style>
