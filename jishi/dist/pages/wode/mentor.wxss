@@ -1,0 +1,45 @@
+/* 1像素解决方案 */
+/*
+ * 清除1px
+ */
+/*
+ * 清除浮动
+ */
+/*
+ * mobile
+ */
+/*
+ * 1px
+ */
+/*
+ * text
+ */
+/* 垂直居中 */
+/* 水平居中 */
+/* 水平垂直居中 */
+/* 超出部分出省略号 */
+/* 多行文本超出部分省略号 */
+.stBox {
+  position: relative;
+  width: 100px;
+  padding: 10px 0;
+}
+.stBox .a {
+  width: 32px;
+  float: left;
+  height: 32px;
+  border: 3px solid #6d55f6;
+  border-radius: 5px;
+}
+.stBox .b {
+  width: 60px;
+  margin: 5px 0 0 -15px;
+  float: left;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  color: #fff;
+  background: #6d55f6;
+  border-radius: 5px;
+  font-size: 12px;
+}

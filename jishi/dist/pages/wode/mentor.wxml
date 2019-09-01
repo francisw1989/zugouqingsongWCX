@@ -1,0 +1,51 @@
+<view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
+  <view class="padSp1 bgfff">
+    我的师傅
+    <text class="colGreen left10">章三</text>
+  </view>
+  <view class="padSp1 bgfff top10">
+    <view>我的徒弟</view>
+    <view class="top10" id="map">
+      <view wx:for="{{list}}" class="ui-row" style="height:{{height}}px;">
+        <view class="ui-col ui-col-align-left align-left valign-middle" style="flex:0 0 100px;">
+          <view class="ui-col-content align-left valign-middle">
+            <view class="stBox clearfix" catchtap="show1" data-index="{{index}}">
+              <view class="a"></view>
+              <view class="b">张小花</view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{item.show && item.children}}" class="ui-col ui-col-align-left align-left valign-middle" style="">
+          <view class="ui-col-content align-left valign-middle">
+            <view wx:for="{{item.children}}" wx:for-item="item1" wx:for-index="index1" class="ui-row" style="">
+              <view class="ui-col ui-col-align-left align-left valign-middle" style="">
+                <view class="ui-col-content align-left valign-middle">
+                  <view class="stBox clearfix" catchtap="show2" data-index="{{index1}}">
+                    <view class="a"></view>
+                    <view class="b">{{item1.name}}</view>
+                  </view>
+                </view>
+              </view>
+              <view v:if="{{item1.show && item1.children}}" class="ui-col ui-col-align-left align-left valign-middle" style="">
+                <view class="ui-col-content align-left valign-middle">
+                  <view wx:for="{{item1.children}}" wx:for-item="item2" wx:for-index="index2" class="ui-row" style="">
+                    <view class="ui-col ui-col-align-left align-left valign-middle" style="">
+                      <view class="ui-col-content align-left valign-middle">
+                        <view class="stBox clearfix">
+                          <view class="a"></view>
+                          <view class="b">{{item2.name}}</view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>

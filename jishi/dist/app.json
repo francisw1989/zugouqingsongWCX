@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/wode/mentor",
     "pages/wode/workingTime",
     "pages/wode/index",
     "pages/index/index",

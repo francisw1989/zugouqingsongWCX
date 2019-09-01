@@ -1,12 +1,8 @@
-'use strict';
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 //! moment.js
 
 ;(function (global, factory) {
-    (typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : global.moment = factory();
-})(undefined, function () {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : global.moment = factory();
+})(this, function () {
     'use strict';
 
     var hookCallback;
@@ -123,7 +119,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     if (Array.prototype.some) {
         some = Array.prototype.some;
     } else {
-        some = function some(fun) {
+        some = function (fun) {
             var t = Object(this);
             var len = t.length >>> 0;
 
@@ -294,7 +290,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 var arg;
                 for (var i = 0; i < arguments.length; i++) {
                     arg = '';
-                    if (_typeof(arguments[i]) === 'object') {
+                    if (typeof arguments[i] === 'object') {
                         arg += '\n[' + i + '] ';
                         for (var key in arguments[0]) {
                             arg += key + ': ' + arguments[0][key] + ', ';
@@ -384,7 +380,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     if (Object.keys) {
         keys = Object.keys;
     } else {
-        keys = function keys(obj) {
+        keys = function (obj) {
             var i,
                 res = [];
             for (i in obj) {
@@ -541,7 +537,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     function addFormatToken(token, padded, ordinal, callback) {
         var func = callback;
         if (typeof callback === 'string') {
-            func = function func() {
+            func = function () {
                 return this[callback]();
             };
         }
@@ -679,7 +675,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             token = [token];
         }
         if (isNumber(callback)) {
-            func = function func(input, array) {
+            func = function (input, array) {
                 array[callback] = toInt(input);
             };
         }
@@ -814,7 +810,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }
 
     function stringSet(units, value) {
-        if ((typeof units === 'undefined' ? 'undefined' : _typeof(units)) === 'object') {
+        if (typeof units === 'object') {
             units = normalizeObjectUnits(units);
             var prioritized = getPrioritizedUnits(units);
             for (var i = 0; i < prioritized.length; i++) {
@@ -838,7 +834,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     if (Array.prototype.indexOf) {
         indexOf = Array.prototype.indexOf;
     } else {
-        indexOf = function indexOf(o) {
+        indexOf = function (o) {
             // I know
             var i;
             for (i = 0; i < this.length; ++i) {
@@ -2650,7 +2646,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return pickBy('isAfter', args);
     }
 
-    var now = function now() {
+    var now = function () {
         return Date.now ? Date.now() : +new Date();
     };
 
@@ -2998,7 +2994,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         } else if (duration == null) {
             // checks for null or undefined
             duration = {};
-        } else if ((typeof duration === 'undefined' ? 'undefined' : _typeof(duration)) === 'object' && ('from' in duration || 'to' in duration)) {
+        } else if (typeof duration === 'object' && ('from' in duration || 'to' in duration)) {
             diffRes = momentsDifference(createLocal(duration.from), createLocal(duration.to));
 
             duration = {};
@@ -4049,7 +4045,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
     getSetGlobalLocale('en', {
         dayOfMonthOrdinalParse: /\d{1,2}(th|st|nd|rd)/,
-        ordinal: function ordinal(number) {
+        ordinal: function (number) {
             var b = number % 10,
                 output = toInt(number % 100 / 10) === 1 ? 'th' : b === 1 ? 'st' : b === 2 ? 'nd' : b === 3 ? 'rd' : 'th';
             return number + output;

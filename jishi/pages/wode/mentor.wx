@@ -1,0 +1,131 @@
+<template>
+    <view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
+        <view class="padSp1 bgfff">
+            我的师傅
+            <text class="colGreen left10">章三</text>
+        </view>
+        <view class="padSp1 bgfff top10">
+            <view>我的徒弟</view>
+            <view class="top10" id="map">
+                <ui-row wx:for='{{list}}' height='{{height}}'>
+                    <ui-col width="100" vertical-align='middle' align='left'> 
+                        <view class="stBox clearfix" catchtap='show1' data-index='{{index}}'>
+                            <view class="a"></view>
+                            <view class="b">张小花</view>
+                        </view>
+                    </ui-col>
+                    <ui-col wx:if='{{item.show && item.children}}' vertical-align='middle' align='left'>
+                        <ui-row wx:for="{{item.children}}" wx:for-item="item1" wx:for-index="index1">
+                            <ui-col vertical-align='middle' align='left'> 
+                                <view class="stBox clearfix" catchtap='show2' data-index='{{index1}}'>
+                                    <view class="a"></view>
+                                    <view class="b">{{item1.name}}</view>
+                                </view>
+                            </ui-col>
+                            <ui-col v:if="{{item1.show && item1.children}}" vertical-align='middle' align='left'>
+                                <ui-row wx:for="{{item1.children}}" wx:for-item="item2" wx:for-index="index2">
+                                    <ui-col vertical-align='middle'  align='left'> 
+                                        <view class="stBox clearfix">
+                                            <view class="a"></view>
+                                            <view class="b">{{item2.name}}</view>
+                                        </view>
+                                    </ui-col>
+                                </ui-row>
+                            </ui-col>
+                        </ui-row>
+                        
+                    </ui-col>
+                </ui-row>
+                
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+export default {
+    config: {
+        navigationBarTitleText: '师徒信息'
+    },
+    data: {
+        list: [
+            {
+                name: '章三', show: true, children:[
+                    {name: '里斯',show: true, children: [
+                        {name: '都是'},
+                        {name: '都是'},
+                        {name: '都是'},
+                    ]},
+                    {name: '里斯',show: true, children: [
+                        {name: '都是'},
+                        {name: '都是'},
+                    ]},
+                    {name: '里斯',show: true, children: [
+                        {name: '都是'},
+                        {name: '都是'},
+                        {name: '都是'},
+                    ]},
+                ]
+            }
+        ],
+        height: 348
+    },
+    show1(e){
+        const t = this;
+        let i = e.currentTarget.dataset.index;
+        if(t.data.list[i].show){
+            t.data.list[i].show = false
+        }else{
+            t.data.list[i].show = true
+        }
+        t.setData({
+            list: t.data.list
+        })
+    },
+    show2(e){
+        const t = this;
+        let i = e.currentTarget.dataset.index;
+        debugger
+        if(t.data.list[0].children[i].show){
+            t.data.list[0].children[i] = false
+        }else{
+            t.data.list[0].children[i] = true
+        }
+        t.setData({
+            list: t.data.list
+        })
+    },
+    setSize(){
+        const t = this;
+        var query = wx.createSelectorQuery();
+        query.select('#map').boundingClientRect()
+        query.exec(function (res) {
+            t.setData({
+                boxHeight: res[0].height
+            })
+        })
+
+        
+    },
+    onLoad(){
+        const t = this;
+        setTimeout(() => {
+            t.setSize()    
+        }, 1000);
+        
+    }
+}
+</script>
+
+<style lang="less">
+    .stBox{ position: relative; width: 100px; padding: 10px 0;}
+    .stBox .a{ width:32px; float: left;
+height:32px;
+border:3px solid rgba(109,85,246,1);
+border-radius:5px;}
+
+.stBox .b{ width:60px; margin: 5px 0 0 -15px; float: left;
+height:25px; line-height: 25px; text-align: center;color: #fff;
+background:rgba(109,85,246,1);
+border-radius:5px; font-size: 12px}
+</style>
