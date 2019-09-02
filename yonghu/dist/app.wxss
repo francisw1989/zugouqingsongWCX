@@ -1452,7 +1452,7 @@ button[type="primary"] {
   color: #459E8C;
 }
 .btns-green,
-view.btns-green {
+view.btns-green,button.btns-green {
   border: 1px solid #459e8c;
   background-color: #459e8c;
   color: #fff;

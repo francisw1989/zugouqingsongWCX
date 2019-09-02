@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+const app = getApp();
 exports.default = Page({
     data: {
         list: [{ showMore: false }, { showMore: false }]
@@ -15,5 +16,13 @@ exports.default = Page({
         t.setData({
             list: t.data.list
         });
+    },
+    radioChange: function (e) {
+        console.log(e.detail.value)
+    },
+    wxPay(){
+        app.wxPay();
     }
+
+    
 });

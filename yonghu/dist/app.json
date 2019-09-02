@@ -1,5 +1,12 @@
 {
   "pages": [
+      "pages/index/pay",
+    "pages/index/blank",
+    
+    "pages/index/index",
+    "pages/index/wxdl",
+    "pages/index/getphone",
+    
     "pages/wode/index",
     "pages/wode/groupSuccess",
     "pages/wode/doGroup",
@@ -14,14 +21,14 @@
     "pages/index/goods",
     "pages/index/reCharge",
     "pages/index/paySuccess",
-    "pages/index/pay",
+    
     "pages/index/chooseProjectJishi",
     "pages/index/projects",
     "pages/index/shopListMap",
     "pages/index/appointment",
     "pages/index/shopDetail",
     "pages/index/shopList",
-    "pages/index/index",
+    
     "pages/activity/index"
   ],
   "permission": {
