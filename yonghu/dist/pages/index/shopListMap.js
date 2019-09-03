@@ -102,8 +102,8 @@ exports.default = Page({
                     boxShadow: "2px 2px 10px #aaa"
                 }
             }, {
-                latitude: 32.10,
-                longitude: 118.82,
+                latitude: 31.95266,
+                longitude: 118.84002,
                 shopName: '中央门店3',
                 id: '213dfd1231232',
                 iconPath: "../../static/images/24.png",

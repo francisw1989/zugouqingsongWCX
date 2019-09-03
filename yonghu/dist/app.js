@@ -154,7 +154,7 @@ exports.default = App({
             success: function success(res) {
 
                 wx.showToast({
-                    title: '支付成功，即将为您跳转'
+                    title: '支付成功'
                 });
                 setTimeout(function () {
                     wx.hideLoading();
@@ -174,5 +174,13 @@ exports.default = App({
                 wx.hideLoading();
             }
         });
+    },
+    getFwList(){
+        let fwList = [
+            { name: '休闲项目', ico: '1.png' },
+            { name: '养生项目', ico: '2.png' },
+            { name: '保健项目', ico: '3.png' },
+        ];
+        return fwList;
     }
 });

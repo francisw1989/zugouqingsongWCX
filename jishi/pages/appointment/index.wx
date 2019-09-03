@@ -1,13 +1,59 @@
 <template>
-  <view></view>
+    <view>
+        <ui-tabs index="{{ current }}" bindchange="handleChange" class="bgfff" ink-bar ink-bar-style="{{inkBarStyle}}">
+            <ui-tab wx:for='{{tabs}}'>{{item}}</ui-tab>
+        </ui-tabs>
+        <view>
+            <block wx:for='{{list}}'>
+                <view class="pad10TB bor_btm_so relative">
+                    <ui-row>
+                        <ui-col width='100' space-left='20'>
+                            <image src='../../static/images/47.png' mode="aspectFill" class="tx6"></image>
+                        </ui-col>
+                        <ui-col class="">
+                            <view class=" clearfix">
+                                <text class="left col333 font2 bold">张女士</text>
+                                <view class="left left5" style="margin-top: -15rpx;">
+                                    <image src='../../static/images/4.png' class="icoAll" style="width: 12rpx; height: 16rpx;"></image>
+                                    <image src='../../static/images/4.png' class="icoAll" style="width: 12rpx; height: 16rpx;"></image>
+                                    <image src='../../static/images/4.png' class="icoAll" style="width: 12rpx; height: 16rpx;"></image>
+                                </view>
+                            </view>
+                            <view class="top5 font0 col999">门店：中华路旗舰店</view>
+                            <view class="col999 font0">预约时间：2019-07-23    16:50</view>
+                            <view class="col999 font0">开始时间：2019-07-23    16:50</view>
+                            <view class="col999 font0">技师：刘三妹</view>
+                            <view class="col999 font0">项目：【颈椎放松】</view>
+                        </ui-col>
+                        <ui-col width='100' align='right'>
+                            <view class="btns btns-2" style="background-color: #F3532F">进行中</view>
+                        </ui-col>
+                    </ui-row>
+                </view>
+            </block>
+        </view>
+    </view>
 </template>
 
 <script>
 export default {
-  config: {
-    navigationBarTitleText: '预约管理'
-  },
-  data: {}
+    config: {
+        navigationBarTitleText: '我的预约'
+    },
+    data: {
+        tabIndex: 0,
+        tabs: ['今天', '明天', '历史', '全部'],
+        inkBarStyle:{
+          'width': '30%',
+        },
+        list: [{},{},{}]
+    },
+    handleChange (e) {
+        let index = e.detail.index
+        this.setData({
+          tabIndex:index
+        })
+    }
 }
 </script>
 

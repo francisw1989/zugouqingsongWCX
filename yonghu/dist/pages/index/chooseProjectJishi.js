@@ -5,7 +5,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Page({
     data: {
-        list: [{ value: 60 }, { value: 60 }],
+        list: [{ value: 60, name: '颈椎放松' }],
+        tlsList: [
+            { name:'张三', chosed: false },
+            { name: '李四', chosed: false },
+        ],
+        tlsChosed: [],
         cIndex: 0,
         tabStyle: {
             'width': 'auto'
@@ -29,9 +34,33 @@ exports.default = Page({
         },
         show: false
     },
+    chooseTlx(e){
+        const t = this;
+        let i = e.currentTarget.dataset.index;
+        if (t.data.tlsList[i].chosed){
+            t.data.tlsList[i].chosed = false;
+            
+        }else{
+            t.data.tlsList[i].chosed = true;
+            
+        }
+        t.data.tlsChosed = [];
+        for (const v of t.data.tlsList){
+            if(v.chosed){
+                t.data.tlsChosed.push(v)
+            }
+        }
+        t.setData({
+            tlsList: t.data.tlsList,
+            tlsChosed: t.data.tlsChosed
+        })
+    },
     submit: function submit() {
         var t = this;
         console.log('21');
+        wx.redirectTo({
+            url: 'pay',
+        })
     },
     onHide: function onHide() {
         var t = this;

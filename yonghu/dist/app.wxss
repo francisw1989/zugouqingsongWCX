@@ -1315,7 +1315,7 @@ a.colGreen,
   padding: 10rpx;
 }
 .pad10 {
-  padding: 30rpx;
+  padding: 20rpx;
 }
 .pad10TB {
   padding: 20rpx 0;
@@ -1604,6 +1604,7 @@ view.btns-green,button.btns-green {
   display: inline-block;
   box-sizing: border-box;
 }
+.tjxmWap {border: 4rpx solid #fff; box-sizing: border-box}
 .tjxmWap .img {
   width: 183rpx;
   height: 183rpx;
@@ -1916,3 +1917,4 @@ view.btns-green,button.btns-green {
   box-shadow: 0rpx 5rpx 13rpx 0rpx rgba(33, 32, 32, 0.1);
   border-radius: 10rpx;
 }
+.selfInfWap input{ display: inline-block; vertical-align: middle}

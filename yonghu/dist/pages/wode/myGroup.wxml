@@ -27,7 +27,7 @@
             </view>
           </view>
           <view class="align-right top15">
-            <view class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图</view>
+            <navigator url='doGroup' class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图 > </navigator>
           </view>
         </view>
       </view>

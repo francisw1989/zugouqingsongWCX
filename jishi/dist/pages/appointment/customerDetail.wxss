@@ -1,0 +1,38 @@
+/* 1像素解决方案 */
+/*
+ * 清除1px
+ */
+/*
+ * 清除浮动
+ */
+/*
+ * mobile
+ */
+/*
+ * 1px
+ */
+/*
+ * text
+ */
+/* 垂直居中 */
+/* 水平居中 */
+/* 水平垂直居中 */
+/* 超出部分出省略号 */
+/* 多行文本超出部分省略号 */
+.srWap {
+  width: 518rpx;
+  position: absolute;
+  left: 50%;
+  margin-left: -259rpx;
+  bottom: 400rpx;
+  box-sizing: border-box;
+  padding: 30rpx;
+  background: #ffffff;
+  border-radius: 17rpx;
+}
+.srWap .tit {
+  padding: 5rpx 15rpx;
+  color: #fff;
+  background: #f3532f;
+  border-radius: 10rpx;
+}

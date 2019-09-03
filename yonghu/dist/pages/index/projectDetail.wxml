@@ -69,7 +69,7 @@
               </view>
             </view>
             <view class="align-right top15">
-              <view class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图</view>
+              <navigator url="../wode/groupSuccess" class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图 > </navigator>
             </view>
           </view>
         </view>
@@ -103,7 +103,7 @@
               </view>
             </view>
             <view class="align-right top15">
-              <view class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图</view>
+              <navigator url="groupSuccess" class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图 > </navigator>
             </view>
           </view>
         </view>
@@ -115,12 +115,12 @@
     <view class="ui-row" style="">
       <view class="ui-col ui-col-border-right ui-col-align-center align-center" style="">
         <view class="ui-col-content align-center">
-          <view class="btns btns-biggest" style="width: 100%">立即预约</view>
+          <navigator url="shopList" class="btns btns-biggest" style="width: 100%">立即预约</navigator>
         </view>
       </view>
       <view class="ui-col ui-col-align-center  align-center " style="">
         <view class="ui-col-content align-center ">
-          <view class="btns btns-biggest" style="width: 100%">我要拼团</view>
+          <navigator url="../wode/doGroup" class="btns btns-biggest" style="width: 100%">我要拼团</navigator>
         </view>
       </view>
     </view>

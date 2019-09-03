@@ -1154,7 +1154,7 @@ a.colYe,
 .colYe a,
 text.colYe,
 view.colYe {
-  color: #F88A0B;
+  color: #F3532F;
 }
 .colYe2,
 a.colYe2,
@@ -1645,6 +1645,59 @@ view.btns-green {
   border: 2px solid #fff;
   box-sizing: border-box;
 }
+.tx2 {
+  width: 50px;
+  height: 50px;
+}
+.tx3 {
+  width: 54rpx;
+  height: 54rpx;
+  border-radius: 50%;
+}
+.tx5Wap {
+  width: 70px;
+  height: 70px;
+  position: relative;
+}
+.tx5Wap .dj {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-align: right;
+}
+.tx5Wap .dj .img {
+  width: 24rpx;
+  height: 30rpx;
+}
+.tx5Wap .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.tx5 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.tx6 {
+  width: 60px;
+  height: 60px;
+  border-radius: 10rpx;
+}
+.tx6-1 {
+  width: 40px;
+  height: 40px;
+  border-radius: 10rpx;
+}
+.tx8 {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #459887;
+  text-align: center;
+}
 .seachWap {
   width: 593rpx;
   position: relative;
@@ -1693,6 +1746,26 @@ view.btns-green {
   vertical-align: middle;
   background: #459e8c;
   border-radius: 10rpx;
+}
+.tag2 {
+  color: #fff;
+  display: inline-block;
+  line-height: 49rpx;
+  text-align: center;
+  background: #89dcc9;
+  padding: 0 20rpx;
+  border-radius: 24rpx;
+  margin: 10rpx;
+}
+.tag2Add {
+  width: 105rpx;
+  display: inline-block;
+  line-height: 46rpx;
+  color: #89dcc9;
+  text-align: center;
+  border: 1px solid #89dcc9;
+  border-radius: 23rpx;
+  margin: 10rpx;
 }
 .shaodwBox {
   width: 100%;

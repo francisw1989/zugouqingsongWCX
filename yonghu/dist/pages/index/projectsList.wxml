@@ -1,0 +1,28 @@
+<view style="min-height: 100%; background-color: #F3F3F3">
+    <ui-tabs wx:if='{{fwList.length}}' index="{{ current }}" bindchange="handleChange" class="bgfff" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
+        <ui-tab wx:for='{{fwList}}'>{{item.name}}</ui-tab>
+    </ui-tabs>
+    <view class="clearfix">
+        <navigator url="projectDetail" wx:for='111' class="pad10 tjxmWap bgfff clearfix">
+            <view class=" right10 left" style="width: 183rpx">
+                <image src="../../static/images/13.png" class="img " />
+            </view>
+            <view style="width: 482rpx" class="left">
+                <view class=" bor_btm_so" style="padding-bottom: 10rpx">
+                    <text class="col000 ">【颈椎放松】</text>
+                    <text class="left10  col000">默认：60分钟</text>
+                    <text class="left15 colPink font3">¥168</text>
+                </view>
+                <view class="top5 line24">这些疗程都利用了按摩使肌肉得以放松的原理，再配合精油或刮痧等中医治疗方法，对肩颈疼痛有一定的缓解作用。</view>
+                <view class="top5">
+                    <view class="tag1">好评9999+</view>
+                </view>
+                <view class="align-right">
+                    <image src="../../static/images/30.png" style="width: 32rpx; height: 37rpx" class="icoAll" />
+                    <image src="../../static/images/31.png" style="width: 34rpx; height: 33rpx" class="icoAll left10" />
+                </view>
+            </view>
+        </navigator>
+    </view>
+
+</view>

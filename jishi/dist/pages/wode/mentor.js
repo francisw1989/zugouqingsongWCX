@@ -6,12 +6,13 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = Page({
     data: {
         list: [{
-            name: '章三', show: true, children: [{ name: '里斯', show: true, children: [{ name: '都是' }, { name: '都是' }, { name: '都是' }] }, { name: '里斯', show: true, children: [{ name: '都是' }, { name: '都是' }] }, { name: '里斯', show: true, children: [{ name: '都是' }, { name: '都是' }, { name: '都是' }] }]
+            name: '章三', color: '#459E8C', show: true, children: [{ name: '里斯1', ico: '-', color: '#FEC07A', show: true, children: [{ name: '都是', color: '#6D55F6' }, { name: '都是', color: '#6D55F6' }, { name: '都是', color: '#6D55F6' }] }, { name: '里斯2', ico: '-', color: '#FEC07A', show: true, children: [{ name: '都是', color: '#6D55F6' }, { name: '都是', color: '#6D55F6' }] }, { name: '里斯3', ico: '-', color: '#FEC07A', show: true, children: [{ name: '都是', color: '#6D55F6' }, { name: '都是', color: '#6D55F6' }] }]
         }],
         height: 348
     },
     show1: function show1(e) {
         var t = this;
+        return;
         var i = e.currentTarget.dataset.index;
         if (t.data.list[i].show) {
             t.data.list[i].show = false;
@@ -25,12 +26,14 @@ exports.default = Page({
     show2: function show2(e) {
         var t = this;
         var i = e.currentTarget.dataset.index;
-        debugger;
         if (t.data.list[0].children[i].show) {
-            t.data.list[0].children[i] = false;
+            t.data.list[0].children[i].ico = '+';
+            t.data.list[0].children[i].show = false;
         } else {
-            t.data.list[0].children[i] = true;
+            t.data.list[0].children[i].ico = '-';
+            t.data.list[0].children[i].show = true;
         }
+
         t.setData({
             list: t.data.list
         });

@@ -1,18 +1,27 @@
 {
   "pages": [
-      "pages/index/pay",
     "pages/index/blank",
+    "pages/wode/about",
+    
+    "pages/wode/information",  
+    
+    "pages/index/chooseProjectJishi",
+    "pages/wode/index",
+    "pages/wode/appointment",
+    "pages/index/pay",
+    "pages/index/projectsList",
+    
     
     "pages/index/index",
     "pages/index/wxdl",
     "pages/index/getphone",
     
-    "pages/wode/index",
+    
     "pages/wode/groupSuccess",
     "pages/wode/doGroup",
     "pages/wode/myGroup",
     "pages/index/projectDetail",
-    "pages/wode/appointment",
+    
     "pages/wode/coupon",
     "pages/wode/invitation",
     "pages/wode/memberGrade",
@@ -22,10 +31,10 @@
     "pages/index/reCharge",
     "pages/index/paySuccess",
     
-    "pages/index/chooseProjectJishi",
-    "pages/index/projects",
+    
+    "pages/index/projectsChoose",
     "pages/index/shopListMap",
-    "pages/index/appointment",
+    "pages/index/appointmentTime",
     "pages/index/shopDetail",
     "pages/index/shopList",
     

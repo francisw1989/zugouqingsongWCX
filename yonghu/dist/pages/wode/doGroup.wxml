@@ -23,7 +23,7 @@
     </view>
 
   </view>
-  <view class="pad10 bor_btm_so">
+  <view class="pad15 bor_btm_so">
     <view class="ui-row" style="">
       <view class="ui-col" style="flex:0 0 90px;">
         <view class="ui-col-content">
@@ -37,7 +37,7 @@
       </view>
     </view>
   </view>
-  <view class="pad10 bor_btm_so">
+  <view class="pad15 bor_btm_so">
     <view class="ui-row" style="">
       <view class="ui-col" style="flex:0 0 90px;">
         <view class="ui-col-content">
@@ -51,7 +51,7 @@
       </view>
     </view>
   </view>
-  <view class="pad10 bor_btm_so">
+  <view class="pad15 bor_btm_so">
     <view class="ui-row" style="">
       <view class="ui-col" style="flex:0 0 90px;">
         <view class="ui-col-content">
@@ -70,7 +70,7 @@
       </view>
     </view>
   </view>
-  <view class="pad10 bor_btm_so">
+  <view class="pad15 bor_btm_so">
     <view class="ui-row" style="">
       <view class="ui-col" style="flex:0 0 90px;">
         <view class="ui-col-content">
@@ -84,5 +84,5 @@
       </view>
     </view>
   </view>
-  <view class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">发起拼团</view>
+  <navigator url="groupSuccess" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">发起拼团</navigator>
 </view>

@@ -45,7 +45,7 @@
           <view class="font0">
             当前余额：<text class="colYe">¥5879</text>
             <text class="col999 left10">|</text>
-            <text class="left10">充值 >></text>
+            <navigator url='reCharge' class="left10 inline">充值 >></navigator>
           </view>
         </view>
       </view>

@@ -31,5 +31,5 @@
       </view>
     </view>
   </view>
-  <view class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">立即预约</view>
+  <navigator url="appointmentTime" open-type="redirect" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">立即预约</navigator>
 </view>

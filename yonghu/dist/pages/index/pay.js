@@ -21,7 +21,10 @@ exports.default = Page({
         console.log(e.detail.value)
     },
     wxPay(){
-        app.wxPay();
+        wx.redirectTo({
+            url: 'paySuccess',
+        })
+        // app.wxPay();
     }
 
     

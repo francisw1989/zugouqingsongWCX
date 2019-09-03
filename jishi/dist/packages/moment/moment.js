@@ -1,8 +1,12 @@
+'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 //! moment.js
 
 ;(function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : global.moment = factory();
-})(this, function () {
+    (typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : global.moment = factory();
+})(undefined, function () {
     'use strict';
 
     var hookCallback;
@@ -119,7 +123,7 @@
     if (Array.prototype.some) {
         some = Array.prototype.some;
     } else {
-        some = function (fun) {
+        some = function some(fun) {
             var t = Object(this);
             var len = t.length >>> 0;
 
@@ -290,7 +294,7 @@
                 var arg;
                 for (var i = 0; i < arguments.length; i++) {
                     arg = '';
-                    if (typeof arguments[i] === 'object') {
+                    if (_typeof(arguments[i]) === 'object') {
                         arg += '\n[' + i + '] ';
                         for (var key in arguments[0]) {
                             arg += key + ': ' + arguments[0][key] + ', ';
@@ -380,7 +384,7 @@
     if (Object.keys) {
         keys = Object.keys;
     } else {
-        keys = function (obj) {
+        keys = function keys(obj) {
             var i,
                 res = [];
             for (i in obj) {
@@ -537,7 +541,7 @@
     function addFormatToken(token, padded, ordinal, callback) {
         var func = callback;
         if (typeof callback === 'string') {
-            func = function () {
+            func = function func() {
                 return this[callback]();
             };
         }
@@ -675,7 +679,7 @@
             token = [token];
         }
         if (isNumber(callback)) {
-            func = function (input, array) {
+            func = function func(input, array) {
                 array[callback] = toInt(input);
             };
         }
@@ -810,7 +814,7 @@
     }
 
     function stringSet(units, value) {
-        if (typeof units === 'object') {
+        if ((typeof units === 'undefined' ? 'undefined' : _typeof(units)) === 'object') {
             units = normalizeObjectUnits(units);
             var prioritized = getPrioritizedUnits(units);
             for (var i = 0; i < prioritized.length; i++) {
@@ -834,7 +838,7 @@
     if (Array.prototype.indexOf) {
         indexOf = Array.prototype.indexOf;
     } else {
-        indexOf = function (o) {
+        indexOf = function indexOf(o) {
             // I know
             var i;
             for (i = 0; i < this.length; ++i) {
@@ -2646,7 +2650,7 @@
         return pickBy('isAfter', args);
     }
 
-    var now = function () {
+    var now = function now() {
         return Date.now ? Date.now() : +new Date();
     };
 
@@ -2994,7 +2998,7 @@
         } else if (duration == null) {
             // checks for null or undefined
             duration = {};
-        } else if (typeof duration === 'object' && ('from' in duration || 'to' in duration)) {
+        } else if ((typeof duration === 'undefined' ? 'undefined' : _typeof(duration)) === 'object' && ('from' in duration || 'to' in duration)) {
             diffRes = momentsDifference(createLocal(duration.from), createLocal(duration.to));
 
             duration = {};
@@ -4045,7 +4049,7 @@
 
     getSetGlobalLocale('en', {
         dayOfMonthOrdinalParse: /\d{1,2}(th|st|nd|rd)/,
-        ordinal: function (number) {
+        ordinal: function ordinal(number) {
             var b = number % 10,
                 output = toInt(number % 100 / 10) === 1 ? 'th' : b === 1 ? 'st' : b === 2 ? 'nd' : b === 3 ? 'rd' : 'th';
             return number + output;

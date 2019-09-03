@@ -22,7 +22,7 @@
         </view>
         <view class="font0 top5" style="margin-left: 45rpx">营业时间：9:00-23:00</view>
       </view>
-      <view class="btns btns-biggest btns-green top20">立即预约</view>
+      <navigator url="appointmentTime" open-type="redirect" class="btns btns-biggest btns-green top20">立即预约</navigator>
     </view>
   </ui-popup>
 </view>

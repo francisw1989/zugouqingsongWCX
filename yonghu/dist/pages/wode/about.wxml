@@ -1,0 +1,85 @@
+<!--pages/wode/about.wxml-->
+
+<view style="min-height: 100%; background-color: #F3F3F3" class="selfInfWap">
+    <view class="center pad20">
+        <image src="../../static/images/63.png" style="width: 197rpx; height: 189rpx;" class="icoAll" />
+    </view>
+    <view class="bgfff top10">
+        <view class="ui-row pad15 bor_btm_so" style="">
+            <view class="ui-col" style="flex:0 0 155px">
+                <view class="ui-col-content">
+                    <text class="col333">公司文化</text>
+                </view>
+            </view>
+            <view class="ui-col align-right">
+                <view class="ui-col-content">
+                    <text class="col999 font0">松松是一只憨厚可爱的黑熊,他强壮有力,为了美好的生活努力工作.因为手劲儿足,技术好,对客人热情,他成了足够轻松品牌店的头号明星.许多顾客都是冲着松松的手艺来的.</text>
+                </view>
+            </view>
+        </view>
+        <view class="ui-row pad15 bor_btm_so">
+            <view class="ui-col" style="flex:0 0 155px">
+                <view class="ui-col-content">
+                    <text class="col333">使命</text>
+                </view>
+            </view>
+            <view class="ui-col align-right">
+                <view class="ui-col-content">
+                    <text class="col999 font0">松松是一只憨厚可爱的黑熊,他强壮有力,为了美好的生活努力工作.</text>
+                </view>
+            </view>
+        </view>
+        <view class="ui-row pad15 bor_btm_so">
+            <view class="ui-col" style="flex:0 0 155px">
+                <view class="ui-col-content">
+                    <text class="col333">愿景</text>
+                </view>
+            </view>
+            <view class="ui-col align-right">
+                <view class="ui-col-content">
+                    <text class="col999 font0"></text>
+                </view>
+            </view>
+        </view>
+        <view class="ui-row pad15 bor_btm_so">
+            <view class="ui-col" style="flex:0 0 155px">
+                <view class="ui-col-content">
+                    <text class="col333">定位</text>
+                </view>
+            </view>
+            <view class="ui-col align-right">
+                <view class="ui-col-content">
+                    <text class="col999 font0"></text>
+                </view>
+            </view>
+        </view>
+        <view class="ui-row pad15 ">
+            <view class="ui-col" style="flex:0 0 155px">
+                <view class="ui-col-content">
+                    <text class="col333">价值观</text>
+                </view>
+            </view>
+            <view class="ui-col align-right">
+                <view class="ui-col-content">
+                    <text class="col999 font0">松松是一只憨厚可爱的黑熊,他强壮有力,为了美好的生活努力工作.因为手劲儿足,技术好,对客人热情,他成了足够轻松品牌店的头号明星.许多顾客都是冲着松松的手艺来的.</text>
+                </view>
+            </view>
+        </view>
+
+    </view>
+    <view class="bgfff top10">
+        <view class="ui-row pad15 ">
+            <view class="ui-col" style="flex:0 0 155px">
+                <view class="ui-col-content">
+                    <text class="col333">联系方式</text>
+                </view>
+            </view>
+            <view class="ui-col align-right">
+                <view class="ui-col-content">
+                    <view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

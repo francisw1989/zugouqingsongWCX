@@ -8,12 +8,14 @@ export default {
   config: {
     usingComponents: {},
     pages: [
+      'pages/appointment/detail',
+      'pages/appointment/index',
+      'pages/wode/technician',
       'pages/wode/mentor',
       'pages/wode/workingTime',
       'pages/wode/index',
       'pages/index/index',
-      'pages/appointment/index',
-      
+      'pages/appointment/customerDetail'
     ],
     permission: {
       'scope.userLocation': {

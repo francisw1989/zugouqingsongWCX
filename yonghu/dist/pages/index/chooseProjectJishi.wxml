@@ -1,166 +1,126 @@
 <view style="min-height: 100%; background-color:#F3F3F3;">
-  <view style="padding: 10rpx 20rpx 0 20rpx">
-    <text class="font2">已选项目</text>
-  </view>
-  <view wx:for="{{list}}" class="top10 pad10 bgfff ui-row" style="">
-    <view class="ui-col" style="flex:0 0 100px;">
-      <view class="ui-col-content">
-        <image src="../../static/images/32.png" mode="aspectFill" class="tx4" />
-      </view>
+    <view class="pad10 font2">
+        已选项目
     </view>
-    <view class="ui-col" style="padding-left: 10px;">
-      <view class="ui-col-content">
-        <view>
-          <text class="col000">【颈椎放松】</text>
-          <text class="col000 left20">{{item.value}}分钟</text>
+    <view wx:for="{{list}}" class="btm5 pad10 bgfff ui-row" style="">
+        <view class="ui-col" style="flex:0 0 100px;">
+            <navigator url="projectDetail" class="ui-col-content">
+                <image src="../../static/images/32.png" mode="aspectFill" class="tx4" />
+            </navigator>
         </view>
-        <view style="height: 110rpx; margin-top: -30rpx;" class="bor_btm_so">
-          <ui-slider bar-border-radius="5" step="10" show-value show-max-value data-index="{{index}}" bindchange="sliderchange" value="{{item.value}}" background-color="#3A9C88" min="30" max="120" slider-weight="10" _pid="{{_pid}}"></ui-slider>
+        <view class="ui-col" style="padding-left: 10px;">
+            <view class="ui-col-content">
+                <view>
+                    <text class="col000">{{item.name}}</text>
+                    <text class="col000 left20">{{item.value}}分钟</text>
+                </view>
+                <view style="height: 110rpx; margin-top: -30rpx;" class="bor_btm_so">
+                    <ui-slider bar-border-radius="5" step="10" show-value show-max-value data-index="{{index}}" bindchange="sliderchange" value="{{item.value}}" background-color="#3A9C88" min="30" max="120" slider-weight="10" _pid="{{_pid}}"></ui-slider>
+                </view>
+                <view class="top8">
+                    <text class="colPink font3 left5">¥168</text>
+                    <text class="left10">¥1.5/分钟</text>
+                </view>
+            </view>
         </view>
-        <view class="top8">
-          <text class="colPink font3 left5">¥168</text>
-          <text class="left10">¥1.5/分钟</text>
-        </view>
-      </view>
     </view>
-  </view>
-  <view style="padding: 10rpx 20rpx" wx:if="{{list.length==1}}">
-    <text class="font2">专属调理师</text>
-  </view>
-  <view class="pad10 bgfff" wx:if="{{list.length==1}}">
-    <view class="tx5Wap inline">
-      <image src="../../static/images/32.png" mode="aspectFill" class="tx5" />
-      <view class="dj">
-        <image src="../../static/images/34.png" class="icoAll img" />
-        <image src="../../static/images/34.png" class="icoAll img left5" />
-      </view>
-      <view class="center col333 top5">张小花</view>
+    <!--选择单项-->
+    <view style="padding: 10rpx 20rpx" wx:if="{{list.length==1}}">
+        <text class="font2">专属调理师</text>
     </view>
-    <view class="tx5Wap inline left10">
-      <image src="../../static/images/32.png" mode="aspectFill" class="tx5" />
-      <view class="dj">
-        <image src="../../static/images/34.png" class="icoAll img" />
-        <image src="../../static/images/34.png" class="icoAll img left5" />
-      </view>
-      <view class="center col333 top5">张小花</view>
-    </view>
-  </view>
-  <view style="padding: 10rpx 20rpx">
-    <text class="font2">选择调理师</text>
-  </view>
-  <view class="bor_btm_so bgfff" style="height: 45px;" wx:if="{{list.length>1}}">
-    <ui-tabs style="width: 40%" index="{{ cIndex }}" bindchange="handleChange" ink-bar="true" tab-style="{{tabStyle}}" active-tab-style="{{activeTabStyle}}" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
-      <ui-tab _pid="{{_pid}}">颈椎放松</ui-tab>
-      <ui-tab _pid="{{_pid}}">休闲养生SPA</ui-tab>
-    </ui-tabs>
-  </view>
-  <view class="bor_btm_so pad10 bgfff">
-    <view class="ui-row" style="">
-      <view class="ui-col" style="flex:0 0 70px;">
-        <view class="ui-col-content">
-          <view class="tx5Wap">
+    <view class="pad10 bgfff" wx:if="{{list.length==1}}">
+        <navigator url="technician" class="tx5Wap inline">
             <image src="../../static/images/32.png" mode="aspectFill" class="tx5" />
             <view class="dj">
-              <image src="../../static/images/34.png" class="icoAll img" />
-              <image src="../../static/images/34.png" class="icoAll img left5" />
+                <image src="../../static/images/34.png" class="icoAll img" />
+                <image src="../../static/images/34.png" class="icoAll img left5" />
             </view>
-          </view>
-        </view>
-      </view>
-      <view class="ui-col" style="padding-left: 10px;">
-        <view class="ui-col-content">
-          <view class="fotn2">张小花</view>
-          <view>
-            <ui-mini-star class="inline" value="5" data="{{imgData}}" _pid="{{_pid}}"></ui-mini-star>
-            <text class="left10">5分</text>
-          </view>
-          <view class="text-over" style="width: 100%">擅长颈部放松，进修于擅长颈部放松，进修于</view>
-        </view>
-      </view>
-      <view class="ui-col ui-col-align-right align-right" style="padding-left: 10px;flex:0 0 100px;">
-        <view class="ui-col-content align-right">
-          <view class="colRed">¥1.5/分钟</view>
-          <view class="top10">
-            <view class="btns btns-small btns-green-bor">选择</view>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class="bor_btm_so pad10 bgfff">
-    <view class="ui-row" style="">
-      <view class="ui-col" style="flex:0 0 70px;">
-        <view class="ui-col-content">
-          <view class="tx5Wap">
+            <view class="center col333 top5">张小花</view>
+        </navigator>
+        <navigator url="technician" class="tx5Wap inline left10">
             <image src="../../static/images/32.png" mode="aspectFill" class="tx5" />
             <view class="dj">
-              <image src="../../static/images/34.png" class="icoAll img" />
-              <image src="../../static/images/34.png" class="icoAll img left5" />
+                <image src="../../static/images/34.png" class="icoAll img" />
+                <image src="../../static/images/34.png" class="icoAll img left5" />
             </view>
-          </view>
-        </view>
-      </view>
-      <view class="ui-col" style="padding-left: 10px;">
-        <view class="ui-col-content">
-          <view class="fotn2">张小花</view>
-          <view>
-            <ui-mini-star class="inline" value="5" data="{{imgData}}" _pid="{{_pid}}"></ui-mini-star>
-            <text class="left10">5分</text>
-          </view>
-          <view class="text-over" style="width: 100%">擅长颈部放松，进修于擅长颈部放松，进修于</view>
-        </view>
-      </view>
-      <view class="ui-col ui-col-align-right align-right" style="padding-left: 10px;flex:0 0 100px;">
-        <view class="ui-col-content align-right">
-          <view class="colRed">¥1.5/分钟</view>
-          <view class="top10">
-            <view class="btns btns-small btns-green-bor btns-green">选择</view>
-          </view>
-        </view>
-      </view>
+            <view class="center col333 top5">张小花</view>
+        </navigator>
     </view>
-  </view>
-  <ui-popup bindhide="onHide" show="{{show}}" background="transparent" _pid="{{_pid}}">
-    <view class="padSp1 clearfix" style="background-color:#fff; border-radius: 10rpx 10rpx 0 0; overflow: hidden;">
-      <view class="bor_btm_so" style="padding-bottom: 20rpx;">
-        <text class="font2 bold col333">选择调理师</text>
-      </view>
-      <view class="pad10TB">
-        <view class="tx5Wap inline">
-          <icon type="clear" size="16" color="#333" class="close"></icon>
-          <image src="../../static/images/32.png" mode="aspectFill" class="tx5" />
-          <view class="dj">
-            <image src="../../static/images/34.png" class="icoAll img" />
-            <image src="../../static/images/34.png" class="icoAll img left5" />
-          </view>
-          <view class="center col333 top5">张小花</view>
-        </view>
-        <view class="tx5Wap inline left10">
-          <icon type="clear" size="16" color="#333" class="close"></icon>
-          <image src="../../static/images/32.png" mode="aspectFill" class="tx5" />
-          <view class="dj">
-            <image src="../../static/images/34.png" class="icoAll img" />
-            <image src="../../static/images/34.png" class="icoAll img left5" />
-          </view>
-          <view class="center col333 top5">张小花</view>
-        </view>
-      </view>
+    <view class="pad10">
+        <text class="font2">选择调理师</text>
     </view>
-    <view class="btns btns-green btns-biggest">去下单</view>
+    <view class="bor_btm_so bgfff" style="height: 45px;" wx:if="{{list.length>1}}">
+        <ui-tabs index="{{ cIndex }}" bindchange="handleChange" ink-bar="true" tab-style="{{tabStyle}}" active-tab-style="{{activeTabStyle}}" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
+            <ui-tab wx:for='{{list}}'>{{item.name}}</ui-tab>
+        </ui-tabs>
+    </view>
+    <view wx:for='{{tlsList}}' class="bor_btm_so pad10 bgfff">
+        <view  class="ui-row" style="">
+            <view class="ui-col" style="flex:0 0 70px;">
+                <view class="ui-col-content">
+                    <navigator url="technician" class="tx5Wap">
+                        <image src="../../static/images/32.png" mode="aspectFill" class="tx5" />
+                        <view class="dj">
+                            <image src="../../static/images/34.png" class="icoAll img" />
+                            <image src="../../static/images/34.png" class="icoAll img left5" />
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+            <view class="ui-col" style="padding-left: 10px;">
+                <view class="ui-col-content">
+                    <view class="fotn2">{{item.name}}</view>
+                    <view>
+                        <ui-mini-star class="inline" value="5" data="{{imgData}}" _pid="{{_pid}}"></ui-mini-star>
+                        <text class="left10">5分</text>
+                    </view>
+                    <view class="text-over" style="width: 100%">擅长颈部放松，进修于擅长颈部放松，进修于</view>
+                </view>
+            </view>
+            <view class="ui-col ui-col-align-right align-right" style="padding-left: 10px;flex:0 0 100px;">
+                <view class="ui-col-content align-right">
+                    <view class="colRed">¥1.5/分钟</view>
+                    <view class="top10">
+                        <view bindtap="chooseTlx" data-index="{{index}}" class="btns btns-small {{item.chosed?'btns-green':'btns-green-bor'}}">{{item.chosed?'取消':'选择'}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
 
-  </ui-popup>
-  <view wx:if="{{!show}}" class="footerBox bor bgfff" bindtap="showDetail">
-    <view class="ui-row" style="">
-      <view class="ui-col" style="">
-        <view class="ui-col-content">
-          <view class="pad10RL" style="line-height: 77rpx">已选调理师（2）</view>
+    <ui-popup bindhide="onHide" show="{{show}}" background="transparent" _pid="{{_pid}}">
+        <view class="padSp1 clearfix" style="background-color:#fff; border-radius: 10rpx 10rpx 0 0; overflow: hidden;">
+            <view class="bor_btm_so" style="padding-bottom: 20rpx;">
+                <text class="font2 bold col333">选择调理师</text>
+            </view>
+            <view class="pad10TB">
+                <view class="tx5Wap inline right5" wx:for='{{tlsChosed}}'>
+                    <icon type="clear" size="16" color="#333" class="close"></icon>
+                    <image src="../../static/images/32.png" mode="aspectFill" class="tx5" />
+                    <view class="dj">
+                        <image src="../../static/images/34.png" class="icoAll img" />
+                        <image src="../../static/images/34.png" class="icoAll img left5" />
+                    </view>
+                    <view class="center col333 top5">{{item.name}}</view>
+                </view>
+                
+            </view>
         </view>
-      </view>
-      <view class="ui-col" style="flex:0 0 100px;">
-        <view class="ui-col-content">
-          <view class="btns btns-green btns-biggest" catchtap="submit">去下单</view>
+        <view catchtap="submit" class="btns btns-green btns-biggest">去下单</view>
+
+    </ui-popup>
+    <view wx:if="{{!show}}" class="footerBox bor bgfff" bindtap="showDetail">
+        <view class="ui-row" style="">
+            <view class="ui-col" style="">
+                <view class="ui-col-content">
+                    <view class="pad10RL" style="line-height: 77rpx">已选调理师（{{tlsChosed.length}}）</view>
+                </view>
+            </view>
+            <view class="ui-col" style="flex:0 0 100px;">
+                <view class="ui-col-content">
+                    <view class="btns btns-green btns-biggest" catchtap="submit">去下单</view>
+                </view>
+            </view>
         </view>
-      </view>
     </view>
-  </view>
 </view>
