@@ -1,0 +1,7 @@
+<!--pages/index/tag.wxml-->
+<view class='pad15'>
+    <input style='width: 100%; ' focus='true' class=' bor_btm_so pad10TB' placeholder='请输入{{title}}' bindinput='onInput'></input>
+    <view class='align-right top15'>
+        <view class='btns btns-green btns-biggest' bindtap='confirm'>确定</view>
+    </view>
+</view>

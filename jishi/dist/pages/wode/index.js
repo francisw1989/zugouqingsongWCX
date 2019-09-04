@@ -3,6 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+const app = getApp();
 exports.default = Page({
-    data: {}
+    data: {},
+    
+    onShow(){
+        const t = this;
+        
+    }
 });

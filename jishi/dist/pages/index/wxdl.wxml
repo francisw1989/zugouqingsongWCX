@@ -1,0 +1,15 @@
+<!--pages/index/wxdl.wxml-->
+<view class="pad10 center clearfix">
+    <icon type="waiting" size="80" class="top40" />
+    <view class="center top30 font3 col333"> 请确认登录足够轻松小程序!</view>
+    <button style="border-radius: 10rpx" type="primary" class="btns top30 btns-biggest btns-green" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录</button>
+</view>
+<ui-popup show="{{show}}" background="transparent" _pid="{{_pid}}">
+    <view class="pad20 bgfff">
+        <view class="font3 center">微信授权成功,请绑定你的手机号码</view>
+        <button style="border-radius: 10rpx" type="primary" class="btns top30 btns-biggest btns-green top20" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号</button>
+    </view>
+    
+
+
+  </ui-popup>

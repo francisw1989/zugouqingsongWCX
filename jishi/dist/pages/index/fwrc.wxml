@@ -1,0 +1,61 @@
+<!--pages/index/fwrc.wxml-->
+<view style="min-height: 100%; background-color:#F3F3F3;">
+    <view class="relative">
+        <image src="../../static/images/1-{{leve}}.png" mode="top" style="width: 100%; height: 240rpx;" />
+        <view class="abCover clearfix center colfff">
+            <view class='font5 top20'>21</view>
+            <view class='top10'>今日服务人次</view>
+        </view>
+    </view>
+    <view class="ui-row" style="">
+        <view class="ui-col ui-col-align-center align-center" style="">
+            <view class="ui-col-content align-center relative">
+                <canvas class='canvas' style='height: {{perW}}px' canvas-id="ringCanvas1" class="canvas" ></canvas>
+                <view class='abCover center clearfix'>
+                    <view class='font0' style='margin-top: 55px'>男性:10次</view>
+                    <view class='font0' style='color: #7E65FF'>男性:10次</view>
+                </view>
+            </view>
+        </view>
+        <view class="ui-col ui-col-align-center align-center" style="">
+            <view class="ui-col-content align-center relative">
+                <canvas class='canvas' style='height: {{perW}}px' canvas-id="ringCanvas2" class="canvas" ></canvas>
+                <view class='abCover center clearfix'>
+                    <view class='font0' style='margin-top: 55px'>普通会员:10次</view>
+                    <view class='font0' style='color: #FEC07A'>三星会员:10次</view>
+                </view>
+            </view>
+        </view>
+        <view class="ui-col ui-col-align-center align-center" style="">
+            <view class="ui-col-content align-center relative">
+                <canvas class='canvas' style='height: {{perW}}px' canvas-id="ringCanvas3" class="canvas" ></canvas>
+                <view class='abCover center clearfix'>
+                    <view class='font0' style='margin-top: 55px'>男性:10次</view>
+                    <view class='font0' style='color: #469F8D'>男性:10次</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='pad10 bgfff clearfix line0'>
+        <text class='right colYe'>288元</text>
+        <text class='col000'>客单价</text>
+    </view>
+    <view class='top10'>
+        <view class='pad10 bgfff clearfix line0 bor_btm_so'>
+            颈椎放松
+            <text class='right'>15次</text>
+        </view>
+        <view class='pad10 bgfff clearfix line0 bor_btm_so'>
+            颈椎放松
+            <text class='right'>15次</text>
+        </view>
+        <view class='pad10 bgfff clearfix line0 bor_btm_so'>
+            颈椎放松
+            <text class='right'>15次</text>
+        </view>
+        <view class='pad10 bgfff clearfix line0 bor_btm_so'>
+            颈椎放松
+            <text class='right'>15次</text>
+        </view>
+    </view>
+</view>

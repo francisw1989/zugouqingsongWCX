@@ -1,93 +1,93 @@
 <view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
-  <view class="padSp1 bgfff">
-    我的师傅
-    <text class="colGreen left10">章三</text>
-  </view>
-  <view class="padSp1 bgfff top10">
-    <view>我的徒弟</view>
-    <view class="top10" id="map">
-      <view wx:for="{{list}}" class="ui-row" style="height:{{height}}px;">
-        <view class="ui-col ui-col-align-left align-left valign-middle" style="flex:0 0 100px;">
-          <view class="ui-col-content align-left valign-middle">
-            <view class="stBox clearfix" catchtap="show1" data-index="{{index}}">
-              <view class="a" style="border-color: {{item.color}}"></view>
-              <view class="b" style="background-color: {{item.color}}">{{item.name}}</view>
-            </view>
-          </view>
-        </view>
-        <view wx:if="{{item.show && item.children}}" class="ui-col ui-col-align-left align-left valign-middle" style="">
-          <view class="ui-col-content align-left valign-middle">
-            <view wx:for="{{item.children}}" wx:for-item="item1" wx:for-index="index1" class="ui-row" style="">
-              <view class="ui-col ui-col-align-left align-left valign-middle" style="">
-                <view class="ui-col-content align-left valign-middle">
-                  <view class="stBox clearfix" catchtap="show2" data-index="{{index1}}">
-                    <view class="a" style="border-color: {{item1.color}}; color: {{item1.color}}">{{item1.ico}}</view>
-                    <view class="b" style="background-color: {{item1.color}}">{{item1.name}}</view>
-                  </view>
-                </view>
-              </view>
-              <view wx:if="{{item1.show && item1.children}}" class="ui-col ui-col-align-left align-left valign-middle" style="">
-                <view class="ui-col-content align-left valign-middle">
-                  <view wx:for="{{item1.children}}" wx:for-item="item2" wx:for-index="index2" class="ui-row" style="">
-                    <view class="ui-col ui-col-align-left align-left valign-middle" style="">
-                      <view class="ui-col-content align-left valign-middle">
-                        <view class="stBox clearfix">
-                          <view class="a" style="border-color: {{item2.color}}"></view>
-                          <view class="b" style="background-color: {{item2.color}}">{{item2.name}}</view>
+    <view class="padSp1 bgfff">
+        我的师傅
+        <text class="colGreen left10">章三</text>
+    </view>
+    <view class="padSp1 bgfff top10">
+        <view>我的徒弟</view>
+        <view class="top10" id="map">
+            <view wx:for="{{list}}" class="ui-row" style="height:{{height}}px;">
+                <view class="ui-col ui-col-align-left align-left valign-middle" style="flex:0 0 100px;">
+                    <view class="ui-col-content align-left valign-middle">
+                        <view class="stBox clearfix" catchtap="show1" data-index="{{index}}">
+                            <view class="a" style="border-color: {{item.color}}"></view>
+                            <view class="b" style="background-color: {{item.color}}">{{item.name}}</view>
                         </view>
-                      </view>
                     </view>
-                  </view>
                 </view>
-              </view>
+                <view wx:if="{{item.show && item.children}}" class="ui-col ui-col-align-left align-left valign-middle" style="">
+                    <view class="ui-col-content align-left valign-middle">
+                        <view wx:for="{{item.children}}" wx:for-item="item1" wx:for-index="index1" class="ui-row" style="">
+                            <view class="ui-col ui-col-align-left align-left valign-middle" style="">
+                                <view class="ui-col-content align-left valign-middle">
+                                    <view class="stBox clearfix" catchtap="show2" data-index="{{index1}}">
+                                        <view class="a" style="border-color: {{item1.color}}; color: {{item1.color}}">{{item1.ico}}</view>
+                                        <view class="b" style="background-color: {{item1.color}}">{{item1.name}}</view>
+                                    </view>
+                                </view>
+                            </view>
+                            <view wx:if="{{item1.show && item1.children}}" class="ui-col ui-col-align-left align-left valign-middle" style="">
+                                <view class="ui-col-content align-left valign-middle">
+                                    <view wx:for="{{item1.children}}" wx:for-item="item2" wx:for-index="index2" class="ui-row" style="">
+                                        <view class="ui-col ui-col-align-left align-left valign-middle" style="">
+                                            <view class="ui-col-content align-left valign-middle">
+                                                <view class="stBox clearfix">
+                                                    <view class="a" style="border-color: {{item2.color}}"></view>
+                                                    <view class="b" style="background-color: {{item2.color}}">{{item2.name}}</view>
+                                                </view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+
+                    </view>
+                </view>
             </view>
 
-          </view>
         </view>
-      </view>
-
     </view>
-  </view>
-  <view class="padSp1 bgfff top10">
-    徒弟项目收益
-    <text class="colGreen left10">章三</text>
-  </view>
-  <view class="top10">
-    <view class="bor_btm_so pad10 bgfff ui-row" style="">
-      <view class="ui-col" style="flex:0 0 60px;">
-        <view class="ui-col-content">
-          <image src="../../static/images/18.png" mode="aspectFit" class="tx2" />
-        </view>
-      </view>
-      <view class="ui-col" style="">
-        <view class="ui-col-content">
-          <view class="col333 top5">徒弟二</view>
-          <view class="col999">08-26 9:23</view>
-        </view>
-      </view>
-      <view class="ui-col ui-col-align-right align-right" style="flex:0 0 60px;">
-        <view class="ui-col-content align-right">
-          <view class="colYe font3 top10">+100.0</view>
-        </view>
-      </view>
+    <view class="padSp1 bgfff top10">
+        徒弟项目收益
+        <text class="colGreen left10">章三</text>
     </view>
-    <view class="bor_btm_so pad10 bgfff ui-row" style="">
-      <view class="ui-col" style="flex:0 0 60px;">
-        <view class="ui-col-content">
-          <image src="../../static/images/19.png" mode="aspectFit" class="tx2" />
+    <view class="top10">
+        <view class="bor_btm_so pad10 bgfff ui-row" style="">
+            <view class="ui-col" style="flex:0 0 60px;">
+                <view class="ui-col-content">
+                    <image src="../../static/images/18.png" mode="aspectFit" class="tx2" />
+                </view>
+            </view>
+            <view class="ui-col" style="">
+                <view class="ui-col-content">
+                    <view class="col333 top5">徒弟二</view>
+                    <view class="col999">08-26 9:23</view>
+                </view>
+            </view>
+            <view class="ui-col ui-col-align-right align-right" style="flex:0 0 60px;">
+                <view class="ui-col-content align-right">
+                    <view class="colYe font3 top10">+100.0</view>
+                </view>
+            </view>
         </view>
-      </view>
-      <view class="ui-col" style="">
-        <view class="ui-col-content">
-          <view class="col333 top5">徒弟二</view>
-          <view class="col999">08-26 9:23</view>
+        <view class="bor_btm_so pad10 bgfff ui-row" style="">
+            <view class="ui-col" style="flex:0 0 60px;">
+                <view class="ui-col-content">
+                    <image src="../../static/images/19.png" mode="aspectFit" class="tx2" />
+                </view>
+            </view>
+            <view class="ui-col" style="">
+                <view class="ui-col-content">
+                    <view class="col333 top5">徒弟二</view>
+                    <view class="col999">08-26 9:23</view>
+                </view>
+            </view>
+            <view class="ui-col ui-col-align-right align-right" style="flex:0 0 60px;">
+                <view class="ui-col-content align-right">
+                    <view class="colYe font3 top10">+100.0</view>
+                </view>
+            </view>
         </view>
-      </view>
-      <view class="ui-col ui-col-align-right align-right" style="flex:0 0 60px;">
-        <view class="ui-col-content align-right">
-          <view class="colYe font3 top10">+100.0</view>
-        </view>
-      </view>
     </view>
-  </view>
 </view>

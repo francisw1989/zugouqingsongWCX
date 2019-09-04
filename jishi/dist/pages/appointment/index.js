@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+const app = getApp();
 exports.default = Page({
     data: {
         tabIndex: 0,
@@ -12,10 +13,15 @@ exports.default = Page({
         },
         list: [{}, {}, {}]
     },
+    
     handleChange: function handleChange(e) {
         var index = e.detail.index;
         this.setData({
             tabIndex: index
         });
+    },
+    onShow() {
+        const t = this;
+        
     }
 });

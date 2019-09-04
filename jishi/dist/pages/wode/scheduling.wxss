@@ -1,0 +1,64 @@
+/* 1像素解决方案 */
+/*
+ * 清除1px
+ */
+/*
+ * 清除浮动
+ */
+/*
+ * mobile
+ */
+/*
+ * 1px
+ */
+/*
+ * text
+ */
+/* 垂直居中 */
+/* 水平居中 */
+/* 水平垂直居中 */
+/* 超出部分出省略号 */
+/* 多行文本超出部分省略号 */
+.win {
+  background-color: #f4f2f3;
+}
+.personalbox {
+  background-color: #39f;
+}
+.personalbox .headimgbox {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+.personalbox .headimgbox .ui-image {
+  width: 100%;
+}
+.personalbox .infobox {
+  color: #fff;
+  padding: 20px 0;
+}
+.personalbox .infobox .num {
+  font-size: 16px;
+}
+.personalbox .infobox .text {
+  font-size: 14px;
+}
+.calendartab {
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 50px;
+  background-color: #fff;
+}
+.calendartab {
+  margin-top: 20px;
+}
+.calendar-head {
+  background-color: #fff !important;
+}
+.calendar-week-head {
+  color: #333;
+}

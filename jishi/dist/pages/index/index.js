@@ -23,5 +23,10 @@ exports.default = Page({
     onShow: function onShow() {
         var t = this;
         t.setting();
+    },
+    addTag(){
+        wx.navigateTo({
+            url: 'tag',
+        })
     }
 });

@@ -1,40 +1,40 @@
 <view>
-  <ui-tabs index="{{ current }}" bindchange="handleChange" class="bgfff" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
-    <ui-tab wx:for="{{tabs}}" _pid="{{_pid}}">{{item}}</ui-tab>
-  </ui-tabs>
-  <view>
-    <block wx:for="{{list}}">
-      <view class="pad10TB bor_btm_so relative">
-        <view class="ui-row" style="">
-          <view class="ui-col" style="padding-left: 20px;flex:0 0 100px;">
-            <view class="ui-col-content">
-              <image src="../../static/images/47.png" mode="aspectFill" class="tx6" />
-            </view>
-          </view>
-          <view class="ui-col" style="">
-            <view class="ui-col-content">
-              <view class=" clearfix">
-                <text class="left col333 font2 bold">张女士</text>
-                <view class="left left5" style="margin-top: -15rpx;">
-                  <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
-                  <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
-                  <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
+    <ui-tabs index="{{ current }}" bindchange="handleChange" class="bgfff" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
+        <ui-tab wx:for="{{tabs}}" _pid="{{_pid}}">{{item}}</ui-tab>
+    </ui-tabs>
+    <view>
+        <block wx:for="{{list}}">
+            <navigator url='detail' class="pad10TB bor_btm_so relative">
+                <view class="ui-row" style="">
+                    <view class="ui-col" style="padding-left: 20px;flex:0 0 100px;">
+                        <view class="ui-col-content">
+                            <image src="../../static/images/20.png" mode="aspectFill" class="tx6" />
+                        </view>
+                    </view>
+                    <view class="ui-col" style="">
+                        <view class="ui-col-content">
+                            <view class=" clearfix">
+                                <text class="left col333 font2 bold">张女士</text>
+                                <view class="left left5" style="margin-top: -15rpx;">
+                                    <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
+                                    <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
+                                    <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
+                                </view>
+                            </view>
+                            <view class="top5 font0 col999">门店：中华路旗舰店</view>
+                            <view class="col999 font0">预约时间：2019-07-23 16:50</view>
+                            <view class="col999 font0">开始时间：2019-07-23 16:50</view>
+                            <view class="col999 font0">技师：刘三妹</view>
+                            <view class="col999 font0">项目：【颈椎放松】</view>
+                        </view>
+                    </view>
+                    <view class="ui-col ui-col-align-right align-right" style="flex:0 0 100px;">
+                        <view class="ui-col-content align-right">
+                            <view class="btns btns-2" style="background-color: #F3532F">进行中</view>
+                        </view>
+                    </view>
                 </view>
-              </view>
-              <view class="top5 font0 col999">门店：中华路旗舰店</view>
-              <view class="col999 font0">预约时间：2019-07-23 16:50</view>
-              <view class="col999 font0">开始时间：2019-07-23 16:50</view>
-              <view class="col999 font0">技师：刘三妹</view>
-              <view class="col999 font0">项目：【颈椎放松】</view>
-            </view>
-          </view>
-          <view class="ui-col ui-col-align-right align-right" style="flex:0 0 100px;">
-            <view class="ui-col-content align-right">
-              <view class="btns btns-2" style="background-color: #F3532F">进行中</view>
-            </view>
-          </view>
-        </view>
-      </view>
-    </block>
-  </view>
+            </navigator>
+        </block>
+    </view>
 </view>

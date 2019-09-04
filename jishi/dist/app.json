@@ -1,55 +1,71 @@
 {
-  "pages": [
-    "pages/appointment/detail",
-    "pages/appointment/index",
-    "pages/wode/technician",
-    "pages/wode/mentor",
-    "pages/wode/workingTime",
-    "pages/wode/index",
-    "pages/index/index",
-    "pages/appointment/customerDetail"
-  ],
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示"
-    }
-  },
-  "window": {
-    "backgroundTextStyle": "light",
-    "backgroundColor": "#459e8c",
-    "navigationBarBackgroundColor": "#459e8c",
-    "navigationBarTitleText": "足够轻松-技师",
-    "navigationBarTextStyle": "white"
-  },
-  "networkTimeout": {
-    "request": 10000
-  },
-  "theme": {
-    "theme-color": "#459e8c"
-  },
-  "tabBar": {
-    "color": "#333",
-    "selectedColor": "#459E8A",
-    "borderStyle": "white",
-    "list": [
-      {
-        "selectedIconPath": "static/images/5.png",
-        "iconPath": "static/images/6.png",
-        "pagePath": "pages/index/index",
-        "text": "首页"
-      },
-      {
-        "selectedIconPath": "static/images/7.png",
-        "iconPath": "static/images/8.png",
-        "pagePath": "pages/appointment/index",
-        "text": "预约管理"
-      },
-      {
-        "selectedIconPath": "static/images/9.png",
-        "iconPath": "static/images/10.png",
-        "pagePath": "pages/wode/index",
-        "text": "我的"
-      }
-    ]
-  }
+    "pages": [
+        "pages/index/index",
+        "pages/index/tag",
+        
+        "pages/wode/technician",
+        "pages/wode/income",
+        "pages/index/pj",
+        "pages/index/jrsy",
+        "pages/wode/scheduling",
+        
+        "pages/index/fwrc",
+        
+        "pages/index/blank",
+        "pages/wode/index",
+        
+        "pages/index/wxdl",
+        "pages/appointment/detail",
+        "pages/appointment/index",
+        
+        "pages/wode/mentor",
+        "pages/wode/workingTime",
+        
+        
+        "pages/appointment/customerDetail"
+    ],
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "backgroundColor": "#459e8c",
+        "navigationBarBackgroundColor": "#459e8c",
+        "navigationBarTitleText": "足够轻松-技师",
+        "navigationBarTextStyle": "white"
+    },
+    "networkTimeout": {
+        "request": 10000
+    },
+    "theme": {
+        "theme-color": "#459e8c"
+    },
+    "tabBar": {
+        "color": "#333",
+        "selectedColor": "#459E8A",
+        "borderStyle": "white",
+        "list": [
+            {
+                "selectedIconPath": "static/images/5.png",
+                "iconPath": "static/images/6.png",
+                "pagePath": "pages/index/index",
+                "text": "首页"
+            },
+            {
+                "selectedIconPath": "static/images/7.png",
+                "iconPath": "static/images/8.png",
+                "pagePath": "pages/appointment/index",
+                "text": "预约管理"
+            },
+            {
+                "selectedIconPath": "static/images/9.png",
+                "iconPath": "static/images/10.png",
+                "pagePath": "pages/wode/index",
+                "text": "我的"
+            }
+        ]
+    },
+    "sitemapLocation": "sitemap.json"
 }
