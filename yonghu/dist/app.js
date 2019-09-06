@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = App({
     globalData: {
-        u: 'https://zzh.hzysofti.com:8002/userApi/v1/',
+        u: 'https://zzh.hzysofti.com/userApi/v1/',
         userInfo: {}
     },
     onLaunch: function onLaunch() {

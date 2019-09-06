@@ -15,7 +15,7 @@ exports.default = App({
         leve: 1,
         colors: ['#409c8a', '#fdbd75', '#8f6eff'],
         color: '#459E8C',
-        u: 'https://zzh.hzysofti.com:8002/employeeApi/v1/',
+        u: 'https://zzh.hzysofti.com/employeeApi/v1/',
         userInfo: {}
     },
     setBg: function setBg() {

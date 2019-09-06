@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/index/blank",
         "pages/index/index",
         "pages/wode/mentor",
         "pages/component/tree",
@@ -15,7 +16,7 @@
         
         "pages/index/fwrc",
         
-        "pages/index/blank",
+        
         "pages/wode/index",
         
         "pages/index/wxdl",
