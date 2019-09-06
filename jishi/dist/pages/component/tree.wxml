@@ -1,0 +1,27 @@
+<view wx:for="{{list}}">
+    <view class=''>
+        {{item.name}}
+    </view>
+    <view class=''>
+        <view wx:for="{{item.children}}" wx:for-item="item1" wx:for-index="index1" class=''>
+            <view>{{item1.name}}</view>
+            <tree wx:if='{{item1.children}}' list='{{item1.children}}'></tree>
+        </view>
+    </view>
+</view>
+<!-- 
+    <view class="stBox clearfix" data-index="{{index}}">
+        <view class="a" style="border-color: {{item.color}}"></view>
+        <view class="b" style="background-color: {{item.color}}">{{item.name}}</view>
+    </view>
+    <view>
+        <view wx:for="{{item.children}}" wx:for-item="item1" wx:for-index="index1" class='inline'>
+            <view class="stBox clearfix" data-index="{{index1}}">
+                <view class="a" style="border-color: {{item1.color}}; color: {{item1.color}}">{{item1.ico}}</view>
+                <view class="b" style="background-color: {{item1.color}}">{{item1.name}}</view>
+            </view>
+            <tree wx:if='{{item1.children}}' list='{{item1.children}}'></tree>
+        </view>
+    </view>
+</view> -->
+<slot></slot>

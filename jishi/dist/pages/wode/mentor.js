@@ -6,7 +6,25 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = Page({
     data: {
         list: [{
-            name: '章三', color: '#459E8C', show: true, children: [{ name: '里斯1', ico: '-', color: '#FEC07A', show: true, children: [{ name: '都是', color: '#6D55F6' }, { name: '都是', color: '#6D55F6' }, { name: '都是', color: '#6D55F6' }] }, { name: '里斯2', ico: '-', color: '#FEC07A', show: true, children: [{ name: '都是', color: '#6D55F6' }, { name: '都是', color: '#6D55F6' }] }, { name: '里斯3', ico: '-', color: '#FEC07A', show: true, children: [{ name: '都是', color: '#6D55F6' }, { name: '都是', color: '#6D55F6' }] }]
+            name: '1', color: '#459E8C', show: true, 
+            children: [
+                { name: '1-1', ico: '-', color: '#FEC07A', show: true, children: [
+                    { name: '1-1-1', color: '#6D55F6' }, 
+                    { name: '1-1-2', color: '#6D55F6' }, 
+                    { name: '1-1-3', color: '#6D55F6' }
+                    ]
+                }, 
+                { name: '1-2', ico: '-', color: '#FEC07A', show: true, children: [
+                    { name: '1-2-1', color: '#6D55F6' }, 
+                    { name: '1-2-2', color: '#6D55F6' }
+                    ] 
+                }, 
+                { name: '1-3', ico: '-', color: '#FEC07A', show: true, children: [
+                    { name: '1-3-1', color: '#6D55F6' }, 
+                    { name: '1-3-2', color: '#6D55F6' }
+                    ] 
+                }
+            ]
         }],
         height: 348
     },

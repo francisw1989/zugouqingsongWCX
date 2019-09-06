@@ -45,7 +45,9 @@
                     </view>
                 </view>
             </view>
-
+           
+                
+                <!-- <tree list="{{list}}"></tree> -->
         </view>
     </view>
     <view class="padSp1 bgfff top10">

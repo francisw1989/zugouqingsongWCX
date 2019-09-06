@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "师徒信息"
+    "usingComponents": {
+        "tree": "../component/tree"
+    },
+    "navigationBarTitleText": "师徒信息"
 }
