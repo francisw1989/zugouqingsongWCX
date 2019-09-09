@@ -13,7 +13,7 @@ exports.default = Page({
             { time: '', content: '预计结束时间：2019-06-11 12:50' }
         ],
         itemList: [],
-        
+        D: {}
     },
     onShow(){
         
@@ -27,7 +27,11 @@ exports.default = Page({
             })
         })
         app.getLoaction().then((res)=>{
-            app.index()
+            app.index().then((res) =>{
+                t.setData({
+                    D: res
+                })
+            })
         })
         setTimeout(() => {
             // t.setData({

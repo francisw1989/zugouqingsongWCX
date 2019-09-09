@@ -1,9 +1,9 @@
 <view style="min-height: 100%; background-color:#F3F3F3;">
     <swiper class="swiper" indicator-dots="true"
     autoplay="true">
-        <block wx:for="11">
+        <block wx:for="{{D.banners}}">
             <swiper-item>
-                <image src="../../static/images/13.png" />
+                <image src="{{item.path}}" mode="aspectFit" />
             </swiper-item>
         </block>
     </swiper>
