@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = Page({
     data: {
         userInfo: {},
-        memberLevelNameList: ['普通会员','一星会员','二星会员','三星会员']
+        memberLevelName: app.globalData.memberLevelName
     },
     onLoad(){
         const t = this;

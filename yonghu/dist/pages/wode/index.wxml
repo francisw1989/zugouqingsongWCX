@@ -4,12 +4,12 @@
     <view style="top: 0; left: 0; width: 100%; box-sizing: border-box" class="pad20 absolute">
       <view class="font3 clearfix">
         {{userInfo.userName}}
-        <view class="btns font0 right">{{memberLevelNameList[userInfo.memberLevel]}}</view>
+        <view class="btns font0 right">{{memberLevelName[userInfo.memberLevel]}}</view>
       </view>
       <view>{{userInfo.telephoneNum}}</view>
       <view class="top40">积分：{{userInfo.score || 0}}</view>
       <view class="clearfix">
-        储蓄账户：¥{{userInfo.savingsAccount || 0}}
+        储蓄账户：¥ {{userInfo.savingsAccount || 0}}
         <image src="../../static/images/48.png" class="icoAll right" style=" width:43rpx; height: 43rpx; margin-top: -10rpx;" />
       </view>
       <view class="clearfix">充值 > <text class="right colYe2 top5 font0">NO：{{userInfo.memberNum||"Z1124565465"}}</text></view>

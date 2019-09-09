@@ -1,5 +1,5 @@
 <view>
-    <image src="../../static/images/h{{level+1}}.png" style="width: 100%; height: 553rpx" />
+    <image src="../../static/images/h{{userInfo.memberLevel + 1}}.png" style="width: 100%; height: 553rpx" />
     <view class="pad20">
         <view class="col333 font2">会员等级</view>
         <view class="relative">
@@ -7,14 +7,14 @@
             <view class="absolute" style=" width: 100%; height: 100%; top: 0; left: 0"></view>
             <view class="absolute" style="left: 310px; top: 25px">
                 <image src="../../static/images/56.png" class="icoAll" style="width: 32rpx; height: 32rpx; " />
-                <view class="tag4" wx:if="{{xing[level+1]}}">{{xing[level+1]}}</view>
+                <view class="tag4" wx:if="{{memberLevelName[userInfo.memberLevel+1]}}">{{memberLevelName[userInfo.memberLevel+1]}}</view>
             </view>
 
         </view>
-        <view class="colYe2" style="margin-top: -40rpx;">{{xing[level]}}会员</view>
+        <view class="colYe2" style="margin-top: -40rpx;">{{memberLevelName[userInfo.memberLevel]}}会员</view>
         <view class="top10">
             再消费3420元升级为
-            <text class="colYe2 left10">{{xing[level+1]}}会员</text>
+            <text class="colYe2 left10">{{memberLevelName[userInfo.memberLevel+1]}}会员</text>
             <image src="../../static/images/55.png" class="icoAll left5" style="width: 10rpx; height: 20rpx" />
         </view>
         <view class="relative top10">
@@ -22,13 +22,13 @@
             <view class="absolute" style=" width: 100%; height: 100%; top: 0; left: 0"></view>
             <view class="absolute" style="left: 310px; top: 25px">
                 <image src="../../static/images/56.png" class="icoAll" style="width: 32rpx; height: 32rpx; " />
-                <view class="tag4" wx:if="{{xing[level+1]}}">{{xing[level+1]}}</view>
+                <view class="tag4" wx:if="{{memberLevelName[userInfo.memberLevel+1]}}">{{memberLevelName[userInfo.memberLevel + 1]}}</view>
             </view>
         </view>
-        <view class="colYe2" style="margin-top: -40rpx;">{{xing[level]}}会员</view>
+        <view class="colYe2" style="margin-top: -40rpx;">{{memberLevelName[userInfo.memberLevel]}}会员</view>
         <view class="top10">
             再消费15次升级为
-            <text class="colYe2 left10">{{xing[level+1]}}会员</text>
+            <text class="colYe2 left10">{{memberLevelName[userInfo.memberLevel+1]}}会员</text>
             <image src="../../static/images/55.png" class="icoAll left5" style="width: 10rpx; height: 20rpx" />
         </view>
         <view class="center top20">

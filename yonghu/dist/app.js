@@ -14,7 +14,8 @@ exports.default = App({
     globalData: {
         u: 'https://zzh.hzysofti.com/userApi/v1/',
         userInfo: {},
-        itemList: []
+        itemList: [],
+        memberLevelName: ['普通会员', '一星会员', '二星会员', '三星会员']
     },
     onLaunch: function onLaunch() {
         _system2.default.attachInfo();
@@ -101,9 +102,7 @@ exports.default = App({
             userInfo: t.globalData.userInfo
         }
         t.postRequest('userLogin', params).then((res)=>{
-            console.log(res);
             t.globalData.userInfo = Object.assign(t.globalData.userInfo, res)
-            console.log(t.globalData.userInfo)
             wx.setStorageSync('openId', res.openId)
             wx.reLaunch({
                 url: 'index',
@@ -117,12 +116,36 @@ exports.default = App({
             let params = {
                 openId: openId
             }
-            t.getRequest('userInfo', params).then((res) => {
-                t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
-                console.log(t.globalData.userInfo)
-                resolve();
-            })
+            t.getUserInfo().then(()=>{
+                t.getRequest('userInfo', params).then((res) => {
+                    
+                    t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
+                    console.log(t.globalData.userInfo)
+                    resolve();
+                })
+            });
+            
         })
+        return p;
+    },
+    // 微信自己的获取用户信息
+    getUserInfo: function getUserInfo() {
+        var t = this;
+        var p = new Promise(function (resolve, reject) {
+            wx.getSetting({
+                success: function success(res) {
+                    if (res.authSetting['scope.userInfo']) {
+                        // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                        wx.getUserInfo({
+                            success: function success(res) {
+                                t.globalData.userInfo = Object.assign(t.globalData.userInfo, res.userInfo);
+                                resolve();
+                            }
+                        });
+                    }
+                }
+            });
+        });
         return p;
     },
     wxPay: function wxPay(obj) {
@@ -183,8 +206,8 @@ exports.default = App({
                 type: 'wgs84',
                 success: function success(res) {
                     console.log(res);
-                    t.globalData.x = res.longitude; // 经度
-                    t.globalData.y = res.latitude; // 纬度
+                    t.globalData.x = res.latitude; // 经度
+                    t.globalData.y = res.longitude; // 纬度
                     resolve()
                 }
             });

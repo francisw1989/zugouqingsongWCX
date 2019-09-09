@@ -1,5 +1,5 @@
 'use strict';
-
+const app = getApp();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -7,8 +7,7 @@ exports.default = Page({
     data: {
         value1: 452,
         value2: 5,
-        level: 3,
-        xing: ['普通', '一星', '二星', '三星'],
+        memberLevelName: app.globalData.memberLevelName,
         thumbStyle: {
             'width': '18px',
             'height': '18px',
@@ -17,5 +16,11 @@ exports.default = Page({
             'top': '6px'
 
         }
+    },
+    onLoad(){
+        const t = this;
+        t.setData({
+            userInfo: app.globalData.userInfo
+        })
     }
 });
