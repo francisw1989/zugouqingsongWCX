@@ -13,7 +13,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = App({
     globalData: {
         u: 'https://zzh.hzysofti.com/userApi/v1/',
-        userInfo: {}
+        userInfo: {},
+        itemList: []
     },
     onLaunch: function onLaunch() {
         _system2.default.attachInfo();
@@ -26,7 +27,6 @@ exports.default = App({
         wx.showLoading({
             title: '加载中'
         });
-        
         var _url = t.globalData.u + url;
         var p = new Promise(function (resolve, reject) {
             wx.request({
@@ -39,7 +39,14 @@ exports.default = App({
                 dataType: 'json',
                 success: function success(res) {
                     wx.hideLoading();
+                    if (!res.data || res.data.code){
+                        wx.showModal({
+                            content: '系统错误'
+                        });
+                        return
+                    }
                     resolve(res.data);
+                    
                 },
                 fail: function fail(res) {
                     wx.hideLoading();
@@ -105,24 +112,18 @@ exports.default = App({
     },
     userInfo(){
         const t = this;
-        let openId;
-        if (wx.getStorageSync('openId')){
-            wx.reLaunch({
-                url: 'index',
-            })
-            openId = wx.getStorageSync('openId');
+        var p = new Promise(function (resolve, reject) {
+            let openId = wx.getStorageSync('openId');
             let params = {
                 openId: openId
             }
             t.getRequest('userInfo', params).then((res) => {
-                console.log(res)
+                t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
+                console.log(t.globalData.userInfo)
+                resolve();
             })
-        }else{
-            wx.navigateTo({
-                url: 'wxdl',
-            })
-        }
-        
+        })
+        return p;
     },
     wxPay: function wxPay(obj) {
         const t = this;
@@ -175,12 +176,45 @@ exports.default = App({
             }
         });
     },
-    getFwList(){
-        let fwList = [
-            { name: '休闲项目', ico: '1.png' },
-            { name: '养生项目', ico: '2.png' },
-            { name: '保健项目', ico: '3.png' },
-        ];
-        return fwList;
+    getLoaction(){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            wx.getLocation({
+                type: 'wgs84',
+                success: function success(res) {
+                    console.log(res);
+                    t.globalData.x = res.longitude; // 经度
+                    t.globalData.y = res.latitude; // 纬度
+                    resolve()
+                }
+            });
+        })
+        return p;
+    },
+    // 获取服务分类
+    itemClass(){
+        const t = this;
+        let p = new Promise((resolve, reject)=>{
+            t.getRequest('itemClass', {}).then((res) => {
+                t.globalData.itemList = res;
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 获取首页数据
+    index(){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            let params = {
+                x: t.globalData.x,
+                y: t.globalData.y
+            }
+            t.getRequest('index', params).then((res) => {
+                t.globalData.itemList = res;
+                resolve(res);
+            })
+        })
+        return p;
     }
 });

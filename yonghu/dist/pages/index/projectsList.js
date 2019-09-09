@@ -24,7 +24,7 @@ Page({
     onLoad: function (opt) {
         const t = this;
         t.setData({
-            fwList: app.getFwList(),
+            itemList: app.globalData.itemList,
             current: opt.type
         })
     },

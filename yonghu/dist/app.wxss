@@ -1918,3 +1918,6 @@ view.btns-green,button.btns-green {
   border-radius: 10rpx;
 }
 .selfInfWap input{ display: inline-block; vertical-align: middle}
+.swiper, .swiper image{ width: 100%; height: 400rpx;}
+
+

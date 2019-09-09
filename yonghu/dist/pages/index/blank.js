@@ -13,7 +13,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        app.userInfo();
+        if (wx.getStorageSync('openId')) {
+            wx.reLaunch({
+                url: 'index',
+            })
+        }else{
+            wx.redirectTo({
+                url: 'wxdl',
+            })
+        }
     },
 
     /**

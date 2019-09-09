@@ -69,12 +69,7 @@
         "pagePath": "pages/index/index",
         "text": "首页"
       },
-      {
-        "selectedIconPath": "static/images/7.png",
-        "iconPath": "static/images/8.png",
-        "pagePath": "pages/activity/index",
-        "text": "活动"
-      },
+      
       {
         "selectedIconPath": "static/images/9.png",
         "iconPath": "static/images/10.png",

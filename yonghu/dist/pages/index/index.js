@@ -12,17 +12,27 @@ exports.default = Page({
             { time: '', content: '预约时长：50分钟' },
             { time: '', content: '预计结束时间：2019-06-11 12:50' }
         ],
-        fwList: []
+        itemList: [],
+        
+    },
+    onShow(){
+        
     },
     onLoad() {
         const t = this;
-        t.setData({
-            fwList: app.getFwList()
+        app.userInfo();
+        app.itemClass().then((res) => {
+            t.setData({
+                itemList: app.globalData.itemList
+            })
+        })
+        app.getLoaction().then((res)=>{
+            app.index()
         })
         setTimeout(() => {
-            t.setData({
-                jxzShow: true
-            })
+            // t.setData({
+            //     jxzShow: true
+            // })
         }, 5000)
     }
 });
