@@ -20,7 +20,14 @@ exports.default = Page({
     },
     onLoad() {
         const t = this;
+        // wx.setTabBarItem({
+        //     index: 1,
+        //     selectedIconPath: "static/images/7.png",
+        //     iconPath: "static/images/8.png",
+        //     text: "商品"
+        // })
         app.userInfo();
+        // wx.hideTabBar();
         app.itemClass().then((res) => {
             t.setData({
                 itemList: app.globalData.itemList
@@ -34,9 +41,10 @@ exports.default = Page({
             })
         })
         setTimeout(() => {
-            // t.setData({
-            //     jxzShow: true
-            // })
+            t.setData({
+                jxzShow: true
+            })
+            
         }, 5000)
     }
 });
