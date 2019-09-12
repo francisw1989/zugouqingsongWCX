@@ -5,6 +5,7 @@
   right: 0;
   height: 48px;
   background: white;
+  padding-top: 6rpx;
   display: flex;
   padding-bottom: env(safe-area-inset-bottom);
 }

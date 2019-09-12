@@ -1,87 +1,96 @@
 <view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
-  <view class="center top10">
-    <view>
-      <image src="../../static/images/61.png" class="icoAll" style="width: 46rpx; height: 46rpx" />
-      <text class="left10 verMid">开团成功</text>
-    </view>
-    <view>超划算！快来和我一起拼团！</view>
-  </view>
-  <view class="pad10">
-    <view class="pad10 fqInf">
-      <view class="ui-row" style="">
-        <view class="ui-col" style="flex:0 0 110px;">
-          <view class="ui-col-content">
-            <image class="tx9" src="../../static/images/32.png" mode="aspectFill" />
-          </view>
+    <view class="center top10">
+        <view>
+            <image src="../../static/images/61.png" class="icoAll" style="width: 46rpx; height: 46rpx" />
+            <text class="left10 verMid">开团成功</text>
         </view>
-        <view class="ui-col" style="">
-          <view class="ui-col-content">
-            <view class="col333  bor_btm_so" style="padding-bottom: 10rpx">【颈椎放松】</view>
-            <view class="top5 font0 bor_btm_so" style="padding-bottom: 10rpx">这些疗放松的原理，再配合精油治疗方法，对肩颈疼痛有一定的缓解作用。</view>
-            <view class="top5 align-right">
-              <text class="col999 font0">原价：</text>
-              <text class="col999 text-through font0">¥598</text>
-              <text class="left10 font2 colPink">拼团价：¥298</text>
+        <view>超划算！快来和我一起拼团！</view>
+    </view>
+    <view class="pad10">
+        <view class="pad10 fqInf">
+            <view class="ui-row" style="">
+                <view class="ui-col" style="flex:0 0 110px;">
+                    <view class="ui-col-content">
+                        <image class="tx9" src="../../static/images/32.png" mode="aspectFill" />
+                    </view>
+                </view>
+                <view class="ui-col" style="">
+                    <view class="ui-col-content">
+                        <view class="col333  bor_btm_so" style="padding-bottom: 10rpx">【颈椎放松】</view>
+                        <view class="top5 font0 bor_btm_so" style="padding-bottom: 10rpx">这些疗放松的原理，再配合精油治疗方法，对肩颈疼痛有一定的缓解作用。</view>
+                        <view class="top5 align-right">
+                            <text class="col999 font0">原价：</text>
+                            <text class="col999 text-through font0">¥598</text>
+                            <text class="left10 font2 colPink">拼团价：¥298</text>
+                        </view>
+                    </view>
+                </view>
             </view>
-          </view>
         </view>
-      </view>
-    </view>
 
-  </view>
-  <view class="pad10 bgfff bor_btm_so">
-    <view class="center">
-      <view class="tx3Wap active">
-        <image src="../../static/images/32.png" class="tx3" />
-        <view class="btns btns-green">团长</view>
-      </view>
-      <view class="tx3Wap left5">
-        <image src="../../static/images/32.png" class="tx3" />
-      </view>
-      <view class="tx3Wap left5">
-        <image src="../../static/images/32.png" class="tx3" />
-      </view>
-      <image src="../../static/images/62.png" class="tx3 left5 inline" />
-      <image src="../../static/images/62.png" class="tx3 left5 inline" />
     </view>
-    <view class="top10 center">仅剩<text class="colGreen">2</text>人，快叫朋友一起拼团吧！</view>
-    <ui-divider padding="20" color="#333" _pid="{{_pid}}">
-      剩余
-      <ui-count-down class="inline" timetype="second" time="10000" format="{%h}:{%m}:{%s}" number-style="{{numberStyle}}" _pid="{{_pid}}">
-                </ui-count-down> 
-                结束
-            </ui-divider>
-        </view>
-        <view class="pad10 clearfix bgfff">
-            <text class="right top15">2019-7-20 13:56开团</text>
-            <view class="tx3Wap active left">
-                <image src="../../static/images/32.png" class="tx3"/>
+    <view class="pad10 bgfff bor_btm_so">
+        <view class="center">
+            <view class="tx3Wap active">
+                <image src="../../static/images/32.png" class="tx3" />
                 <view class="btns btns-green">团长</view>
             </view>
-            <text class="left top15 left15">张晓华</text>
-            
+            <view class="tx3Wap left5">
+                <image src="../../static/images/32.png" class="tx3" />
+            </view>
+            <view class="tx3Wap left5">
+                <image src="../../static/images/32.png" class="tx3" />
+            </view>
+            <image src="../../static/images/62.png" class="tx3 left5 inline" />
+            <image src="../../static/images/62.png" class="tx3 left5 inline" />
         </view>
-        <view class="bgfff">
-            <view class="pad10 bor_btm_so">
-                <view class="ui-row" style="">
-                    <view class="ui-col" style="flex:0 0 90px;"><view class="ui-col-content">
+        <view class="top10 center">仅剩
+            <text class="colGreen">2</text>人，快叫朋友一起拼团吧！</view>
+        <ui-divider padding="20" color="#333" _pid="{{_pid}}">
+            剩余
+            <ui-count-down class="inline" timetype="second" time="10000" format="{%h}:{%m}:{%s}" number-style="{{numberStyle}}" _pid="{{_pid}}">
+            </ui-count-down>
+            结束
+        </ui-divider>
+    </view>
+    <view class="pad10 clearfix bgfff">
+        <text class="right top15">2019-7-20 13:56开团</text>
+        <view class="tx3Wap active left">
+            <image src="../../static/images/32.png" class="tx3" />
+            <view class="btns btns-green">团长</view>
+        </view>
+        <text class="left top15 left15">张晓华</text>
+
+    </view>
+    <view class="bgfff">
+        <view class="pad10 bor_btm_so">
+            <view class="ui-row" style="">
+                <view class="ui-col" style="flex:0 0 90px;">
+                    <view class="ui-col-content">
                         <view class="font2 col333">拼团须知：</view>
-                    </view></view>
-                    <view class="ui-col" style=""><view class="ui-col-content">
+                    </view>
+                </view>
+                <view class="ui-col" style="">
+                    <view class="ui-col-content">
                         <view class="col999 font0">支付开团并邀请好友参团，在活动时间内邀请好友人数达到参团人数则拼团成功。若在规定时间内达不到预先设置的参团人数，则拼团失败，系统自动将款项放入储值账户。</view>
-                    </view></view>
+                    </view>
                 </view>
             </view>
-            <view class="pad10 bor_btm_so">
-                <view class="ui-row" style="">
-                    <view class="ui-col" style="flex:0 0 90px;"><view class="ui-col-content">
+        </view>
+        <view class="pad10 bor_btm_so">
+            <view class="ui-row" style="">
+                <view class="ui-col" style="flex:0 0 90px;">
+                    <view class="ui-col-content">
                         <view class="font2 col333">拼团玩法：</view>
-                    </view></view>
-                    <view class="ui-col" style=""><view class="ui-col-content">
-                        <image src="../../static/images/60.png" style="width: 100%; height: 130rpx"/>
-                    </view></view>
+                    </view>
+                </view>
+                <view class="ui-col" style="">
+                    <view class="ui-col-content">
+                        <image src="../../static/images/60.png" style="width: 100%; height: 130rpx" />
+                    </view>
                 </view>
             </view>
         </view>
     </view>
-    <navigator url="groupSuccess" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">发起拼团</navigator>
+</view>
+<navigator url="invitation" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">邀请好友拼团</navigator>

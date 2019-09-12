@@ -56,7 +56,7 @@
       </navigator>
     </view>
     <view class="ui-col ui-col-align-center align-center" style="">
-      <navigator url='doGroup' class="ui-col-content align-center">
+      <navigator url='../index/projectsList?pageFrom=group' class="ui-col-content align-center">
         <image src="../../static/images/a6.png" mode="aspectFit" class="woIcoimg" />
         <view class="top10">发起拼团</view>
       </navigator>

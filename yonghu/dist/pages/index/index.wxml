@@ -1,4 +1,4 @@
-<view style="min-height: 100%; background-color:#F3F3F3;">
+<view style="min-height: 100%; padding-bottom: 54px; box-sizing: border-box; background-color:#F3F3F3;">
     <swiper class="swiper" indicator-dots="true"
     autoplay="true">
         <block wx:for="{{D.banners}}">
@@ -15,10 +15,10 @@
     </view>
     <view class="padSp1">
         <view class="title font2 col000">服务分类</view>
-        <view class="top15 ui-row" style="">
-            <view wx:for='{{itemList}}' class="ui-col ui-col-align-center align-center valign-middle" style="">
-                <navigator url="projectsList?id={{item.id}}" class="ui-col-content align-center valign-middle">
-                    <image src="{{item.ico}}" class="ico1" />
+        <view class="top15 clearfix">
+            <view wx:for='{{itemList}}' class="left right15" style="">
+                <navigator url="projectsList?id={{item.id}}">
+                    <image src="{{item.icon}}" class="ico1" mode='aspectFit' />
                     <!-- <image wx:if='{{index==0}}' src="../../static/images/1.png" class="ico1" />
                     <image  wx:if='{{index==1}}' src="../../static/images/3.png" class="ico1" /> -->
                     <view class="top5 col999">{{item.itemClassName}}</view>
@@ -27,10 +27,10 @@
         </view>
         <view class="title top10 font2 col000">推荐项目</view>
     </view>
-    <navigator url="projectDetail" wx:for='{{D.itemRecommendList}}' class="pad10 tjxmWap bgfff top5 clearfix">
-        <view class=" right10 left" style="width: 183rpx">
+    <navigator url="shopList" wx:for='{{D.itemRecommendList}}' class="pad10 tjxmWap bgfff top5 clearfix">
+        <navigator url="projectDetail"  class=" right10 left" style="width: 183rpx">
             <image src="../../static/images/13.png" class="img " />
-        </view>
+        </navigator>
         <view style="width: 482rpx" class="left">
             <view class=" bor_btm_so" style="padding-bottom: 10rpx">
                 <text class="col000 ">【颈椎放松】</text>
@@ -45,8 +45,10 @@
         <text class="title font2 col000 ">附近门店</text>
     </view>
     <view class="bgfff" style="padding: 0 40rpx">
-        <navigator url="shopDetail" wx:for='111' class="fjmdWap bgfff bor_btm_so">
-            <image src="../../static/images/13.png" class="img left right10" />
+        <navigator url="appointmentTime" wx:for='111' class="fjmdWap bgfff bor_btm_so">
+            <navigator url="shopDetail">
+                <image src="../../static/images/13.png" class="img left right10" />
+            </navigator>
             <view class="">
                 <text class="col000 font2">中央商场 旗舰店</text>
                 <view class="right ">
@@ -66,7 +68,8 @@
         </navigator>
 
     </view>
-    <image src="../../static/images/4.png" class="ico4 icoAll" />
+    <button open-type="contact" class='ico4 icoAll'><image src="../../static/images/4.png" style='width: 110rpx; height: 110rpx;' /></button>
+    
     <ui-popup show="{{jxzShow}}" background="transparent" _pid="{{_pid}}">
         <view class="padSp1 clearfix" style="background-color:#fff; border-radius: 10rpx 10rpx 0 0; overflow: hidden;">
             <view class="bor_btm_so" style="padding-bottom: 20rpx;">

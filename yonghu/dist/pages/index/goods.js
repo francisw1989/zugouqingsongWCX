@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+const app = getApp();
 exports.default = Page({
     data: {
         list: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
@@ -27,6 +28,13 @@ exports.default = Page({
             current: index
         });
     },
+    onShow() {
+        this.getTabBar().setData({
+            selected: 2,
+            list: app.globalData.barList
+        })
+
+    },
     onLoad: function onLoad() {
         var t = this;
         var query = wx.createSelectorQuery();
@@ -36,7 +44,7 @@ exports.default = Page({
             console.log(res);
             //取高度
             t.setData({
-                height: t.data.height - res[0].height
+                height: t.data.height - res[0].height-120
             });
             console.log(t.data.height);
         });

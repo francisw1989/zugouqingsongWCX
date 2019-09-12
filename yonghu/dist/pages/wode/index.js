@@ -14,5 +14,11 @@ exports.default = Page({
         t.setData({
             userInfo: userInfo
         })
+    },
+    onShow() {
+        this.getTabBar().setData({
+            selected: 1,
+            list: app.globalData.barList
+        })
     }
 });

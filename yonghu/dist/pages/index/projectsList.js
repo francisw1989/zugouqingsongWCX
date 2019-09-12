@@ -6,7 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        fwList: [],
+        itemList: [],
         current: 0,
         inkBarStyle: {
             'width': '30%'
@@ -23,9 +23,11 @@ Page({
      */
     onLoad: function (opt) {
         const t = this;
+        console.log(app.globalData.itemList)
         t.setData({
             itemList: app.globalData.itemList,
-            current: opt.type
+            current: opt.type,
+            pageFrom: opt.pageFrom
         })
     },
 

@@ -20,6 +20,7 @@
                 <view class="align-right">
                     <image src="../../static/images/30.png" style="width: 32rpx; height: 37rpx" class="icoAll" />
                     <image src="../../static/images/31.png" style="width: 34rpx; height: 33rpx" class="icoAll left10" />
+                    <navigator wx:if="{{pageFrom=='group'}}" url='../wode/doGroup' class="btns btns-small btns-green left10" >发起拼图</navigator>
                 </view>
             </view>
         </navigator>

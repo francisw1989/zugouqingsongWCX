@@ -5,7 +5,25 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Page({
     data: {
-        list: [{ value: 60, name: '颈椎放松' }],
+        tbObj1: {
+            'position': 'absolute',
+            'width': '14px',
+            'height': '14px',
+            'background-color': '#459E8C',
+            'border': '0',
+            'border-radius': '7px',
+            'top': '7px',
+            'left': '15px',
+            'z-index': '2',
+            'box-shadow': '0px 0px 0px'
+        },
+        tbdObj2: {
+            'background-color': '#2ac1a2'
+        },
+        list: [
+            { value: 60, name: '颈椎放松' },
+            { value: 40, name: '美容' }
+        ],
         tlsList: [
             { name:'张三', chosed: false },
             { name: '李四', chosed: false },

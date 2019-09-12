@@ -1433,6 +1433,11 @@ button[type="primary"] {
   line-height: 51rpx;
   border-radius: 10rpx;
 }
+.btns-smaller {
+  padding: 0 30rpx;
+  line-height: 40rpx;
+  border-radius: 10rpx;
+}
 .btns-nomal {
   padding: 0 30rpx;
   line-height: 64rpx;
@@ -1533,7 +1538,10 @@ view.btns-green,button.btns-green {
   height: 110rpx;
   position: fixed;
   bottom: 20%;
-  right: 20rpx;
+  right: 40rpx;
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 .ico14 {
   width: 199rpx;
@@ -1655,13 +1663,13 @@ view.btns-green,button.btns-green {
   border-radius: 50%;
 }
 .tx4 {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   border-radius: 20rpx;
 }
 .tx5Wap {
-  width: 70px;
-  height: 70px;
+  width: 55px;
+  height: 55px;
   position: relative;
 }
 .tx5Wap .dj {
@@ -1919,5 +1927,6 @@ view.btns-green,button.btns-green {
 }
 .selfInfWap input{ display: inline-block; vertical-align: middle}
 .swiper, .swiper image{ width: 100%; height: 400rpx;}
+.swiper2, .swiper2 image{ width: 100%; height: 307rpx;}
 
 

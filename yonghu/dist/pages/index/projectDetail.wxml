@@ -1,128 +1,135 @@
 <view style="min-height:100%; background-color: rgba(243,243,243,1) ">
-  <image src="../../static/images/32.png" style="width: 100%; height:307rpx; " />
-  <view class="pad20" style="padding-bottom: 100rpx;">
-    <view class="shaodwBox" style="margin-top: -80rpx;">
-      <view class="pad10">
-        <view class="font2 col000 bor_btm_so" style="padding-bottom: 20rpx;">适宜人群</view>
-        <view class="top10">
-          <image src="../../static/images/33.png" class="icoAll" style="width: 39rpx; height:39rpx; " />
-          <text class="left10 verMid">适宜人群</text>
-        </view>
-        <view class="top10">
-          <image src="../../static/images/33.png" class="icoAll" style="width: 39rpx; height:39rpx; " />
-          <text class="left10 verMid">适宜人群</text>
-        </view>
-        <view class="top10">
-          <image src="../../static/images/33.png" class="icoAll" style="width: 39rpx; height:39rpx; " />
-          <text class="left10 verMid">适宜人群</text>
-        </view>
-      </view>
-
-
-    </view>
-    <view class="shaodwBox top10">
-      <view class="pad10">
-        <view class="font2 col000 bor_btm_so" style="padding-bottom: 20rpx;">颈椎放松</view>
-        <view class=" col333 top10">调理方法</view>
-        <view class="font0">
-          调理方法介绍调理方法介绍调理方法介绍，调理方法介绍调理方法介绍调理方法介绍调理方法介绍。调理方法介绍。
-        </view>
-        <view class=" col333 top10">调理方法</view>
-        <view class="font0">
-          调理方法介绍调理方法介绍调理方法介绍，调理方法介绍调理方法介绍调理方法介绍调理方法介绍。调理方法介绍。
-        </view>
-        <view class=" col333 top10">调理方法</view>
-        <view class="font0">
-          调理方法介绍调理方法介绍调理方法介绍，调理方法介绍调理方法介绍调理方法介绍调理方法介绍。调理方法介绍。
-        </view>
-
-      </view>
-
-
-    </view>
-    <view class="pad10 font2 col000">拼团列表</view>
-    <view class="shaodwBox">
-      <view class="tag2">进行中</view>
-      <image src="../../static/images/32.png" style="width: 100%; height: 270rpx; " />
-      <view class="pad10 ui-row" style="">
-        <view class="line20 ui-col" style="">
-          <view class="ui-col-content">
-            <view class="col333">【颈椎放松】</view>
-            <view>拼团截止：2019.7.22</view>
-            <view>5人团，还差2人</view>
-            <view class="top5 text-through">¥388</view>
-            <view class="colYe font3">¥188</view>
-          </view>
-        </view>
-        <view class="ui-col" style="">
-          <view class="ui-col-content">
-            <view class="align-right top10">
-              <view class="tx3Wap active">
-                <image src="../../static/images/32.png" class="tx3" />
-                <view class="btns btns-green">团长</view>
-              </view>
-              <view class="tx3Wap left5">
-                <image src="../../static/images/32.png" class="tx3" />
-              </view>
-              <view class="tx3Wap left5">
-                <image src="../../static/images/32.png" class="tx3" />
-              </view>
+    <swiper class="swiper2" indicator-dots="true"
+    autoplay="true">
+        <block wx:for="111">
+            <swiper-item>
+                <image src="../../static/images/32.png" style="width: 100%; height:307rpx; " mode='aspectFit' />
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="pad20" style="padding-bottom: 100rpx;">
+        <view class="shaodwBox" style="margin-top: -80rpx;">
+            <view class="pad10">
+                <view class="font2 col000 bor_btm_so" style="padding-bottom: 20rpx;">适宜人群</view>
+                <view class="top10">
+                    <image src="../../static/images/33.png" class="icoAll" style="width: 39rpx; height:39rpx; " />
+                    <text class="left10 verMid">适宜人群</text>
+                </view>
+                <view class="top10">
+                    <image src="../../static/images/33.png" class="icoAll" style="width: 39rpx; height:39rpx; " />
+                    <text class="left10 verMid">适宜人群</text>
+                </view>
+                <view class="top10">
+                    <image src="../../static/images/33.png" class="icoAll" style="width: 39rpx; height:39rpx; " />
+                    <text class="left10 verMid">适宜人群</text>
+                </view>
             </view>
-            <view class="align-right top15">
-              <navigator url="../wode/groupSuccess" class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图 > </navigator>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class="shaodwBox top10">
-      <view class="tag2">进行中</view>
-      <image src="../../static/images/32.png" style="width: 100%; height: 270rpx; " />
-      <view class="pad10 ui-row" style="">
-        <view class="line20 ui-col" style="">
-          <view class="ui-col-content">
-            <view class="col333">【颈椎放松】</view>
-            <view>拼团截止：2019.7.22</view>
-            <view>5人团，还差2人</view>
-            <view class="top5 text-through">¥388</view>
-            <view class="colYe font3">¥188</view>
-          </view>
-        </view>
-        <view class="ui-col" style="">
-          <view class="ui-col-content">
-            <view class="align-right top10">
-              <view class="tx3Wap active">
-                <image src="../../static/images/32.png" class="tx3" />
-                <view class="btns btns-green">团长</view>
-              </view>
-              <view class="tx3Wap left5">
-                <image src="../../static/images/32.png" class="tx3" />
-              </view>
-              <view class="tx3Wap left5">
-                <image src="../../static/images/32.png" class="tx3" />
-              </view>
-            </view>
-            <view class="align-right top15">
-              <navigator url="groupSuccess" class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图 > </navigator>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
 
-  </view>
-  <view class="footerBox" style="background-color: #459E8C">
-    <view class="ui-row" style="">
-      <view class="ui-col ui-col-border-right ui-col-align-center align-center" style="">
-        <view class="ui-col-content align-center">
-          <navigator url="shopList" class="btns btns-biggest" style="width: 100%">立即预约</navigator>
+
         </view>
-      </view>
-      <view class="ui-col ui-col-align-center  align-center " style="">
-        <view class="ui-col-content align-center ">
-          <navigator url="../wode/doGroup" class="btns btns-biggest" style="width: 100%">我要拼团</navigator>
+        <view class="shaodwBox top10">
+            <view class="pad10">
+                <view class="font2 col000 bor_btm_so" style="padding-bottom: 20rpx;">颈椎放松</view>
+                <view class=" col333 top10">调理方法</view>
+                <view class="font0">
+                    调理方法介绍调理方法介绍调理方法介绍，调理方法介绍调理方法介绍调理方法介绍调理方法介绍。调理方法介绍。
+                </view>
+                <view class=" col333 top10">调理方法</view>
+                <view class="font0">
+                    调理方法介绍调理方法介绍调理方法介绍，调理方法介绍调理方法介绍调理方法介绍调理方法介绍。调理方法介绍。
+                </view>
+                <view class=" col333 top10">调理方法</view>
+                <view class="font0">
+                    调理方法介绍调理方法介绍调理方法介绍，调理方法介绍调理方法介绍调理方法介绍调理方法介绍。调理方法介绍。
+                </view>
+
+            </view>
+
+
         </view>
-      </view>
+        <view class="pad10 font2 col000">拼团列表</view>
+        <view class="shaodwBox">
+            <view class="tag2">进行中</view>
+            <image src="../../static/images/32.png" style="width: 100%; height: 270rpx; " />
+            <view class="pad10 ui-row" style="">
+                <view class="line20 ui-col" style="">
+                    <view class="ui-col-content">
+                        <view class="col333">【颈椎放松】</view>
+                        <view>拼团截止：2019.7.22</view>
+                        <view>5人团，还差2人</view>
+                        <view class="top5 text-through">¥388</view>
+                        <view class="colYe font3">¥188</view>
+                    </view>
+                </view>
+                <view class="ui-col" style="">
+                    <view class="ui-col-content">
+                        <view class="align-right top10">
+                            <view class="tx3Wap active">
+                                <image src="../../static/images/32.png" class="tx3" />
+                                <view class="btns btns-green">团长</view>
+                            </view>
+                            <view class="tx3Wap left5">
+                                <image src="../../static/images/32.png" class="tx3" />
+                            </view>
+                            <view class="tx3Wap left5">
+                                <image src="../../static/images/32.png" class="tx3" />
+                            </view>
+                        </view>
+                        <view class="align-right top15">
+                            <navigator url="../wode/groupSuccess" class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图 > </navigator>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="shaodwBox top10">
+            <view class="tag2">进行中</view>
+            <image src="../../static/images/32.png" style="width: 100%; height: 270rpx; " />
+            <view class="pad10 ui-row" style="">
+                <view class="line20 ui-col" style="">
+                    <view class="ui-col-content">
+                        <view class="col333">【颈椎放松】</view>
+                        <view>拼团截止：2019.7.22</view>
+                        <view>5人团，还差2人</view>
+                        <view class="top5 text-through">¥388</view>
+                        <view class="colYe font3">¥188</view>
+                    </view>
+                </view>
+                <view class="ui-col" style="">
+                    <view class="ui-col-content">
+                        <view class="align-right top10">
+                            <view class="tx3Wap active">
+                                <image src="../../static/images/32.png" class="tx3" />
+                                <view class="btns btns-green">团长</view>
+                            </view>
+                            <view class="tx3Wap left5">
+                                <image src="../../static/images/32.png" class="tx3" />
+                            </view>
+                            <view class="tx3Wap left5">
+                                <image src="../../static/images/32.png" class="tx3" />
+                            </view>
+                        </view>
+                        <view class="align-right top15">
+                            <navigator url="groupSuccess" class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图 > </navigator>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
     </view>
-  </view>
+    <view class="footerBox" style="background-color: #459E8C">
+        <view class="ui-row" style="">
+            <view class="ui-col ui-col-border-right ui-col-align-center align-center" style="">
+                <view class="ui-col-content align-center">
+                    <navigator url="shopList" class="btns btns-biggest" style="width: 100%">立即预约</navigator>
+                </view>
+            </view>
+            <view class="ui-col ui-col-align-center  align-center " style="">
+                <view class="ui-col-content align-center ">
+                    <navigator url="../wode/doGroup" class="btns btns-biggest" style="width: 100%">我要拼团</navigator>
+                </view>
+            </view>
+        </view>
+    </view>
 </view>

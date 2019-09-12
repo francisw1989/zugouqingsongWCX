@@ -1,32 +1,33 @@
 <view style="min-height: 100%; background-color:#F3F3F3;">
-    <view class="pad10 font2">
+    <view class="pad10 font2 line18">
         已选项目
     </view>
-    <view wx:for="{{list}}" class="btm5 pad10 bgfff ui-row" style="">
-        <view class="ui-col" style="flex:0 0 100px;">
+    <view wx:for="{{list}}" class="btm5 pad10 bgfff ui-row" style='padding-bottom: 5rpx;'>
+        <view class="ui-col" style="flex:0 0 80px;">
             <navigator url="projectDetail" class="ui-col-content">
                 <image src="../../static/images/32.png" mode="aspectFill" class="tx4" />
             </navigator>
         </view>
-        <view class="ui-col" style="padding-left: 10px;">
+        <view class="ui-col" style="">
             <view class="ui-col-content">
                 <view>
                     <text class="col000">{{item.name}}</text>
                     <text class="col000 left20">{{item.value}}分钟</text>
                 </view>
-                <view style="height: 110rpx; margin-top: -30rpx;" class="bor_btm_so">
-                    <ui-slider bar-border-radius="5" step="10" show-value show-max-value data-index="{{index}}" bindchange="sliderchange" value="{{item.value}}" background-color="#3A9C88" min="30" max="120" slider-weight="10" _pid="{{_pid}}"></ui-slider>
+                <view style="height: 110rpx; margin-top: -35rpx; margin-left: -3px">
+                    <ui-slider bar-border-radius="2" step="10" show-value show-max-value data-index="{{index}}" bindchange="sliderchange" value="{{item.value}}" background-color="#3A9C88" min="30" max="120" slider-weight="4" _pid="{{_pid}}" thumb-style="{{ tbObj1 }}" 
+               thumb-down-style="{{ tbdObj2 }}"></ui-slider>
                 </view>
-                <view class="top8">
-                    <text class="colPink font3 left5">¥168</text>
+                <view class="" style='margin-top: -13px'>
+                    <text class="colPink font3 left5">¥{{1.5*item.value}}</text>
                     <text class="left10">¥1.5/分钟</text>
                 </view>
             </view>
         </view>
     </view>
     <!--选择单项-->
-    <view style="padding: 10rpx 20rpx" wx:if="{{list.length==1}}">
-        <text class="font2">专属调理师</text>
+    <view class='pad10 font2 line18'  wx:if="{{list.length==1}}">
+        专属调理师
     </view>
     <view class="pad10 bgfff" wx:if="{{list.length==1}}">
         <navigator url="technician" class="tx5Wap inline">
@@ -46,8 +47,8 @@
             <view class="center col333 top5">张小花</view>
         </navigator>
     </view>
-    <view class="pad10">
-        <text class="font2">选择调理师</text>
+    <view class="pad10 font2 line18">
+        选择调理师
     </view>
     <view class="bor_btm_so bgfff" style="height: 45px;" wx:if="{{list.length>1}}">
         <ui-tabs index="{{ cIndex }}" bindchange="handleChange" ink-bar="true" tab-style="{{tabStyle}}" active-tab-style="{{activeTabStyle}}" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
@@ -69,19 +70,19 @@
             </view>
             <view class="ui-col" style="padding-left: 10px;">
                 <view class="ui-col-content">
-                    <view class="fotn2">{{item.name}}</view>
+                    <view class="col000">{{item.name}}</view>
                     <view>
                         <ui-mini-star class="inline" value="5" data="{{imgData}}" _pid="{{_pid}}"></ui-mini-star>
                         <text class="left10">5分</text>
                     </view>
-                    <view class="text-over" style="width: 100%">擅长颈部放松，进修于擅长颈部放松，进修于</view>
+                    <view class="text-over font0 " style="width: 100%">擅长颈部放松，进修于擅长颈部放松，进修于</view>
                 </view>
             </view>
             <view class="ui-col ui-col-align-right align-right" style="padding-left: 10px;flex:0 0 100px;">
                 <view class="ui-col-content align-right">
                     <view class="colRed">¥1.5/分钟</view>
                     <view class="top10">
-                        <view bindtap="chooseTlx" data-index="{{index}}" class="btns btns-small {{item.chosed?'btns-green':'btns-green-bor'}}">{{item.chosed?'取消':'选择'}}</view>
+                        <view bindtap="chooseTlx" data-index="{{index}}" class="btns btns-smaller {{item.chosed?'btns-green':'btns-green-bor'}}">{{item.chosed?'取消':'选择'}}</view>
                     </view>
                 </view>
             </view>

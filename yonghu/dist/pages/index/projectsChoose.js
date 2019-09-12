@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 const app = getApp()
 exports.default = Page({
     data: {
-        fwList: [],
+        itemList: [],
         current: 0,
         inkBarStyle: {
             'width': '30%'
@@ -20,8 +20,10 @@ exports.default = Page({
     },
     onLoad(){
         const t = this;
-        t.setData({
-            fwList: app.getFwList()
+        app.itemClass().then((res) => {
+            t.setData({
+                itemList: app.globalData.itemList
+            })
         })
     },
     doCheck(e){

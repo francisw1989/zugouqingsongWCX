@@ -15,7 +15,20 @@ exports.default = App({
         u: 'https://zzh.hzysofti.com/userApi/v1/',
         userInfo: {},
         itemList: [],
-        memberLevelName: ['普通会员', '一星会员', '二星会员', '三星会员']
+        memberLevelName: ['普通会员', '一星会员', '二星会员', '三星会员'],
+        barList: [{
+            "selectedIconPath": "/static/images/5.png",
+            "iconPath": "/static/images/6.png",
+            "pagePath": "/pages/index/index",
+            "text": "首页"
+        },
+        {
+            "selectedIconPath": "/static/images/9.png",
+            "iconPath": "/static/images/10.png",
+            "pagePath": "/pages/wode/index",
+            "text": "我的"
+        }
+        ]
     },
     onLaunch: function onLaunch() {
         _system2.default.attachInfo();
@@ -234,7 +247,6 @@ exports.default = App({
                 y: t.globalData.y
             }
             t.getRequest('index', params).then((res) => {
-                t.globalData.itemList = res;
                 resolve(res);
             })
         })

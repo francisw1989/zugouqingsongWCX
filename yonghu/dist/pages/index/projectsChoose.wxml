@@ -1,6 +1,6 @@
 <view style="min-height: 100%; background-color: #F3F3F3">
-    <ui-tabs wx:if='{{fwList.length}}' index="{{ current }}" bindchange="handleChange" class="bgfff" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
-        <ui-tab wx:for='{{fwList}}'>{{item.name}}</ui-tab>
+    <ui-tabs wx:if='{{itemList.length}}' index="{{ current }}" bindchange="handleChange" class="bgfff" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
+        <ui-tab wx:for='{{itemList}}'>{{item.itemClassName}}</ui-tab>
     </ui-tabs>
     <view class="top10" style="padding-bottom: 100rpx">
         <view wx:for='{{list}}' data-index="{{index}}" catchtap="doCheck" style="border-color:{{item.checked?'#459E8C':'#fff'}}" class="pad10 tjxmWap bgfff clearfix btm5">

@@ -39,7 +39,7 @@
       </view>
     </view>
   </view>
-  <view class="footerBox">
+  <view class="footerBox" style='bottom: 40rpx;'>
     <view class="btm10 pad20">
       <view class="ui-row" style="">
         <view class="relative ui-col ui-col-6" style="flex: 0 0 50%;">
