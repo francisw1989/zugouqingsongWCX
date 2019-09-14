@@ -1635,8 +1635,8 @@ view.btns-green,button.btns-green {
   text-align: right;
 }
 .tx1Wap .imgWap .img {
-  width: 36rpx;
-  height: 44rpx;
+  width: 26rpx;
+  height: 36rpx;
 }
 .tx1 {
   width: 100%;
@@ -1878,8 +1878,8 @@ border-radius:5rpx;
   font-weight: bold;
 }
 .woIcoimg {
-  width: 80rpx;
-  height: 80rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 .wInfo {
   width: 730rpx;
