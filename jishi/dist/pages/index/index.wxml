@@ -26,85 +26,87 @@
             <view class="font5 colfff">2</view>
         </navigator>
     </view>
-    <view class="inWap1 pad15RL top15">
-        <view class="ui-row" style="">
-            <view class="ui-col" style="">
-                <view class="ui-col-content">
-                    <view>
-                        <text class="col000">李先生</text>
-                        <image src="../../static/images/4.png" class="icoAll left2" style="width: 12rpx; height: 16rpx; margin-top: -40rpx" />
-                        <image src="../../static/images/4.png" class="icoAll left2" style="width: 12rpx; height: 16rpx;; margin-top: -40rpx" />
+    <view class="footerBox" style="bottom: 10rpx">
+        <view class="inWap1 pad15RL">
+            <view class="ui-row" style="">
+                <view class="ui-col" style="">
+                    <view class="ui-col-content">
+                        <view>
+                            <text class="col000">李先生</text>
+                            <image src="../../static/images/4.png" class="icoAll left2" style="width: 12rpx; height: 16rpx; margin-top: -40rpx" />
+                            <image src="../../static/images/4.png" class="icoAll left2" style="width: 12rpx; height: 16rpx;; margin-top: -40rpx" />
+                        </view>
                     </view>
                 </view>
-            </view>
-            <view class="ui-col ui-col-align-center align-center" style="">
-                <view class="ui-col-content align-center">
-                    <view>
-                        <text style="color: {{color}}">剩余</text>
-                        <ui-count-down number-style="color: {{color}}" class="inline" timetype="second" time="10000" format="{%h}:{%m}:{%s}" _pid="{{_pid}}"></ui-count-down>
-                        <text style="color: {{color}}">到店</text>
+                <view class="ui-col ui-col-align-center align-center" style="">
+                    <view class="ui-col-content align-center">
+                        <view>
+                            <text style="color: {{color}}">剩余</text>
+                            <ui-count-down number-style="color: {{color}}" class="inline" timetype="second" time="10000" format="{%h}:{%m}:{%s}" _pid="{{_pid}}"></ui-count-down>
+                            <text style="color: {{color}}">到店</text>
+                        </view>
                     </view>
                 </view>
-            </view>
-            <view class="ui-col ui-col-align-right col000 align-right col000" style="">
-                <view class="ui-col-content align-right col000">
-                    <view>
-                        <text class="col000">14:20</text>
-                        <view class="icoAll" style="width: 88rpx; height: 88rpx; margin-right: -30rpx;"></view>
+                <view class="ui-col ui-col-align-right col000 align-right col000" style="">
+                    <view class="ui-col-content align-right col000">
+                        <view>
+                            <text class="col000">14:20</text>
+                            <view class="icoAll" style="width: 88rpx; height: 88rpx; margin-right: -30rpx;"></view>
+                        </view>
                     </view>
                 </view>
             </view>
         </view>
-    </view>
-    <view class="inWap1 pad15RL" style="padding-bottom: 30rpx;">
-        <view class="bor_btm_so ui-row" style="">
-            <view class="ui-col" style="">
-                <view class="ui-col-content">
-                    <view>
-                        <text class="col000">李先生</text>
-                        <image src="../../static/images/4.png" class="icoAll left2" style="width: 12rpx; height: 16rpx; margin-top: -40rpx" />
-                        <image src="../../static/images/4.png" class="icoAll left2" style="width: 12rpx; height: 16rpx;; margin-top: -40rpx" />
+        <view class="inWap1 pad15RL" style="padding-bottom: 30rpx;">
+            <view class="bor_btm_so ui-row" style="">
+                <view class="ui-col" style="">
+                    <view class="ui-col-content">
+                        <view>
+                            <text class="col000">李先生</text>
+                            <image src="../../static/images/4.png" class="icoAll left2" style="width: 12rpx; height: 16rpx; margin-top: -40rpx" />
+                            <image src="../../static/images/4.png" class="icoAll left2" style="width: 12rpx; height: 16rpx;; margin-top: -40rpx" />
+                        </view>
                     </view>
                 </view>
-            </view>
-            <view class="ui-col ui-col-align-center align-center" style="">
-                <view class="ui-col-content align-center">
-                    <view>
-                        <text style="color: {{color}}">已到店</text>
+                <view class="ui-col ui-col-align-center align-center" style="">
+                    <view class="ui-col-content align-center">
+                        <view>
+                            <text style="color: {{color}}">已到店</text>
+                        </view>
                     </view>
                 </view>
-            </view>
-            <view class="ui-col ui-col-align-right  align-right " style="">
-                <view class="ui-col-content align-right ">
-                    <view>
-                        <text class="col000">14:20</text>
-                        <image src="../../static/images/12.png" class="icoAll" style="width: 88rpx; height: 88rpx; margin-right: -30rpx;" />
-                    </view>
+                <view class="ui-col ui-col-align-right  align-right " style="">
+                    <view class="ui-col-content align-right ">
+                        <view>
+                            <text class="col000">14:20</text>
+                            <image src="../../static/images/12.png" class="icoAll" style="width: 88rpx; height: 88rpx; margin-right: -30rpx;" />
+                        </view>
 
+                    </view>
                 </view>
             </view>
-        </view>
-        <view class="line30 top15">
-            <view>编号：Z100201916049325</view>
-            <view>
-                <text class="verMid">服务项目：【颈椎放松】</text>
-                <image src="../../static/images/11.png" class="icoAll left2" style="width: 22rpx; height: 22rpx;" />
-                <text class="colRed left5 verMid">60分钟</text>
+            <view class="line30 top15">
+                <view>编号：Z100201916049325</view>
+                <view>
+                    <text class="verMid">服务项目：【颈椎放松】</text>
+                    <image src="../../static/images/11.png" class="icoAll left2" style="width: 22rpx; height: 22rpx;" />
+                    <text class="colRed left5 verMid">60分钟</text>
+                </view>
+                <view>服务门店：中央商场旗舰店</view>
+                <view>偏好：</view>
+                <view>
+                    <view class="tag1" wx:for="{{tags}}" style="background-color: {{color}}">安静</view>
+                    <image src="../../static/images/13.png" class="icoAll" style="width: 84rpx; height: 40rpx;" bindtap='addTag' />
+                </view>
+                <view></view>
+                <view></view>
+                <view></view>
             </view>
-            <view>服务门店：中央商场旗舰店</view>
-            <view>偏好：</view>
-            <view>
-                <view class="tag1" wx:for="{{tags}}" style="background-color: {{color}}">安静</view>
-                <image src="../../static/images/13.png" class="icoAll" style="width: 84rpx; height: 40rpx;" bindtap='addTag' />
+            <view class="top15 line20">
+                <view class="col000 btm5">已购商品：</view>
+                <view class="font0">矿泉水*2</view>
+                <view class="font0">矿泉水*2</view>
             </view>
-            <view></view>
-            <view></view>
-            <view></view>
-        </view>
-        <view class="top15 line20">
-            <view class="col000 btm5">已购商品：</view>
-            <view class="font0">矿泉水*2</view>
-            <view class="font0">矿泉水*2</view>
         </view>
     </view>
 </view>

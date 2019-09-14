@@ -30,7 +30,7 @@ exports.default = Page({
     },
     onShow() {
         this.getTabBar().setData({
-            selected: 2,
+            selected: 1,
             list: app.globalData.barList
         })
 

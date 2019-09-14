@@ -26,12 +26,13 @@ exports.default = Page({
         const t = this;
         setTimeout(() => {
             let list = this.getTabBar().data.list;
-            list.push({
+            list.splice(1, 0, {
                 "selectedIconPath": "/static/images/7.png",
                 "iconPath": "/static/images/8.png",
                 "pagePath": "/pages/index/goods",
                 "text": "商品"
             })
+            
             app.globalData.barList = list;
             this.getTabBar().setData({
                 list: list
