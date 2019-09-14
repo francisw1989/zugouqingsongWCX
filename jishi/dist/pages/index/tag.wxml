@@ -1,7 +1,13 @@
 <!--pages/index/tag.wxml-->
-<view class='pad15'>
-    <input style='width: 100%; ' focus='true' class=' bor_btm_so pad10TB' placeholder='请输入{{title}}' bindinput='onInput'></input>
-    <view class='align-right top15'>
-        <view class='btns btns-green btns-biggest' bindtap='confirm'>确定</view>
+<view class=' bor_btm_so'>
+    <ui-tabs index="{{ current }}" bindchange="handleChange" class="bgfff" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
+        <ui-tab wx:for="{{tabs}}" _pid="{{_pid}}">{{item}}</ui-tab>
+    </ui-tabs>
+    <view class=" pad10">
+        <view class="btns btns-small btns-green-bor" style="margin: 10rpx" wx:for='{{list}}'>红茶</view>
     </view>
+    
 </view>
+<view class='align-right pad15 top10'>
+        <view class='btns btns-green btns-small' bindtap='confirm'>保存</view>
+    </view>

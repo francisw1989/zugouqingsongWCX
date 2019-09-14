@@ -142,7 +142,7 @@ module.exports = Behavior({
     },
     danwei: {
       type: String,
-      value: '元'
+      value: ''
     },
     mark: {
       type: String,

@@ -6,23 +6,22 @@ Page({
      */
     data: {
         title: '标签',
-        value: ''
+        value: '',
+        tabs: ['基础特征', '消费特征' ,'时空特征', '偏好特征' ,'渠道特征'],
+        list: ['','','','','',''],
+        inkBarStyle: {
+            'width': '30%'
+        },
     },
-    onInput(e){
-        const t = this;
-        t.setData({
-            value: e.detail.value
-        })
+    handleChange: function handleChange(e) {
+        var index = e.detail.index;
+        this.setData({
+            tabIndex: index
+        });
     },
     confirm(){
         const t = this;
-        if(!t.data.value){
-            wx.showModal({
-                title: '提示',
-                content: '请输入标签名称',
-            })
-            return
-        }
+        
         wx.navigateBack({
             
         })

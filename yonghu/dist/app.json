@@ -1,8 +1,9 @@
 {
    
     "pages": [
-        
         "pages/index/blank",
+        "pages/index/pingjia",
+        
 
         "pages/index/chooseProjectJishi",
         

@@ -74,7 +74,7 @@
         <view class="padSp1 clearfix" style="background-color:#fff; border-radius: 10rpx 10rpx 0 0; overflow: hidden;">
             <view class="bor_btm_so" style="padding-bottom: 20rpx;">
                 <text class="font2 bold col333">进行中</text>
-                <image src="../../static/images/17.png" class="ico17 top5 right" />
+                <navigator class="top5 right" url="pingjia"> <image src="../../static/images/17.png" class="ico17 " /></navigator>
             </view>
             <view class="col333 font2 top15 bold">编号：Z100201916049325</view>
             <view class="clearfix top15">

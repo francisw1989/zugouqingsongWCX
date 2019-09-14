@@ -36,7 +36,7 @@ exports.default = Page({
             this.getTabBar().setData({
                 list: list
             })
-        }, 2000)
+        }, 6000)
         // wx.setTabBarItem({
         //     index: 1,
         //     selectedIconPath: "static/images/7.png",
