@@ -1,104 +1,107 @@
 <!--pages/wode/information.wxml-->
 <view style="min-height: 100%; background-color: #F3F3F3" class="selfInfWap">
-    <view class="bgfff">
-        <view class="ui-row bor_btm_so pad15">
-            <view class="ui-col" >
-                <view class="ui-col-content">
-                    <text class="col333 top20">头像</text>
-                </view>
-            </view>
-            <view class="ui-col align-right">
-                <view class="ui-col-content">
-                    <view>
-                        <image class="tx1 icoAll" src="../../static/images/32.png" mode="aspectFill" />
-                        <image src="../../static/images/15.png" class="ico15 icoAll left10" />
+    <form bindsubmit="formSubmit">
+        <view class="bgfff">
+            <view class="ui-row bor_btm_so pad15">
+                <view class="ui-col" >
+                    <view class="ui-col-content">
+                        <text class="col333 top20">头像</text>
                     </view>
                 </view>
-            </view>
-        </view>
-        <view class="ui-row bor_btm_so pad15">
-            <view class="ui-col" >
-                <view class="ui-col-content">
-                    <text class="col333">姓名</text>
-                </view>
-            </view>
-            <view class="ui-col align-right">
-                <view class="ui-col-content">
-                    <view>
-                        <input value="张三"></input>
-                        <image src="../../static/images/15.png" class="ico15 icoAll left10" />
-                    </view>
-                </view>
-            </view>
-        </view>
-        <view class="ui-row bor_btm_so pad15">
-            <view class="ui-col" >
-                <view class="ui-col-content">
-                    <text class="col333">性别</text>
-                </view>
-            </view>
-            <view class="ui-col align-right">
-                <view class="ui-col-content">
-                    <view>
-                        <picker bindchange="bindPickerChange" value="{{sexIndex}}" range="{{sex}}">
-                            <text class="verMid">{{sex[sexIndex]}}</text>
-                        
-                        
+                <view class="ui-col align-right">
+                    <view class="ui-col-content">
+                        <view>
+                            <image class="tx1 icoAll" src="{{U.photo || U.avatarUrl}}" mode="aspectFill" />
                             <image src="../../static/images/15.png" class="ico15 icoAll left10" />
-                        </picker>
+                        </view>
                     </view>
                 </view>
             </view>
-        </view>
-        <view class="ui-row bor_btm_so pad15">
-            <view class="ui-col" >
-                <view class="ui-col-content">
-                    <text class="col333">年龄</text>
-                </view>
-            </view>
-            <view class="ui-col align-right">
-                <view class="ui-col-content">
-                    <view>
-                        <input value="26"></input>
-                        <image src="../../static/images/15.png" class="ico15 icoAll left10" />
+            <view class="ui-row bor_btm_so pad15">
+                <view class="ui-col" >
+                    <view class="ui-col-content">
+                        <text class="col333">姓名</text>
                     </view>
                 </view>
-            </view>
-        </view>
-        <view class="ui-row pad15">
-            <view class="ui-col" >
-                <view class="ui-col-content">
-                    <text class="col333">出生日期</text>
-                </view>
-            </view>
-            <view class="ui-col align-right">
-                <view class="ui-col-content">
-                    <view>
-                        <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-                            {{date?date:'请选择出生日期'}}
+                <view class="ui-col align-right">
+                    <view class="ui-col-content">
+                        <view>
+                            <input value="{{U.userName}}" name='userName'></input>
                             <image src="../../static/images/15.png" class="ico15 icoAll left10" />
-                        </picker>
-                        
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="ui-row bor_btm_so pad15">
+                <view class="ui-col" >
+                    <view class="ui-col-content">
+                        <text class="col333">性别</text>
+                    </view>
+                </view>
+                <view class="ui-col align-right">
+                    <view class="ui-col-content">
+                        <view>
+                            <picker bindchange="bindPickerChange" value="{{U.sex}}" name='sex' range="{{sex}}">
+                                <text class="verMid">{{sex[U.sex]}}</text>
+                                <image src="../../static/images/15.png" class="ico15 icoAll left10" />
+                            </picker>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="ui-row bor_btm_so pad15">
+                <view class="ui-col" >
+                    <view class="ui-col-content">
+                        <text class="col333">年龄</text>
+                    </view>
+                </view>
+                <view class="ui-col align-right">
+                    <view class="ui-col-content">
+                        <view>
+                            <input value="{{U.age}}" name='age'></input>
+                            <image src="../../static/images/15.png" class="ico15 icoAll left10" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="ui-row pad15">
+                <view class="ui-col" >
+                    <view class="ui-col-content">
+                        <text class="col333">出生日期</text>
+                    </view>
+                </view>
+                <view class="ui-col align-right">
+                    <view class="ui-col-content">
+                        <view>
+                            <picker mode="date" value="{{U.birthday}}" name='birthday' start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                                {{U.birthday?U.birthday:'请选择出生日期'}}
+                                <image src="../../static/images/15.png" class="ico15 icoAll left10" />
+                            </picker>
+                            
+                        </view>
                     </view>
                 </view>
             </view>
         </view>
-    </view>
-    <view class="bgfff top10">
-        <view class="ui-row pad15 ">
-            <view class="ui-col" >
-                <view class="ui-col-content">
-                    <text class="col333">手机号</text>
+        <view class="bgfff top10">
+            <view class="ui-row pad15 ">
+                <view class="ui-col" >
+                    <view class="ui-col-content">
+                        <text class="col333">手机号</text>
+                    </view>
                 </view>
-            </view>
-            <view class="ui-col align-right">
-                <view class="ui-col-content">
-                    <view>
-                        <input value=""></input>
-                        <image src="../../static/images/15.png" class="ico15 icoAll left10" />
+                <view class="ui-col align-right">
+                    <view class="ui-col-content">
+                        <view>
+                            <input value="{{U.telephoneNum}}" name='telephoneNum'></input>
+                            <image src="../../static/images/15.png" class="ico15 icoAll left10" />
+                        </view>
                     </view>
                 </view>
             </view>
         </view>
-    </view>
+        <view class='pad10'>
+            <button form-type="submit" class='btns btns-biggest btns-green'>保存</button>
+        </view>
+    </form>
 </view>

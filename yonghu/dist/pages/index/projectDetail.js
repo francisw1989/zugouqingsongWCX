@@ -1,8 +1,11 @@
 'use strict';
-
+const app = getApp();
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.default = Page({
-  data: {}
+    data: {},
+    onLoad(opt) {
+
+    }
 });

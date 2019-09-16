@@ -12,7 +12,7 @@ exports.default = Page({
             { time: '', content: '预约时长：50分钟' },
             { time: '', content: '预计结束时间：2019-06-11 12:50' }
         ],
-        itemList: [],
+        itemClassList: [],
         D: {}
     },
     onShow() {
@@ -48,11 +48,17 @@ exports.default = Page({
         // wx.hideTabBar();
         app.itemClass().then((res) => {
             t.setData({
-                itemList: app.globalData.itemList
+                itemClassList: app.globalData.itemClassList
             })
         })
         app.getLoaction().then((res)=>{
             app.index().then((res) =>{
+                for (const v of res.nearbyStore){
+                    v.imgs = v.imgs.split(',')[0]
+                }
+                for (const v of res.itemRecommendList) {
+                    v.imgs = v.imgs.split(',')[0]
+                }
                 t.setData({
                     D: res
                 })

@@ -11,16 +11,13 @@
         <image src="../../static/images/15.png" class="right ico15 top18 right20" />
         <image src="../../static/images/14.png" class="ico14 left top12 left20" />
         <text class="left20">今日有更多套餐可享受优惠活动</text>
-
     </view>
     <view class="padSp1">
         <view class="title font2 col000">服务分类</view>
         <view class="top15 clearfix">
-            <view wx:for='{{itemList}}' class="left right15" style="">
-                <navigator url="projectsList?id={{item.id}}">
+            <view wx:for='{{itemClassList}}' class="left right15" style="">
+                <navigator url="projectsList?id={{item.id}}&pageFrom=index">
                     <image src="{{item.icon}}" class="ico1" mode='aspectFit' />
-                    <!-- <image wx:if='{{index==0}}' src="../../static/images/1.png" class="ico1" />
-                    <image  wx:if='{{index==1}}' src="../../static/images/3.png" class="ico1" /> -->
                     <view class="top5 col999">{{item.itemClassName}}</view>
                 </navigator>
             </view>
@@ -29,15 +26,15 @@
     </view>
     <navigator url="shopList" wx:for='{{D.itemRecommendList}}' class="pad10 tjxmWap bgfff top5 clearfix">
         <navigator url="projectDetail"  class=" right10 left" style="width: 183rpx">
-            <image src="../../static/images/13.png" class="img " />
+            <image src="{{item.imgs}}" class="img " />
         </navigator>
         <view style="width: 482rpx" class="left">
             <view class=" bor_btm_so" style="padding-bottom: 10rpx">
-                <text class="col000 ">【颈椎放松】</text>
-                <text class="left10  col000">默认：60分钟</text>
-                <text class="left15 colPink font3">¥168</text>
+                <text class="col000 ">{{item.itemName}}</text>
+                <text class="left10  col000">默认：{{item.defaultDuration}}分钟</text>
+                <text class="left15 colPink font3">¥{{item.defaultPrice}}</text>
             </view>
-            <view class="top5 line24">这些疗程都利用了按摩使肌肉得以放松的原理，再配合精油或刮痧等中医治疗方法，对肩颈疼痛有一定的缓解作用。</view>
+            <view class="top5 line24">{{item.conditioningMethod}}</view>
         </view>
     </navigator>
     <view class="padSp1 clearfix">
@@ -45,14 +42,14 @@
         <text class="title font2 col000 ">附近门店</text>
     </view>
     <view class="bgfff" style="padding: 0 40rpx">
-        <navigator url="appointmentTime" wx:for='111' class="fjmdWap bgfff bor_btm_so">
-            <navigator url="shopDetail">
-                <image src="../../static/images/13.png" class="img left right10" />
+        <navigator url="appointmentTime" wx:for='{{D.nearbyStore}}' class="fjmdWap bgfff bor_btm_so">
+            <navigator url="shopDetail?id={{item.id}}">
+                <image src="{{item.imgs}}" class="img left right10" />
             </navigator>
             <view class="">
-                <text class="col000 font2">中央商场 旗舰店</text>
+                <text class="col000 font2">{{item.name}}</text>
                 <view class="right ">
-                    <text class="col999 verMid font0">距您132m | </text>
+                    <text class="col999 verMid font0">距您{{distance}}m | </text>
                     <image src="../../static/images/16.png" class="icoAll ico16 left5" />
                     <text class="colGreen left5 verMid font0">咨询</text>
                 </view>
@@ -63,7 +60,7 @@
             </view>
             <view class="line0 ">
                 <image src="../../static/images/11.png" class="ico11 icoAll" />
-                <text class="col999 left5 font0 verMid">南京市新街口淮海路2号3楼22号</text>
+                <text class="col999 left5 font0 verMid">{{item.detailAddress}}</text>
             </view>
         </navigator>
 

@@ -1896,8 +1896,8 @@ view.btns-green,button.btns-green {
   font-weight: bold;
 }
 .woIcoimg {
-  width: 80rpx;
-  height: 80rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 .wInfo {
   width: 730rpx;

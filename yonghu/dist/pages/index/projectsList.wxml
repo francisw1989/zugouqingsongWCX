@@ -1,19 +1,19 @@
 <view style="min-height: 100%; background-color: #F3F3F3">
-    <ui-tabs wx:if='{{itemList.length}}' index="{{ current }}" bindchange="handleChange" class="bgfff" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
-        <ui-tab wx:for='{{itemList}}'>{{item.itemClassName}}</ui-tab>
+    <ui-tabs wx:if='{{itemClassList.length}}' index="{{ current }}" bindchange="handleChange" class="bgfff" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
+        <ui-tab wx:for='{{itemClassList}}'>{{item.itemClassName}}</ui-tab>
     </ui-tabs>
     <view class="clearfix">
-        <navigator url="projectDetail" wx:for='111' class="pad10 tjxmWap bgfff clearfix">
-            <view class=" right10 left" style="width: 183rpx">
-                <image src="../../static/images/13.png" class="img " />
-            </view>
-            <view style="width: 482rpx" class="left">
+        <view wx:for='{{list}}'  style="border-color:{{item.checked?'#459E8C':'#fff'}}" class="pad10 tjxmWap bgfff clearfix btm5">
+            <navigator url="projectDetail" class=" right10 left" style="width: 183rpx">
+                <image src="{{item.imgs}}" class="img " />
+            </navigator>
+            <view data-index="{{index}}" data-id='{{item.id}}' catchtap="itemClick" style="width: 482rpx" class="left">
                 <view class=" bor_btm_so" style="padding-bottom: 10rpx">
-                    <text class="col000 ">【颈椎放松】</text>
-                    <text class="left10  col000">默认：60分钟</text>
-                    <text class="left15 colPink font3">¥168</text>
+                    <text class="col000 ">{{item.itemName}}</text>
+                    <text class="left10  col000">默认：{{item.defaultDuration}}分钟</text>
+                    <text class="left15 colPink font3">¥{{item.defaultPrice}}</text>
                 </view>
-                <view class="top5 line24">这些疗程都利用了按摩使肌肉得以放松的原理，再配合精油或刮痧等中医治疗方法，对肩颈疼痛有一定的缓解作用。</view>
+                <view class="top5 line24">{{item.conditioningMethod}}</view>
                 <view class="top5">
                     <view class="tag1">好评9999+</view>
                 </view>
@@ -23,7 +23,7 @@
                     <navigator wx:if="{{pageFrom=='group'}}" url='../wode/doGroup' class="btns btns-small btns-green left10" >发起拼图</navigator>
                 </view>
             </view>
-        </navigator>
+        </view>
     </view>
 
 </view>

@@ -1,22 +1,35 @@
 // pages/wode/information.js
+const app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
+    formSubmit: function (e) {
+        console.log('form发生了submit事件，携带数据为：', e.detail.value)
+        let params = e.detail.value;
+        params.userId = app.globalData.userInfo.id;
+        params.photo = app.globalData.userInfo.avatarUrl;
+        app.user(params).then((res)=>{
+
+        })
+    },
     data: {
         sex: ['男', '女'],
-        sexIndex: 0,
         date: ''
     },
     bindPickerChange: function (e) {
-        this.setData({
-            sexIndex: e.detail.value
+        const t = this;
+        t.data.U.sex = e.detail.value;
+        t.setData({
+            U: t.data.U
         })
     },
     bindDateChange: function (e) {
-        this.setData({
-            date: e.detail.value
+        const t = this;
+        t.data.U.birthday = e.detail.value;
+        t.setData({
+            U: t.data.U
         })
     },
     /**
@@ -37,7 +50,10 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        const t = this;
+        t.setData({
+            U: app.globalData.userInfo
+        })
     },
 
     /**

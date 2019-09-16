@@ -11,10 +11,21 @@ var _system2 = _interopRequireDefault(_system);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = App({
+    // 编辑用户信息
+    user(params){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.patchRequest('user', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+
     globalData: {
         u: 'https://zzh.hzysofti.com/userApi/v1/',
         userInfo: {},
-        itemList: [],
+        itemClassList: [],
         memberLevelName: ['普通会员', '一星会员', '二星会员', '三星会员'],
         barList: [{
             "selectedIconPath": "/static/images/5.png",
@@ -74,7 +85,38 @@ exports.default = App({
         });
         return p;
     },
-    
+    patchRequest: function getRequest(url, params, type) {
+        var t = this;
+        wx.showLoading({
+            title: '加载中'
+        });
+        let _url = t.globalData.u + url;
+        var p = new Promise(function (resolve, reject) {
+            wx.request({
+                url: _url,
+                data: params,
+                method: 'PATCH',
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                    // 'Content-Type': 'application/json'
+                },
+                dataType: 'json',
+                success: function success(res) {
+                    wx.hideLoading();
+                    resolve(res.data)
+                },
+                fail: function fail(res) {
+                    wx.hideLoading();
+                    wx.showModal({
+                        content: JSON.stringify(res)
+                    });
+                    reject(res);
+                },
+                complete: function complete() { }
+            });
+        });
+        return p;
+    },
     postRequest: function getRequest(url, params, type) {
         var t = this;
         wx.showLoading({
@@ -122,6 +164,7 @@ exports.default = App({
             })
         })
     },
+    // 获取用户信息
     userInfo(){
         const t = this;
         var p = new Promise(function (resolve, reject) {
@@ -129,7 +172,7 @@ exports.default = App({
             let params = {
                 openId: openId
             }
-            t.getUserInfo().then(()=>{
+            t.geWxtUserInfo().then(()=>{
                 t.getRequest('userInfo', params).then((res) => {
                     
                     t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
@@ -142,7 +185,7 @@ exports.default = App({
         return p;
     },
     // 微信自己的获取用户信息
-    getUserInfo: function getUserInfo() {
+    geWxtUserInfo() {
         var t = this;
         var p = new Promise(function (resolve, reject) {
             wx.getSetting({
@@ -232,7 +275,7 @@ exports.default = App({
         const t = this;
         let p = new Promise((resolve, reject)=>{
             t.getRequest('itemClass', {}).then((res) => {
-                t.globalData.itemList = res;
+                t.globalData.itemClassList = res;
                 resolve(res);
             })
         })
@@ -251,5 +294,15 @@ exports.default = App({
             })
         })
         return p;
-    }
+    },
+    // 获取项目列表
+    items(params) {
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('items', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
 });

@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 const app = getApp()
 exports.default = Page({
     data: {
-        itemList: [],
+        itemClassList: [],
         current: 0,
         inkBarStyle: {
             'width': '30%'
@@ -22,7 +22,7 @@ exports.default = Page({
         const t = this;
         app.itemClass().then((res) => {
             t.setData({
-                itemList: app.globalData.itemList
+                itemClassList: app.globalData.itemClassList
             })
         })
     },

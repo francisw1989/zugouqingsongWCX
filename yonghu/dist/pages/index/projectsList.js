@@ -6,31 +6,89 @@ Page({
      * 页面的初始数据
      */
     data: {
-        itemList: [],
+        itemClassList: [],
         current: 0,
         inkBarStyle: {
             'width': '30%'
         },
+        chooseList: []
     },
     handleChange: function handleChange(e) {
+        const t = this;
         var index = e.detail.index;
-        this.setData({
+        t.setData({
+            id: app.globalData.itemClassList[index].id,
             current: index
         });
+        t.items()
+
+    },
+    items(){
+        const t = this;
+        let params = {
+            itemClassId: t.data.id,
+            pageSize: 100,
+            pageNumber: 1
+        }
+        app.items(params).then((res)=>{
+            for (const v of res.records){
+                v.imgs = v.imgs.split(',')[0]
+                v.checked = false;
+            }
+            t.setData({
+                list: res.records
+            })
+        })
+    },
+    itemClick(e) {
+        const t = this;
+        
+        if (t.data.pageFrom == 'store'){
+            // page from store, do check
+            t.data.chooseList = [];
+            t.data.list[e.currentTarget.dataset.index].checked = t.data.list[e.currentTarget.dataset.index].checked ? false : true
+            for (const v of t.data.list) {
+                if (v.checked) {
+                    t.data.chooseList.push(v)
+                }
+            }
+            t.setData({
+                list: t.data.list,
+                chooseList: t.data.chooseList
+            })
+        }else if(t.data.pageFrom == 'index'){
+            // page from index, do navigate to projectDetail
+            wx.navigateTo({
+                url: 'projectDetail?id=' + e.currentTarget.dataset.id,
+            })
+        }
+        
+    },
+    setOData(opt){
+        const t = this;
+        console.log(app.globalData.itemClassList)
+        let id = opt.id || app.globalData.itemClassList[0].id;
+        let current;
+        app.globalData.itemClassList.forEach((v, i) => {
+            if (v.id == id) {
+                current = i;
+            }
+        })
+        t.setData({
+            id: opt.id,
+            itemClassList: app.globalData.itemClassList,
+            current: current,
+            pageFrom: opt.pageFrom
+        })
+        t.items();
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (opt) {
         const t = this;
-        console.log(app.globalData.itemList)
-        t.setData({
-            itemList: app.globalData.itemList,
-            current: opt.type,
-            pageFrom: opt.pageFrom
-        })
+        t.setOData(opt);
     },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
