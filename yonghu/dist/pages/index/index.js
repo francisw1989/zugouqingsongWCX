@@ -53,12 +53,6 @@ exports.default = Page({
         })
         app.getLoaction().then((res)=>{
             app.index().then((res) =>{
-                for (const v of res.nearbyStore){
-                    v.imgs = v.imgs.split(',')[0]
-                }
-                for (const v of res.itemRecommendList) {
-                    v.imgs = v.imgs.split(',')[0]
-                }
                 t.setData({
                     D: res
                 })

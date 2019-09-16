@@ -11,19 +11,74 @@ var _system2 = _interopRequireDefault(_system);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = App({
-    // 编辑用户信息
-    user(params){
+    // 用户端 门店详情
+    store(storeId) {
         const t = this;
+        let params = {
+            storeId: storeId
+        }
         let p = new Promise((resolve, reject) => {
-            t.patchRequest('user', params).then((res) => {
+            t.getRequest('store', params).then((res) => {
+                res.imgs = res.imgs.split(',')
                 resolve(res);
             })
         })
         return p;
     },
-
+    // 用户端加载所有周边门店
+    stores(){
+        const t = this;
+        let params = {
+            x: t.globalData.x,
+            y: t.globalData.y
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('stores', params).then((res) => {
+                for (const v of res) {
+                    v.imgs = v.imgs.split(',')[0]
+                }
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 编辑用户信息
+    user(params){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('user', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 上传图片
+    upload(Base64) {
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            wx.request({
+                url: t.globalData.u_s +  'common/v1/file/upload?suffix=jpg&dir=images',
+                data: Base64,
+                method: 'POST',
+                success: function success(res) {
+                    wx.hideLoading();
+                    resolve(res.data)
+                },
+                fail: function fail(res) {
+                    wx.hideLoading();
+                    wx.showModal({
+                        content: JSON.stringify(res)
+                    });
+                    reject(res);
+                },
+                complete: function complete() { }
+            });
+        })
+        return p;
+    },
     globalData: {
         u: 'https://zzh.hzysofti.com/userApi/v1/',
+        u_s: 'https://zzh.hzysofti.com/',
         userInfo: {},
         itemClassList: [],
         memberLevelName: ['普通会员', '一星会员', '二星会员', '三星会员'],
@@ -85,44 +140,15 @@ exports.default = App({
         });
         return p;
     },
-    patchRequest: function getRequest(url, params, type) {
-        var t = this;
-        wx.showLoading({
-            title: '加载中'
-        });
-        let _url = t.globalData.u + url;
-        var p = new Promise(function (resolve, reject) {
-            wx.request({
-                url: _url,
-                data: params,
-                method: 'PATCH',
-                header: {
-                    'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
-                    // 'Content-Type': 'application/json'
-                },
-                dataType: 'json',
-                success: function success(res) {
-                    wx.hideLoading();
-                    resolve(res.data)
-                },
-                fail: function fail(res) {
-                    wx.hideLoading();
-                    wx.showModal({
-                        content: JSON.stringify(res)
-                    });
-                    reject(res);
-                },
-                complete: function complete() { }
-            });
-        });
-        return p;
-    },
     postRequest: function getRequest(url, params, type) {
         var t = this;
         wx.showLoading({
             title: '加载中'
         });
         let _url = t.globalData.u + url;
+        if(type && type == 'spe'){
+            _url = t.globalData.u_s + url
+        }
         var p = new Promise(function (resolve, reject) {
             wx.request({
                 url: _url,
@@ -290,6 +316,12 @@ exports.default = App({
                 y: t.globalData.y
             }
             t.getRequest('index', params).then((res) => {
+                for (const v of res.nearbyStore) {
+                    v.imgs = v.imgs.split(',')[0]
+                }
+                for (const v of res.itemRecommendList) {
+                    v.imgs = v.imgs.split(',')[0]
+                }
                 resolve(res);
             })
         })

@@ -1,35 +1,44 @@
 <view style="min-height:100%; background-color: rgba(243,243,243,1) ">
-  <image src="../../static/images/20.png" style="width: 100%; height:386rpx; " />
-  <view class="shopInfWap">
-    <view class="pad20 bor_btm_so">
-      <view class="ui-row" style="height:80px;">
-        <view class="ui-col ui-col-align-center align-center valign-middle" style="flex:0 0 60px;">
-          <view class="ui-col-content align-center valign-middle">
-            <image src="../../static/images/20.png" class="tx2" mode="aspectFill" />
-          </view>
+    <swiper class="swiper2" indicator-dots="true"
+    autoplay="true">
+        <block wx:for="{{v.imgs}}">
+            <swiper-item>
+                <image src="{{item}}" style="width: 100%; height:386rpx; " mode='aspectFill' />
+            </swiper-item>
+        </block>
+    </swiper>
+    <view style='position: absolute; z-index: 1000; width: 100%'>
+        <view class="shopInfWap">
+            <view class="pad20 bor_btm_so">
+                <view class="ui-row" style="height:80px;">
+                    <view class="ui-col ui-col-align-center align-center valign-middle" style="flex:0 0 60px;">
+                        <view class="ui-col-content align-center valign-middle">
+                            <image src="../../static/images/20.png" class="tx2" mode="aspectFill" />
+                        </view>
+                    </view>
+                    <view class="text ui-col ui-col-align-left align-left valign-middle" style="padding-left: 15px; padding-right: 15px;">
+                        <view class="ui-col-content align-left valign-middle">
+                            <view class="col333 font2">{{v.name}}</view>
+                            <view class="font0 top5">{{v.tags}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="pad20">
+                <view class="">
+                    <image src="../../static/images/21.png" class="icoAll ico21" />
+                    <text class="left10 col333">电话：{{v.phoneNum}}</text>
+                </view>
+                <view class="top10">
+                    <image src="../../static/images/22.png" class="icoAll ico22" />
+                    <text class="left10 col333">营业时间：{{v.openStartTime || '10:00'}}-{{v.openEndTime || '23:00'}}</text>
+                </view>
+                <view class="top10">
+                    <image src="../../static/images/23.png" class="icoAll ico23" />
+                    <text class="left10 col333">门店地址：{{v.detailAddress}}</text>
+                </view>
+            </view>
         </view>
-        <view class="text ui-col ui-col-align-left align-left valign-middle" style="padding-left: 15px; padding-right: 15px;">
-          <view class="ui-col-content align-left valign-middle">
-            <view class="col333 font2">中央商场（旗舰店）</view>
-            <view class="font0 top5">这是门店的介绍，这是门店的介绍，这是门店的介绍，这是门店的介绍，这是门店的介绍，这是门店的介绍，这是门店的介绍</view>
-          </view>
-        </view>
-      </view>
     </view>
-    <view class="pad20">
-      <view class="">
-        <image src="../../static/images/21.png" class="icoAll ico21" />
-        <text class="left10 col333">电话：025-8145844</text>
-      </view>
-      <view class="top10">
-        <image src="../../static/images/22.png" class="icoAll ico22" />
-        <text class="left10 col333">营业时间：09:00-12:00</text>
-      </view>
-      <view class="top10">
-        <image src="../../static/images/23.png" class="icoAll ico23" />
-        <text class="left10 col333">门店地址：南京市新街口淮海路2号3楼22号</text>
-      </view>
-    </view>
-  </view>
-  <navigator url="appointmentTime" open-type="redirect" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">立即预约</navigator>
+    <navigator url="appointmentTime" open-type="redirect" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">立即预约</navigator>
 </view>

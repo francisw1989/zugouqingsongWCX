@@ -26,7 +26,7 @@
     </view>
     <navigator url="shopList" wx:for='{{D.itemRecommendList}}' class="pad10 tjxmWap bgfff top5 clearfix">
         <navigator url="projectDetail"  class=" right10 left" style="width: 183rpx">
-            <image src="{{item.imgs}}" class="img " />
+            <image src="{{item.imgs}}" class="img " mode='aspectFill' />
         </navigator>
         <view style="width: 482rpx" class="left">
             <view class=" bor_btm_so" style="padding-bottom: 10rpx">
@@ -44,19 +44,19 @@
     <view class="bgfff" style="padding: 0 40rpx">
         <navigator url="appointmentTime" wx:for='{{D.nearbyStore}}' class="fjmdWap bgfff bor_btm_so">
             <navigator url="shopDetail?id={{item.id}}">
-                <image src="{{item.imgs}}" class="img left right10" />
+                <image src="{{item.imgs}}" class="img left right10" mode='aspectFill' />
             </navigator>
             <view class="">
                 <text class="col000 font2">{{item.name}}</text>
                 <view class="right ">
-                    <text class="col999 verMid font0">距您{{distance}}m | </text>
+                    <text class="col999 verMid font0">距您{{item.distance}}m | </text>
                     <image src="../../static/images/16.png" class="icoAll ico16 left5" />
                     <text class="colGreen left5 verMid font0">咨询</text>
                 </view>
             </view>
             <view class="">
                 <image src="../../static/images/12.png" class="ico12 icoAll" />
-                <text class="col999 left5 font0 verMid">9:00-23:00</text>
+                <text class="col999 left5 font0 verMid">{{item.openStartTime || '10:00'}}-{{item.openEndTime || '23:00'}}</text>
             </view>
             <view class="line0 ">
                 <image src="../../static/images/11.png" class="ico11 icoAll" />
