@@ -15,7 +15,7 @@
     <view class="padSp1">
         <view class="title font2 col000">服务分类</view>
         <view class="top15 clearfix">
-            <view wx:for='{{itemClassList}}' class="left right15" style="">
+            <view wx:for='{{itemClassList}}' class="left right20" style="">
                 <navigator url="projectsList?id={{item.id}}&pageFrom=index">
                     <image src="{{item.icon}}" class="ico1" mode='aspectFit' />
                     <view class="top5 col999">{{item.itemClassName}}</view>
