@@ -4,8 +4,24 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = Page({
-    data: {},
+    data: {
+        I: {},
+        list: []
+    },
     onLoad(opt) {
-
+        const t = this;
+        t.setData({
+            itemId: opt.itemId
+        })
+        app.getItem(t.data.itemId).then((res)=>{
+            t.setData({
+                I: res
+            })
+        })
+        app.assembleRecord(t.data.itemId).then((res)=>{
+            t.setData({
+                list: res
+            })
+        })
     }
 });

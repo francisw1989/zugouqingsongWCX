@@ -35,6 +35,10 @@ Page({
         params.photo = t.data.photo;
         app.user(params).then((res)=>{
             app.userInfo();
+            wx.showToast({
+                icon: 'none',
+                title: '修改信息成功'
+            })
         })
     },
     data: {

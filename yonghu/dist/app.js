@@ -11,6 +11,62 @@ var _system2 = _interopRequireDefault(_system);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = App({
+    // 服务项目下单接口
+    order(data){
+        const t = this;
+        // [
+        //     {
+        //         "itemId": "string",
+        //         "orderStartTime": "string",
+        //         "orderTime": 0,
+        //         "technicianIds": [
+        //             0
+        //         ]
+        //     }
+        // ]
+        let params = {
+            userId: t.globalData.userInfo.userId,
+            storeId: t.globalData.chooseStore.storeId
+        }
+        data = t.jsonToParameters(data);
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('order?' + data, params).then((res) => {
+                res.imgs && (res.imgs = res.imgs.split(','));
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 根据项目ID加载项目拼团列表
+    assembleRecord(itemId){
+        const t = this;
+        let params = {
+            itemId: itemId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('assembleRecord', params).then((res) => {
+                res.imgs && (res.imgs = res.imgs.split(','));
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    
+    // 根据项目ID获得项目详情
+    getItem(itemId){
+        const t = this;
+        let params = {
+            itemId: itemId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('getItem', params).then((res) => {
+                res.imgs = res.imgs.split(',');
+                res.crowd = res.crowd.split(',');
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // 用户端 门店详情
     store(storeId) {
         const t = this;
@@ -45,8 +101,9 @@ exports.default = App({
     // 编辑用户信息
     user(params){
         const t = this;
+        let _params = t.jsonToParameters(params);
         let p = new Promise((resolve, reject) => {
-            t.postRequest('user', params).then((res) => {
+            t.postRequest('user?' + _params, {}).then((res) => {
                 resolve(res);
             })
         })
@@ -56,23 +113,9 @@ exports.default = App({
     upload(Base64) {
         const t = this;
         let p = new Promise((resolve, reject) => {
-            wx.request({
-                url: t.globalData.u_s +  'common/v1/file/upload?suffix=jpg&dir=images',
-                data: Base64,
-                method: 'POST',
-                success: function success(res) {
-                    wx.hideLoading();
-                    resolve(res.data)
-                },
-                fail: function fail(res) {
-                    wx.hideLoading();
-                    wx.showModal({
-                        content: JSON.stringify(res)
-                    });
-                    reject(res);
-                },
-                complete: function complete() { }
-            });
+            t.postRequest('common/v1/file/upload?suffix=jpg&dir=images', Base64, 'spe').then((res)=>{
+                resolve(res)
+            })
         })
         return p;
     },
@@ -83,18 +126,21 @@ exports.default = App({
         itemClassList: [],
         memberLevelName: ['普通会员', '一星会员', '二星会员', '三星会员'],
         barList: [{
-            "selectedIconPath": "/static/images/5.png",
-            "iconPath": "/static/images/6.png",
-            "pagePath": "/pages/index/index",
-            "text": "首页"
-        },
-        {
-            "selectedIconPath": "/static/images/9.png",
-            "iconPath": "/static/images/10.png",
-            "pagePath": "/pages/wode/index",
-            "text": "我的"
-        }
-        ]
+                "selectedIconPath": "/static/images/5.png",
+                "iconPath": "/static/images/6.png",
+                "pagePath": "/pages/index/index",
+                "text": "首页"
+            },
+            {
+                "selectedIconPath": "/static/images/9.png",
+                "iconPath": "/static/images/10.png",
+                "pagePath": "/pages/wode/index",
+                "text": "我的"
+            }
+        ],
+        chooseProject: [],
+        chooseStore: {}
+
     },
     onLaunch: function onLaunch() {
         _system2.default.attachInfo();
@@ -145,9 +191,11 @@ exports.default = App({
         wx.showLoading({
             title: '加载中'
         });
-        let _url = t.globalData.u + url;
+        let _url = '';
         if(type && type == 'spe'){
             _url = t.globalData.u_s + url
+        }else{
+            _url = t.globalData.u + url
         }
         var p = new Promise(function (resolve, reject) {
             wx.request({
@@ -183,6 +231,7 @@ exports.default = App({
             userInfo: t.globalData.userInfo
         }
         t.postRequest('userLogin', params).then((res)=>{
+            res.userId = res.id;
             t.globalData.userInfo = Object.assign(t.globalData.userInfo, res)
             wx.setStorageSync('openId', res.openId)
             wx.reLaunch({
@@ -200,7 +249,7 @@ exports.default = App({
             }
             t.geWxtUserInfo().then(()=>{
                 t.getRequest('userInfo', params).then((res) => {
-                    
+                    res.userId = res.id;
                     t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
                     console.log(t.globalData.userInfo)
                     resolve();
@@ -337,4 +386,26 @@ exports.default = App({
         })
         return p;
     },
+    jsonToParameters(parmas){
+        let _parmas = Object.keys(parmas).map(function (key) {
+            // body...
+            return encodeURIComponent(key) + "=" + encodeURIComponent(parmas[key]);
+        }).join("&");
+        return _parmas;
+    },
+    get_tomorrow_data(){
+        //昨天的时间
+        var day1 = new Date();
+        day1.setTime(day1.getTime() - 24 * 60 * 60 * 1000);
+        var s1 = day1.getFullYear() + "-" + (day1.getMonth() + 1) + "-" + day1.getDate();
+        //今天的时间
+        var day2 = new Date();
+        day2.setTime(day2.getTime());
+        var s2 = day2.getFullYear() + "-" + (day2.getMonth() + 1) + "-" + day2.getDate();
+        //明天的时间
+        var day3 = new Date();
+        day3.setTime(day3.getTime() + 24 * 60 * 60 * 1000);
+        var s3 = day3.getFullYear() + "-" + (day3.getMonth() + 1) + "-" + day3.getDate();
+        return [s2, s3]
+    }
 });

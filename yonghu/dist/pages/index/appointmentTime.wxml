@@ -1,11 +1,11 @@
 <view style="min-height:100%;  ">
-    <image src="../../static/images/20.png" style="width: 100%; height:386rpx; " />
+    <image src="{{I.imgs}}" style="width: 100%; height:386rpx; " mode='aspectFill' />
     <view class=" pad20" style="padding-bottom: 100rpx;">
         <view>
-            <text class="col333">服务门店：</text>中央商场旗舰店
+            <text class="col333">服务门店：</text>{{I.name}}
         </view>
         <view class="top10">
-            <text class="col333">营业时间：</text>10:00-10:00
+            <text class="col333">营业时间：</text>{{I.openStartTime}}-{{I.openEndTime}}
         </view>
         <view class="top10">
             <text class="col333">预约日期：</text>
@@ -14,7 +14,7 @@
 
         </view>
         <view class="top10">
-            <text class="col333">预约时间：</text>{{time}}
+            <text class="col333">预约时间：</text>{{date}} {{time}}
         </view>
         <view class='pad20'>
             <picker-view indicator-style="height: 50px;" style="width: 100%; height: 200px; text-align: center" value="{{value}}" bindchange="bindChange">
@@ -27,5 +27,5 @@
             </picker-view>
         </view>
     </view>
-    <navigator open-type="redirect" url="projectsChoose" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">立即预约</navigator>
+    <view class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;" bindtap='ljyy'>立即预约</view>
 </view>

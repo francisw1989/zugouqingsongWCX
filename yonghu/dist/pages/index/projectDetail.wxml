@@ -1,9 +1,9 @@
 <view style="min-height:100%; background-color: rgba(243,243,243,1) ">
     <swiper class="swiper2" indicator-dots="true"
     autoplay="true">
-        <block wx:for="111">
+        <block wx:for="{{I.imgs}}">
             <swiper-item>
-                <image src="../../static/images/32.png" style="width: 100%; height:307rpx; " mode='aspectFill' />
+                <image src="{{item}}" style="width: 100%; height:307rpx; " mode='aspectFill' />
             </swiper-item>
         </block>
     </swiper>
@@ -12,17 +12,9 @@
         <view class="shaodwBox" style="margin-top: -80rpx;">
             <view class="pad10">
                 <view class="font2 col000 bor_btm_so" style="padding-bottom: 20rpx;">适宜人群</view>
-                <view class="top10">
+                <view class="top10" wx:for="{{I.crowd}}">
                     <image src="../../static/images/33.png" class="icoAll" style="width: 39rpx; height:39rpx; " />
-                    <text class="left10 verMid">适宜人群</text>
-                </view>
-                <view class="top10">
-                    <image src="../../static/images/33.png" class="icoAll" style="width: 39rpx; height:39rpx; " />
-                    <text class="left10 verMid">适宜人群</text>
-                </view>
-                <view class="top10">
-                    <image src="../../static/images/33.png" class="icoAll" style="width: 39rpx; height:39rpx; " />
-                    <text class="left10 verMid">适宜人群</text>
+                    <text class="left10 verMid">{{item}}</text>
                 </view>
             </view>
 
@@ -30,26 +22,26 @@
         </view>
         <view class="shaodwBox top10">
             <view class="pad10">
-                <view class="font2 col000 bor_btm_so" style="padding-bottom: 20rpx;">颈椎放松</view>
+                <view class="font2 col000 bor_btm_so" style="padding-bottom: 20rpx;">{{I.itemName}}</view>
                 <view class=" col333 top10">调理方法</view>
                 <view class="font0">
-                    调理方法介绍调理方法介绍调理方法介绍，调理方法介绍调理方法介绍调理方法介绍调理方法介绍。调理方法介绍。
+                    {{I.conditioningMethod}}
                 </view>
-                <view class=" col333 top10">调理方法</view>
+                <view class=" col333 top10">调理流程</view>
                 <view class="font0">
-                    调理方法介绍调理方法介绍调理方法介绍，调理方法介绍调理方法介绍调理方法介绍调理方法介绍。调理方法介绍。
+                    {{I.conditioningProcess}}
                 </view>
-                <view class=" col333 top10">调理方法</view>
+                <view class=" col333 top10">自我保养方法</view>
                 <view class="font0">
-                    调理方法介绍调理方法介绍调理方法介绍，调理方法介绍调理方法介绍调理方法介绍调理方法介绍。调理方法介绍。
+                    {{I.maintenanceMethod}}
                 </view>
 
             </view>
 
 
         </view>
-        <view class="pad10 font2 col000">拼团列表</view>
-        <view class="shaodwBox">
+        <view class="pad10 font2 col000" wx:if='{{list.length}}'>拼团列表</view>
+        <view class="shaodwBox btm10" wx:for="{{list}}">
             <view class="tag2">进行中</view>
             <image src="../../static/images/32.png" style="width: 100%; height: 270rpx; " />
             <view class="pad10 ui-row" style="">
@@ -78,40 +70,6 @@
                         </view>
                         <view class="align-right top15">
                             <navigator url="../wode/groupSuccess" class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图 > </navigator>
-                        </view>
-                    </view>
-                </view>
-            </view>
-        </view>
-        <view class="shaodwBox top10">
-            <view class="tag2">进行中</view>
-            <image src="../../static/images/32.png" style="width: 100%; height: 270rpx; " />
-            <view class="pad10 ui-row" style="">
-                <view class="line20 ui-col" style="">
-                    <view class="ui-col-content">
-                        <view class="col333">【颈椎放松】</view>
-                        <view>拼团截止：2019.7.22</view>
-                        <view>5人团，还差2人</view>
-                        <view class="top5 text-through">¥388</view>
-                        <view class="colYe font3">¥188</view>
-                    </view>
-                </view>
-                <view class="ui-col" style="">
-                    <view class="ui-col-content">
-                        <view class="align-right top10">
-                            <view class="tx3Wap active">
-                                <image src="../../static/images/32.png" class="tx3" />
-                                <view class="btns btns-green">团长</view>
-                            </view>
-                            <view class="tx3Wap left5">
-                                <image src="../../static/images/32.png" class="tx3" />
-                            </view>
-                            <view class="tx3Wap left5">
-                                <image src="../../static/images/32.png" class="tx3" />
-                            </view>
-                        </view>
-                        <view class="align-right top15">
-                            <navigator url="groupSuccess" class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图 > </navigator>
                         </view>
                     </view>
                 </view>

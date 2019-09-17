@@ -1,5 +1,5 @@
 'use strict';
-
+const app = getApp();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -10,18 +10,23 @@ exports.default = Page({
         hours: [],
         mins: [],
         HH: '',
-        MM: ''
+        MM: '',
+        date: '',
+        dates: []
     },
     chose: function chose(e) {
         console.log('323');
         var t = this;
         t.setData({
-            cIndex: e.target.dataset.index
+            cIndex: e.target.dataset.index,
+            date: t.data.dates[e.target.dataset.index]
         });
     },
     cal(){
         const t = this;
-        for (let i = 1; i < 13; i++) {
+        let min = Number(t.data.I.openStartTime.split(':')[0]);
+        let max = Number(t.data.I.openEndTime.split(':')[0]);
+        for (let i = min; i < max+1; i++) {
             let h = i<10?'0'+i:i
             t.data.hours.push(h)
         }
@@ -40,11 +45,38 @@ exports.default = Page({
     },
     onLoad(){
         const t = this;
-        t.cal()
+        t.setData({
+            I: app.globalData.chooseStore,
+            dates: app.get_tomorrow_data()
+        })
+        t.cal();
+        
     },
     bindTimeChange: function bindTimeChange(e) {
         this.setData({
             time: e.detail.value
         });
+    },
+    ljyy(){
+        const t = this;
+        let msg = '';
+        if (!t.data.time) {
+            msg = '请选择时间'
+        }
+        if(!t.data.date){
+            msg = '请选择日期'
+        }
+        if(msg){
+            wx.showModal({
+                title: '提示',
+                content: msg,
+            })
+            return
+        }
+        app.globalData.chooseStore.orderStartTime = t.data.date + ' ' + t.data.time
+        // here is appointment, so set pageFrom is 'appointment'
+        wx.redirectTo({
+            url: 'projectsList?pageFrom=appointment',
+        })
     }
 });

@@ -11,7 +11,21 @@ Page({
         inkBarStyle: {
             'width': '30%'
         },
-        chooseList: []
+        chooseProject: []
+    },
+    confirmChoosen() {
+        const t = this;
+        if (!t.data.chooseProject.length) {
+            wx.showModal({
+                title: '提示',
+                content: '请选择项目',
+            })
+            return
+        }
+        app.globalData.chooseProject = t.data.chooseProject;
+        wx.navigateTo({
+            url: 'chooseProjectJishi',
+        })
     },
     handleChange: function handleChange(e) {
         const t = this;
@@ -42,24 +56,23 @@ Page({
     },
     itemClick(e) {
         const t = this;
-        
-        if (t.data.pageFrom == 'store'){
+        if (t.data.pageFrom == 'store' || t.data.pageFrom == 'appointment'){
             // page from store, do check
-            t.data.chooseList = [];
+            t.data.chooseProject = [];
             t.data.list[e.currentTarget.dataset.index].checked = t.data.list[e.currentTarget.dataset.index].checked ? false : true
             for (const v of t.data.list) {
                 if (v.checked) {
-                    t.data.chooseList.push(v)
+                    t.data.chooseProject.push(v)
                 }
             }
             t.setData({
                 list: t.data.list,
-                chooseList: t.data.chooseList
+                chooseProject: t.data.chooseProject
             })
         }else if(t.data.pageFrom == 'index'){
             // page from index, do navigate to projectDetail
             wx.navigateTo({
-                url: 'projectDetail?id=' + e.currentTarget.dataset.id,
+                url: 'projectDetail?itemId=' + e.currentTarget.dataset.id,
             })
         }
         
@@ -75,7 +88,7 @@ Page({
             }
         })
         t.setData({
-            id: opt.id,
+            id: id,
             itemClassList: app.globalData.itemClassList,
             current: current,
             pageFrom: opt.pageFrom

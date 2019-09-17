@@ -1,5 +1,5 @@
 'use strict';
-
+const app = getApp();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -20,7 +20,7 @@ exports.default = Page({
         tbdObj2: {
             'background-color': '#2ac1a2'
         },
-        list: [
+        chooseProject: [
             { value: 60, name: '颈椎放松' },
             { value: 40, name: '美容' }
         ],
@@ -51,6 +51,12 @@ exports.default = Page({
             imgSrc8: 'http://images.uileader.com/20180410/0490f6ac-eae9-4801-973b-30f5ea0a5d0c.png'
         },
         show: false
+    },
+    onLoad(){
+        const t = this;
+        t.setData({
+            chooseProject: app.globalData.chooseProject
+        })
     },
     chooseTlx(e){
         const t = this;
@@ -102,9 +108,9 @@ exports.default = Page({
     sliderchange: function sliderchange(e) {
         var t = this;
         var value = e.detail.value;
-        t.data.list[e.currentTarget.dataset.index].value = value;
+        t.data.chooseProject[e.currentTarget.dataset.index].value = value;
         t.setData({
-            list: t.data.list
+            chooseProject: t.data.chooseProject
         });
     }
 });

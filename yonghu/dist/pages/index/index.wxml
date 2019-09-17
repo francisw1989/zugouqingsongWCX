@@ -25,7 +25,7 @@
         <view class="title top10 font2 col000">推荐项目</view>
     </view>
     <navigator url="shopList" wx:for='{{D.itemRecommendList}}' class="pad10 tjxmWap bgfff top5 clearfix">
-        <navigator url="projectDetail"  class=" right10 left" style="width: 183rpx">
+        <navigator url="projectDetail?itemId={{item.id}}"  class=" right10 left" style="width: 183rpx">
             <image src="{{item.imgs}}" class="img " mode='aspectFill' />
         </navigator>
         <view style="width: 482rpx" class="left">
@@ -42,7 +42,8 @@
         <text class="title font2 col000 ">附近门店</text>
     </view>
     <view class="bgfff" style="padding: 0 40rpx">
-        <navigator url="appointmentTime" wx:for='{{D.nearbyStore}}' class="fjmdWap bgfff bor_btm_so">
+        <!--选择门店预约-->
+        <view url="appointmentTime" wx:for='{{D.nearbyStore}}' class="fjmdWap bgfff bor_btm_so" data-index='{{index}}' catchtap='chooseStore'>
             <navigator url="shopDetail?id={{item.id}}">
                 <image src="{{item.imgs}}" class="img left right10" mode='aspectFill' />
             </navigator>
@@ -62,7 +63,7 @@
                 <image src="../../static/images/11.png" class="ico11 icoAll" />
                 <text class="col999 left5 font0 verMid">{{item.detailAddress}}</text>
             </view>
-        </navigator>
+        </view>
 
     </view>
     <button open-type="contact" class='ico4 icoAll'><image src="../../static/images/4.png" style='width: 110rpx; height: 110rpx;' /></button>

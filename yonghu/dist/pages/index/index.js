@@ -15,6 +15,15 @@ exports.default = Page({
         itemClassList: [],
         D: {}
     },
+    chooseStore(e){
+        const t = this;
+        let index = e.currentTarget.dataset.index;
+        
+        app.globalData.chooseStore = t.data.D.nearbyStore[index];
+        wx.navigateTo({
+            url: 'appointmentTime',
+        })
+    },
     onShow() {
         this.getTabBar().setData({
             selected: 0,

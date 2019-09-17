@@ -2,24 +2,24 @@
     <view class="pad10 font2 line18">
         已选项目
     </view>
-    <view wx:for="{{list}}" class="btm5 pad10 bgfff ui-row" style='padding-bottom: 5rpx;'>
+    <view wx:for="{{chooseProject}}" class="btm5 pad10 bgfff ui-row" style='padding-bottom: 5rpx;'>
         <view class="ui-col" style="flex:0 0 80px;">
             <navigator url="projectDetail" class="ui-col-content">
-                <image src="../../static/images/32.png" mode="aspectFill" class="tx4" />
+                <image src="{{}item.imgs}" mode="aspectFill" class="tx4" />
             </navigator>
         </view>
         <view class="ui-col" style="">
             <view class="ui-col-content">
                 <view>
-                    <text class="col000">{{item.name}}</text>
-                    <text class="col000 left20">{{item.value}}分钟</text>
+                    <text class="col000">{{item.itemName}}</text>
+                    <text class="col000 left20">{{item.defaultDuration}}分钟</text>
                 </view>
                 <view style="height: 110rpx; margin-top: -35rpx; margin-left: -3px">
-                    <ui-slider bar-border-radius="2" step="10" show-value show-max-value data-index="{{index}}" bindchange="sliderchange" value="{{item.value}}" background-color="#3A9C88" min="30" max="120" slider-weight="4" _pid="{{_pid}}" thumb-style="{{ tbObj1 }}" 
+                    <ui-slider bar-border-radius="2" step="10" show-value show-max-value data-index="{{index}}" bindchange="sliderchange" value="{{item.defaultDuration}}" background-color="#3A9C88" min="{{item.mixDuration}}" max="{{item.maxDuration}}" slider-weight="4" _pid="{{_pid}}" thumb-style="{{ tbObj1 }}" 
                thumb-down-style="{{ tbdObj2 }}"></ui-slider>
                 </view>
                 <view class="" style='margin-top: -13px'>
-                    <text class="colPink font3 left5">¥{{1.5*item.value}}</text>
+                    <text class="colPink font3 left5">¥{{1.5*item.defaultDuration}}</text>
                     <text class="left10">¥1.5/分钟</text>
                 </view>
             </view>
