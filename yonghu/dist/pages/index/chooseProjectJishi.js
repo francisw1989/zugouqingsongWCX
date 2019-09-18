@@ -21,12 +21,8 @@ exports.default = Page({
             'background-color': '#2ac1a2'
         },
         chooseProject: [
-            { value: 60, name: '颈椎放松' },
-            { value: 40, name: '美容' }
         ],
         tlsList: [
-            { name:'张三', chosed: false },
-            { name: '李四', chosed: false },
         ],
         tlsChosed: [],
         cIndex: 0,
@@ -50,38 +46,87 @@ exports.default = Page({
             imgSrc7: 'http://images.uileader.com/20180410/c4c0047f-467c-4984-9e7f-263b2447f2b5.png',
             imgSrc8: 'http://images.uileader.com/20180410/0490f6ac-eae9-4801-973b-30f5ea0a5d0c.png'
         },
-        show: false
+        show: false,
+        canLoad: false
     },
     onLoad(){
         const t = this;
         t.setData({
             chooseProject: app.globalData.chooseProject
         })
+        t.userTechnicians();
+        t.selectTechnician();
+        setTimeout(()=>{
+            t.setData({
+                canLoad: true
+            })
+        }, 100)
+    },
+    // 专属调理师
+    userTechnicians() {
+        const t = this;
+        let itemId = app.globalData.chooseProject[0].id;
+        
+        app.userTechnicians(itemId).then((res) => {
+            t.setData({
+                userTechniciansList: res
+            })
+        })
+    },
+    // 技师列表
+    selectTechnician(){
+        const t = this;
+        let params = {
+            storeId: app.globalData.chooseStore.id,
+            itemIdsStr: app.globalData.chooseProject[t.data.cIndex].id,
+            timesStr: app.globalData.chooseProject[t.data.cIndex].defaultDuration,
+            dateTime: app.globalData.chooseStore.appointTime
+        }
+        app.selectTechnician(params).then((res)=>{
+            t.data.chooseProject[t.data.cIndex].technicianList = res[0].employees;
+            t.setData({
+                chooseProject: t.data.chooseProject
+            })
+        })
     },
     chooseTlx(e){
         const t = this;
         let i = e.currentTarget.dataset.index;
-        if (t.data.tlsList[i].chosed){
-            t.data.tlsList[i].chosed = false;
+        t.data.chooseProject[t.data.cIndex].technicianList;
+        if (t.data.chooseProject[t.data.cIndex].technicianList[i].chosed){
+            t.data.chooseProject[t.data.cIndex].technicianList[i].chosed = false;
             
         }else{
-            t.data.tlsList[i].chosed = true;
+            t.data.chooseProject[t.data.cIndex].technicianList[i].chosed = true;
             
         }
-        t.data.tlsChosed = [];
-        for (const v of t.data.tlsList){
+        t.data.chooseProject[t.data.cIndex].technicianChoose = [];
+        for (const v of t.data.chooseProject[t.data.cIndex].technicianLis){
             if(v.chosed){
-                t.data.tlsChosed.push(v)
+                t.data.chooseProject[t.data.cIndex].technicianChoose.push(v)
             }
         }
         t.setData({
-            tlsList: t.data.tlsList,
-            tlsChosed: t.data.tlsChosed
+            chooseProject: t.data.chooseProject,
         })
     },
     submit: function submit() {
         var t = this;
         console.log('21');
+        let msg = ''
+        for (const v of t.data.chooseProject){
+            if (!v.technicianChoose || (v.technicianChoose && !v.technicianChoose.length)){
+                msg = '请选择' + v.itemName+'的调理师'
+            }
+        }
+        if (msg){
+            wx.showModal({
+                title: '提示',
+                content: msg,
+            })
+            return
+        }
+        app.globalData.chooseProject = t.data.chooseProject;
         wx.redirectTo({
             url: 'pay',
         })
@@ -102,15 +147,33 @@ exports.default = Page({
         var t = this;
         var index = e.detail.index;
         t.setData({
-            cIndex: index
+            cIndex: index,
         });
+        console.log('tab load')
+        console.log(t.data.cIndex)
+        t.selectTechnician();
     },
+    
     sliderchange: function sliderchange(e) {
         var t = this;
-        var defaultDuration = e.detail.value;
-        t.data.chooseProject[e.currentTarget.dataset.index].defaultDuration = defaultDuration;
-        t.setData({
-            chooseProject: t.data.chooseProject
-        });
+        if(!t.data.canLoad){
+            return
+        }
+        if (typeof t.settime != 'undefined'){
+            clearTimeout(t.settime);
+        }
+        t.settime = setTimeout(()=>{
+            var defaultDuration = e.detail.value;
+            t.data.chooseProject[e.currentTarget.dataset.index].defaultDuration = defaultDuration;
+            t.data.cIndex = e.currentTarget.dataset.index;
+            t.setData({
+                chooseProject: t.data.chooseProject,
+                cIndex: t.data.cIndex
+            });
+            console.log('slider load')
+            t.selectTechnician();
+        }, 500)
+
+        
     }
 });

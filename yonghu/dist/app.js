@@ -11,8 +11,37 @@ var _system2 = _interopRequireDefault(_system);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = App({
+    
+    // 选择技师页面
+    selectTechnician(params){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('selectTechnician', params).then((res) => {
+                for(const v of res){
+                    v.imgs = v.imgs.split(',')[0]
+                }
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 获取用户专属技师
+    userTechnicians(itemId){
+        const t = this;
+        let params = {
+            itemId: itemId,
+            userId: t.globalData.userInfo.userId,
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('userTechnicians', params).then((res) => {
+                res.imgs && (res.imgs = res.imgs.split(','));
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // 服务项目下单接口
-    order(data){
+    order(){
         const t = this;
         // [
         //     {
@@ -24,13 +53,23 @@ exports.default = App({
         //         ]
         //     }
         // ]
+        let data = [];
+        for (const v of app.globalData.chooseProject){
+            data.push({
+                itemId: v.id,
+                orderStartTime: t.globalData.chooseStore.appointTime,
+                orderTime: v.defaultDuration,
+                technicianIds: v.chooseProject.map((res)=>{
+                    return v.id
+                })
+            })
+        }
         let params = {
             userId: t.globalData.userInfo.userId,
             storeId: t.globalData.chooseStore.storeId
         }
-        data = t.jsonToParameters(data);
         let p = new Promise((resolve, reject) => {
-            t.postRequest('order?' + data, params).then((res) => {
+            t.postRequest('order?' + t.jsonToParameters(params), data).then((res) => {
                 res.imgs && (res.imgs = res.imgs.split(','));
                 resolve(res);
             })
@@ -401,11 +440,19 @@ exports.default = App({
         //今天的时间
         var day2 = new Date();
         day2.setTime(day2.getTime());
-        var s2 = day2.getFullYear() + "-" + (day2.getMonth() + 1) + "-" + day2.getDate();
+        let M2 = day2.getMonth() + 1;
+        let D2 = day2.getDate();
+        if (M2 < 10) { M2 = '0' + M2 };
+        if (D2 < 10) { D2 = '0' + D2 };
+        var s2 = day2.getFullYear() + "-" + M2 + "-" + D2;
         //明天的时间
         var day3 = new Date();
         day3.setTime(day3.getTime() + 24 * 60 * 60 * 1000);
-        var s3 = day3.getFullYear() + "-" + (day3.getMonth() + 1) + "-" + day3.getDate();
+        let M3 = day3.getMonth() + 1;
+        let D3 = day3.getDate();
+        if (M3 < 10) { M3 = '0' + M3 };
+        if (D3 < 10) { D3 = '0' + D3 };
+        var s3 = day3.getFullYear() + "-" + M3 + "-" + D3;
         return [s2, s3]
     }
 });

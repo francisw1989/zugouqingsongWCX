@@ -73,7 +73,7 @@ exports.default = Page({
             })
             return
         }
-        app.globalData.chooseStore.orderStartTime = t.data.date + ' ' + t.data.time
+        app.globalData.chooseStore.appointTime = t.data.date + ' ' + t.data.time + ':00'
         // here is appointment, so set pageFrom is 'appointment'
         wx.redirectTo({
             url: 'projectsList?pageFrom=appointment',
