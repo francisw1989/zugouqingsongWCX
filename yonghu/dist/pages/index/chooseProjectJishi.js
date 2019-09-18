@@ -107,8 +107,8 @@ exports.default = Page({
     },
     sliderchange: function sliderchange(e) {
         var t = this;
-        var value = e.detail.value;
-        t.data.chooseProject[e.currentTarget.dataset.index].value = value;
+        var defaultDuration = e.detail.value;
+        t.data.chooseProject[e.currentTarget.dataset.index].defaultDuration = defaultDuration;
         t.setData({
             chooseProject: t.data.chooseProject
         });

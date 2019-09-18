@@ -5,7 +5,7 @@
     <view wx:for="{{chooseProject}}" class="btm5 pad10 bgfff ui-row" style='padding-bottom: 5rpx;'>
         <view class="ui-col" style="flex:0 0 80px;">
             <navigator url="projectDetail" class="ui-col-content">
-                <image src="{{}item.imgs}" mode="aspectFill" class="tx4" />
+                <image src="{{item.imgs}}" mode="aspectFill" class="tx4" />
             </navigator>
         </view>
         <view class="ui-col" style="">
@@ -15,12 +15,12 @@
                     <text class="col000 left20">{{item.defaultDuration}}分钟</text>
                 </view>
                 <view style="height: 110rpx; margin-top: -35rpx; margin-left: -3px">
-                    <ui-slider bar-border-radius="2" step="10" show-value show-max-value data-index="{{index}}" bindchange="sliderchange" value="{{item.defaultDuration}}" background-color="#3A9C88" min="{{item.mixDuration}}" max="{{item.maxDuration}}" slider-weight="4" _pid="{{_pid}}" thumb-style="{{ tbObj1 }}" 
+                    <ui-slider wx:if='{{item.maxDuration}}' bar-border-radius="2" step="10" show-value show-max-value data-index="{{index}}" bindchange="sliderchange" value="{{item.defaultDuration}}" background-color="#3A9C88" min="{{item.mixDuration}}" max="{{item.maxDuration}}" slider-weight="4" _pid="{{_pid}}" thumb-style="{{ tbObj1 }}" 
                thumb-down-style="{{ tbdObj2 }}"></ui-slider>
                 </view>
                 <view class="" style='margin-top: -13px'>
-                    <text class="colPink font3 left5">¥{{1.5*item.defaultDuration}}</text>
-                    <text class="left10">¥1.5/分钟</text>
+                    <text class="colPink font3 left5">¥{{item.defaultPrice/1000*item.defaultDuration}}</text>
+                    <text class="left10">¥{{item.defaultPrice/1000}}/分钟</text>
                 </view>
             </view>
         </view>
