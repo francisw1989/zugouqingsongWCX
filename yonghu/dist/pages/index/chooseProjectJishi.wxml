@@ -53,7 +53,7 @@
             <view class="ui-col" style="flex:0 0 70px;">
                 <view class="ui-col-content">
                     <navigator url="technician" class="tx5Wap">
-                        <image src="{{item.imgs}}" mode="aspectFill" class="tx5" />
+                        <image src="{{item.photo}}" mode="aspectFill" class="tx5" />
                         <view class="dj">
                             <image src="../../static/images/34.png" class="icoAll img" />
                             <image src="../../static/images/34.png" class="icoAll img left5" />

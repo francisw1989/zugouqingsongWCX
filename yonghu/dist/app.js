@@ -54,19 +54,19 @@ exports.default = App({
         //     }
         // ]
         let data = [];
-        for (const v of app.globalData.chooseProject){
+        for (const v of t.globalData.chooseProject){
             data.push({
                 itemId: v.id,
                 orderStartTime: t.globalData.chooseStore.appointTime,
                 orderTime: v.defaultDuration,
-                technicianIds: v.chooseProject.map((res)=>{
-                    return v.id
+                technicianIds: v.technicianChoose.map((res)=>{
+                    return res.id
                 })
             })
         }
         let params = {
             userId: t.globalData.userInfo.userId,
-            storeId: t.globalData.chooseStore.storeId
+            storeId: t.globalData.chooseStore.id
         }
         let p = new Promise((resolve, reject) => {
             t.postRequest('order?' + t.jsonToParameters(params), data).then((res) => {

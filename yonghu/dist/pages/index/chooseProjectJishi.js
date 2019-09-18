@@ -55,7 +55,9 @@ exports.default = Page({
             chooseProject: app.globalData.chooseProject
         })
         t.userTechnicians();
-        t.selectTechnician();
+        for(const i in t.data.chooseProject){
+            t.selectTechnician(i);
+        }
         setTimeout(()=>{
             t.setData({
                 canLoad: true
@@ -74,7 +76,7 @@ exports.default = Page({
         })
     },
     // 技师列表
-    selectTechnician(){
+    selectTechnician(cIndex){
         const t = this;
         let params = {
             storeId: app.globalData.chooseStore.id,
@@ -83,16 +85,17 @@ exports.default = Page({
             dateTime: app.globalData.chooseStore.appointTime
         }
         app.selectTechnician(params).then((res)=>{
-            t.data.chooseProject[t.data.cIndex].technicianList = res[0].employees;
+            
+            t.data.chooseProject[cIndex].technicianList = res[0].employees;
             t.setData({
                 chooseProject: t.data.chooseProject
             })
+            console.log(t.data.chooseProject)
         })
     },
     chooseTlx(e){
         const t = this;
-        let i = e.currentTarget.dataset.index;
-        t.data.chooseProject[t.data.cIndex].technicianList;
+        let i = e.target.dataset.index;
         if (t.data.chooseProject[t.data.cIndex].technicianList[i].chosed){
             t.data.chooseProject[t.data.cIndex].technicianList[i].chosed = false;
             
@@ -101,7 +104,7 @@ exports.default = Page({
             
         }
         t.data.chooseProject[t.data.cIndex].technicianChoose = [];
-        for (const v of t.data.chooseProject[t.data.cIndex].technicianLis){
+        for (const v of t.data.chooseProject[t.data.cIndex].technicianList){
             if(v.chosed){
                 t.data.chooseProject[t.data.cIndex].technicianChoose.push(v)
             }
@@ -112,7 +115,6 @@ exports.default = Page({
     },
     submit: function submit() {
         var t = this;
-        console.log('21');
         let msg = ''
         for (const v of t.data.chooseProject){
             if (!v.technicianChoose || (v.technicianChoose && !v.technicianChoose.length)){
@@ -127,9 +129,12 @@ exports.default = Page({
             return
         }
         app.globalData.chooseProject = t.data.chooseProject;
-        wx.redirectTo({
-            url: 'pay',
+        app.order().then((res)=>{
+            wx.redirectTo({
+                url: 'pay',
+            })
         })
+        
     },
     onHide: function onHide() {
         var t = this;
@@ -149,9 +154,8 @@ exports.default = Page({
         t.setData({
             cIndex: index,
         });
-        console.log('tab load')
-        console.log(t.data.cIndex)
-        t.selectTechnician();
+        
+        // t.selectTechnician();
     },
     
     sliderchange: function sliderchange(e) {
@@ -171,7 +175,7 @@ exports.default = Page({
                 cIndex: t.data.cIndex
             });
             console.log('slider load')
-            t.selectTechnician();
+            t.selectTechnician(t.data.cIndex);
         }, 500)
 
         
