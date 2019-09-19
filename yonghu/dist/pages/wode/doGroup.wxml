@@ -5,17 +5,17 @@
             <view class="ui-row" style="">
                 <view class="ui-col" style="flex:0 0 110px;">
                     <view class="ui-col-content">
-                        <image class="tx9" src="../../static/images/32.png" mode="aspectFill" />
+                        <image class="tx9" src="{{D.imgs}}" mode="aspectFill" />
                     </view>
                 </view>
                 <view class="ui-col" style="">
                     <view class="ui-col-content">
-                        <view class="col333  bor_btm_so" style="padding-bottom: 10rpx">【颈椎放松】</view>
-                        <view class="top5 font0 bor_btm_so" style="padding-bottom: 10rpx">这些疗放松的原理，再配合精油治疗方法，对肩颈疼痛有一定的缓解作用。</view>
+                        <view class="col333  bor_btm_so" style="padding-bottom: 10rpx">{{D.itemName}}</view>
+                        <view class="top5 font0 bor_btm_so" style="padding-bottom: 10rpx">{{D.conditioningMethod}}</view>
                         <view class="top5 align-right">
                             <text class="col999 font0">原价：</text>
-                            <text class="col999 text-through font0">¥598</text>
-                            <text class="left10 font2 colPink">拼团价：¥298</text>
+                            <text class="col999 text-through font0">¥ {{D.defaultPrice/1000*D.defaultDuration}}元</text>
+                            <text class="left10 font2 colPink">拼团价：¥{{price[pIndex]/1000}}元</text>
                         </view>
                     </view>
                 </view>
@@ -62,9 +62,7 @@
                 <view class="ui-col-content">
                     <view class="col999 font0">*参团人数越多，优惠越大。3人团享受9折。5人团享受8折。10人团享受6.5折</view>
                     <view class="top10">
-                        <view class="btns btns-small btns-green-bor right20">3人团</view>
-                        <view class="btns btns-small btns-green-bor right20">5人团</view>
-                        <view class="btns btns-small btns-green-bor">10人团</view>
+                        <view wx:for='{{peopleNum}}' bindtap='changePeopleNum' class="btns btns-small btns-green-bor right20 {{index==pIndex?'btns-green':''}}" data-index='{{index}}'>{{item}}人团</view>
                     </view>
                 </view>
             </view>
@@ -79,10 +77,10 @@
             </view>
             <view class="ui-col" style="">
                 <view class="ui-col-content">
-                    ??
+                    {{price[pIndex]/1000}}
                 </view>
             </view>
         </view>
     </view>
-    <navigator url="groupSuccess" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">发起拼团</navigator>
+    <view url="groupSuccess" bindtap='createGroup' class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">发起拼团</view>
 </view>

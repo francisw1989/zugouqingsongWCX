@@ -6,25 +6,32 @@ Object.defineProperty(exports, "__esModule", {
 const app = getApp();
 exports.default = Page({
     data: {
-        list: [{ showMore: false }, { showMore: false }]
-
+        D: {}
     },
     showMore: function showMore(e) {
         var t = this;
-        var _showMore = t.data.list[e.currentTarget.dataset.index].showMore;
-        t.data.list[e.currentTarget.dataset.index].showMore = _showMore ? false : true;
+        var _showMore = t.data.D.orderItems[e.currentTarget.dataset.index].showMore;
+        t.data.D.orderItems[e.currentTarget.dataset.index].showMore = _showMore ? false : true;
         t.setData({
-            list: t.data.list
+            D: t.data.D
         });
     },
     radioChange: function (e) {
         console.log(e.detail.value)
     },
-    wxPay(){
-        wx.redirectTo({
-            url: 'paySuccess',
+    orderPay(){
+        app.orderPay(t.data.couponRecordId, t.data.type).then((res)=>{
+            app.globalData.wxObj = res;
+            app.wxPay();
         })
-        // app.wxPay();
+    },
+    
+    onLoad(opt){
+        const t = this;
+        t.setData({
+            pageFrom: opt.pageFrom,
+            D: app.globalData.orderDetail
+        })
     }
 
     

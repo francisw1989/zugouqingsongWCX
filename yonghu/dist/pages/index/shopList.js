@@ -9,6 +9,7 @@ exports.default = Page({
         const t = this;
         let index = e.currentTarget.dataset.index;
         let id = e.currentTarget.dataset.id;
+        app.globalData.appointFromProject = false;
         if(t.data.pageFrom == 'index'){
             wx.navigateTo({
                 url: 'shopDetail?id=' + id,

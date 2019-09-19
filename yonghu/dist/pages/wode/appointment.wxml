@@ -1,34 +1,37 @@
 <view>
-  <ui-tabs index="{{ cIndex }}" bindchange="handleChange" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
-    <ui-tab wx:for="{{tabs}}" _pid="{{_pid}}">{{item}}</ui-tab>
-  </ui-tabs>
-  <view>
-    <block wx:for="{{list}}">
-      <view class="pad10 bor_btm_so relative">
-        <view class="ui-row" style="">
-          <view class="ui-col" style="flex:0 0 50px;">
-            <view class="ui-col-content">
-              <image src="../../static/images/47.png" mode="aspectFill" class="tx6" />
+    <ui-tabs index="{{ cIndex }}" bindchange="handleChange" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
+        <ui-tab wx:for="{{tabs}}" _pid="{{_pid}}">{{item}}</ui-tab>
+    </ui-tabs>
+    <view>
+        <block wx:for="{{list}}">
+            <view class="pad10 bor_btm_so relative">
+                <view class="ui-row" style="">
+                    <view class="ui-col" style="flex:0 0 50px;">
+                        <view class="ui-col-content">
+                            <image src="../../static/images/47.png" mode="aspectFill" class="tx6" />
+                        </view>
+                    </view>
+                    <view class="ui-col" style="">
+                        <view class="ui-col-content">
+                            <view class="col333 font2 bold">{{item.itemNames}}</view>
+                            <view class="top5 font0 col999">门店：{{item.storeName}}</view>
+                            <view class="col999 font0">时间：{{item.orderStartTime}}</view>
+                            <view class="col999 font0">技师：{{item.employeeNames}}</view>
+                            <view class="col999 font0">总价：¥{{item.totalPrice}}</view>
+                        </view>
+                    </view>
+                    <view class="ui-col ui-col-align-right align-right" style="flex:0 0 100px;">
+                        <view class="ui-col-content align-right">
+                            <view class="btns btns-2">{{tabs[item.status-1]}}</view>
+                            <view class="top50 font0" wx:if='{{item.orderStartTime}}'>
+                                <ui-count-down class="inline" doneText='0s' time="{{item.orderStartTime2}}" number-style="{{numberStyle}}" format="{%h}:{%m}:{%s}" _pid="{{_pid}}"></ui-count-down>
+                                后自动取消
+                            </view>
+                            <view class="btns btns-green-bor top5 btns-small">继续支付</view>
+                        </view>
+                    </view>
+                </view>
             </view>
-          </view>
-          <view class="ui-col" style="">
-            <view class="ui-col-content">
-              <view class="col333 font2 bold">颈部放松、胫骨放松</view>
-              <view class="top5 font0 col999">门店：中华路旗舰店</view>
-              <view class="col999 font0">时间：2019-07-23 16:50</view>
-              <view class="col999 font0">技师：刘三妹</view>
-              <view class="col999 font0">总价：¥599</view>
-            </view>
-          </view>
-          <view class="ui-col ui-col-align-right align-right" style="flex:0 0 100px;">
-            <view class="ui-col-content align-right">
-              <view class="btns btns-2">待支付</view>
-              <view class="top50 font0"><text class="colYe">4:59</text>后自动取消</view>
-              <view class="btns btns-green-bor top5 btns-small">继续支付</view>
-            </view>
-          </view>
-        </view>
-      </view>
-    </block>
-  </view>
+        </block>
+    </view>
 </view>

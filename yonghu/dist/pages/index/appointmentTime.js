@@ -76,10 +76,12 @@ exports.default = Page({
         app.globalData.chooseStore.appointTime = t.data.date + ' ' + t.data.time + ':00'
         // here is appointment, so set pageFrom is 'appointment'
         if (app.globalData.appointFromProject){
+            // choose form project, no need choose projects again
             wx.redirectTo({
                 url: 'chooseProjectJishi',
             })
         }else{
+             // choose form store, choose projects 
             wx.redirectTo({
                 url: 'projectsList?pageFrom=appointment',
             })

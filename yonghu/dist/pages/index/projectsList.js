@@ -13,6 +13,13 @@ Page({
         },
         chooseProject: []
     },
+    gotoGroup(e){
+        const t = this;
+        app.globalData.chooseProject = [t.data.list[e.target.dataset.index]]
+        wx.navigateTo({
+            url: '../wode/doGroup',
+        })
+    },
     confirmChoosen() {
         const t = this;
         if (!t.data.chooseProject.length) {
@@ -45,6 +52,12 @@ Page({
             pageNumber: 1
         }
         app.items(params).then((res)=>{
+            // page from group buying ,do filter
+            if (t.data.pageFrom == 'group'){
+                res.records = res.records.filter((v)=>{
+                    return v.isAssemble == 1;
+                })
+            }
             for (const v of res.records){
                 v.imgs = v.imgs.split(',')[0]
                 v.checked = false;

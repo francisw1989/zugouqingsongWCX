@@ -1,10 +1,11 @@
 'use strict';
-
+const app = getApp();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = Page({
     data: {
+        D: {},
         numberStyle: {
             backgroundColor: 'rgba(69,158,140,0.43)',
             color: '#F88A0B',
@@ -15,5 +16,11 @@ exports.default = Page({
             textAlign: 'center',
             lineHeight: '20px'
         }
+    },
+    onLoad() {
+        const t = this;
+        t.setData({
+            D: app.globalData.chooseProject[0],
+        })
     }
 });

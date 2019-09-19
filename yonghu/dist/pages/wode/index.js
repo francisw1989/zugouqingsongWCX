@@ -16,7 +16,7 @@ exports.default = Page({
         })
     },
     onShow() {
-        let len = this.getTabBar().data.list.length;
+        let len = app.globalData.barList.length;
         this.getTabBar().setData({
             selected: len==3?2:1,
             list: app.globalData.barList

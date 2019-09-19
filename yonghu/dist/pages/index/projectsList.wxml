@@ -18,12 +18,12 @@
                     <view class="tag1">好评9999+</view>
                 </view>
                 <view class="align-right">
-                    <image src="../../static/images/30.png" style="width: 32rpx; height: 37rpx" class="icoAll" />
-                    <image src="../../static/images/31.png" style="width: 34rpx; height: 33rpx" class="icoAll left10" />
-                    <navigator wx:if="{{pageFrom=='group'}}" url='../wode/doGroup' class="btns btns-small btns-green left10" >发起拼图</navigator>
+                    <!-- <image src="../../static/images/30.png" style="width: 32rpx; height: 37rpx" class="icoAll" /> -->
+                    <image wx:if='{{item.isRecommend == 1}}' src="../../static/images/31.png" style="width: 34rpx; height: 33rpx" class="icoAll left10" />
+                    <view bindtap='gotoGroup' wx:if="{{pageFrom=='group'}}" url='../wode/doGroup' class="btns btns-small btns-green left10" data-index='{{index}}'>发起拼团</view>
                 </view>
             </view>
         </view>
     </view>
-    <view bindtap="confirmChoosen" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">确认选择</view>
+    <view wx:if="{{pageFrom == 'store' || pageFrom == 'appointment'}}" bindtap="confirmChoosen" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">确认选择</view>
 </view>

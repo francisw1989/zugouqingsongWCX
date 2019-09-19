@@ -33,8 +33,9 @@
         <navigator url="technician" class="tx5Wap inline" wx:for='{{userTechniciansList}}'>
             <image src="{{item.photo}}" mode="aspectFill" class="tx5" />
             <view class="dj">
-                <image src="../../static/images/34.png" class="icoAll img" />
-                <image src="../../static/images/34.png" class="icoAll img left5" />
+                <block wx:for="{{gradeArr[item.grade]}}">
+                    <image src="../../static/images/34.png" class="icoAll img left5" />
+                </block>
             </view>
             <view class="center col333 top5">{{item.employeeName}}</view>
         </navigator>
@@ -48,38 +49,42 @@
             <ui-tab wx:for='{{chooseProject}}'>{{item.itemName}}</ui-tab>
         </ui-tabs>
     </view>
-    <view wx:for='{{chooseProject[cIndex].technicianList}}' class="bor_btm_so pad10 bgfff">
+    <view wx:for='{{chooseProject[cIndex].technicianList}}' class="bor_btm_so pad10 bgfff" wx:if='{{!item.hasChoosedByOther}}'>
         <view  class="ui-row" style="">
             <view class="ui-col" style="flex:0 0 70px;">
                 <view class="ui-col-content">
                     <navigator url="technician" class="tx5Wap">
                         <image src="{{item.photo}}" mode="aspectFill" class="tx5" />
                         <view class="dj">
-                            <image src="../../static/images/34.png" class="icoAll img" />
-                            <image src="../../static/images/34.png" class="icoAll img left5" />
+                            <block wx:for="{{gradeArr[item.grade]}}">
+                                <image src="../../static/images/34.png" class="icoAll img left5" />
+                            </block>
                         </view>
                     </navigator>
                 </view>
             </view>
             <view class="ui-col" style="padding-left: 10px;">
                 <view class="ui-col-content">
-                    <view class="col000">{{item.name}}</view>
-                    <view>
-                        <ui-mini-star class="inline" value="5" data="{{imgData}}" _pid="{{_pid}}"></ui-mini-star>
-                        <text class="left10">5分</text>
+                    <view class="col000">{{item.employeeName}}</view>
+                    <view wx:if='{{item}}'>
+                        <ui-mini-star class="inline" value="{{item.score}}" data="{{imgData}}" _pid="{{_pid}}"></ui-mini-star>
+                        <text class="left10">{{item.score}}分</text>
                     </view>
-                    <view class="text-over font0 " style="width: 100%">擅长颈部放松，进修于擅长颈部放松，进修于</view>
+                    <view class="text-over font0 " style="width: 100%">{{item.info}}</view>
                 </view>
             </view>
             <view class="ui-col ui-col-align-right align-right" style="padding-left: 10px;flex:0 0 100px;">
                 <view class="ui-col-content align-right">
-                    <view class="colRed">¥1.5/分钟</view>
+                    <view class="colRed">¥{{item.pricePerMinute}}元/分钟</view>
                     <view class="top10">
                         <view bindtap="chooseTlx" data-index="{{index}}" class="btns btns-smaller {{item.chosed?'btns-green':'btns-green-bor'}}">{{item.chosed?'取消':'选择'}}</view>
                     </view>
                 </view>
             </view>
         </view>
+    </view>
+    <view class='top20 center col999'>
+        暂无调理师，请选择其他项目或时间
     </view>
 
     <ui-popup bindhide="onHide" show="{{show}}" background="transparent" _pid="{{_pid}}">
@@ -88,14 +93,15 @@
                 <text class="font2 bold col333">选择调理师</text>
             </view>
             <view class="pad10TB">
-                <view class="tx5Wap inline right5" wx:for='{{chooseProject[t.data.cIndex].technicianChoose}}'>
+                <view class="tx5Wap inline right5" wx:for='{{chooseProject[cIndex].technicianChoose}}'>
                     <icon type="clear" size="16" color="#333" class="close"></icon>
-                    <image src="../../static/images/32.png" mode="aspectFill" class="tx5" />
+                    <image src="{{item.photo}}" mode="aspectFill" class="tx5" />
                     <view class="dj">
-                        <image src="../../static/images/34.png" class="icoAll img" />
-                        <image src="../../static/images/34.png" class="icoAll img left5" />
+                        <block wx:for="{{gradeArr[item.grade]}}">
+                            <image src="../../static/images/34.png" class="icoAll img left5" />
+                        </block>
                     </view>
-                    <view class="center col333 top5">{{item.name}}</view>
+                    <view class="center col333 top5">{{item.employeeName}}</view>
                 </view>
                 
             </view>
@@ -107,7 +113,7 @@
         <view class="ui-row" style="">
             <view class="ui-col" style="">
                 <view class="ui-col-content">
-                    <view class="pad10RL" style="line-height: 77rpx">已选调理师（{{chooseProject[t.data.cIndex].technicianChoose.length}}）</view>
+                    <view class="pad10RL" style="line-height: 77rpx">已选调理师（{{chooseProject[cIndex].technicianChoose.length || 0}}）</view>
                 </view>
             </view>
             <view class="ui-col" style="flex:0 0 100px;">

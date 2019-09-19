@@ -1,7 +1,9 @@
 {
    
     "pages": [
+        
         "pages/index/blank",
+        "pages/index/pay",
         "pages/index/pingjia",
         
 
@@ -14,7 +16,7 @@
         
         "pages/wode/index",
         "pages/wode/appointment",
-        "pages/index/pay",
+        
         "pages/index/projectsList",
         "pages/index/index",
         "pages/index/wxdl",

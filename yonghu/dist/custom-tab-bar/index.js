@@ -6,7 +6,11 @@ Component({
         selectedColor: "#459E8A",
         list: app.globalData.barList
     },
-    attached() {},
+    attached() {
+        // this.setData({
+        //     selected: wx.getStorageSync('mainTabIndex')
+        // })
+    },
     methods: {
         switchTab(e) {
             const data = e.currentTarget.dataset
@@ -14,9 +18,9 @@ Component({
             wx.switchTab({
                 url
             })
-            this.setData({
-                selected: data.index
-            })
+            // this.setData({
+            //     selected: data.index
+            // })
         }
     },
     onLoad(){

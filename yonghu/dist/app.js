@@ -11,11 +11,63 @@ var _system2 = _interopRequireDefault(_system);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = App({
-    
+    // 根据商户订单号 获取下单结果和详情
+    orderDetail(){
+        const t = this;
+        let params = {
+            outTradeNo: t.globalData.outTradeNo
+        };
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('orderDetail', params).then((res) => {
+                for (const v of res.orderItems){
+                    v.imgs = v.imgs.split(',')[0]
+                }
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 我的预约列表
+    reservations(status){
+        const t = this;
+        let params = {
+            userId: t.globalData.userInfo.userId,
+            status: status,
+            page: 1,
+            size: 100
+        };
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('reservations', params).then((res) => {
+                for (const v of res.records){
+                    v.orderStartTime2 = v.orderStartTime.replace(/-/g, "/")
+                }
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 开团接口
+    createGroup(){
+        const t = this;
+
+        let params = {
+            userId: t.globalData.userInfo.userId,
+            itemId: t.globalData.chooseProject[0].id,
+            price: t.globalData.chooseProject[0].choosePrice
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('createGroup?' + t.jsonToParameters(params), {}).then((res) => {
+                res.imgs && (res.imgs = res.imgs.split(','));
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // 选择技师页面
     selectTechnician(params){
         const t = this;
         let p = new Promise((resolve, reject) => {
+            // params.dateTime = '2019-09-18 09:30:00'
             t.getRequest('selectTechnician', params).then((res) => {
                 for(const v of res){
                     v.imgs = v.imgs.split(',')[0]
@@ -204,9 +256,9 @@ exports.default = App({
                 dataType: 'json',
                 success: function success(res) {
                     wx.hideLoading();
-                    if (!res.data || res.data.code){
+                    if (res.data && res.data.msg){
                         wx.showModal({
-                            content: '系统错误'
+                            content: res.data.msg
                         });
                         return
                     }
@@ -318,19 +370,34 @@ exports.default = App({
         });
         return p;
     },
-    wxPay: function wxPay(obj) {
+    orderPay(couponRecordId, type){
         const t = this;
-        obj = {
-            appId: "wx5381d6fd8a98109e",
-            nonceStr: "1567252821067",
-            packageValue: "prepay_id=wx31200021035821bc7fa776b71138378100",
-            paySign: "3EF62B5457927A168A925265602E3A55",
-            signType: "MD5",
-            timeStamp: "1567252821"
+        let params = {
+            orderId: app.globalData.orderDetail.id,
+            couponRecordId: couponRecordId,
+            type: type
         }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('orderPay', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    wxPay: function wxPay() {
+        const t = this;
+        // obj = {
+        //     appId: "wx5381d6fd8a98109e",
+        //     nonceStr: "1567252821067",
+        //     packageValue: "prepay_id=wx31200021035821bc7fa776b71138378100",
+        //     paySign: "3EF62B5457927A168A925265602E3A55",
+        //     signType: "MD5",
+        //     timeStamp: "1567252821"
+        // }
         wx.showLoading({
             title: '加载中'
         });
+        let obj = t.globalData.wxObj;
         console.log(JSON.stringify({
             timeStamp: obj.timeStamp + '',
             nonceStr: obj.nonceStr + '',
@@ -346,7 +413,6 @@ exports.default = App({
             signType: obj.signType,
             paySign: obj.paySign + '',
             success: function success(res) {
-
                 wx.showToast({
                     title: '支付成功'
                 });

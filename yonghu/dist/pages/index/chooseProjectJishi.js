@@ -24,7 +24,7 @@ exports.default = Page({
         ],
         tlsList: [
         ],
-        tlsChosed: [],
+        tlsChosedIds: [],
         cIndex: 0,
         tabStyle: {
             'width': 'auto'
@@ -47,7 +47,30 @@ exports.default = Page({
             imgSrc8: 'http://images.uileader.com/20180410/0490f6ac-eae9-4801-973b-30f5ea0a5d0c.png'
         },
         show: false,
-        canLoad: false
+        canLoad: false,
+        gradeArr: ['', '1', '11', '111']
+    },
+    orderDetail() {
+        const t = this;
+        let _do = function () {
+            app.orderDetail().then((res) => {
+                if (!res) {
+                    setTimeout(() => {
+                        _do()
+                    }, 1000)
+                    wx.showLoading({
+                        title: '加载中'
+                    });
+                } else {
+                    wx.hideLoading();
+                    app.globalData.orderDetail = res;
+                    wx.redirectTo({
+                        url: 'pay',
+                    })
+                }
+            })
+        }
+        _do()
     },
     onLoad(){
         const t = this;
@@ -98,10 +121,12 @@ exports.default = Page({
         let i = e.target.dataset.index;
         if (t.data.chooseProject[t.data.cIndex].technicianList[i].chosed){
             t.data.chooseProject[t.data.cIndex].technicianList[i].chosed = false;
-            
+            t.data.tlsChosedIds = t.data.tlsChosedIds.filter((v)=>{
+                return v != t.data.chooseProject[t.data.cIndex].technicianList[i].id
+            })
         }else{
             t.data.chooseProject[t.data.cIndex].technicianList[i].chosed = true;
-            
+            t.data.tlsChosedIds.push(t.data.chooseProject[t.data.cIndex].technicianList[i].id)
         }
         t.data.chooseProject[t.data.cIndex].technicianChoose = [];
         for (const v of t.data.chooseProject[t.data.cIndex].technicianList){
@@ -130,9 +155,9 @@ exports.default = Page({
         }
         app.globalData.chooseProject = t.data.chooseProject;
         app.order().then((res)=>{
-            wx.redirectTo({
-                url: 'pay',
-            })
+            app.globalData.outTradeNo = res.outTradeNo;
+            t.orderDetail();
+            
         })
         
     },
@@ -154,7 +179,22 @@ exports.default = Page({
         t.setData({
             cIndex: index,
         });
-        
+        let currTechnicianChooseIds = [];
+        if (t.data.chooseProject[t.data.cIndex].technicianChoose && t.data.chooseProject[t.data.cIndex].technicianChoose.length) {
+            currTechnicianChooseIds = t.data.chooseProject[t.data.cIndex].technicianChoose.map((v) => { return v.id });
+        }
+        t.data.chooseProject[t.data.cIndex].technicianList.forEach((v)=>{
+            // 当前技师不在已选的技师里面，或者已经存在于选中的技师列表里。返回当前数据
+            if (t.data.tlsChosedIds.indexOf(v.id) < 0 || currTechnicianChooseIds.indexOf(v.id) > -1){
+                v.hasChoosedByOther = false;
+            }else{
+                v.hasChoosedByOther = true;
+            }
+            
+        })
+        t.setData({
+            chooseProject: t.data.chooseProject
+        })
         // t.selectTechnician();
     },
     
