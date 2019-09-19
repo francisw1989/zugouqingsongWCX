@@ -71,6 +71,8 @@ Page({
             })
         }else if(t.data.pageFrom == 'index'){
             // page from index, do navigate to projectDetail
+            app.globalData.chooseProject = t.data.list[e.currentTarget.dataset.index];
+            app.globalData.appointFromProject = true;
             wx.navigateTo({
                 url: 'projectDetail?itemId=' + e.currentTarget.dataset.id,
             })

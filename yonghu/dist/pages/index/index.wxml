@@ -24,10 +24,10 @@
         </view>
         <view class="title top10 font2 col000">推荐项目</view>
     </view>
-    <navigator url="shopList" wx:for='{{D.itemRecommendList}}' class="pad10 tjxmWap bgfff top5 clearfix">
-        <navigator url="projectDetail?itemId={{item.id}}"  class=" right10 left" style="width: 183rpx">
+    <navigator url="projectDetail?itemId={{item.id}}" wx:for='{{D.itemRecommendList}}' class="pad10 tjxmWap bgfff top5 clearfix" data-index="{{index}}" data-id="{{item.id}}" catchtap="chooseProject">
+        <view class=" right10 left" style="width: 183rpx">
             <image src="{{item.imgs}}" class="img " mode='aspectFill' />
-        </navigator>
+        </view>
         <view style="width: 482rpx" class="left">
             <view class=" bor_btm_so" style="padding-bottom: 10rpx">
                 <text class="col000 ">{{item.itemName}}</text>
@@ -38,15 +38,15 @@
         </view>
     </navigator>
     <view class="padSp1 clearfix">
-        <navigator url="shopList" class="right top2">更多 ></navigator>
+        <navigator url="shopList?pageFrom=index" class="right top2">更多 ></navigator>
         <text class="title font2 col000 ">附近门店</text>
     </view>
     <view class="bgfff" style="padding: 0 40rpx">
         <!--选择门店预约-->
-        <view url="appointmentTime" wx:for='{{D.nearbyStore}}' class="fjmdWap bgfff bor_btm_so" data-index='{{index}}' catchtap='chooseStore'>
-            <navigator url="shopDetail?id={{item.id}}">
+        <view wx:for='{{D.nearbyStore}}' class="fjmdWap bgfff bor_btm_so" data-index='{{index}}' data-id="{{item.id}}" catchtap='chooseStore'>
+            <view>
                 <image src="{{item.imgs}}" class="img left right10" mode='aspectFill' />
-            </navigator>
+            </view>
             <view class="">
                 <text class="col000 font2">{{item.name}}</text>
                 <view class="right ">

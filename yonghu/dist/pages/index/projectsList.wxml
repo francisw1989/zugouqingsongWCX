@@ -3,11 +3,11 @@
         <ui-tab wx:for='{{itemClassList}}'>{{item.itemClassName}}</ui-tab>
     </ui-tabs>
     <view class="clearfix">
-        <view wx:for='{{list}}'  style="border-color:{{item.checked?'#459E8C':'#fff'}}" class="pad10 tjxmWap bgfff clearfix btm5">
-            <navigator url="projectDetail?itemId={{item.id}}" class=" right10 left" style="width: 183rpx">
+        <view wx:for='{{list}}' data-index="{{index}}" data-id='{{item.id}}' catchtap="itemClick" style="border-color:{{item.checked?'#459E8C':'#fff'}}" class="pad10 tjxmWap bgfff clearfix btm5">
+            <view url="projectDetail?itemId={{item.id}}" class=" right10 left" style="width: 183rpx">
                 <image mode="aspectFill" src="{{item.imgs}}" class="img " />
-            </navigator>
-            <view data-index="{{index}}" data-id='{{item.id}}' catchtap="itemClick" style="width: 482rpx" class="left">
+            </view>
+            <view style="width: 482rpx" class="left">
                 <view class=" bor_btm_so" style="padding-bottom: 10rpx">
                     <text class="col000 ">{{item.itemName}}</text>
                     <text class="left10  col000">默认：{{item.defaultDuration}}分钟</text>

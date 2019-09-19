@@ -15,13 +15,24 @@ exports.default = Page({
         itemClassList: [],
         D: {}
     },
+    chooseProject(e){
+        const t = this;
+        let index = e.currentTarget.dataset.index;
+        let id = e.currentTarget.dataset.id;
+        app.globalData.chooseProject = [t.data.D.itemRecommendList[index]];
+        app.globalData.appointFromProject = true;
+        wx.navigateTo({
+            url: 'projectDetail?itemId=' + id,
+        })
+    },
     chooseStore(e){
         const t = this;
         let index = e.currentTarget.dataset.index;
-        
+        let id = e.currentTarget.dataset.id;
         app.globalData.chooseStore = t.data.D.nearbyStore[index];
+        app.globalData.appointFromProject = false;
         wx.navigateTo({
-            url: 'appointmentTime',
+            url: 'shopDetail?id='+id,
         })
     },
     onShow() {
