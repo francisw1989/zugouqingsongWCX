@@ -50,7 +50,7 @@ exports.default = Page({
                 if (!res.nowOrder){
                     setTimeout(()=>{
                         _do()
-                    }, 10000)
+                    }, 60000)
                 }else{
                     t.setData({
                         jxzShow: true,

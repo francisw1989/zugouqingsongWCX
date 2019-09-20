@@ -5,17 +5,29 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Page({
     data: {
-        list: [{ bgCol: '#459E8C' }, { bgCol: '#FF7D55' }, { bgCol: '#FEB974' }, { bgCol: '#E6E6E6' }]
+        colors: ['#459E8C' , '#FF7D55' , '#FEB974' , '#E6E6E6']
     },
     getList(){
         const t = this;
         if(t.data.pageFrom=='order'){
-            app.optimalCoupon();
-        }else {
-            app.userCoupon()
+            app.optimalCoupon().then((res) => {
+                t.setData({
+                    list: res
+                })
+            });
+        } else if (t.data.pageFrom=='wode'){
+            app.userCoupon().then((res)=>{
+                t.setData({
+                    list: res
+                })
+            })
         }
     },
-    onLoad(){
-
+    onLoad(opt){
+        const t = this;
+        t.setData({
+            pageFrom: opt.pageFrom
+        })
+        t.getList();
     }
 });

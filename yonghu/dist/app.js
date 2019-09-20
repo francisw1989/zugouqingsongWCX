@@ -32,7 +32,7 @@ exports.default = App({
             userId: t.globalData.userInfo.userId
         };
         let p = new Promise((resolve, reject) => {
-            t.getRequest('newOrder', params).then((res) => {
+            t.getRequest('newOrder', params, true).then((res) => {
                 resolve(res);
             })
         })
@@ -283,11 +283,13 @@ exports.default = App({
     },
     onShow: function onShow() { },
     onHide: function onHide() { },
-    getRequest: function getRequest(url, params, type) {
+    getRequest: function getRequest(url, params, noNeedLoading) {
         var t = this;
-        wx.showLoading({
-            title: '加载中'
-        });
+        if (!noNeedLoading){
+            wx.showLoading({
+                title: '加载中'
+            });
+        }
         var _url = t.globalData.u + url;
         var p = new Promise(function (resolve, reject) {
             wx.request({

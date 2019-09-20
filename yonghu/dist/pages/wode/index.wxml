@@ -42,7 +42,7 @@
       </navigator>
     </view>
     <view class="ui-col ui-col-align-center align-center" style="">
-      <navigator url='coupon' class="ui-col-content align-center">
+      <navigator url='coupon?pageFrom=wode' class="ui-col-content align-center">
         <image src="../../static/images/a4.png" mode="aspectFit" class="woIcoimg" />
         <view class="top10">我的优惠券</view>
       </navigator>
