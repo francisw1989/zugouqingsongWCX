@@ -11,7 +11,149 @@ var _system2 = _interopRequireDefault(_system);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = App({
+    globalData: {
+        u: 'https://zzh.hzysofti.com/userApi/v1/',
+        u_s: 'https://zzh.hzysofti.com/',
+        userInfo: {},
+        itemClassList: [],
+        memberLevelName: ['普通会员', '一星会员', '二星会员', '三星会员'],
+        barList: [{
+            "selectedIconPath": "/static/images/5.png",
+            "iconPath": "/static/images/6.png",
+            "pagePath": "/pages/index/index",
+            "text": "首页"
+        },
+        {
+            "selectedIconPath": "/static/images/9.png",
+            "iconPath": "/static/images/10.png",
+            "pagePath": "/pages/wode/index",
+            "text": "我的"
+        }
+        ],
+        chooseProject: [], // 当前选中的项目
+        chooseStore: {}, // 当前选中的门店
+        chooseGoods: [], // 当前选中的商品
+        wxObj: {}, // 微信支付参数对象
+        currOrder: {}, // 当前正在进行中的订单,
+        orderDetail: {} // 订单详情
+    },
     
+    // 根据技师ID加载技师信息
+    employee(employeeId){
+        const t = this;
+        let params = {
+            employeeId: employeeId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employee', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 评价
+    evaluation(params){
+        const t = this;
+        // let params = {
+        //     userId: t.globalData.userInfo.userId,
+        //     orderId: t.globalData.currOrder.id,
+        //     employeeIds: [],
+        //     evaluateScore: [],
+        //     evaluateLabel: '',
+        //     content: ''
+        // }
+        params = Object.assign(params, {
+            userId: t.globalData.userInfo.userId,
+            orderId: t.globalData.currOrder.id
+        })
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('evaluation', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 加载客户对用户评价管理表
+    evaluations(){
+        const t = this;
+        let params = {
+            userId: t.globalData.userInfo.userId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('evaluations', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 加载用户邀请奖励列表
+    invitationReward(){
+        const t = this;
+        let params = {
+            userId: t.globalData.userInfo.userId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('invitationReward', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 我的订单状态记录
+    orderStatus(){
+        const t = this;
+        let params = {
+            userId: t.globalData.userInfo.userId,
+            page: 1,
+            size: 100
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('orderStatus', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 会员充值微信支付接口
+    vipRecharge(price) {
+        const t = this;
+        let params = {
+            userId: t.globalData.userInfo.userId,
+            price: price
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('vipRecharge', params).then((res) => {
+                t.globalData.wxObj = res
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 会员充值记录
+    vipRechargeRecord(){
+        const t = this;
+        let params = {
+            userId: t.globalData.userInfo.userId,
+            page: 1,
+            size: 100
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('vipRechargeRecord', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 会员充值活动信息
+    vipRecharge(){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('vipRecharge', {}).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // 加载用户优惠卷列表
     userCoupon(){
         const t = this;
@@ -33,6 +175,7 @@ exports.default = App({
         };
         let p = new Promise((resolve, reject) => {
             t.getRequest('newOrder', params, true).then((res) => {
+                t.globalData.currOrder = res;
                 resolve(res);
             })
         })
@@ -44,7 +187,7 @@ exports.default = App({
         let params = {
             userId: t.globalData.userInfo.userId,
             orderId: t.globalData.currOrder.id,
-            storeId: t.globalData.currStore.id
+            storeId: t.globalData.currOrder.storeId
         };
         let p = new Promise((resolve, reject) => {
             t.getRequest('optimalCoupon', params).then((res) => {
@@ -53,24 +196,7 @@ exports.default = App({
         })
         return p;
     },
-    // 根据商户订单号 获取下单结果和详情
-    orderDetail(){
-        const t = this;
-        let params = {
-            outTradeNo: t.globalData.outTradeNo
-        };
-        let p = new Promise((resolve, reject) => {
-            t.getRequest('orderDetail', params).then((res) => {
-                if (res && res.orderItems){
-                    for (const v of res.orderItems) {
-                        v.imgs = v.imgs.split(',')[0]
-                    }
-                }
-                resolve(res);
-            })
-        })
-        return p;
-    },
+    
     // 我的预约列表
     reservations(status){
         const t = this;
@@ -90,6 +216,63 @@ exports.default = App({
         })
         return p;
     },
+    
+    // 加载我的项目拼团列表
+    assembleRecordByUser(){
+        const t = this;
+        let params = {
+            userId: t.globalData.userInfo.userId,
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('assembleRecordByUser', params).then((res) => {
+                res.imgs && (res.imgs = res.imgs.split(','));
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 根据项目ID加载项目拼团列表
+    assembleRecord(itemId) {
+        const t = this;
+        let params = {
+            itemId: itemId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('assembleRecord', params).then((res) => {
+                res.imgs && (res.imgs = res.imgs.split(','));
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 获取拼团信息
+    assembleRecordInfo(assembleId){
+        const t = this;
+        let params = {
+            assembleId: assembleId
+        };
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('assembleRecordInfo', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 参团接口
+    joinGroup(assembleId){
+        const t = this;
+        let params = {
+            userId: t.globalData.userInfo.userId,
+            assembleId: assembleId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('joinGroup?' + t.jsonToParameters(params), {}).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    
     // 开团接口
     createGroup(){
         const t = this;
@@ -136,19 +319,50 @@ exports.default = App({
         })
         return p;
     },
+    // 根据商户订单号 获取下单结果和详情
+    orderDetail() {
+        const t = this;
+        let params = {
+            outTradeNo: t.globalData.outTradeNo
+        };
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('orderDetail', params).then((res) => {
+                if (res && res.orderItems) {
+                    for (const v of res.orderItems) {
+                        v.imgs = v.imgs.split(',')[0]
+                    }
+                }
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 订单商品下单接口
+    orderGoods(){
+        const t = this;
+        let data = [];
+        for (const v of t.globalData.chooseGoods) {
+            data.push({
+                articleId: v.id,
+                count: v.count
+            })
+        }
+        let params = {
+            userId: t.globalData.userInfo.userId,
+            orderId: t.globalData.userInfo.orderId,
+            storeId: t.globalData.chooseStore.id
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('orderGoods?' + t.jsonToParameters(params), data).then((res) => {
+                res.imgs && (res.imgs = res.imgs.split(','));
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // 服务项目下单接口
     order(){
         const t = this;
-        // [
-        //     {
-        //         "itemId": "string",
-        //         "orderStartTime": "string",
-        //         "orderTime": 0,
-        //         "technicianIds": [
-        //             0
-        //         ]
-        //     }
-        // ]
         let data = [];
         for (const v of t.globalData.chooseProject){
             data.push({
@@ -172,19 +386,85 @@ exports.default = App({
         })
         return p;
     },
-    // 根据项目ID加载项目拼团列表
-    assembleRecord(itemId){
+    // 订单服务支付接口 获取支付的参数
+    orderPay(couponRecordId, type) {
         const t = this;
         let params = {
-            itemId: itemId
+            orderId: app.globalData.orderDetail.id,
+            couponRecordId: couponRecordId,
+            type: type
         }
         let p = new Promise((resolve, reject) => {
-            t.getRequest('assembleRecord', params).then((res) => {
-                res.imgs && (res.imgs = res.imgs.split(','));
+            t.getRequest('orderPay', params).then((res) => {
                 resolve(res);
             })
         })
         return p;
+    },
+    // 商品订单服务支付接口
+    articleOrderPay(articleOrderId, type){
+        const t = this;
+        let params = {
+            articleOrderId: articleOrderId,
+            type: type
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('orderPay', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    wxPay: function wxPay() {
+        const t = this;
+        // obj = {
+        //     appId: "wx5381d6fd8a98109e",
+        //     nonceStr: "1567252821067",
+        //     packageValue: "prepay_id=wx31200021035821bc7fa776b71138378100",
+        //     paySign: "3EF62B5457927A168A925265602E3A55",
+        //     signType: "MD5",
+        //     timeStamp: "1567252821"
+        // }
+        wx.showLoading({
+            title: '加载中'
+        });
+        let obj = t.globalData.wxObj;
+        console.log(JSON.stringify({
+            timeStamp: obj.timeStamp + '',
+            nonceStr: obj.nonceStr + '',
+            package: obj.packageValue + '',
+            signType: obj.signType,
+            paySign: obj.paySign + ''
+        }));
+        wx.requestPayment({
+            //支付
+            timeStamp: obj.timeStamp + '',
+            nonceStr: obj.nonceStr + '',
+            package: obj.packageValue + '',
+            signType: obj.signType,
+            paySign: obj.paySign + '',
+            success: function success(res) {
+                wx.showToast({
+                    title: '支付成功'
+                });
+                setTimeout(function () {
+                    wx.hideLoading();
+                    wx.redirectTo({
+                        url: 'paySuccess',
+                    })
+                }, 1000);
+            },
+            fail: function fail(res) {
+                wx.hideLoading();
+                // wx.showModal({
+                //     title: '提示',
+                //     content: JSON.stringify(res)
+                // })
+            },
+            complete: function complete(res) {
+                wx.hideLoading();
+            }
+        });
     },
     
     // 根据项目ID获得项目详情
@@ -254,29 +534,7 @@ exports.default = App({
         })
         return p;
     },
-    globalData: {
-        u: 'https://zzh.hzysofti.com/userApi/v1/',
-        u_s: 'https://zzh.hzysofti.com/',
-        userInfo: {},
-        itemClassList: [],
-        memberLevelName: ['普通会员', '一星会员', '二星会员', '三星会员'],
-        barList: [{
-                "selectedIconPath": "/static/images/5.png",
-                "iconPath": "/static/images/6.png",
-                "pagePath": "/pages/index/index",
-                "text": "首页"
-            },
-            {
-                "selectedIconPath": "/static/images/9.png",
-                "iconPath": "/static/images/10.png",
-                "pagePath": "/pages/wode/index",
-                "text": "我的"
-            }
-        ],
-        chooseProject: [],
-        chooseStore: {}
-
-    },
+    
     onLaunch: function onLaunch() {
         _system2.default.attachInfo();
         
@@ -416,72 +674,7 @@ exports.default = App({
         });
         return p;
     },
-    // 订单服务支付接口 获取支付的参数
-    orderPay(couponRecordId, type){
-        const t = this;
-        let params = {
-            orderId: app.globalData.orderDetail.id,
-            couponRecordId: couponRecordId,
-            type: type
-        }
-        let p = new Promise((resolve, reject) => {
-            t.getRequest('orderPay', params).then((res) => {
-                resolve(res);
-            })
-        })
-        return p;
-    },
-    wxPay: function wxPay() {
-        const t = this;
-        // obj = {
-        //     appId: "wx5381d6fd8a98109e",
-        //     nonceStr: "1567252821067",
-        //     packageValue: "prepay_id=wx31200021035821bc7fa776b71138378100",
-        //     paySign: "3EF62B5457927A168A925265602E3A55",
-        //     signType: "MD5",
-        //     timeStamp: "1567252821"
-        // }
-        wx.showLoading({
-            title: '加载中'
-        });
-        let obj = t.globalData.wxObj;
-        console.log(JSON.stringify({
-            timeStamp: obj.timeStamp + '',
-            nonceStr: obj.nonceStr + '',
-            package: obj.packageValue + '',
-            signType: obj.signType,
-            paySign: obj.paySign + ''
-        }));
-        wx.requestPayment({
-            //支付
-            timeStamp: obj.timeStamp + '',
-            nonceStr: obj.nonceStr + '',
-            package: obj.packageValue + '',
-            signType: obj.signType,
-            paySign: obj.paySign + '',
-            success: function success(res) {
-                wx.showToast({
-                    title: '支付成功'
-                });
-                setTimeout(function () {
-                    wx.hideLoading();
-                    wx.redirectTo({
-                        url: 'paySuccess',
-                    })
-                }, 1000);
-            },
-            fail: function fail(res) {
-                wx.hideLoading();
-                // wx.showModal({
-                //     title: '提示',
-                //     content: JSON.stringify(res)
-                // })
-            },
-            complete: function complete(res) {
-                wx.hideLoading();
-            }
-        });
-    },
+    
     getLoaction(){
         const t = this;
         let p = new Promise((resolve, reject) => {
