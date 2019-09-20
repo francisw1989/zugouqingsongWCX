@@ -74,11 +74,11 @@
                 <text class="font2 bold col333">进行中</text>
                 <navigator class="top5 right" url="pingjia"> <image src="../../static/images/17.png" class="ico17 " /></navigator>
             </view>
-            <view class="col333 font2 top15 bold">编号：Z100201916049325</view>
+            <view class="col333 font2 top15 bold">编号：{{O.outTradeNo}}</view>
             <view class="clearfix top15">
                 <image src="../../static/images/13.png" class="tx1 left right15" />
                 <view class="top10">
-                    <text class="col333 font2">【颈椎放松】</text>
+                    <text class="col333 font2">{{O.itemNames}}</text>
                     <image src="../../static/images/12.png" class="ico12 icoAll left10" />
                     <text class="left5 verMid">推荐：</text>
                     <text class="colRed">60分钟</text>
@@ -86,7 +86,7 @@
                 <view class="top5 font0">这是一段介绍，足疗30分钟，颈部按摩20分钟</view>
             </view>
             <view class="top15 col333 font2 bold">
-                中央商场 旗舰店
+                {{O.storeName}}
             </view>
             <ui-timeline class="top10" style="width:100%" _pid="{{_pid}}">
                 <ui-timeline-item wx:for="{{lcList}}" wx:key="index" point-color="#459E8C" line-color="#BFBFBF" show-line="{{index === (lcList.length - 1) ? false : true}}" shadow="{{false}}" _pid="{{_pid}}">

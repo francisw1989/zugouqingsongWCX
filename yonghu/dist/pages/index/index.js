@@ -13,7 +13,8 @@ exports.default = Page({
             { time: '', content: '预计结束时间：2019-06-11 12:50' }
         ],
         itemClassList: [],
-        D: {}
+        D: {},
+        O: {}
     },
     chooseProject(e){
         const t = this;
@@ -42,47 +43,66 @@ exports.default = Page({
         })
         
     },
-    onLoad() {
+    newOrder(){
         const t = this;
-        setTimeout(() => {
-            let list = this.getTabBar().data.list;
-            list.splice(1, 0, {
-                "selectedIconPath": "/static/images/7.png",
-                "iconPath": "/static/images/8.png",
-                "pagePath": "/pages/index/goods",
-                "text": "商品"
-            })
-            
-            app.globalData.barList = list;
-            this.getTabBar().setData({
-                list: list
-            })
-        }, 6000)
-        // wx.setTabBarItem({
-        //     index: 1,
-        //     selectedIconPath: "static/images/7.png",
-        //     iconPath: "static/images/8.png",
-        //     text: "商品"
-        // })
-        app.userInfo();
-        // wx.hideTabBar();
-        app.itemClass().then((res) => {
-            t.setData({
-                itemClassList: app.globalData.itemClassList
-            })
+        let _do = ()=>{
+            app.newOrder().then((res) => {
+                if (!res.nowOrder){
+                    setTimeout(()=>{
+                        _do()
+                    }, 10000)
+                }else{
+                    t.setData({
+                        jxzShow: true,
+                        O: res
+                    })
+                    t.initGoodsPage();
+                }
+            });
+        }
+        
+    },
+    // 全局加载商品页面
+    initGoodsPage(){
+        const t = this;
+        let list = t.getTabBar().data.list;
+        list.splice(1, 0, {
+            "selectedIconPath": "/static/images/7.png",
+            "iconPath": "/static/images/8.png",
+            "pagePath": "/pages/index/goods",
+            "text": "商品"
         })
-        app.getLoaction().then((res)=>{
-            app.index().then((res) =>{
+        app.globalData.barList = list;
+        t.getTabBar().setData({
+            list: list
+        })
+    },
+    getIndex(){
+        const t = this;
+        app.getLoaction().then((res) => {
+            app.index().then((res) => {
                 t.setData({
                     D: res
                 })
             })
         })
-        setTimeout(() => {
+    },
+    getItemClass(){
+        const t = this;
+        app.itemClass().then((res) => {
             t.setData({
-                jxzShow: true
+                itemClassList: app.globalData.itemClassList
             })
-            
-        }, 5000)
+        })
+    },
+    onLoad() {
+        const t = this;
+        app.userInfo().then((res)=>{
+            t.newOrder();
+        });
+        t.getIndex();
+        t.getItemClass();
+        
+
     }
 });

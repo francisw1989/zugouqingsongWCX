@@ -4,7 +4,7 @@
     <input class="input" placeholder="搜索商品"></input>
   </view>
   <view style="overflow: hidden;height:{{height}}px;" class="ui-row">
-    <view class="ui-col ui-col-3" style="flex: 0 0 25%;">
+    <view class="ui-col ui-col-3" style="flex: 0 0 20%;">
       <view class="ui-col-content">
         <ui-v-tabs height="{{height}}" index="{{ current }}" bindchange="handleChange" _pid="{{_pid}}">
           <ui-v-tab wx:for="{{ tabItems }}" _pid="{{_pid}}">

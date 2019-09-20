@@ -13,7 +13,7 @@ exports.default = Page({
             'width:': '60px'
         },
         activeTabStyle: {},
-        tabItems: [{ name: '酒水' }, { name: '果盘' }, { name: '养身茶' }, { name: '小吃' }],
+        tabItems: [{ name: '全部'}],
         height: wx.DEFAULT_CONTENT_HEIGHT,
         customStyle: {
             'background-color': '#f71429',
@@ -35,8 +35,11 @@ exports.default = Page({
         })
 
     },
-    onLoad: function onLoad() {
-        var t = this;
+    optimalCoupon(){
+        app.optimalCoupon();
+    },
+    setSize(){
+        const t = this;
         var query = wx.createSelectorQuery();
         query.select('#seachWap2').boundingClientRect();
         query.exec(function (res) {
@@ -44,9 +47,15 @@ exports.default = Page({
             console.log(res);
             //取高度
             t.setData({
-                height: t.data.height - res[0].height-120
+                height: t.data.height - res[0].height - 120
             });
             console.log(t.data.height);
         });
+    },
+    onLoad: function onLoad() {
+        var t = this;
+        t.setSize();
+        t.optimalCoupon();
+        
     }
 });

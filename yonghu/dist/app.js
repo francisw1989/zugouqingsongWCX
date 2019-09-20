@@ -11,6 +11,35 @@ var _system2 = _interopRequireDefault(_system);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = App({
+    
+    // 用户端首页当前订单
+    newOrder(){
+        const t = this;
+        let params = {
+            userId: t.globalData.userInfo.userId
+        };
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('newOrder', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 加载订单项目使用的优惠卷，及最优优惠卷
+    optimalCoupon(){
+        const t = this;
+        let params = {
+            userId: t.globalData.userInfo.userId,
+            orderId: t.globalData.currOrder.id,
+            storeId: t.globalData.currStore.id
+        };
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('optimalCoupon', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // 根据商户订单号 获取下单结果和详情
     orderDetail(){
         const t = this;
@@ -19,8 +48,10 @@ exports.default = App({
         };
         let p = new Promise((resolve, reject) => {
             t.getRequest('orderDetail', params).then((res) => {
-                for (const v of res.orderItems){
-                    v.imgs = v.imgs.split(',')[0]
+                if (res && res.orderItems){
+                    for (const v of res.orderItems) {
+                        v.imgs = v.imgs.split(',')[0]
+                    }
                 }
                 resolve(res);
             })
@@ -370,6 +401,7 @@ exports.default = App({
         });
         return p;
     },
+    // 订单服务支付接口 获取支付的参数
     orderPay(couponRecordId, type){
         const t = this;
         let params = {

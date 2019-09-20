@@ -1,8 +1,9 @@
 {
    
     "pages": [
-        
         "pages/index/blank",
+        "pages/index/goods",
+        
         "pages/index/pay",
         "pages/index/pingjia",
         
@@ -29,7 +30,7 @@
         "pages/wode/invitation",
         "pages/wode/memberGrade",
         "pages/index/technician",
-        "pages/index/goods",
+        
         "pages/index/reCharge",
         "pages/index/paySuccess",
         "pages/index/projectsChoose",
