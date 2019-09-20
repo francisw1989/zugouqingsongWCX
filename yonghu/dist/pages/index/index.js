@@ -60,7 +60,7 @@ exports.default = Page({
                 }
             });
         }
-        
+        _do()
     },
     // 全局加载商品页面
     initGoodsPage(){

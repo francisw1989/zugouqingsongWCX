@@ -12,6 +12,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = App({
     
+    // 加载用户优惠卷列表
+    userCoupon(){
+        const t = this;
+        let params = {
+            userId: t.globalData.userInfo.userId
+        };
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('userCoupon', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // 用户端首页当前订单
     newOrder(){
         const t = this;
