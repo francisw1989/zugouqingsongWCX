@@ -35,12 +35,13 @@ exports.default = App({
         this.setBg();
      },
     onHide: function onHide() { },
-    getRequest: function getRequest(url, params, type) {
+    getRequest: function getRequest(url, params, noNeedLoading) {
         var t = this;
-        wx.showLoading({
-            title: '加载中'
-        });
-
+        if (!noNeedLoading) {
+            wx.showLoading({
+                title: '加载中'
+            });
+        }
         var _url = t.globalData.u + url;
         var p = new Promise(function (resolve, reject) {
             wx.request({
@@ -53,7 +54,14 @@ exports.default = App({
                 dataType: 'json',
                 success: function success(res) {
                     wx.hideLoading();
+                    if (res.data && res.data.msg) {
+                        wx.showModal({
+                            content: res.data.msg
+                        });
+                        return
+                    }
                     resolve(res.data);
+
                 },
                 fail: function fail(res) {
                     wx.hideLoading();
@@ -67,13 +75,17 @@ exports.default = App({
         });
         return p;
     },
-
     postRequest: function getRequest(url, params, type) {
         var t = this;
         wx.showLoading({
             title: '加载中'
         });
-        let _url = t.globalData.u + url;
+        let _url = '';
+        if (type && type == 'spe') {
+            _url = t.globalData.u_s + url
+        } else {
+            _url = t.globalData.u + url
+        }
         var p = new Promise(function (resolve, reject) {
             wx.request({
                 url: _url,
@@ -85,12 +97,16 @@ exports.default = App({
                 },
                 dataType: 'json',
                 success: function success(res) {
-                    debugger
                     wx.hideLoading();
+                    if (res.data && res.data.msg) {
+                        wx.showModal({
+                            content: res.data.msg
+                        });
+                        return
+                    }
                     resolve(res.data)
                 },
                 fail: function fail(res) {
-                    debugger
                     wx.hideLoading();
                     wx.showModal({
                         content: JSON.stringify(res)
@@ -101,6 +117,13 @@ exports.default = App({
             });
         });
         return p;
+    },
+    jsonToParameters(parmas) {
+        let _parmas = Object.keys(parmas).map(function (key) {
+            // body...
+            return encodeURIComponent(key) + "=" + encodeURIComponent(parmas[key]);
+        }).join("&");
+        return _parmas;
     },
     userLogin() {
         const t = this;

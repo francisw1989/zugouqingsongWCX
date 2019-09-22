@@ -1,8 +1,8 @@
 {
     "pages": [
-        
-        "pages/index/index",
         "pages/index/blank",
+        "pages/index/index",
+        
         "pages/wode/mentor",
         "pages/component/tree",
         

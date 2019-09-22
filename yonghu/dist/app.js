@@ -34,8 +34,10 @@ exports.default = App({
         chooseStore: {}, // 当前选中的门店
         chooseGoods: [], // 当前选中的商品
         wxObj: {}, // 微信支付参数对象
-        currOrder: {}, // 当前正在进行中的订单,
-        orderDetail: {} // 订单详情
+        nowOrder: {}, // 当前正在进行中的订单,
+        orderDetail: {}, // 订单详情
+        chooseCoupon: {},
+        stores:[]
     },
     
     // 根据技师ID加载技师信息
@@ -64,10 +66,10 @@ exports.default = App({
         // }
         params = Object.assign(params, {
             userId: t.globalData.userInfo.userId,
-            orderId: t.globalData.currOrder.id
+            orderId: t.globalData.nowOrder.id
         })
         let p = new Promise((resolve, reject) => {
-            t.postRequest('evaluation', params).then((res) => {
+            t.postRequest('evaluation?' + t.jsonToParameters(params), {}).then((res) => {
                 resolve(res);
             })
         })
@@ -115,14 +117,14 @@ exports.default = App({
         return p;
     },
     // 会员充值微信支付接口
-    vipRecharge(price) {
+    vipRechargePost(price) {
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId,
             price: price
         }
         let p = new Promise((resolve, reject) => {
-            t.postRequest('vipRecharge', params).then((res) => {
+            t.postRequest('vipRecharge?' + t.jsonToParameters(params), {}).then((res) => {
                 t.globalData.wxObj = res
                 resolve(res);
             })
@@ -175,7 +177,7 @@ exports.default = App({
         };
         let p = new Promise((resolve, reject) => {
             t.getRequest('newOrder', params, true).then((res) => {
-                t.globalData.currOrder = res;
+                t.globalData.nowOrder = res.nowOrder;
                 resolve(res);
             })
         })
@@ -186,8 +188,8 @@ exports.default = App({
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId,
-            orderId: t.globalData.currOrder.id,
-            storeId: t.globalData.currOrder.storeId
+            orderId: t.globalData.orderDetail.id,
+            storeId: t.globalData.orderDetail.storeId
         };
         let p = new Promise((resolve, reject) => {
             t.getRequest('optimalCoupon', params).then((res) => {
@@ -263,7 +265,7 @@ exports.default = App({
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId,
-            assembleId: assembleId
+            assembleId: t.globalData.assembleId
         }
         let p = new Promise((resolve, reject) => {
             t.postRequest('joinGroup?' + t.jsonToParameters(params), {}).then((res) => {
@@ -329,7 +331,10 @@ exports.default = App({
             t.getRequest('orderDetail', params).then((res) => {
                 if (res && res.orderItems) {
                     for (const v of res.orderItems) {
-                        v.imgs = v.imgs.split(',')[0]
+                        if (v.itemImags){
+                            v.itemImags = v.itemImags.split(',')[0]
+                        }
+                        
                     }
                 }
                 resolve(res);
@@ -387,15 +392,15 @@ exports.default = App({
         return p;
     },
     // 订单服务支付接口 获取支付的参数
-    orderPay(couponRecordId, type) {
+    orderPay(type) {
         const t = this;
         let params = {
-            orderId: app.globalData.orderDetail.id,
-            couponRecordId: couponRecordId,
+            orderId: t.globalData.orderDetail.id,
+            couponRecordId: t.globalData.chooseCoupon.id || '',
             type: type
         }
         let p = new Promise((resolve, reject) => {
-            t.getRequest('orderPay', params).then((res) => {
+            t.postRequest('orderPay?' + t.jsonToParameters(params), {}).then((res) => {
                 resolve(res);
             })
         })
@@ -508,6 +513,7 @@ exports.default = App({
                 for (const v of res) {
                     v.imgs = v.imgs.split(',')[0]
                 }
+                t.globalData.stores = res;
                 resolve(res);
             })
         })
@@ -604,6 +610,12 @@ exports.default = App({
                 dataType: 'json',
                 success: function success(res) {
                     wx.hideLoading();
+                    if (res.data && res.data.msg) {
+                        wx.showModal({
+                            content: res.data.msg
+                        });
+                        return
+                    }
                     resolve(res.data)
                 },
                 fail: function fail(res) {
@@ -628,6 +640,7 @@ exports.default = App({
         t.postRequest('userLogin', params).then((res)=>{
             res.userId = res.id;
             t.globalData.userInfo = Object.assign(t.globalData.userInfo, res)
+            t.globalData.userInfo.account = t.globalData.userInfo.virtualAccount + t.globalData.userInfo.savingsAccount;
             wx.setStorageSync('openId', res.openId)
             wx.reLaunch({
                 url: 'index',
@@ -646,6 +659,7 @@ exports.default = App({
                 t.getRequest('userInfo', params).then((res) => {
                     res.userId = res.id;
                     t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
+                    t.globalData.userInfo.account = t.globalData.userInfo.virtualAccount + t.globalData.userInfo.savingsAccount;
                     console.log(t.globalData.userInfo)
                     resolve();
                 })
@@ -684,6 +698,8 @@ exports.default = App({
                     console.log(res);
                     t.globalData.x = res.latitude; // 经度
                     t.globalData.y = res.longitude; // 纬度
+                    t.globalData.latitude = res.latitude; // 经度
+                    t.globalData.longitude = res.longitude; // 纬度
                     resolve()
                 }
             });

@@ -1,12 +1,13 @@
 'use strict';
-
+const app = getApp();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = Page({
     data: {
         wxChecked: true,
-        mList: [{ value: '200', zeng: '' }, { value: '3000', zeng: '300' }, { value: '5000', zeng: '300' }, { value: '10000', zeng: '300' }, { value: '15000', zeng: '300' }]
+        mList: [{ value: '200', zeng: '' }, { value: '3000', zeng: '300' }, { value: '5000', zeng: '300' }, { value: '10000', zeng: '300' }, { value: '15000', zeng: '300' }],
+        mIndex: 0
     },
     tagClick: function tagClick(e) {
         var t = this;
@@ -34,10 +35,29 @@ exports.default = Page({
                 }
             }
         }
-
+        let mIndex = e.currentTarget.dataset.index;
         t.data.mList[e.currentTarget.dataset.index].active = 'active';
+        t.data.U.accountAll = t.data.U.savingsAccount + Number(t.data.mList[mIndex].value)
         t.setData({
-            mList: t.data.mList
+            mIndex: mIndex,
+            mList: t.data.mList,
+            U: t.data.U
         });
+    },
+    onLoad(){
+        const t = this;
+        let U = app.globalData.userInfo;
+        U.savingsAccount = U.savingsAccount || 0;
+        U.accountAll = U.savingsAccount + Number(t.data.mList[t.data.mIndex].value)
+        t.setData({
+            U: U
+        })
+    },
+    vipRecharge(){
+        const t = this;
+        let price = t.data.mList[t.data.mIndex].value
+        app.vipRechargePost(price).then(()=>{
+            app.wxPay()
+        })
     }
 });

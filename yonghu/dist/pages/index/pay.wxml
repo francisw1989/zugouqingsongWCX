@@ -18,7 +18,7 @@
             <view class="ui-row" style="">
                 <view class="ui-col" style="flex:0 0 50px;">
                     <view class="ui-col-content">
-                        <image src="{{item.imgs || '../../static/images/32.png'}}" class="icoAll tx6" />
+                        <image src="{{item.itemImags || '../../static/images/32.png'}}" class="icoAll tx6" />
                     </view>
                 </view>
                 <view class="ui-col" style="">
@@ -52,8 +52,8 @@
     <view class="padSp1">
         <text class="font2">选择支付方式</text>
     </view>
-    <radio-group bindchange="radioChange">
-        <!-- <view class="padSp1 bgfff bor_btm_so clearfix">
+    <checkbox-group bindchange="radioChange">
+        <view class="padSp1 bgfff bor_btm_so clearfix">
             <view class="ui-row" style="">
                 <view class="ui-col" style="flex:0 0 40px;">
                     <view class="ui-col-content">
@@ -65,7 +65,7 @@
                         <view class="font2 top2">储值账户</view>
                         <view class="font0">
                             当前余额：
-                            <text class="colYe">¥5879</text>
+                            <text class="colYe">¥{{U.account || 0}}</text>
                             <text class="col999 left10">|</text>
                             <navigator url='reCharge' class="left10 inline">充值 >></navigator>
                         </view>
@@ -73,12 +73,11 @@
                 </view>
                 <view class="ui-col ui-col-align-right align-right" style="flex:0 0 50px;">
                     <view class="ui-col-content align-right">
-                        <radio value="czChecked" class="inline top5" color="#459e8c">
-                        </radio>
+                        <checkbox value="1" class="inline top5" disabled="{{U.account?false:true}}" />
                     </view>
                 </view>
             </view>
-        </view> -->
+        </view>
         <view class="padSp1 bgfff bor_btm_so clearfix">
             <view class="ui-row" style="">
                 <view class="ui-col" style="flex:0 0 40px;">
@@ -93,17 +92,16 @@
                 </view>
                 <view class="ui-col ui-col-align-right align-right" style="flex:0 0 50px;">
                     <view class="ui-col-content align-right">
-                        <radio checked='checked' class="inline top5" color="#459e8c">
-                        </radio>
+                        <checkbox value="2" class="inline top5" />
                     </view>
                 </view>
             </view>
         </view>
-    </radio-group>
+    </checkbox-group>
     <view wx:if="pageFrom!=group" class="padSp1 bgfff bor_btm_so clea rfix">
         <text class="font2 ">选择优惠券</text>
         <view class="right">
-            <text class="colYe font0">查看更多优惠券</text>
+            <navigator url="../wode/coupon?pageFrom=pay" class="colYe inline font0">查看更多优惠券</navigator>
             <text class="font0 left5"> >></text>
         </view>
     </view>

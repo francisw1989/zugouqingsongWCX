@@ -60,81 +60,41 @@ exports.default = Page({
             time: e.detail.value
         });
     },
-    onLoad: function onLoad() {
-        var t = this;
+    setMap(){
         var BMap = new bmap.BMapWX({
             ak: "1kjiGRSGCWINwk4F0WzSVEibiQhOE0Eo"
         });
+        let markers = [];
+        for (const v of app.globalData.stores){
+            markers.push({
+                latitude: v.x,
+                longitude: v.y,
+                id: v.id,
+                iconPath: "../../static/images/24.png",
+                callout: {
+                    content: v.name,
+                    color: '#666',
+                    padding: 10,
+                    bgColor: "#fff",
+                    textAlign: 'center',
+                    borderRadius: 15,
+                    display: "ALWAYS",
+                    border: "1px solid #ddd",
+                    boxShadow: "2px 2px 10px #aaa"
+                }
+            })
+        }
         t.setData({
-            markers: [{
-                latitude: 32.061829,
-                longitude: 118.797863,
-                shopName: '中央门店',
-                id: '213dfd1231232',
-                iconPath: "../../static/images/24.png",
-                callout: {
-                    content: "中央门店\n店内：23人",
-                    color: '#666',
-                    padding: 10,
-                    bgColor: "#fff",
-                    textAlign: 'center',
-                    borderRadius: 15,
-                    display: "ALWAYS",
-                    border: "1px solid #ddd",
-                    boxShadow: "2px 2px 10px #aaa"
-                }
-            }, {
-                latitude: 32.07,
-                longitude: 118.82,
-                shopName: '中央门店2',
-                id: '213dfd1231232',
-                iconPath: "../../static/images/24.png",
-                iconTapPath: "../../static/images/24.png",
-                callout: {
-                    content: "中央门店\n店内：23人",
-                    color: '#666',
-                    padding: 10,
-                    bgColor: "#fff",
-                    textAlign: 'center',
-                    borderRadius: 15,
-                    display: "ALWAYS",
-                    border: "1px solid #ddd",
-                    boxShadow: "2px 2px 10px #aaa"
-                }
-            }, {
-                latitude: 31.95266,
-                longitude: 118.84002,
-                shopName: '中央门店3',
-                id: '213dfd1231232',
-                iconPath: "../../static/images/24.png",
-                iconTapPath: "../../static/images/24.png",
-                callout: {
-                    content: "中央门店\n店内：23人",
-                    color: '#666',
-                    padding: 10,
-                    bgColor: "#fff",
-                    textAlign: 'center',
-                    borderRadius: 15,
-                    display: "ALWAYS",
-                    border: "1px solid #ddd",
-                    boxShadow: "2px 2px 10px #aaa"
-                }
-            }]
+            markers: markers
         });
         // 设置中心点
-        wx.getLocation({
-            type: 'wgs84',
-            success: function success(res) {
-                console.log(res);
-                var latitude = res.latitude;
-                var longitude = res.longitude;
-                // var speed =res.speed
-                // var accuracy = res.accuracy
-                t.setData({
-                    latitude: latitude,
-                    longitude: longitude
-                });
-            }
+        t.setData({
+            latitude: app.globalData.aklatitude,
+            longitude: app.globalData.longitude
         });
+    },
+    onLoad: function onLoad() {
+        var t = this;
+        t.setMap()
     }
 });

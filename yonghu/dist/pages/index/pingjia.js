@@ -1,4 +1,5 @@
 // pages/index/pingjia.js
+const app = getApp();
 Page({
 
     /**
@@ -20,17 +21,59 @@ Page({
         tbdObj2: {
             'background-color': '#2ac1a2'
         },
-        score: 3,
+        evaluateScore: 3,
         tab1:['不会','可能','会'],
         tab1Index: 1,
         
         tab2: [
-            { name: '环境好', value: '0', checked: 'true'},
-            { name: '服务好', value: '1' },
-            { name: '姑娘美', value: '2' },
-            { name: '服务周到', value: '3' },
+            { name: '环境好', value: '环境好', checked: 'true'},
+            { name: '服务好', value: '服务好' },
+            { name: '姑娘美', value: '姑娘美' },
+            { name: '服务周到', value: '服务周到' },
         ],
         tab2Index: []
+    },
+    chooseJs(e){
+        const t = this;
+        let choosed = t.data.nowOrder.orderTechnicians[t.currentTarget.dataset.index].choosed;
+        t.data.nowOrder.orderTechnicians[t.currentTarget.dataset.index].choosed = choosed?false:true;
+        t.setData({
+            nowOrder: t.data.nowOrder
+        })
+    },
+    oninput(e){
+        const t = this;
+        t.setData({
+            content: e.detail.value
+        })
+    },
+    evaluation(){
+        const t = this;
+        
+        let params = {
+            evaluateScore: t.data.evaluateScore,
+            content: t.data.content
+        }
+        if (params.evaluateScore == 1){
+            let employeeIds = [];
+            for (const v of t.data.nowOrder.orderTechnicians) {
+                if (v.choosed) {
+                    employeeIds.push(v.id)
+                }
+            }
+            params.employeeIds = employeeIds;
+        }else{
+            params.evaluateLabel = t.data.evaluateLabel
+        }
+        app.evaluation(params).then((res)=>{
+            wx.showToast({
+                icon: 'none',
+                title: '感谢评价',
+            })
+            wx.navigateBack({
+                
+            })
+        })
     },
     tab1click(e){
         const t = this;
@@ -51,28 +94,35 @@ Page({
     sliderchange(e){
         const t = this;
         console.log(e.detail.value)
-        let score = e.detail.value;
+        let sliderchange = e.detail.value;
         let tab1Index;
-        if (score==1) {
+        if (sliderchange==1) {
             tab1Index = 0;
-        } else if (score == 2 || score == 3 || score == 4) {
+        } else if (sliderchange == 2 || sliderchange == 3 || sliderchange == 4) {
             tab1Index = 1;
-        } else if (score == 5) {
+        } else if (sliderchange == 5) {
             tab1Index = 2;
         }
         t.setData({
-            score: score,
+            sliderchange: sliderchange,
             tab1Index: tab1Index
         })
     },
     checkboxChange: function (e) {
         console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+        const t = this;
+        t.setData({
+            evaluateLabel: e.detail.value.join(',')
+        })
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        const t = this;
+        t.setData({
+            nowOrder: app.globalData.nowOrder
+        })
     },
 
     /**

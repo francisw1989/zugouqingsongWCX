@@ -2,10 +2,12 @@
    
     "pages": [
         "pages/index/blank",
+        "pages/index/pingjia",
+                
         "pages/index/goods",
         
         "pages/index/pay",
-        "pages/index/pingjia",
+        
         
 
         "pages/index/chooseProjectJishi",

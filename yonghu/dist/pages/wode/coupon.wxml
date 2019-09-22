@@ -1,7 +1,7 @@
 <view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
   <view class="pad10 clearfix">
     <view class="yhqWap bgfff top10 clearfix" wx:for="{{list}}" wx:if='{{item.isUse==0}}'>
-      <view class="left leftA " style="background-color: {{colors[item.couponType - 1]}}">
+      <view catchtap="goto" data-index="{{index}}" class="left leftA " style="background-color: {{colors[item.couponType - 1]}}">
         <image src="../../static/images/59.png" class="img" />
         <view class="abCover colfff center">
           <view>

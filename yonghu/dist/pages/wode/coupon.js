@@ -7,9 +7,18 @@ exports.default = Page({
     data: {
         colors: ['#459E8C' , '#FF7D55' , '#FEB974' , '#E6E6E6']
     },
+    goto(){
+        const t = this;
+        if(t.data.pageFrom == 'pay'){
+            app.globalData.chooseCoupon = t.data.list[e.currentTarget.dataset.index]
+            wx.navigateBack({
+                
+            })
+        }
+    },
     getList(){
         const t = this;
-        if(t.data.pageFrom=='order'){
+        if (t.data.pageFrom =='pay'){
             app.optimalCoupon().then((res) => {
                 t.setData({
                     list: res

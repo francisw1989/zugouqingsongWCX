@@ -1693,6 +1693,7 @@ view.btns-green,button.btns-green {
   height: 100%;
   box-sizing: border-box;
   border-radius: 50%;
+  border: 2px solid #fff
 }
 .tx5Wap.active .tx5{border: 2px solid #459e8c}
 .tx6 {

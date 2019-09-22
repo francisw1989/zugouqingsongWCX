@@ -2,7 +2,7 @@
 <view class="pad20 bor_btm_so">
     <view>您有多大可能性向您的朋友推荐足够轻松的服务？</view>
     <view>
-        <ui-slider bar-border-radius="2" show-value show-max-value bindchange="sliderchange" value="{{score}}" background-color="#3A9C88" min="1" max="5" slider-weight="4" _pid="{{_pid}}" thumb-style="{{ tbObj1 }}" thumb-down-style="{{ tbdObj2 }}"></ui-slider>
+        <ui-slider bar-border-radius="2" show-value show-max-value bindchange="sliderchange" value="{{evaluateScore}}" background-color="#3A9C88" min="1" max="5" slider-weight="4" _pid="{{_pid}}" thumb-style="{{ tbObj1 }}" thumb-down-style="{{ tbdObj2 }}"></ui-slider>
     </view>
     <view class="">
         <view data-index="{{index}}" bindtap="tab1click" wx:for='{{tab1}}' class="btns btns-small btns-green-bor right10 {{tab1Index==index?'btns-green':''}}">{{item}}</view>
@@ -12,13 +12,13 @@
 <view class="pad20 bgfff bor_btm_so" wx:if='{{score==1}}'>
     <view>请选择投诉技师</view>
     <view class="top10">
-        <view wx:for='11' class="tx5Wap inline right5">
+        <view wx:for='{{nowOrder.orderTechnicians}}' class="tx5Wap inline right5 {{item.choosed?'active':''}}" catchtap="chooseJs" data-index="{{index}}">
             <image src="../../static/images/32.png" mode="aspectFill" class="tx5" />
             <view class="dj">
                 <image src="../../static/images/34.png" class="icoAll img" />
                 <image src="../../static/images/34.png" class="icoAll img left5" />
             </view>
-            <view class="center col333 top5">张小花</view>
+            <view class="center col333 top5">{{item.employeeName}}</view>
         </view>
     </view>
 </view>
@@ -31,5 +31,7 @@
 </view>
 <view class="pad20">
     <view>建议：</view> 
-    <input placeholder="一句话说说您的感受吧" class="input1 top10"></input>
+    <input placeholder="一句话说说您的感受吧" bindinput="oninput" class="input1 top10"></input>
+    
 </view>
+<view class="btns btns-biggest btns-green top20" style="position: fixed; left: 0; bottom: 0;" bindtap="evaluation">提交</view>

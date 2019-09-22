@@ -14,7 +14,8 @@ exports.default = Page({
         ],
         itemClassList: [],
         D: {},
-        O: {}
+        O: {},
+        statusName: ['', '待支付', '已支付待到店', '已到店待服务', '服务中', '服务完成', '系统取消', '用户取消']
     },
     chooseProject(e){
         const t = this;
@@ -54,7 +55,7 @@ exports.default = Page({
                 }else{
                     t.setData({
                         jxzShow: true,
-                        O: res
+                        O: res.nowOrder
                     })
                     t.initGoodsPage();
                 }
