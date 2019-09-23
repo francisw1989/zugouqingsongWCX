@@ -96,14 +96,16 @@ exports.default = Page({
             })
         })
     },
-    onLoad() {
+    onLoad(opt) {
         const t = this;
-        app.userInfo().then((res)=>{
-            t.newOrder();
-        });
+        if (opt.scene) {
+            let scene = decodeURIComponent(opt.scene);
+            wx.setStorageSync('assembleId', scene);
+            wx.navigateTo({
+                url: '../wode/groupSuccess?pageFrom=share',
+            })
+        }
         t.getIndex();
         t.getItemClass();
-        
-
     }
 });

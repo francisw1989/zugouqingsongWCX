@@ -13,9 +13,10 @@ exports.default = Page({
     },
     onShareAppMessage(e) {
         const t = this;
+         //p ---pageFrom  id --- assembleId
         return {
             title: '团购分享',
-            path: '/pages/index/blank?pageFrom=share&assembleId = ' + app.globalData.assembleId,
+            path: '/pages/index/index?scene=' + app.globalData.assembleId,
             // imageUrl: t.data.shareImg,
             success: (res) => {
                 console.log("转发成功", res);

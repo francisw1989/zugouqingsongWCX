@@ -20,9 +20,14 @@ exports.default = Page({
         app.globalData.chooseProject = [t.data.D];
         app.createGroup().then((res)=>{
             app.globalData.wxObj = res;
-            wx.redirectTo({
-                url: '../index/pay?pageFrom=group',
-            })
+            app.wxPay().then(()=>{
+                wx.redirectTo({
+                    url: 'groupSuccess?pageFrom=group',
+                })
+            });
+            // wx.redirectTo({
+            //     url: '../index/pay?pageFrom=group',
+            // })
         })
     },
     changePeopleNum(e){
@@ -33,10 +38,11 @@ exports.default = Page({
             pIndex: i
         })
     },
-    onLoad(){
+    onLoad(opt){
         const t = this;
         t.setData({
             D: app.globalData.chooseProject[0],
+            pageFrom: opt.pageFrom
         })
         t.setData({
             price: [t.data.D.threePrice, t.data.D.fivePrice, t.data.D.tenPrice]

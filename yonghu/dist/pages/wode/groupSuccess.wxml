@@ -93,4 +93,8 @@
         </view>
     </view>
 </view>
-<navigator url="invitation" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">邀请好友拼团</navigator>
+<navigator wx:if="{{pageFrom=='group'}}" url="invitation" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">邀请好友拼团</navigator>
+<block wx:if="{{pageFrom=='share'}}">
+    <view bindtap='joinGroup' class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">参与拼图</view>
+    <navigator url="../index/projectsList?pageFrom=group" open-type='redirect' class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">我要开团</navigator>
+</block>

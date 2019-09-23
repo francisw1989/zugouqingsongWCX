@@ -1,6 +1,8 @@
 {
    
     "pages": [
+        "pages/index/index",
+        "pages/wode/index",
         "pages/index/blank",
         "pages/index/pingjia",
                 
@@ -17,11 +19,11 @@
         "pages/wode/about",
         "pages/wode/information",
         
-        "pages/wode/index",
+        
         "pages/wode/appointment",
         
         "pages/index/projectsList",
-        "pages/index/index",
+        
         "pages/index/wxdl",
         "pages/index/getphone",
         "pages/wode/groupSuccess",

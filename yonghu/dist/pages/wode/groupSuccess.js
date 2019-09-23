@@ -17,10 +17,18 @@ exports.default = Page({
             lineHeight: '20px'
         }
     },
-    onLoad() {
+    onLoad(opt) {
         const t = this;
         t.setData({
             D: app.globalData.chooseProject[0],
+            pageFrom: opt.pageFrom
         })
+    },
+    joinGroup(){
+        app.joinGroup().then((res)=>{
+            wx.reLaunch({
+                url: '../index/index',
+            })
+        });
     }
 });

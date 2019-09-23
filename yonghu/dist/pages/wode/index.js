@@ -8,15 +8,21 @@ exports.default = Page({
         userInfo: {},
         memberLevelName: app.globalData.memberLevelName
     },
-    onLoad(){
+    onShow(){
         const t = this;
-        let userInfo = app.globalData.userInfo;
-        t.setData({
-            userInfo: userInfo
-        })
+    },
+    userInfo(){
+        const t = this;
+        app.userInfo()
     },
     onShow() {
+        const t = this;
         let len = app.globalData.barList.length;
+        app.userInfo().then(()=>{
+            t.setData({
+                userInfo: app.globalData.userInfo
+            })
+        })
         this.getTabBar().setData({
             selected: len==3?2:1,
             list: app.globalData.barList

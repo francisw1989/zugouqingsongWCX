@@ -261,11 +261,11 @@ exports.default = App({
         return p;
     },
     // 参团接口
-    joinGroup(assembleId){
+    joinGroup(){
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId,
-            assembleId: t.globalData.assembleId
+            assembleId: wx.getStorageSync('assembleId')
         }
         let p = new Promise((resolve, reject) => {
             t.postRequest('joinGroup?' + t.jsonToParameters(params), {}).then((res) => {
@@ -286,7 +286,7 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.postRequest('createGroup?' + t.jsonToParameters(params), {}).then((res) => {
-                res.imgs && (res.imgs = res.imgs.split(','));
+                wx.setStorageSync('assembleId', res.id)
                 resolve(res);
             })
         })
@@ -430,46 +430,51 @@ exports.default = App({
         //     signType: "MD5",
         //     timeStamp: "1567252821"
         // }
-        wx.showLoading({
-            title: '加载中'
-        });
-        let obj = t.globalData.wxObj;
-        console.log(JSON.stringify({
-            timeStamp: obj.timeStamp + '',
-            nonceStr: obj.nonceStr + '',
-            package: obj.packageValue + '',
-            signType: obj.signType,
-            paySign: obj.paySign + ''
-        }));
-        wx.requestPayment({
-            //支付
-            timeStamp: obj.timeStamp + '',
-            nonceStr: obj.nonceStr + '',
-            package: obj.packageValue + '',
-            signType: obj.signType,
-            paySign: obj.paySign + '',
-            success: function success(res) {
-                wx.showToast({
-                    title: '支付成功'
-                });
-                setTimeout(function () {
+        let p = new Promise((resolve, reject) => {
+            wx.showLoading({
+                title: '加载中'
+            });
+            let obj = t.globalData.wxObj;
+            console.log(JSON.stringify({
+                timeStamp: obj.timeStamp + '',
+                nonceStr: obj.nonceStr + '',
+                package: obj.packageValue + '',
+                signType: obj.signType,
+                paySign: obj.paySign + ''
+            }));
+            wx.requestPayment({
+                //支付
+                timeStamp: obj.timeStamp + '',
+                nonceStr: obj.nonceStr + '',
+                package: obj.packageValue + '',
+                signType: obj.signType,
+                paySign: obj.paySign + '',
+                success: function success(res) {
+                    wx.showToast({
+                        title: '支付成功'
+                    });
+                    resolve();
+                    // setTimeout(function () {
+                    //     wx.hideLoading();
+                    //     wx.redirectTo({
+                    //         url: 'paySuccess',
+                    //     })
+                    // }, 1000);
+                },
+                fail: function fail(res) {
                     wx.hideLoading();
-                    wx.redirectTo({
-                        url: 'paySuccess',
-                    })
-                }, 1000);
-            },
-            fail: function fail(res) {
-                wx.hideLoading();
-                // wx.showModal({
-                //     title: '提示',
-                //     content: JSON.stringify(res)
-                // })
-            },
-            complete: function complete(res) {
-                wx.hideLoading();
-            }
-        });
+                    // wx.showModal({
+                    //     title: '提示',
+                    //     content: JSON.stringify(res)
+                    // })
+                },
+                complete: function complete(res) {
+                    wx.hideLoading();
+                }
+            });
+        })
+        return p;
+        
     },
     
     // 根据项目ID获得项目详情
@@ -638,22 +643,31 @@ exports.default = App({
             userInfo: t.globalData.userInfo
         }
         console.log(JSON.stringify(params))
-        return
         t.postRequest('userLogin', params).then((res)=>{
             res.userId = res.id;
             t.globalData.userInfo = Object.assign(t.globalData.userInfo, res)
             t.globalData.userInfo.account = t.globalData.userInfo.virtualAccount + t.globalData.userInfo.savingsAccount;
             wx.setStorageSync('openId', res.openId)
-            wx.reLaunch({
-                url: 'index',
+            wx.navigateBack({
+                
             })
         })
     },
     // 获取用户信息
-    userInfo(){
+    userInfo(reload){
         const t = this;
         var p = new Promise(function (resolve, reject) {
             let openId = wx.getStorageSync('openId');
+            if (!openId){
+                wx.navigateTo({
+                    url: '../index/wxdl',
+                })
+                return;
+            }
+            if (t.globalData.userInfo.userId && !reload){
+                resolve();
+                return
+            }
             let params = {
                 openId: openId
             }
@@ -666,7 +680,6 @@ exports.default = App({
                     resolve();
                 })
             });
-            
         })
         return p;
     },

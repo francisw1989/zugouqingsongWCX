@@ -1,77 +1,80 @@
 <view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
-  <view class="wInfo clearfix colfff ">
-    <image src="../../static/images/49.png" class="" style=" width:100%; height: 353rpx; " />
-    <view style="top: 0; left: 0; width: 100%; box-sizing: border-box" class="pad20 absolute">
-      <view class="font3 clearfix">
-        {{userInfo.userName}}
-        <view class="btns font0 right">{{memberLevelName[userInfo.memberLevel]}}</view>
-      </view>
-      <view>{{userInfo.telephoneNum}}</view>
-      <view class="top40">积分：{{userInfo.score || 0}}</view>
-      <view class="clearfix">
-        储蓄账户：¥ {{userInfo.savingsAccount || 0}}
-        <image src="../../static/images/48.png" class="icoAll right" style=" width:43rpx; height: 43rpx; margin-top: -10rpx;" />
-      </view>
-      <view class="clearfix">充值 > <text class="right colYe2 top5 font0">NO：{{userInfo.memberNum||"Z1124565465"}}</text></view>
+    <view class="wInfo clearfix colfff ">
+        <image src="../../static/images/49.png" class="" style=" width:100%; height: 353rpx; " />
+        <view style="top: 0; left: 0; width: 100%; box-sizing: border-box" class="pad20 absolute">
+            <view class="font3 clearfix" catchtap='userInfo'>
+                {{userInfo.userName}}
+                <text wx:if='{{!userInfo.userId}}' bindtap='userInfo'>点击登录</text>
+                <view class="btns font0 right">{{memberLevelName[userInfo.memberLevel]}}</view>
+            </view>
+            <view>{{userInfo.telephoneNum}}</view>
+            <view class="top40">积分：{{userInfo.score || 0}}</view>
+            <view class="clearfix">
+                储蓄账户：¥ {{userInfo.savingsAccount || 0}}
+                <image src="../../static/images/48.png" class="icoAll right" style=" width:43rpx; height: 43rpx; margin-top: -10rpx;" />
+            </view>
+            <view class="clearfix">充值 >
+                <text class="right colYe2 top5 font0">NO：{{userInfo.memberNum||"Z1124565465"}}</text>
+            </view>
 
 
-    </view>
+        </view>
 
-  </view>
-  <view class="top15 pad15RL">
-    <text class="title2">专属权益</text>
-  </view>
-  <view class="top15 ui-row" style="">
-    <view class="ui-col ui-col-align-center align-center" style="">
-      <navigator url="memberGrade" class="ui-col-content align-center">
-        <image src="../../static/images/a1.png" mode="aspectFit" class="woIcoimg" />
-        <view class="top10">会员等级</view>
-      </navigator>
     </view>
-    
-    <view class="ui-col ui-col-align-center align-center" style="">
-      <navigator url="appointment" class="ui-col-content align-center">
-        <image src="../../static/images/a2.png" mode="aspectFit" class="woIcoimg" />
-        <view class="top10">我的预约</view>
-      </navigator>
+    <view class="top15 pad15RL">
+        <text class="title2">专属权益</text>
     </view>
-    <view class="ui-col ui-col-align-center align-center" style="">
-      <navigator url='information' class="ui-col-content align-center">
-        <image src="../../static/images/a3.png" mode="aspectFit" class="woIcoimg" />
-        <view class="top10">完善信息</view>
-      </navigator>
+    <view class="top15 ui-row" style="">
+        <view class="ui-col ui-col-align-center align-center" style="">
+            <navigator url="memberGrade" class="ui-col-content align-center">
+                <image src="../../static/images/a1.png" mode="aspectFit" class="woIcoimg" />
+                <view class="top10">会员等级</view>
+            </navigator>
+        </view>
+
+        <view class="ui-col ui-col-align-center align-center" style="">
+            <navigator url="appointment" class="ui-col-content align-center">
+                <image src="../../static/images/a2.png" mode="aspectFit" class="woIcoimg" />
+                <view class="top10">我的预约</view>
+            </navigator>
+        </view>
+        <view class="ui-col ui-col-align-center align-center" style="">
+            <navigator url='information' class="ui-col-content align-center">
+                <image src="../../static/images/a3.png" mode="aspectFit" class="woIcoimg" />
+                <view class="top10">完善信息</view>
+            </navigator>
+        </view>
+        <view class="ui-col ui-col-align-center align-center" style="">
+            <navigator url='coupon?pageFrom=wode' class="ui-col-content align-center">
+                <image src="../../static/images/a4.png" mode="aspectFit" class="woIcoimg" />
+                <view class="top10">我的优惠券</view>
+            </navigator>
+        </view>
     </view>
-    <view class="ui-col ui-col-align-center align-center" style="">
-      <navigator url='coupon?pageFrom=wode' class="ui-col-content align-center">
-        <image src="../../static/images/a4.png" mode="aspectFit" class="woIcoimg" />
-        <view class="top10">我的优惠券</view>
-      </navigator>
+    <view class="top15 ui-row" style="">
+        <view class="ui-col ui-col-align-center align-center" style="">
+            <navigator url='myGroup' class="ui-col-content align-center">
+                <image src="../../static/images/a5.png" mode="aspectFit" class="woIcoimg" />
+                <view class="top10">我的拼团</view>
+            </navigator>
+        </view>
+        <view class="ui-col ui-col-align-center align-center" style="">
+            <navigator url='../index/projectsList?pageFrom=group' class="ui-col-content align-center">
+                <image src="../../static/images/a6.png" mode="aspectFit" class="woIcoimg" />
+                <view class="top10">发起拼团</view>
+            </navigator>
+        </view>
+        <view class="ui-col ui-col-align-center align-center" style="">
+            <navigator url='invitation' class="ui-col-content align-center">
+                <image src="../../static/images/a7.png" mode="aspectFit" class="woIcoimg" />
+                <view class="top10">邀请好友</view>
+            </navigator>
+        </view>
+        <view class="ui-col ui-col-align-center align-center" style="">
+            <navigator url="about" class="ui-col-content align-center">
+                <image src="../../static/images/a8.png" mode="aspectFit" class="woIcoimg" />
+                <view class="top10">关于我们</view>
+            </navigator>
+        </view>
     </view>
-  </view>
-  <view class="top15 ui-row" style="">
-    <view class="ui-col ui-col-align-center align-center" style="">
-      <navigator url='myGroup' class="ui-col-content align-center">
-        <image src="../../static/images/a5.png" mode="aspectFit" class="woIcoimg" />
-        <view class="top10">我的拼团</view>
-      </navigator>
-    </view>
-    <view class="ui-col ui-col-align-center align-center" style="">
-      <navigator url='../index/projectsList?pageFrom=group' class="ui-col-content align-center">
-        <image src="../../static/images/a6.png" mode="aspectFit" class="woIcoimg" />
-        <view class="top10">发起拼团</view>
-      </navigator>
-    </view>
-    <view class="ui-col ui-col-align-center align-center" style="">
-      <navigator url='invitation' class="ui-col-content align-center">
-        <image src="../../static/images/a7.png" mode="aspectFit" class="woIcoimg" />
-        <view class="top10">邀请好友</view>
-      </navigator>
-    </view>
-    <view class="ui-col ui-col-align-center align-center" style="">
-      <navigator url="about" class="ui-col-content align-center">
-        <image src="../../static/images/a8.png" mode="aspectFit" class="woIcoimg" />
-        <view class="top10">关于我们</view>
-      </navigator>
-    </view>
-  </view>
 </view>
