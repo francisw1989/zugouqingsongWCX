@@ -27,7 +27,7 @@
                         </view>
                     </view>
                     <view class="align-right top15">
-                        <navigator url='invitation?id={{v.id}}' class="btns btns-nomal btns-green" style="border-radius: 32rpx">邀请好友继续拼图 > </navigator>
+                        <navigator url='invitation?assembleId={{item.id}}' class="btns btns-nomal btns-green" style="border-radius: 32rpx">邀请好友继续拼图 > </navigator>
                     </view>
                 </view>
             </view>

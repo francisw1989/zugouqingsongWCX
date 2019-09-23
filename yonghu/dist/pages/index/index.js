@@ -98,13 +98,7 @@ exports.default = Page({
     },
     onLoad(opt) {
         const t = this;
-        if (opt.scene) {
-            let scene = decodeURIComponent(opt.scene);
-            wx.setStorageSync('assembleId', scene);
-            wx.navigateTo({
-                url: '../wode/groupSuccess?pageFrom=share',
-            })
-        }
+        
         t.getIndex();
         t.getItemClass();
     }

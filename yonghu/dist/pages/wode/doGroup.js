@@ -40,6 +40,7 @@ exports.default = Page({
     },
     onLoad(opt){
         const t = this;
+        
         t.setData({
             D: app.globalData.chooseProject[0],
             pageFrom: opt.pageFrom
@@ -47,5 +48,6 @@ exports.default = Page({
         t.setData({
             price: [t.data.D.threePrice, t.data.D.fivePrice, t.data.D.tenPrice]
         })
+        app.globalData.chooseProject[0].choosePrice = t.data.price[t.data.pIndex]
     }
 });

@@ -17,8 +17,23 @@ exports.default = Page({
             lineHeight: '20px'
         }
     },
+    pageFromShare(){
+        if (opt.scene) {
+            let scene = decodeURIComponent(opt.scene);
+            wx.showModal({
+                title: '',
+                content: scene,
+            })
+            wx.setStorageSync('assembleId', scene);
+            t.setData({
+                assembleId: scene,
+                pageFrom: 'share'
+            })
+        }
+    },
     onLoad(opt) {
         const t = this;
+        t.pageFromShare();
         t.setData({
             D: app.globalData.chooseProject[0],
             pageFrom: opt.pageFrom
