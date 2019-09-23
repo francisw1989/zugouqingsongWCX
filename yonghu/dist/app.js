@@ -637,6 +637,8 @@ exports.default = App({
             phone: t.globalData.phone,
             userInfo: t.globalData.userInfo
         }
+        console.log(JSON.stringify(params))
+        return
         t.postRequest('userLogin', params).then((res)=>{
             res.userId = res.id;
             t.globalData.userInfo = Object.assign(t.globalData.userInfo, res)
