@@ -11,10 +11,6 @@ exports.default = Page({
     onShow(){
         const t = this;
     },
-    userInfo(){
-        const t = this;
-        app.userInfo()
-    },
     onShow() {
         const t = this;
         let len = app.globalData.barList.length;

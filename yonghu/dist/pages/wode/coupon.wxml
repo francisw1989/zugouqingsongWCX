@@ -1,26 +1,26 @@
 <view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
-  <view class="pad10 clearfix">
-    <view class="yhqWap bgfff top10 clearfix" wx:for="{{list}}" wx:if='{{item.isUse==0}}'>
-      <view catchtap="goto" data-index="{{index}}" class="left leftA " style="background-color: {{colors[item.couponType - 1]}}">
-        <image src="../../static/images/59.png" class="img" />
-        <view class="abCover colfff center">
-          <view>
-            <text class="font5">￥</text>
-            <text class="bold" style="font-size: 100rpx;">{{item.couponDenomination}}</text>
-          </view>
-          <view class="center" wx:if='{{item.couponConditionStr}}'>{{item.couponConditionStr || ''}}</view>
+    <view class="pad10 clearfix">
+        <view catchtap="goto" data-index="{{index}}"  class="yhqWap bgfff top10 clearfix" wx:for="{{list}}" wx:if='{{item.isUse==0}}'>
+            <view class="left leftA " style="background-color: {{colors[item.couponType - 1]}}">
+                <image src="../../static/images/59.png" class="img" />
+                <view class="abCover colfff center">
+                    <view>
+                        <text class="font5">￥</text>
+                        <text class="bold" style="font-size: 100rpx;">{{item.couponDenomination}}</text>
+                    </view>
+                    <view class="center" wx:if='{{item.couponConditionStr}}'>{{item.couponConditionStr || ''}}</view>
+                </view>
+            </view>
+            <view class="left" style="width: 380rpx">
+                <view class="left20">
+                    <view class="col333 top20 font3 bold">{{item.couponName}}</view>
+                    <view class="top10 col999">有效期至{{item.expiryDate}}</view>
+                    <view class="colYe" wx:if='{{item.couponConditionStr}}'>*{{item.couponConditionStr || ''}}</view>
+                </view>
+            </view>
+            <view class="right colYe center" style="padding: 0 20rpx; height: 204rpx; border-left: 1px solid #E6E6E6; writing-mode:tb-rl">
+                {{item.couponScopeDesc}}
+            </view>
         </view>
-      </view>
-      <view class="left" style="width: 380rpx">
-        <view class="left20">
-          <view class="col333 top20 font3 bold">{{item.couponName}}</view>
-          <view class="top10 col999">有效期至{{item.expiryDate}}</view>
-          <view class="colYe" wx:if='{{item.couponConditionStr}}'>*{{item.couponConditionStr || ''}}</view>
-        </view>
-      </view>
-      <view class="right colYe center" style="padding: 0 20rpx; height: 204rpx; border-left: 1px solid #E6E6E6; writing-mode:tb-rl">
-        {{item.couponScopeDesc}}
-      </view>
     </view>
-  </view>
 </view>

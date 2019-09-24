@@ -17,23 +17,31 @@ exports.default = Page({
     },
     createGroup(){
         const t = this;
-        app.globalData.chooseProject = [t.data.D];
-        app.createGroup().then((res)=>{
-            app.globalData.wxObj = res;
-            app.wxPay().then(()=>{
-                wx.redirectTo({
-                    url: 'groupSuccess?pageFrom=group',
-                })
-            });
-            // wx.redirectTo({
-            //     url: '../index/pay?pageFrom=group',
-            // })
-        })
+        let _do = ()=>{
+            app.globalData.chooseProject = [t.data.D];
+            app.createGroup().then((res) => {
+                app.globalData.wxObj = res.WxPayMpOrderResult;
+                wx.setStorageSync('assembleId', res.assembleId);
+                app.wxPay().then(() => {
+                    wx.redirectTo({
+                        url: 'groupSuccess?pageFrom=group',
+                    })
+                });
+                // wx.redirectTo({
+                //     url: '../index/pay?pageFrom=group',
+                // })
+            })
+        }
+        // app.userInfo().then(() => {
+        //     _do();
+        // })
+        _do();
+        
     },
     changePeopleNum(e){
         const t = this;
         let i = e.target.dataset.index;
-        t.data.D.choosePrice = t.data.price[i]
+        t.data.D.number = t.data.peopleNum[i];
         t.setData({
             pIndex: i
         })
@@ -48,6 +56,6 @@ exports.default = Page({
         t.setData({
             price: [t.data.D.threePrice, t.data.D.fivePrice, t.data.D.tenPrice]
         })
-        app.globalData.chooseProject[0].choosePrice = t.data.price[t.data.pIndex]
+        app.globalData.chooseProject[0].number = t.data.peopleNum[t.data.pIndex]
     }
 });

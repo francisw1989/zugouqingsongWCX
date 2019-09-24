@@ -4,7 +4,7 @@
             <image src="../../static/images/18.png" class="icoAll ico18 " />
             <input placeholder="搜索门店" class="input1 verMid" style="padding-left: 60rpx;"></input>
         </view>
-        <navigator url="shopListMap" class="center left left10">
+        <navigator url="shopListMap?pageFrom={{pageFrom}}" class="center left left10">
             <image src="../../static/images/19.png" class="icoAll ico19 " />
             <view>地图</view>
         </navigator>

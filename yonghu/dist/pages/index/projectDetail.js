@@ -6,7 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = Page({
     data: {
         I: {},
-        list: []
+        list: [],
+        statusName: ['待开团（待支付）', '进行中', '已完成', '已失败']
     },
     onLoad(opt) {
         const t = this;
@@ -15,13 +16,19 @@ exports.default = Page({
         })
         app.getItem(t.data.itemId).then((res)=>{
             t.setData({
-                I: res
+                D: res
             })
         })
         app.assembleRecord(t.data.itemId).then((res)=>{
             t.setData({
                 list: res
             })
+        })
+    },
+    joinGroup(e){
+        wx.setStorageSync('assembleId', e.target.dataset.id)
+        wx.navigateTo({
+            url: '../wode/groupSuccess?pageFrom=projectDetail',
         })
     }
 });

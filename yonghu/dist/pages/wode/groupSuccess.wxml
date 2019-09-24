@@ -1,5 +1,6 @@
+
 <view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
-    <view class="center top10">
+    <view class="center top10" wx:if="{{pageFrom=='group'}}">
         <view>
             <image src="../../static/images/61.png" class="icoAll" style="width: 46rpx; height: 46rpx" />
             <text class="left10 verMid">开团成功</text>
@@ -11,17 +12,17 @@
             <view class="ui-row" style="">
                 <view class="ui-col" style="flex:0 0 110px;">
                     <view class="ui-col-content">
-                        <image class="tx9" src="{{D.imgs}}" mode="aspectFill" />
+                        <image class="tx9" src="{{D.item.imgs}}" mode="aspectFill" />
                     </view>
                 </view>
                 <view class="ui-col" style="">
                     <view class="ui-col-content">
-                        <view class="col333  bor_btm_so" style="padding-bottom: 10rpx">{{D.itemName}}</view>
-                        <view class="top5 font0 bor_btm_so" style="padding-bottom: 10rpx">{{D.conditioningMethod}}</view>
+                        <view class="col333  bor_btm_so" style="padding-bottom: 10rpx">{{D.item.itemName}}</view>
+                        <view class="top5 font0 bor_btm_so" style="padding-bottom: 10rpx">{{D.item.conditioningMethod}}</view>
                         <view class="top5 align-right">
                             <text class="col999 font0">原价：</text>
-                            <text class="col999 text-through font0">¥ {{D.defaultPrice/1000*D.defaultDuration}}元</text>
-                            <text class="left10 font2 colPink">拼团价：¥{{D.choosePrice/1000}}元</text>
+                            <text class="col999 text-through font0">¥ {{D.primeCost/1000}}元</text>
+                            <text class="left10 font2 colPink">拼团价：¥{{D.assemblePrice/1000}}元</text>
                         </view>
                     </view>
                 </view>
@@ -31,38 +32,33 @@
     </view>
     <view class="pad10 bgfff bor_btm_so">
         <view class="center">
-            <view class="tx3Wap active">
-                <image src="../../static/images/32.png" class="tx3" />
-                <view class="btns btns-green">团长</view>
+            <view class="tx3Wap {{item.isSponsor==1?'active':''}}" wx:for="{{D.members}}">
+                <image src="{{item.photo}}" class="tx3" />
+                <view class="btns btns-green" wx:if="{{item.isSponsor==1}}">团长</view>
             </view>
-            <view class="tx3Wap left5">
-                <image src="../../static/images/32.png" class="tx3" />
-            </view>
-            <view class="tx3Wap left5">
-                <image src="../../static/images/32.png" class="tx3" />
-            </view>
-            <image src="../../static/images/62.png" class="tx3 left5 inline" />
-            <image src="../../static/images/62.png" class="tx3 left5 inline" />
+            <block wx:for='{{leftMember}}'>
+                <image src="../../static/images/62.png" class="tx3 left5 inline" />
+            </block>
         </view>
         <view class="top10 center">仅剩
-            <text class="colGreen">2</text>人，快叫朋友一起拼团吧！</view>
+            <text class="colGreen">{{leftMember.length}}</text>人，快叫朋友一起拼团吧！</view>
         <ui-divider padding="20" color="#333" _pid="{{_pid}}">
             剩余
-            <ui-count-down class="inline" timetype="second" time="10000" format="{%h}:{%m}:{%s}" number-style="{{numberStyle}}" _pid="{{_pid}}">
+            <ui-count-down class="inline" wx:if='{{D.assembleEndTime}}' time="{{D.assembleEndTime}}" format="{%h}:{%m}:{%s}" number-style="{{numberStyle}}" _pid="{{_pid}}">
             </ui-count-down>
             结束
         </ui-divider>
     </view>
-    <view class="pad10 clearfix bgfff">
-        <text class="right top15">2019-7-20 13:56开团</text>
-        <view class="tx3Wap active left">
-            <image src="../../static/images/32.png" class="tx3" />
-            <view class="btns btns-green">团长</view>
+    <view class="pad10 clearfix bgfff" wx:for="{{D.members}}">
+        <text class="right top15">{{item.sponsorTime}}参团</text>
+        <view class="tx3Wap  left   {{item.isSponsor==1?'active':''}}">
+            <image src="{{item.photo}}" class="tx3" />
+            <view class="btns btns-green" wx:if='{{item.isSponsor == 1}}'>团长</view>
         </view>
-        <text class="left top15 left15">张晓华</text>
+        <text class="left top15 left15">{{item.userName}}</text>
 
     </view>
-    <view class="bgfff">
+    <view class="bgfff top10">
         <view class="pad10 bor_btm_so">
             <view class="ui-row" style="">
                 <view class="ui-col" style="flex:0 0 90px;">
@@ -94,7 +90,7 @@
     </view>
 </view>
 <navigator wx:if="{{pageFrom=='group'}}" url="invitation" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">邀请好友拼团</navigator>
-<block wx:if="{{pageFrom=='share'}}">
-    <view bindtap='joinGroup' class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">参与拼图</view>
-    <navigator url="../index/projectsList?pageFrom=group" open-type='redirect' class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">我要开团</navigator>
+<block wx:if="{{pageFrom=='share' || pageFrom=='projectDetail'}}">
+    <view bindtap='joinGroup' class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">参与拼团</view>
+    <!-- <navigator url="../index/projectsList?pageFrom=group" open-type='redirect' class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">我要开团</navigator> -->
 </block>
