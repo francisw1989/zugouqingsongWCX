@@ -1,4 +1,5 @@
 // pages/index/tag.js
+const app = getApp();
 Page({
 
     /**
@@ -26,11 +27,23 @@ Page({
             
         })
     },
+    //initTagsData 数据初始化
+    initTagsData(){
+        const t = this;
+        app.employeeUserTag().then((res)=>{
+            console.log(res);
+            t.setData({
+                employeeUserTag: res
+            })
+        })
+        console.log(t.data);
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        const t = this;
+        t.initTagsData();
     },
 
     /**

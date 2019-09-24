@@ -1,0 +1,16 @@
+module.exports = {
+    getYear: function (time) {
+        if (!time) return '';
+        var date =getDate(time);
+        var y = date.getFullYear();
+        console.log(y);
+        return y;
+    },
+    getMonth:function(time){
+        if (!time) return '';
+        var date =getDate(time);
+        var M = date.getMonth() + 1;
+        console.log(M);
+        return M;
+    }
+  }

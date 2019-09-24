@@ -13,7 +13,17 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        app.userInfo();
+        console.log(app.globalData.userInfo);
+        if(app.globalData.userInfo){
+            wx.reLaunch({
+                url: 'index',
+            })
+        }else{
+            app.userInfo()
+        }
+    
+    
+    
     },
 
     /**
