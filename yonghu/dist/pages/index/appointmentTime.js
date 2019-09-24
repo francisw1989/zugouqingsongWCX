@@ -59,33 +59,38 @@ exports.default = Page({
     },
     ljyy(){
         const t = this;
-        let msg = '';
-        if (!t.data.time) {
-            msg = '请选择时间'
+        let _do = ()=>{
+            let msg = '';
+            if (!t.data.time) {
+                msg = '请选择时间'
+            }
+            if (!t.data.date) {
+                msg = '请选择日期'
+            }
+            if (msg) {
+                wx.showModal({
+                    title: '提示',
+                    content: msg,
+                })
+                return
+            }
+            app.globalData.chooseStore.appointTime = t.data.date + ' ' + t.data.time + ':00'
+            // here is appointment, so set pageFrom is 'appointment'
+            if (app.globalData.appointFromProject) {
+                // choose form project, no need choose projects again
+                wx.redirectTo({
+                    url: 'chooseProjectJishi',
+                })
+            } else {
+                // choose form store, choose projects 
+                wx.redirectTo({
+                    url: 'projectsList?pageFrom=appointment',
+                })
+            }
         }
-        if(!t.data.date){
-            msg = '请选择日期'
-        }
-        if(msg){
-            wx.showModal({
-                title: '提示',
-                content: msg,
-            })
-            return
-        }
-        app.globalData.chooseStore.appointTime = t.data.date + ' ' + t.data.time + ':00'
-        // here is appointment, so set pageFrom is 'appointment'
-        if (app.globalData.appointFromProject){
-            // choose form project, no need choose projects again
-            wx.redirectTo({
-                url: 'chooseProjectJishi',
-            })
-        }else{
-             // choose form store, choose projects 
-            wx.redirectTo({
-                url: 'projectsList?pageFrom=appointment',
-            })
-        }
+        app.userInfo().then(()=>{
+            _do();
+        })
         
     }
 });

@@ -227,7 +227,10 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('assembleRecordByUser', params).then((res) => {
-                res.imgs && (res.imgs = res.imgs.split(','));
+                for (const v of res) {
+                    v.item.imgs = v.item.imgs.split(',')[0];
+                    v.leftPeople = v.assemblePeople - v.members.length;
+                }
                 resolve(res);
             })
         })
@@ -248,10 +251,10 @@ exports.default = App({
         return p;
     },
     // 获取拼团信息
-    assembleRecordInfo(assembleId){
+    assembleRecordInfo(){
         const t = this;
         let params = {
-            assembleId: assembleId
+            assembleId: wx.getStorageSync('assembleId')
         };
         let p = new Promise((resolve, reject) => {
             t.getRequest('assembleRecordInfo', params).then((res) => {
@@ -278,11 +281,10 @@ exports.default = App({
     // 开团接口
     createGroup(){
         const t = this;
-
         let params = {
             userId: t.globalData.userInfo.userId,
             itemId: t.globalData.chooseProject[0].id,
-            price: t.globalData.chooseProject[0].choosePrice
+            number: t.globalData.chooseProject[0].number
         }
         let p = new Promise((resolve, reject) => {
             t.postRequest('createGroup?' + t.jsonToParameters(params), {}).then((res) => {

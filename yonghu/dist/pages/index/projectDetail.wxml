@@ -1,7 +1,7 @@
 <view style="min-height:100%; background-color: rgba(243,243,243,1) ">
     <swiper class="swiper2" indicator-dots="true"
     autoplay="true">
-        <block wx:for="{{I.imgs}}">
+        <block wx:for="{{D.imgs}}">
             <swiper-item>
                 <image src="{{item}}" style="width: 100%; height:307rpx; " mode='aspectFill' />
             </swiper-item>
@@ -12,7 +12,7 @@
         <view class="shaodwBox" style="margin-top: -80rpx;">
             <view class="pad10">
                 <view class="font2 col000 bor_btm_so" style="padding-bottom: 20rpx;">适宜人群</view>
-                <view class="top10" wx:for="{{I.crowd}}">
+                <view class="top10" wx:for="{{D.crowd}}">
                     <image src="../../static/images/33.png" class="icoAll" style="width: 39rpx; height:39rpx; " />
                     <text class="left10 verMid">{{item}}</text>
                 </view>
@@ -22,18 +22,18 @@
         </view>
         <view class="shaodwBox top10">
             <view class="pad10">
-                <view class="font2 col000 bor_btm_so" style="padding-bottom: 20rpx;">{{I.itemName}}</view>
+                <view class="font2 col000 bor_btm_so" style="padding-bottom: 20rpx;">{{D.itemName}}</view>
                 <view class=" col333 top10">调理方法</view>
                 <view class="font0">
-                    {{I.conditioningMethod}}
+                    {{D.conditioningMethod}}
                 </view>
                 <view class=" col333 top10">调理流程</view>
                 <view class="font0">
-                    {{I.conditioningProcess}}
+                    {{D.conditioningProcess}}
                 </view>
                 <view class=" col333 top10">自我保养方法</view>
                 <view class="font0">
-                    {{I.maintenanceMethod}}
+                    {{D.maintenanceMethod}}
                 </view>
 
             </view>
@@ -69,7 +69,7 @@
                             </view>
                         </view>
                         <view class="align-right top15">
-                            <navigator url="../wode/groupSuccess" class="btns btns-nomal btns-green" style="border-radius: 32rpx">继续拼图 > </navigator>
+                            <navigator url="../wode/groupSuccess?pageFrom=projectDetail" class="btns btns-nomal btns-green" style="border-radius: 32rpx">参与拼图 > </navigator>
                         </view>
                     </view>
                 </view>
@@ -84,7 +84,7 @@
                     <navigator url="shopList?pageFrom=projectDetail" class="btns btns-biggest" style="width: 100%">立即预约</navigator>
                 </view>
             </view>
-            <view class="ui-col ui-col-align-center  align-center " style="">
+            <view wx:if="{{D.isAssemble==1}}" class="ui-col ui-col-align-center  align-center " style="">
                 <view class="ui-col-content align-center ">
                     <navigator url="../wode/doGroup" class="btns btns-biggest" style="width: 100%">我要拼团</navigator>
                 </view>

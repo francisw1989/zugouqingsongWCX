@@ -1,5 +1,5 @@
 "use strict";
-
+const app = getApp();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -16,7 +16,13 @@ exports.default = Page({
         longitude: "",
         maskStyle: {
             'background-color': 'transparent'
-        }
+        },
+        item:{
+
+        },
+        dates:[],
+        date: '',
+        time: ''
     },
     phone: function phone() {
         wx.makePhoneCall({
@@ -25,9 +31,17 @@ exports.default = Page({
     },
     makertap: function makertap(e) {
         console.log(e);
-        var t = this;
+        const t = this;
+        for (const v of app.globalData.stores){
+            if (v.id == e.markerId){
+                t.setData({
+                    item: v
+                })
+            }
+        }
         t.setData({
-            show: true
+            show: true,
+
         });
     },
     close: function close() {
@@ -36,11 +50,12 @@ exports.default = Page({
             show: false
         });
     },
-    chose: function chose(e) {
+    choose: function choose(e) {
         console.log('323');
         var t = this;
         t.setData({
-            cIndex: e.target.dataset.index
+            cIndex: e.target.dataset.index,
+            date: t.data.dates[e.target.dataset.index]
         });
         if (e.target.dataset.index == 0) {
             t.setData({
@@ -61,6 +76,7 @@ exports.default = Page({
         });
     },
     setMap(){
+        const t = this;
         var BMap = new bmap.BMapWX({
             ak: "1kjiGRSGCWINwk4F0WzSVEibiQhOE0Eo"
         });
@@ -89,12 +105,55 @@ exports.default = Page({
         });
         // 设置中心点
         t.setData({
-            latitude: app.globalData.aklatitude,
-            longitude: app.globalData.longitude
+            item: app.globalData.stores[0]
+        })
+        console.log(t.data.item)
+        t.setData({
+            latitude: t.data.item.x,
+            longitude: t.data.item.y
         });
+    },
+    ljyy(){
+        const t = this;
+        let _do = () => {
+            app.globalData.chooseStore = t.data.item;
+            let msg = '';
+            if (!t.data.time) {
+                msg = '请选择时间'
+            }
+            if (!t.data.date) {
+                msg = '请选择日期'
+            }
+            if (msg) {
+                wx.showModal({
+                    title: '提示',
+                    content: msg,
+                })
+                return
+            }
+            app.globalData.chooseStore.appointTime = t.data.date + ' ' + t.data.time + ':00';
+            if (app.globalData.appointFromProject) {
+                // choose form project, no need choose projects again
+                wx.redirectTo({
+                    url: 'chooseProjectJishi',
+                })
+            } else {
+                // choose form store, choose projects 
+                wx.redirectTo({
+                    url: 'projectsList?pageFrom=appointment',
+                })
+            }
+        }
+        app.userInfo().then((res)=>{
+            _do();
+        })
+        
     },
     onLoad: function onLoad() {
         var t = this;
-        t.setMap()
+        t.setMap();
+        t.setData({
+            dates: app.get_tomorrow_data()
+        })
     }
 });

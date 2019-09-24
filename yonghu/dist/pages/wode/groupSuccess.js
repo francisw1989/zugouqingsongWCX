@@ -15,35 +15,56 @@ exports.default = Page({
             display: 'inline-block',
             textAlign: 'center',
             lineHeight: '20px'
-        }
+        },
+        leftMember: []
     },
-    pageFromShare(){
+    pageFromDeal(opt){
+        const t = this;
         if (opt.scene) {
+            // page from share
             let scene = decodeURIComponent(opt.scene);
-            wx.showModal({
-                title: '',
-                content: scene,
-            })
+            // wx.showModal({
+            //     title: '',
+            //     content: scene,
+            // })
             wx.setStorageSync('assembleId', scene);
             t.setData({
-                assembleId: scene,
                 pageFrom: 'share'
             })
+        }else{
+            // page form creat group
+            if(opt.pageFrom){
+                t.setData({
+                    pageFrom: opt.pageFrom
+                })
+            }
         }
+        app.assembleRecordInfo().then((res) => {
+            res.item.imgs = res.item.imgs.split(',')[0];
+            wx.setStorageSync('shareImg', res.item.imgs)
+            let len = res.assemblePeople - res.members.length;
+            for(let i = 0; i< len; i++){
+                t.data.leftMember.push('')
+            }
+            t.setData({
+                D: res,
+                leftMember: t.data.leftMember
+            })
+        });
     },
     onLoad(opt) {
         const t = this;
-        t.pageFromShare();
-        t.setData({
-            D: app.globalData.chooseProject[0],
-            pageFrom: opt.pageFrom
-        })
+        t.pageFromDeal(opt);
+       
     },
     joinGroup(){
-        app.joinGroup().then((res)=>{
-            wx.reLaunch({
-                url: '../index/index',
-            })
-        });
+        app.userInfo().then(()=>{
+            app.joinGroup().then((res) => {
+                wx.reLaunch({
+                    url: '../index/index',
+                })
+            });
+        })
+        
     }
 });

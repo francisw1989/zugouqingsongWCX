@@ -15,7 +15,7 @@ exports.default = Page({
         })
         app.getItem(t.data.itemId).then((res)=>{
             t.setData({
-                I: res
+                D: res
             })
         })
         app.assembleRecord(t.data.itemId).then((res)=>{

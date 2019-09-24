@@ -10,12 +10,12 @@ exports.default = Page({
         let index = e.currentTarget.dataset.index;
         let id = e.currentTarget.dataset.id;
         app.globalData.appointFromProject = false;
+        app.globalData.chooseStore = t.data.list[index];
         if(t.data.pageFrom == 'index'){
             wx.navigateTo({
                 url: 'shopDetail?id=' + id,
             })
         } else if (t.data.pageFrom == 'projectDetail'){
-            app.globalData.chooseStore = t.data.list[index];
             wx.navigateTo({
                 url: 'appointmentTime',
             })
