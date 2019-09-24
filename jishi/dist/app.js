@@ -334,6 +334,20 @@ exports.default = App({
             })
         })
         return p;
+    },
+    //排班信息
+    employeeSchedule:function employeeSchedule(){
+        const t = this;
+        let params = {
+            employeeId: t.globalData.userInfo.userId || "13"
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeSchedule', params).then((res) => {
+                console.log(res)
+                resolve(res);
+            })
+        })
+        return p;
     }
 
 });
