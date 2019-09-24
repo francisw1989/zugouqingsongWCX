@@ -1477,6 +1477,9 @@ view.btns-green,button.btns-green {
   box-shadow: -1rpx 10rpx 9rpx 0rpx rgba(40, 32, 184, 0.1);
   border-radius: 36rpx;
 }
+.btns-1::after{
+    border: none;
+}
 .btns-2 {
   width: 124rpx;
   line-height: 53rpx;
@@ -1542,6 +1545,9 @@ view.btns-green,button.btns-green {
   background: none;
   border: none;
   box-shadow: none;
+}
+.ico4::after {
+  border: none;
 }
 .ico14 {
   width: 199rpx;

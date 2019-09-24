@@ -32,9 +32,10 @@ exports.default = Page({
                 // })
             })
         }
-        app.userInfo().then(() => {
-            _do();
-        })
+        // app.userInfo().then(() => {
+        //     _do();
+        // })
+        _do();
         
     },
     changePeopleNum(e){

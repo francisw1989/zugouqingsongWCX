@@ -58,13 +58,14 @@ exports.default = Page({
        
     },
     joinGroup(){
-        app.userInfo().then(()=>{
-            app.joinGroup().then((res) => {
+        app.joinGroup().then((res) => {
+            app.wxPay().then(() => {
                 wx.reLaunch({
                     url: '../index/index',
                 })
-            });
-        })
+            })
+        });
+
         
     }
 });

@@ -3,5 +3,5 @@
     "ui-divider": "../../packages/touchui-wx-components/ui-divider/dist/index",
     "ui-count-down": "../../packages/touchui-wx-components/ui-count-down/dist/index"
   },
-  "navigationBarTitleText": "开团成功"
+  "navigationBarTitleText": "开团"
 }

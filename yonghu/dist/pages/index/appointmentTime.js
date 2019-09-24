@@ -88,9 +88,7 @@ exports.default = Page({
                 })
             }
         }
-        app.userInfo().then(()=>{
-            _do();
-        })
+        _do();
         
     }
 });

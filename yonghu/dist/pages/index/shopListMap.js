@@ -144,9 +144,7 @@ exports.default = Page({
                 })
             }
         }
-        app.userInfo().then((res)=>{
-            _do();
-        })
+        _do();
         
     },
     onLoad: function onLoad() {

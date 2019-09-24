@@ -34,7 +34,7 @@ Page({
         params.userId = app.globalData.userInfo.id;
         params.photo = t.data.photo;
         app.user(params).then((res)=>{
-            app.userInfo();
+            app.userInfo(true);
             wx.showToast({
                 icon: 'none',
                 title: '修改信息成功'

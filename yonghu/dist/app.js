@@ -244,7 +244,10 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('assembleRecord', params).then((res) => {
-                res.imgs && (res.imgs = res.imgs.split(','));
+                for (const v of res) {
+                    v.item.imgs = v.item.imgs.split(',')[0];
+                    v.leftPeople = v.assemblePeople - v.members.length;
+                }
                 resolve(res);
             })
         })
@@ -272,6 +275,7 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.postRequest('joinGroup?' + t.jsonToParameters(params), {}).then((res) => {
+                t.globalData.wxObj = res;
                 resolve(res);
             })
         })
@@ -455,6 +459,9 @@ exports.default = App({
                     wx.showToast({
                         title: '支付成功'
                     });
+                    setTimeout(()=>{
+                        resolve();    
+                    }, 1000)
                     resolve();
                     // setTimeout(function () {
                     //     wx.hideLoading();
@@ -563,34 +570,44 @@ exports.default = App({
         }
         var _url = t.globalData.u + url;
         var p = new Promise(function (resolve, reject) {
-            wx.request({
-                url: _url,
-                data: params,
-                method: 'get',
-                header: {
-                    'Content-Type': 'application/json'
-                },
-                dataType: 'json',
-                success: function success(res) {
-                    wx.hideLoading();
-                    if (res.data && res.data.msg){
+            let _do = ()=>{
+                wx.request({
+                    url: _url,
+                    data: params,
+                    method: 'get',
+                    header: {
+                        'Content-Type': 'application/json'
+                    },
+                    dataType: 'json',
+                    success: function success(res) {
+                        wx.hideLoading();
+                        if (res.data && res.data.msg) {
+                            wx.showModal({
+                                content: res.data.msg
+                            });
+                            return
+                        }
+                        resolve(res.data);
+
+                    },
+                    fail: function fail(res) {
+                        wx.hideLoading();
                         wx.showModal({
-                            content: res.data.msg
+                            content: JSON.stringify(res)
                         });
-                        return
-                    }
-                    resolve(res.data);
-                    
-                },
-                fail: function fail(res) {
-                    wx.hideLoading();
-                    wx.showModal({
-                        content: JSON.stringify(res)
-                    });
-                    reject();
-                },
-                complete: function complete() { }
-            });
+                        reject();
+                    },
+                    complete: function complete() { }
+                });
+            }
+            if ((url.indexOf('userId') > -1 || params.userId) && url !='userInfo'){
+                t.userInfo().then(()=>{
+                    _do();
+                })
+            }else{
+                _do();
+            }
+            
         });
         return p;
     },
@@ -606,34 +623,45 @@ exports.default = App({
             _url = t.globalData.u + url
         }
         var p = new Promise(function (resolve, reject) {
-            wx.request({
-                url: _url,
-                data: params,
-                method: 'POST',
-                header: {
-                    // 'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
-                    'Content-Type': 'application/json'
-                },
-                dataType: 'json',
-                success: function success(res) {
-                    wx.hideLoading();
-                    if (res.data && res.data.msg) {
+            let _do = () => {
+                wx.request({
+                    url: _url,
+                    data: params,
+                    method: 'POST',
+                    header: {
+                        // 'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                        'Content-Type': 'application/json'
+                    },
+                    dataType: 'json',
+                    success: function success(res) {
+                        wx.hideLoading();
+                        if (res.data && res.data.msg) {
+                            wx.showModal({
+                                content: res.data.msg
+                            });
+                            return
+                        }
+                        resolve(res.data)
+                    },
+                    fail: function fail(res) {
+                        wx.hideLoading();
                         wx.showModal({
-                            content: res.data.msg
+                            content: JSON.stringify(res)
                         });
-                        return
-                    }
-                    resolve(res.data)
-                },
-                fail: function fail(res) {
-                    wx.hideLoading();
-                    wx.showModal({
-                        content: JSON.stringify(res)
-                    });
-                    reject(res);
-                },
-                complete: function complete() { }
-            });
+                        reject(res);
+                    },
+                    complete: function complete() { }
+                });
+            }
+            if (url != 'userLogin') {
+                t.userInfo().then(() => {
+                    _do()
+                })
+            }else{
+                _do()
+            }
+            
+            
         });
         return p;
     },

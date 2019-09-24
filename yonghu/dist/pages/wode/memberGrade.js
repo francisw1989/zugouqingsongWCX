@@ -19,7 +19,6 @@ exports.default = Page({
     },
     onShow(){
         const t = this;
-        app.userInfo();
         t.setData({
             userInfo: app.globalData.userInfo
         })
