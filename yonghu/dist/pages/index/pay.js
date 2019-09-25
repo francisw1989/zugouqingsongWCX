@@ -40,28 +40,40 @@ exports.default = Page({
             })
             return
         }
-        app.orderPay(t.data.type).then((res)=>{
-            if (res.needWxPay == 1){
-                app.globalData.wxObj = res.data;
-                app.wxPay().then(()=>{
-                    if (t.data.pageFrom == 'goods'){
-                        wx.switchTab({
-                            url: 'index',
-                        })
-                    }else{
-                        wx.redirectTo({
-                            url: 'paySuccess',
-                        })
-                    }
-                    
+        if(t.data.pageFrom=='goods'){
+            app.articleOrderPay(t.data.type).then((res)=>{
+                app.globalData.wxObj = res;
+                app.wxPay().then(() => {
+                    wx.switchTab({
+                        url: 'index',
+                    })
                 });
-            }else{
-                wx.redirectTo({
-                    url: 'paySuccess',
-                })
-            }
-            
-        })
+            })
+        }else{
+            app.orderPay(t.data.type).then((res) => {
+                if (res.needWxPay == 1) {
+                    app.globalData.wxObj = res.data;
+                    app.wxPay().then(() => {
+                        if (t.data.pageFrom == 'goods') {
+                            wx.switchTab({
+                                url: 'index',
+                            })
+                        } else {
+                            wx.redirectTo({
+                                url: 'paySuccess',
+                            })
+                        }
+
+                    });
+                } else {
+                    wx.redirectTo({
+                        url: 'paySuccess',
+                    })
+                }
+
+            })
+        }
+        
     },
     
     onLoad(opt){

@@ -15,7 +15,7 @@ exports.default = Page({
         const t = this;
         let len = app.globalData.barList.length;
         if (wx.getStorageSync('openId')){
-            app.userInfo().then(() => {
+            app.userInfo(true).then(() => {
                 t.setData({
                     userInfo: app.globalData.userInfo
                 })

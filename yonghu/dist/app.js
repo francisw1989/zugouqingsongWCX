@@ -413,7 +413,7 @@ exports.default = App({
     orderPay(type) {
         const t = this;
         let params = {
-            orderId: t.globalData.orderDetail.orderId || t.globalData.orderDetail.id,
+            orderId: t.globalData.orderDetail.id,
             couponRecordId: t.globalData.chooseCoupon.id || '',
             type: type
         }
@@ -425,14 +425,14 @@ exports.default = App({
         return p;
     },
     // 商品订单服务支付接口
-    articleOrderPay(articleOrderId, type){
+    articleOrderPay(type){
         const t = this;
         let params = {
-            articleOrderId: articleOrderId,
+            articleOrderId: t.globalData.orderDetail.id,
             type: type
         }
         let p = new Promise((resolve, reject) => {
-            t.getRequest('orderPay', params).then((res) => {
+            t.postRequest('articleOrderPay?' + t.jsonToParameters(params), {}).then((res) => {
                 resolve(res);
             })
         })
