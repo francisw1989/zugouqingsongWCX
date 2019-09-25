@@ -1,18 +1,31 @@
 // pages/index/jrsy.js
+const app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        employeeTodyIncome:{}
+    },
+    //initData 数据初始化
+    initData(){
+        const t = this;
+        app.employeeTodyIncome().then((res)=>{
+            console.log(res);
+            t.setData({
+                employeeTodyIncome: res
+            })
+        })
+        // console.log(t.data);
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        const t = this;
+        t.initData();
     },
 
     /**

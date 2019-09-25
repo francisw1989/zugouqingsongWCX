@@ -12,9 +12,21 @@ Page({
     data: {
         leve: 1,
         width: wx.WIN_WIDTH,
-        perW: wx.WIN_WIDTH/3
+        perW: wx.WIN_WIDTH/3,
+        useemployeeTodyServicerInfo:{}
+    },
+    //initData 数据初始化
+    initData(){
+        const t = this;
+        app.employeeTodyService().then((res)=>{
+            console.log(res);
+            t.setData({
+                useemployeeTodyServicerInfo: res
+            })
+        })
     },
     initChart1(){
+        const t = this;
         ringChart1 = new wxCharts({
             animation: true,
             canvasId: 'ringCanvas1',
@@ -33,12 +45,12 @@ Page({
             },
             series: [{
                 name: '男性',
-                data: 15,
+                data: t.data.useemployeeTodyServicerInfo.serviceMan,
                 stroke: false,
                 color: '#7E65FF'
             }, {
                 name: '女性',
-                data: 55,
+                data: t.data.useemployeeTodyServicerInfo.serviceGirl,
                 stroke: false,
                 color: '#fff'
             }],
@@ -129,8 +141,7 @@ Page({
     setting: function setting() {
         var t = this;
         t.setData({
-            leve: app.globalData.leve,
-            color: app.globalData.color
+            leve: app.globalData.leve
         });
     },
     /**
@@ -139,6 +150,7 @@ Page({
     onLoad: function (options) {
         const t = this;
         t.setting();
+        t.initData();
         t.initChart1();
         t.initChart2();
         t.initChart3();

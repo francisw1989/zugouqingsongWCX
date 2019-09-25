@@ -127,6 +127,7 @@ exports.default = App({
     },
     userLogin() {
         const t = this;
+        console.l
         let params = {
             code: t.globalData.code,
             phone: t.globalData.phone,
@@ -136,31 +137,45 @@ exports.default = App({
             console.log(res);
             t.globalData.userInfo = Object.assign(t.globalData.userInfo, res)
             console.log(t.globalData.userInfo)
+            console.log(res.openId)
             wx.setStorageSync('openId', res.openId)
             wx.reLaunch({
                 url: 'index',
             })
         })
     },
-    userInfo() {
+    userInfo(reload) {
         const t = this;
-        let openId;
-        if (wx.getStorageSync('openId')) {
-            wx.reLaunch({
-                url: 'index',
-            })
-            openId = wx.getStorageSync('openId');
+        console.log(t);
+        var p = new Promise(function (resolve, reject) {
+            let openId = wx.getStorageSync('openId');
+
+            if (!openId){
+                wx.navigateTo({
+                    url: '../index/wxdl',
+                })
+                return;
+            }
+            if (t.globalData.userInfo.userId && !reload){
+                resolve();
+                return
+            }
+
             let params = {
                 openId: openId
             }
-            t.getRequest('employeeInfo', params).then((res) => {
-                console.log(res)
-            })
-        } else {
-            wx.navigateTo({
-                url: 'wxdl',
-            })
-        }
+
+            t.geWxtUserInfo().then(()=>{
+                t.getRequest('employeeInfo', params).then((res) => {
+                    res.userId = res.id;
+                    t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
+                    console.log(t.globalData.userInfo)
+                    resolve();
+                })
+            });
+
+        })
+        return p;
 
     },
     wxPay: function wxPay(obj) {
@@ -213,5 +228,126 @@ exports.default = App({
                 wx.hideLoading();
             }
         });
+    },
+    // 微信自己的获取用户信息
+    geWxtUserInfo() {
+        var t = this;
+        var p = new Promise(function (resolve, reject) {
+            wx.getSetting({
+                success: function success(res) {
+                    if (res.authSetting['scope.userInfo']) {
+                        // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                        wx.getUserInfo({
+                            success: function success(res) {
+                                t.globalData.userInfo = Object.assign(t.globalData.userInfo, res.userInfo);
+                                resolve();
+                            }
+                        });
+                    }
+                }
+            });
+        });
+        return p;
+    },
+    //首页技师信息
+    employeeIndex: function employeeIndex(){
+        const t = this;
+        console.log(t.globalData.userInfo);
+        let params = {
+            employeeId: t.globalData.userInfo.userId || "13"
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeIndex', params).then((res) => {
+                console.log(res)
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //今日服务人次
+    employeeTodyService: function employeeTodyService(){
+        const t = this;
+        console.log(t.globalData.userInfo);
+        let params = {
+            employeeId: t.globalData.userInfo.userId || "13"
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeTodyService', params).then((res) => {
+                console.log(res)
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //今日收益
+    employeeTodyIncome:function employeeTodyIncome(){
+        const t = this;
+        console.log(t.globalData.userInfo);
+        let params = {
+            employeeId: t.globalData.userInfo.userId || "13"
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeTodyIncome', params).then((res) => {
+                console.log(res)
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //技师端加载用户信息及标签
+    employeeUserTag:function employeeUserTag(){
+        const t = this;
+        console.log(t.globalData.userInfo);
+        let params = {
+            userId: "65"
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeUserTag', params).then((res) => {
+                console.log(res)
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //我的预约
+    employeeOrder:function employeeOrder(obj){
+        console.log(obj);
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeOrder', obj).then((res) => {
+                console.log(res)
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //我的考勤
+    employeeAttendance:function employeeAttendance(){
+        const t = this;
+        let params = {
+            employeeId: t.globalData.userInfo.userId || "13"
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeAttendance', params).then((res) => {
+                console.log(res)
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //排班信息
+    employeeSchedule:function employeeSchedule(){
+        const t = this;
+        let params = {
+            employeeId: t.globalData.userInfo.userId || "13"
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeSchedule', params).then((res) => {
+                console.log(res)
+                resolve(res);
+            })
+        })
+        return p;
     }
+
 });

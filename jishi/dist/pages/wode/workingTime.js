@@ -1,5 +1,5 @@
 'use strict';
-
+const app = getApp();
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -124,5 +124,8 @@ exports.default = Page({
     });
     var date = new Date();
     this.init(this.format(date));
+
+    app.employeeAttendance();
+
   }
 });

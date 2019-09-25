@@ -6,8 +6,8 @@
             <view class="inInf">
                 <image src="../../static/images/2.png" class="icoAll" style="width: 27rpx; height: 32rpx;" />
                 <text class="col333 verMid font0 left10">今日考勤提醒：</text>
-                <text class="verMid font0">还未上班打卡</text>
-                <text class="left20 colGreen verMid">去打卡</text>
+                <text class="verMid font0">{{nowSignText}}</text>
+                <text class="left20 colGreen verMid" wx:if="{{nowSign==2}}">去打卡</text>
                 <image src="../../static/images/3.png" class="icoAll left10" style="width: 11rpx; height: 19rpx;" />
             </view>
         </view>
@@ -15,15 +15,15 @@
     <view class="center top30">
         <navigator url='fwrc' class="inBox1 clearfix">
             <view class="colfff top8">今日服务人次</view>
-            <view class="font5 colfff">2</view>
+            <view class="font5 colfff">{{employeeIndex.employee.todayServices}}</view>
         </navigator>
         <navigator url='jrsy' class="inBox1 inBox2 left20">
             <view class="colfff top8">今日收益</view>
-            <view class="font5 colfff">2</view>
+            <view class="font5 colfff">{{employeeIndex.employee.todayIncome}}</view>
         </navigator>
         <navigator url='pj' class="inBox1 inBox3 left20">
             <view class="colfff top8">收到好评</view>
-            <view class="font5 colfff">2</view>
+            <view class="font5 colfff">{{employeeIndex.employee.todayPraise}}</view>
         </navigator>
     </view>
     <view class="footerBox" style="bottom: 10rpx">
