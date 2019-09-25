@@ -60,7 +60,7 @@ exports.default = Page({
     joinGroup(){
         app.joinGroup().then((res) => {
             app.wxPay().then(() => {
-                wx.reLaunch({
+                wx.switchTab({
                     url: '../index/index',
                 })
             })

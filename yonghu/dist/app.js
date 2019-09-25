@@ -39,7 +39,19 @@ exports.default = App({
         chooseCoupon: {},
         stores:[]
     },
-    
+    // 商品列表查询
+    goods() {
+        const t = this;
+        let params = {
+            storeId: t.globalData.nowOrder.storeId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('goods/' + t.globalData.nowOrder.storeId, params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // 根据技师ID加载技师信息
     employee(employeeId){
         const t = this;
@@ -170,13 +182,13 @@ exports.default = App({
         return p;
     },
     // 用户端首页当前订单
-    newOrder(){
+    nowOrder(){
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId
         };
         let p = new Promise((resolve, reject) => {
-            t.getRequest('newOrder', params, true).then((res) => {
+            t.getRequest('nowOrder', params, true).then((res) => {
                 t.globalData.nowOrder = res.nowOrder;
                 resolve(res);
             })
@@ -354,14 +366,14 @@ exports.default = App({
         let data = [];
         for (const v of t.globalData.chooseGoods) {
             data.push({
-                articleId: v.id,
-                count: v.count
+                articleId: v.articleId,
+                count: v.num
             })
         }
         let params = {
             userId: t.globalData.userInfo.userId,
-            orderId: t.globalData.userInfo.orderId,
-            storeId: t.globalData.chooseStore.id
+            orderId: t.globalData.nowOrder.id,
+            storeId: t.globalData.nowOrder.storeId
         }
         let p = new Promise((resolve, reject) => {
             t.postRequest('orderGoods?' + t.jsonToParameters(params), data).then((res) => {
@@ -401,7 +413,7 @@ exports.default = App({
     orderPay(type) {
         const t = this;
         let params = {
-            orderId: t.globalData.orderDetail.id,
+            orderId: t.globalData.orderDetail.orderId || t.globalData.orderDetail.id,
             couponRecordId: t.globalData.chooseCoupon.id || '',
             type: type
         }
@@ -600,8 +612,9 @@ exports.default = App({
                     complete: function complete() { }
                 });
             }
-            if ((url.indexOf('userId') > -1 || params.userId) && url !='userInfo'){
+            if (params.hasOwnProperty('userId') && url !='userInfo'){
                 t.userInfo().then(()=>{
+                    params.userId = t.globalData.userInfo.userId;
                     _do();
                 })
             }else{
@@ -772,10 +785,10 @@ exports.default = App({
             }
             t.getRequest('index', params).then((res) => {
                 for (const v of res.nearbyStore) {
-                    v.imgs = v.imgs.split(',')[0]
+                    v.imgs && (v.imgs = v.imgs.split(',')[0])
                 }
                 for (const v of res.itemRecommendList) {
-                    v.imgs = v.imgs.split(',')[0]
+                    v.imgs && (v.imgs = v.imgs.split(',')[0])
                 }
                 resolve(res);
             })

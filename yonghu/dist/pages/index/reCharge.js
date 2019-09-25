@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = Page({
     data: {
         wxChecked: true,
-        mList: [{ value: '200', zeng: '' }, { value: '3000', zeng: '300' }, { value: '5000', zeng: '300' }, { value: '10000', zeng: '300' }, { value: '15000', zeng: '300' }],
+        mList: [],
         mIndex: 0
     },
     tagClick: function tagClick(e) {
@@ -37,27 +37,43 @@ exports.default = Page({
         }
         let mIndex = e.currentTarget.dataset.index;
         t.data.mList[e.currentTarget.dataset.index].active = 'active';
-        t.data.U.accountAll = t.data.U.savingsAccount + Number(t.data.mList[mIndex].value)
+        t.data.U.accountAll = t.data.U.savingsAccount + Number(t.data.mList[mIndex].amount)
         t.setData({
             mIndex: mIndex,
             mList: t.data.mList,
             U: t.data.U
         });
     },
-    onLoad(){
-        const t = this;
-        let U = app.globalData.userInfo;
-        U.savingsAccount = U.savingsAccount || 0;
-        U.accountAll = U.savingsAccount + Number(t.data.mList[t.data.mIndex].value)
-        t.setData({
-            U: U
-        })
-    },
     vipRecharge(){
         const t = this;
-        let price = t.data.mList[t.data.mIndex].value
+        app.vipRecharge().then((res)=>{
+            t.setData({
+                mList: res
+            })
+            let U = app.globalData.userInfo;
+            U.savingsAccount = U.savingsAccount || 0;
+            U.accountAll = U.savingsAccount + Number(t.data.mList[t.data.mIndex].amount)
+            t.setData({
+                U: U
+            })
+        })
+    },
+    onShow(){
+        const t = this;
+        
+        t.vipRecharge()
+        
+        
+    },
+    vipRechargePost(){
+        const t = this;
+        let price = t.data.mList[t.data.mIndex].amount
         app.vipRechargePost(price).then(()=>{
-            app.wxPay()
+            app.wxPay().then(()=>{
+                wx.navigateBack({
+                    
+                })
+            })
         })
     }
 });

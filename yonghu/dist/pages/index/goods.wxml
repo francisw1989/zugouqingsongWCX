@@ -24,12 +24,12 @@
             </view>
             <view class="ui-col" style="padding-left: 10px;padding-right: 10px;">
               <view class="ui-col-content">
-                <view class="col000 font2 text-over">怡宝 饮用纯净水555ml饮用纯净水555ml/瓶</view>
+                <view class="col000 font2 text-over">{{item.articleName}}</view>
                 <view class="top20 clearfix">
                   <view class="right">
-                    <ui-stepper _pid="{{_pid}}"></ui-stepper>
+                    <ui-stepper value='{{item.num}}' data-index='{{index}}' bindsubtraction='plusAdd' bindaddition='plusAdd' _pid="{{_pid}}"></ui-stepper>
                   </view>
-                  <text class="colPink font2">￥2</text><text class="col999">/瓶</text>
+                  <text class="colPink font2">￥{{item.salesPrice/100}}</text><text class="col999">/{{item.unit}}</text>
                 </view>
               </view>
             </view>
@@ -44,14 +44,14 @@
       <view class="ui-row" style="">
         <view class="relative ui-col ui-col-6" style="flex: 0 0 50%;">
           <view class="ui-col-content">
-            <view class="fBxo1">共 ¥6</view>
+            <view class="fBxo1">共 ¥{{totalMouny}}</view>
             <image class="fBxoImg" src="../../static/images/46.png" style="width: 106rpx; height:125rpx; " />
-            <ui-badge text="9" custom-style="{{customStyle}}" class="badge1" _pid="{{_pid}}"></ui-badge>
+            <ui-badge text="{{totalNum}}" custom-style="{{customStyle}}" class="badge1" _pid="{{_pid}}"></ui-badge>
           </view>
         </view>
         <view class="ui-col" style="">
           <view class="ui-col-content">
-            <view class="fBxo2">选好了</view>
+            <view class="fBxo2" bindtap="orderGoods">选好了</view>
           </view>
         </view>
       </view>

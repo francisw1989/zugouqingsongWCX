@@ -6,7 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 const app = getApp();
 exports.default = Page({
     data: {
-        list: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+        list: [],
+        totalMouny: 0,
+        totalNum: 0, 
         current: 0,
         tabStyle: {
             'color': '#333',
@@ -20,6 +22,46 @@ exports.default = Page({
             'border': '2px solid #fff'
         }
 
+    },
+    plusAdd(e){
+        const t = this;
+        let i = e.currentTarget.dataset.index;
+        t.data.list[i].num = e.detail;
+        let totalMouny = 0;
+        let totalNum = 0;
+        for(const v of t.data.list){
+            totalNum += Number(v.num);
+            totalMouny += (v.num * v.salesPrice);
+        }
+        t.setData({
+            totalMouny: totalMouny/100,
+            totalNum: totalNum
+        })
+        
+    },
+    orderGoods(){
+        const t = this;
+        let chooseGoods = [];
+        for(const v of t.data.list){
+            if(v.num>0){
+                chooseGoods.push(v)
+            }
+        }
+        if (chooseGoods.length==0){
+            wx.showModal({
+                title: '提示',
+                content: '请选择商品',
+            })
+            return
+        }
+        app.globalData.chooseGoods = chooseGoods;
+        app.orderGoods().then((res)=>{
+            app.globalData.orderDetail = res;
+            app.globalData.outTradeNo = res.outTradeNo;
+            wx.navigateTo({
+                url: 'pay?pageFrom=goods',
+            })
+        });
     },
     handleChange: function handleChange(e) {
         console.log(e);
@@ -35,8 +77,16 @@ exports.default = Page({
         })
 
     },
-    optimalCoupon(){
-        app.optimalCoupon();
+    goods(){
+        const t = this;
+        app.goods().then((res)=>{
+            for(const v of res){
+                v.num = 0
+            }
+            t.setData({
+                list: res
+            })
+        });
     },
     setSize(){
         const t = this;
@@ -55,7 +105,7 @@ exports.default = Page({
     onLoad: function onLoad() {
         var t = this;
         t.setSize();
-        t.optimalCoupon();
+        t.goods();
         
     }
 });

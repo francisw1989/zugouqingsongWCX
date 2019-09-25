@@ -44,14 +44,15 @@ exports.default = Page({
         })
         
     },
-    newOrder(){
+    nowOrder(){
         const t = this;
+
         let _do = ()=>{
-            app.newOrder().then((res) => {
+            app.nowOrder().then((res) => {
                 if (!res.nowOrder){
                     setTimeout(()=>{
                         _do()
-                    }, 60000)
+                    }, 1000)
                 }else{
                     t.setData({
                         jxzShow: true,
@@ -98,7 +99,9 @@ exports.default = Page({
     },
     onLoad(opt) {
         const t = this;
-        
+        if(wx.getStorageSync('openId')){
+            t.nowOrder();
+        }
         t.getIndex();
         t.getItemClass();
     }

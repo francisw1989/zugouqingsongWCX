@@ -11,7 +11,7 @@
                 <view class=" bor_btm_so" style="padding-bottom: 10rpx">
                     <text class="col000 ">{{item.itemName}}</text>
                     <text class="left10  col000">默认：{{item.defaultDuration}}分钟</text>
-                    <text class="left15 colPink font3">¥{{item.defaultPrice/1000 * item.defaultDuration}}</text>
+                    <text class="left15 colPink font3">¥{{item.defaultPrice/100 * item.defaultDuration}}</text>
                 </view>
                 <view class="top5 line24">{{item.conditioningMethod}}</view>
                 <view class="top5">

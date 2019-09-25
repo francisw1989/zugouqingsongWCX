@@ -8,17 +8,20 @@ exports.default = Page({
         userInfo: {},
         memberLevelName: app.globalData.memberLevelName
     },
-    onShow(){
-        const t = this;
+    userInfo(){
+        app.userInfo();
     },
     onShow() {
         const t = this;
         let len = app.globalData.barList.length;
-        app.userInfo().then(()=>{
-            t.setData({
-                userInfo: app.globalData.userInfo
+        if (wx.getStorageSync('openId')){
+            app.userInfo().then(() => {
+                t.setData({
+                    userInfo: app.globalData.userInfo
+                })
             })
-        })
+        }
+       
         this.getTabBar().setData({
             selected: len==3?2:1,
             list: app.globalData.barList

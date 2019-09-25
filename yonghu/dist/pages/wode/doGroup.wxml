@@ -14,8 +14,8 @@
                         <view class="top5 font0 bor_btm_so" style="padding-bottom: 10rpx">{{D.conditioningMethod}}</view>
                         <view class="top5 align-right">
                             <text class="col999 font0">原价：</text>
-                            <text class="col999 text-through font0">¥ {{D.defaultPrice/1000*D.defaultDuration}}元</text>
-                            <text class="left10 font2 colPink">拼团价：¥{{price[pIndex]/1000}}元</text>
+                            <text class="col999 text-through font0">¥ {{D.defaultPrice/100*D.defaultDuration}}元</text>
+                            <text class="left10 font2 colPink">拼团价：¥{{price[pIndex]/100}}元</text>
                         </view>
                     </view>
                 </view>
@@ -77,7 +77,7 @@
             </view>
             <view class="ui-col" style="">
                 <view class="ui-col-content">
-                    {{price[pIndex]/1000}}
+                    {{price[pIndex]/100}}
                 </view>
             </view>
         </view>

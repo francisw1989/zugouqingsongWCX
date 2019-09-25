@@ -50,8 +50,8 @@
                         <view class="col333">{{item.item.itemName}}</view>
                         <view>拼团截止：{{item.item.assembleEndTime}}</view>
                         <view>{{item.assemblePeople}}人团，还差{{item.leftPeople}}人</view>
-                        <view class="top5 text-through">¥{{item.primeCost/1000 || 0}}</view>
-                        <view class="colYe font3">¥{{item.assemblePrice/1000}}</view>
+                        <view class="top5 text-through">¥{{item.primeCost/100 || 0}}</view>
+                        <view class="colYe font3">¥{{item.assemblePrice/100}}</view>
                     </view>
                 </view>
                 <view class="ui-col" style="">

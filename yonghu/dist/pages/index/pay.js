@@ -33,16 +33,28 @@ exports.default = Page({
     },
     orderPay(){
         const t = this;
-        if(t.data.type == null){
+        if (!t.data.type && t.data.type!=0){
             wx.showModal({
                 title: '提示',
                 content: '请选择支付方式',
             })
+            return
         }
         app.orderPay(t.data.type).then((res)=>{
             if (res.needWxPay == 1){
                 app.globalData.wxObj = res.data;
-                app.wxPay();
+                app.wxPay().then(()=>{
+                    if (t.data.pageFrom == 'goods'){
+                        wx.switchTab({
+                            url: 'index',
+                        })
+                    }else{
+                        wx.redirectTo({
+                            url: 'paySuccess',
+                        })
+                    }
+                    
+                });
             }else{
                 wx.redirectTo({
                     url: 'paySuccess',

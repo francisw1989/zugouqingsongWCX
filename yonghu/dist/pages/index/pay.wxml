@@ -3,7 +3,7 @@
         <text class=" font2">支付剩余时间：</text>
         <text class="colYe font2">4:59</text>
     </view>
-    <view wx:if="pageFrom!=group">
+    <view wx:if="{{pageFrom!='goods'}}">
         <view class="pad20">
             <view>
                 <image src="../../static/images/35.png" class="icoAll" style="width: 22rpx; height: 28rpx;" />
@@ -107,7 +107,7 @@
     </view>
     <view class="padSp1 bgfff align-right clearfix font2">
         <text>总计</text>
-        <text class="colPink">：¥ {{D.totalPrice}} 元</text>
+        <text class="colPink">：¥ {{D.totalPrice/100}} 元</text>
     </view>
     <view class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;" bindtap="orderPay">立即支付</view>
 </view>
