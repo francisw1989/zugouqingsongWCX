@@ -75,7 +75,7 @@
         <view class="ui-row" style="">
             <view class="ui-col ui-col-border-right ui-col-align-center align-center" style="">
                 <view class="ui-col-content align-center">
-                    <navigator url="shopList?pageFrom=projectDetail" class="btns btns-biggest" style="width: 100%">立即预约</navigator>
+                    <view bindtap='ljyy' url="shopList?pageFrom=projectDetail" class="btns btns-biggest" style="width: 100%">立即预约</view>
                 </view>
             </view>
             <view wx:if="{{D.isAssemble==1}}" class="ui-col ui-col-align-center  align-center " style="">

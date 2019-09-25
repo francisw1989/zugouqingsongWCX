@@ -30,5 +30,11 @@ exports.default = Page({
         wx.navigateTo({
             url: '../wode/groupSuccess?pageFrom=projectDetail',
         })
+    },
+    ljyy(){
+        app.globalData.appointFromProject = true
+        wx.navigateTo({
+            url: 'shopList?pageFrom=projectDetail',
+        })
     }
 });
