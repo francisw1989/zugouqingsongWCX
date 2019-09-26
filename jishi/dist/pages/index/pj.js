@@ -25,6 +25,15 @@ Page({
         //获取评价列表
         app.employeeTodyPraise(params).then((res) => {
             console.log(res);
+            //处理每条数据的标签
+            let newRes = res.records.filter((element,index) => {
+                var tags = [];
+                if(element.evaluateLabel){
+                    tags = element.evaluateLabel.split(",");
+                }
+                element.tags = tags;
+                
+            });
             t.setData({
                 praise: res
              })

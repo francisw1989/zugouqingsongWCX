@@ -258,7 +258,6 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeIndex', params).then((res) => {
-                console.log(res)
                 resolve(res);
             })
         })
@@ -273,7 +272,6 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeTodyService', params).then((res) => {
-                console.log(res)
                 resolve(res);
             })
         })
@@ -288,7 +286,6 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeTodyIncome', params).then((res) => {
-                console.log(res)
                 resolve(res);
             })
         })
@@ -299,7 +296,6 @@ exports.default = App({
         const t = this;
         let p = new Promise((resolve, reject) => {
             t.postRequest('employeeStartServie?'+t.jsonToParameters(obj), {}).then((res) => {
-                console.log(res)
                 resolve(res);
             })
         })
@@ -310,7 +306,6 @@ exports.default = App({
         const t = this;
         let p = new Promise((resolve, reject) => {
             t.getRequest('userTags/list').then((res) => {
-                console.log(res)
                 resolve(res);
             })
         })
@@ -322,7 +317,6 @@ exports.default = App({
 
         let p = new Promise((resolve, reject) => {
             t.postRequest('employeeTagUser?'+t.jsonToParameters(obj), {}).then((res) => {
-                console.log(res)
                 resolve(res);
             })
         })
@@ -334,7 +328,6 @@ exports.default = App({
         const t = this;
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeOrder', obj).then((res) => {
-                console.log(res)
                 resolve(res);
             })
         })
@@ -349,7 +342,6 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeAttendance', params).then((res) => {
-                console.log(res)
                 resolve(res);
             })
         })
@@ -364,7 +356,6 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeSchedule', params).then((res) => {
-                console.log(res)
                 resolve(res);
             })
         })
@@ -375,7 +366,6 @@ exports.default = App({
         const t = this;
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeTodyPraise', obj).then((res) => {
-                console.log(res)
                 resolve(res);
             })
         })
@@ -400,8 +390,17 @@ exports.default = App({
             type:0//类别（0本周1本月2本年）
         }
         let p = new Promise((resolve, reject) => {
-            t.getRequest('employeeStatistics', params93).then((res) => {
-                console.log(res)
+            t.getRequest('employeeStatistics', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //结束服务
+    employeeEndServie:function employeeEndServie(obj){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('employeeEndServie?'+t.jsonToParameters(obj), {}).then((res) => {
                 resolve(res);
             })
         })

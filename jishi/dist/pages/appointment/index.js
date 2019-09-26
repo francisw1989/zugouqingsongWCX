@@ -53,20 +53,12 @@ exports.default = Page({
     //获取数据
     initData(){
         const t = this;
-        let params;
-        if(t.data.choosedRange == 0){
-            params = {
-                employeeId: app.globalData.userInfo.userId || "13",
-                page:t.data.page,
-                size:t.data.size
-            }
-        }else{
-            params = {
+        let params = {
                 employeeId: app.globalData.userInfo.userId || "13",
                 range:t.data.choosedRange,//1历史2今天3明天
                 page:t.data.page,
-                size:t.data.size
-            }
+                size:t.data.size,
+                status:0//状态 0全部 2 未到店 3已到店 4进行中 5已完成
         }
         
         app.employeeOrder(params).then((res)=>{
@@ -100,6 +92,9 @@ exports.default = Page({
      */
     onLoad: function (options) {
         const t = this;
+        t.setData({
+            userInfo: app.globalData.userInfo
+        })
         t.initData();
     },
 

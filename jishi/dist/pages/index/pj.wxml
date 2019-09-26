@@ -1,24 +1,21 @@
 <!--pages/index/pj.wxml-->
 <view style="min-height: 100%; background-color:#F3F3F3;">
-    <view class='pad10 bgfff'>
-        <view wx:for='232432' class='tag3'>力道刚好 895 </view>
-    </view>
     <view class='pad15RL top10 bgfff'>
-        <view class="ui-row pad15TB bor_btm_so" style="" wx:for='324'>
+        <view class="ui-row pad15TB bor_btm_so" style="" wx:for='{{praise.records}}'>
             <view class="ui-col" style="flex:0 0 45px;">
                 <view class="ui-col-content ">
-                    <image src="../../static/images/21.png" mode="aspectFill" class='tx9'  />
+                    <image src="{{item.user.photo}}" mode="aspectFill" class='tx9'  />
                 </view>
             </view>
             <view class="ui-col">
                 <view class="ui-col-content">
                     <view>
-                        <view class='clearfix'> <text class='right col999 font0'>2019.07.25</text> <text class='col333'>李先生</text></view>
+                        <view class='clearfix'> <text class='right col999 font0'>{{item.updateTime}}</text> <text class='col333'>{{item.user.userName}}</text></view>
                         <view class='top10'>
-                            技师服务态度很好，按摩力度刚刚好。希望以后继续保持。服务态度好。
+                            {{item.content}}
                         </view>
                         <view class='top10'>
-                            <view class='tag4'>专业 200</view><view class='tag4'>专业 200</view>
+                            <view class='tag4' wx:for="{{item.tags}}" wx:for-item="tag">{{tag}}</view>
                         </view>
                     </view>
                 </view>

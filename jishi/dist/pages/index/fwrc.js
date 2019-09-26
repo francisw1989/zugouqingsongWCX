@@ -67,6 +67,7 @@ Page({
         });
     },
     initChart2() {
+        const t = this;
         ringChart2 = new wxCharts({
             animation: true,
             canvasId: 'ringCanvas2',
