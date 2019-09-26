@@ -1,9 +1,8 @@
 'use strict';
-
+const app = getApp();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-const app = getApp();
 exports.default = Page({
     data: {
         choosedRange: 2,
@@ -44,8 +43,8 @@ exports.default = Page({
     },
     //状态为中文显示
     settingStatus: function setting(statusId) {
-        console.log(t.data.statusList[statusId-1]);
-        return t.data.statusList[statusId]
+        const t = this;
+        return t.data.statusList[statusId-1]
     },
     onShow() {
         const t = this;
@@ -72,6 +71,11 @@ exports.default = Page({
         
         app.employeeOrder(params).then((res)=>{
             console.log(res);
+            //处理数据状态中文显示
+            let newRes = res.records.filter((element,index) => {
+                element.statusText = t.settingStatus(element.status);
+                
+            });
             t.setData({
                 list: res.records
             })

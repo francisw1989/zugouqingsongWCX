@@ -11,7 +11,7 @@
         </view>
         <view class="center top10">
             <view class="tag2" wx:for="{{tags}}">{{item}}</view>
-            <view class="tag2Add">+</view>
+            <view class="tag2Add" data-userId="{{item.userId}}" data-orderId="{{item.orderId}}" data-orderItemId="{{item.orderItemId}}" bindtap='addTag'>+</view>
         </view>
     </view>
     <view class="bgfff pad10 col333 top10">足够轻松（汉中路店）</view>

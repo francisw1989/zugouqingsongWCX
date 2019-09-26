@@ -1,16 +1,58 @@
 module.exports = {
+    //获取时间年份
     getYear: function (time) {
         if (!time) return '';
-        var date =getDate(time);
+        var date = getDate(time);
         var y = date.getFullYear();
         console.log(y);
         return y;
     },
+    //获取时间月份
     getMonth:function(time){
         if (!time) return '';
-        var date =getDate(time);
+        var date = getDate(time);
         var M = date.getMonth() + 1;
         console.log(M);
         return M;
+    },
+    //获取时间的时分
+    getHourAndMin:function(time){
+        if (!time) return '';
+        var date = getDate(time);
+        var Hour = date.getHours() < 10? "0"+date.getHours():date.getHours();
+        var Min = date.getMinutes()< 10? "0"+date.getMinutes():date.getMinutes();
+        return Hour + ":" + Min;
+    },
+    //获取与毫秒数的转化比例（相差天数：1，相差小时数：2，相差分钟数：3，相差秒数：4）
+    getDifferScale:function (value) {
+        var format;
+        //获取转化比（天数跟毫秒数的比例）
+        if (value == 1) {
+            format = parseFloat(24 * 60 * 60 * 1000);
+        }
+            //获取转化比（小时数跟毫秒数的比例）
+        else if (value == 2) {
+            format = parseFloat(60 * 60 * 1000);
+        }
+            //获取转化比（分钟数跟毫秒数的比例）
+        else if (value == 3) {
+            format = parseFloat(60 * 1000);
+        }
+            //获取转化比（秒数跟毫秒数的比例）
+        else if (value == 4) {
+            format = parseFloat(1000);
+        }
+        return format;
+    }
+    //计算倒计时，返回秒数，time1为当前时间，time2为预约时间，differ 1相差天数、2相差小时数、3相差分钟数、4相差秒数)
+    countdownSeconds:function(time1,time2,differ){
+        //1)将两个日期字符串转化为日期对象
+        var startDate = getDate(time1);
+        var endDate = ngetDate(time2);
+        //2)计算两个日期相差的毫秒数
+        var msecNum = endDate.getTime() - startDate.getTime();
+        //3)计算两个日期相差的天数
+        var dayNum = Math.floor(msecNum /getDifferScale(differ));
+        return dayNum;
     }
   }

@@ -1,5 +1,5 @@
 'use strict';
-
+const app = getApp();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -16,5 +16,37 @@ exports.default = Page({
         t.setData({
             list: t.data.list
         });
-    }
+    },
+    initData(){
+        const t = this;
+        let params = {
+            orderId: t.data.orderId
+        }
+        app.orderInfo(params).then((res)=>{
+            // console.log(res);
+            t.setData({
+                detail: res
+            })
+        })
+        console.log(t.data);
+    },
+    //给用户打标签
+    addTag(e){
+        var t = this;
+        wx.navigateTo({
+            url: 'tag?userId=' + e.currentTarget.dataset.userid + "&employeeId="+app.globalData.userInfo.userId+"&orderId="+e.currentTarget.dataset.orderid+"&orderItemId="+e.currentTarget.dataset.orderitemid
+        })
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+        console.log(options);
+        const t = this;
+        t.setData({
+            orderId:options.orderId
+        })
+        t.initData();
+        
+    },
 });

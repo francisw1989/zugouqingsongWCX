@@ -236,6 +236,9 @@ Page({
             dataLabel: true,
         });
     },
+    initData(){
+        const t = this;
+    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -245,6 +248,7 @@ Page({
         t.initMap2()
         t.initMap3()
         t.initPie();
+        app.employeeStatistics();
     },
 
     /**

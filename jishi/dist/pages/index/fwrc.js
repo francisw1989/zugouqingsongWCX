@@ -23,6 +23,7 @@ Page({
             t.setData({
                 useemployeeTodyServicerInfo: res
             })
+            console.log(t.data);
         })
     },
     initChart1(){
@@ -45,12 +46,14 @@ Page({
             },
             series: [{
                 name: '男性',
-                data: t.data.useemployeeTodyServicerInfo.serviceMan,
+                data: t.data.useemployeeTodyServicerInfo.serviceMan?t.data.useemployeeTodyServicerInfo.serviceMan:0,
+                // data:0,
                 stroke: false,
                 color: '#7E65FF'
             }, {
                 name: '女性',
-                data: t.data.useemployeeTodyServicerInfo.serviceGirl,
+                data: t.data.useemployeeTodyServicerInfo.serviceGirl?t.data.useemployeeTodyServicerInfo.serviceGirl:0,
+                // data:0,
                 stroke: false,
                 color: '#fff'
             }],
@@ -82,12 +85,12 @@ Page({
             },
             series: [{
                 name: '普通会员',
-                data: 100,
+                data: t.data.useemployeeTodyServicerInfo.zeroVip?t.data.useemployeeTodyServicerInfo.zeroVip:0,
                 stroke: false,
                 color: '#FEC07A'
             }, {
                 name: '三星会员',
-                data: 10,
+                data: t.data.useemployeeTodyServicerInfo.threeVip?t.data.useemployeeTodyServicerInfo.threeVip:0,
                 stroke: false,
                 color: '#fff'
             }],

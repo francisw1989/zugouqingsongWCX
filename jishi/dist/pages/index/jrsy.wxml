@@ -2,19 +2,19 @@
 <view style="min-height: 100%; background-color:#F3F3F3;">
     <view class="clearfix pad20 center bgfff">
         <view class='font4 col333'>今日收益</view>
-        <view class='font5 top10 colYe'>288.65</view>
+        <view class='font5 top10 colYe'>{{employeeTodyIncome.totalInCome}}</view>
     </view>
     <view class="ui-row pad10 top10 bgfff" style="">
         <view class="ui-col ui-col-align-center align-center">
             <view class="ui-col-content align-center relative" style="border-right: 1px solid #EDEAEB">
                 <view class='col999'>项目提成收益</view>
-                <view class='colYe'>288.65</view>
+                <view class='colYe'>{{employeeTodyIncome.itemInCome}}</view>
             </view>
         </view>
         <view class="ui-col ui-col-align-center align-center">
             <view class="ui-col-content align-center relative">
                 <view class='col999'>徒弟贡献收益</view>
-                <view class='colYe'>288.65</view>
+                <view class='colYe'>{{employeeTodyIncome.discipleInCome}}</view>
             </view>
         </view>
     </view>
@@ -22,7 +22,7 @@
         <view class=" pad10 col333 bor_btm_so">
             项目提成收益
         </view>
-        <view class="bor_btm_so pad10 bgfff ui-row" style="">
+        <view class="bor_btm_so pad10 bgfff ui-row" style="" wx:for="{{employeeTodyIncome.orderIncome}}">
             <view class="ui-col" style="flex:0 0 60px;">
                 <view class="ui-col-content">
                     <image src="../../static/images/18.png" mode="aspectFit" class="tx2" />
@@ -30,31 +30,13 @@
             </view>
             <view class="ui-col" style="">
                 <view class="ui-col-content">
-                    <view class="col333 top5">颈椎放松</view>
-                    <view class="col999">08-26 9:23</view>
+                    <view class="col333 top5">{{item.itemClassName}}</view>
+                    <view class="col999">{{item.orderStartTime}}</view>
                 </view>
             </view>
             <view class="ui-col ui-col-align-right align-right" style="flex:0 0 60px;">
                 <view class="ui-col-content align-right">
-                    <view class="colYe font3 top10">+100.0</view>
-                </view>
-            </view>
-        </view>
-        <view class="bor_btm_so pad10 bgfff ui-row" style="">
-            <view class="ui-col" style="flex:0 0 60px;">
-                <view class="ui-col-content">
-                    <image src="../../static/images/19.png" mode="aspectFit" class="tx2" />
-                </view>
-            </view>
-            <view class="ui-col" style="">
-                <view class="ui-col-content">
-                    <view class="col333 top5">颈椎放松</view>
-                    <view class="col999">08-26 9:23</view>
-                </view>
-            </view>
-            <view class="ui-col ui-col-align-right align-right" style="flex:0 0 60px;">
-                <view class="ui-col-content align-right">
-                    <view class="colYe font3 top10">+100.0</view>
+                    <view class="colYe font3 top10">+{{item.incomePrice}}</view>
                 </view>
             </view>
         </view>

@@ -27,8 +27,6 @@
             <text class="left10 verMid col999">考勤正常</text>
             <image src="../../static/images/16.png" class="icoAll left20" style="width: 16rpx; height: 16rpx;" />
             <text class="left10 verMid col999">考勤异常</text>
-            <image src="../../static/images/17.png" class="icoAll left20" style="width: 16rpx; height: 16rpx;" />
-            <text class="left10 verMid col999">正常班次</text>
         </view>
     </view>
     <view class="pad10 top10 bgfff">

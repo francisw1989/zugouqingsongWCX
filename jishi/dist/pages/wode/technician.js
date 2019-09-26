@@ -11,7 +11,8 @@ exports.default = Page({
         },
         leve: 1,
         name: '',
-        names: ['一星技师', '二星技师', '三星技师']
+        names: ['一星技师', '二星技师', '三星技师'],
+        userInfo:{}
     },
     setting: function setting() {
         var t = this;
@@ -23,6 +24,7 @@ exports.default = Page({
     },
     handleChange: function handleChange(e) {
         var index = e.detail.index;
+        console.log(index);
         this.setData({
             current: index
         });
@@ -34,9 +36,11 @@ exports.default = Page({
     onLoad: function (options) {
         const t = this;
         t.setData({
-            userInfo: app.globalData.userInfo
+            userInfo: app.globalData.userInfo,
+            current: 0
         })
         t.setting();
+        console.log(t.data);
     
     },
 });
