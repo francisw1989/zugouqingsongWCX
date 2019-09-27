@@ -14,7 +14,10 @@ exports.default = Page({
     dateday: null,
     monthrange: [],
     contentHeight: wx.DEFAULT_CONTENT_HEIGHT,
-    workingdays: [{ yes: 'true' }, { yes: 'true' }, { yes: 'true' }, { yes: 'true' }, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+    workingdays: [
+      { yes: false,
+        absent:true
+     }, { yes: true }, { yes: true }, { yes: true }, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
   },
   // 选择日期
   selectedHandler: function selectedHandler(val) {

@@ -2,7 +2,7 @@
     <view class="bgfff pad10">
         <view class="clearfix">
             <image src="../../static/images/21.png" mode="aspectFill" class="tx3 left" />
-            <text class="col333 left10 left top5">李先生</text>
+            <text class="col333 left10 left top5">{{detail.user.userName}}</text>
             <view class="left left5" style="margin-top: -15rpx;">
                 <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
                 <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
@@ -10,42 +10,33 @@
             </view>
         </view>
         <view class="center top10">
-            <view class="tag2" wx:for="{{tags}}">{{item}}</view>
-            <view class="tag2Add">+</view>
+            <view class="tag2" wx:for="{{tags}}" wx:if="{{tags.length > 0}}">{{item}}</view>
+            <view wx:if="{{tags.length == 0}}">无标签</view>
+            <view class="tag2Add" data-userId="{{detail.user.id}}" data-orderId="{{detail.id}}" data-orderItemId="{{detail.orderItems[0].orderId}}" bindtap='addTag'>+</view>
         </view>
     </view>
-    <view class="bgfff pad10 col333 top10">足够轻松（汉中路店）</view>
+    <view class="bgfff pad10 col333 top10">足够轻松（{{detail.storeName}}}）</view>
     <view class=" bgfff top10">
-        <view class="padSp1 bor_btm_so ui-row" wx:for="{{list}}" catchtap="showMore" data-index="{{index}}" style="">
+        <view class="padSp1 bor_btm_so ui-row" wx:for="{{detail.orderItems}}" catchtap="showMore" data-index="{{index}}" style="">
             <view class="ui-col" style="flex:0 0 50px;">
                 <view class="ui-col-content">
-                    <image src="../../static/images/32.png" class="icoAll tx6-1" />
+                    <image src="{{item.itemImags}}}" class="icoAll tx6-1" />
                 </view>
             </view>
             <view class="ui-col" style="">
                 <view class="ui-col-content">
-                    <view class="top10">颈椎放松</view>
+                    <view class="top10">{{item.itemName}}</view>
                 </view>
             </view>
             <view class=" font0 ui-col ui-col-align-right align-right" style="">
                 <view class="ui-col-content align-right">
-                    <view class="top5">60分钟</view>
-                    <view class="colPink">¥120</view>
+                    <view class="top5">{{item.orderTime}}分钟</view>
+                    <view class="colPink">¥{{item.payPrice}}</view>
                     <view class="top5" wx:if="{{item.showMore}}">
-                        <view>
-                            <text>张大姐</text>
+                        <view wx:for="{{item.orderTechnicians}}" wx:for-item="orderTechnicianItem">
+                            <text>{{orderTechnicianItem.employeeName}}</text>
                             <text class="col999 left20">|</text>
-                            <text class="left20">¥15/1分钟</text>
-                        </view>
-                        <view>
-                            <text>张大姐</text>
-                            <text class="col999 left20">|</text>
-                            <text class="left20">¥15/1分钟</text>
-                        </view>
-                        <view>
-                            <text>张大姐</text>
-                            <text class="col999 left20">|</text>
-                            <text class="left20">¥15/1分钟</text>
+                            <text class="left20">¥{{orderTechnicianItem.pricePerMinute}}/1分钟</text>
                         </view>
                     </view>
                 </view>
@@ -58,19 +49,22 @@
             </view>
         </view>
         <view class="align-right pad10">
-            <text class="colYe font2">总计：¥300</text>
+            <text class="colYe font2">总计：¥{{detail.orderPrice}}</text>
         </view>
     </view>
     <view class="pad10RL top20 relative">
         <text class="col333">订单状态</text>
-        <view class="btns btns-2" style="background-color: #F3532F; top: -10rpx">进行中</view>
+        <view class="btns btns-2" style="background-color: #F3532F; top: -10rpx">{{status}}</view>
     </view>
     <ui-timeline class="" style="width:100%" _pid="{{_pid}}">
-        <ui-timeline-item wx:for="{{lcList}}" wx:key="index" point-color="#459E8C" line-color="#BFBFBF" show-line="{{index === (lcList.length - 1) ? false : true}}" shadow="{{false}}" _pid="{{_pid}}">
+        <ui-timeline-item wx:for="{{detail.orderRecordList}}" wx:key="index" point-color="#459E8C" line-color="#BFBFBF" show-line="{{index === (detail.orderRecordList.length - 1) ? false : true}}" shadow="{{false}}" _pid="{{_pid}}">
             <view class="left40 relative" style="padding: 30rpx 0">
-                <view wx:if="{{index != lcList.length - 1}}" class="absolute colYe" style="top: -8rpx">{{item.content}}</view>
-                <view wx:else="" class="absolute col999" style="top: -8rpx">{{item.content}}</view>
+                <view wx:if="{{index != detail.orderRecordList.length - 1}}" class="absolute colYe" style="top: -8rpx">{{item.updateTime}}{{item.content}}</view>
+                <view wx:else="" class="absolute col999" style="top: -8rpx">{{item.updateTime}}{{item.content}}</view>
             </view>
         </ui-timeline-item>
     </ui-timeline>
+    <view class='align-right pad15 top10' wx:if="{{detail.status == 4}}">
+        <view class='btns btns-green btns-small' bindtap='employeeEndServie'>完成服务</view>
+    </view>
 </view>

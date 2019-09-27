@@ -1,3 +1,4 @@
+const app = getApp();
 // pages/index/pj.js
 Page({
 
@@ -5,6 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+        page:1,
+        size:100,
 
     },
 
@@ -12,7 +15,30 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        const t = this;
+        let params = {
+            employeeId: app.globalData.userInfo.userId || "13",
+            minScore:0,
+            page:t.data.page,
+            size:t.data.size
+        }
+        //获取评价列表
+        app.employeeTodyPraise(params).then((res) => {
+            console.log(res);
+            //处理每条数据的标签
+            let newRes = res.records.filter((element,index) => {
+                var tags = [];
+                if(element.evaluateLabel){
+                    tags = element.evaluateLabel.split(",");
+                }
+                element.tags = tags;
+                
+            });
+            t.setData({
+                praise: res
+             })
+             console.log(t.data);
+        });
     },
 
     /**

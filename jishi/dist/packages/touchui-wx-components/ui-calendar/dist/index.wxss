@@ -52,6 +52,10 @@
   background-color: #459e8c;
   color: white!important;
 }
+.ui-calendar .calendar-month-body .calendar-day-wrap .not-selected {
+  background-color: #DEDCDB;
+  color: white!important;
+}
 .ui-calendar .calendar-month-body .calendar-day-wrap .is-selected-left {
   background-color: #459e8c;
   color: white;
