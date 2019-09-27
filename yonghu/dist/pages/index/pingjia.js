@@ -31,7 +31,8 @@ Page({
             { name: '姑娘美', value: '姑娘美' },
             { name: '服务周到', value: '服务周到' },
         ],
-        tab2Index: []
+        tab2Index: [],
+        evaluationList: [{ evaluateScore: 1 }, { evaluateScore: 2 }, { evaluateScore: 3 }, { evaluateScore: 4 }, { evaluateScore: 5}]
     },
     chooseJs(e){
         const t = this;
@@ -78,33 +79,33 @@ Page({
     tab1click(e){
         const t = this;
         let v = e.target.dataset.index;
-        let score;
+        let evaluateScore;
         if(v==0){
-            score = 1;
+            evaluateScore = 1;
         } else if (v == 1) {
-            score = 3;
+            evaluateScore = 3;
         } else if (v == 2) {
-            score = 5;
+            evaluateScore = 5;
         }
         t.setData({
-            score: score,
+            evaluateScore: evaluateScore,
             tab1Index: v
         })
     },
     sliderchange(e){
         const t = this;
         console.log(e.detail.value)
-        let sliderchange = e.detail.value;
+        let evaluateScore = e.detail.value;
         let tab1Index;
-        if (sliderchange==1) {
+        if (evaluateScore==1) {
             tab1Index = 0;
-        } else if (sliderchange == 2 || sliderchange == 3 || sliderchange == 4) {
+        } else if (evaluateScore == 2 || evaluateScore == 3 || evaluateScore == 4) {
             tab1Index = 1;
-        } else if (sliderchange == 5) {
+        } else if (evaluateScore == 5) {
             tab1Index = 2;
         }
         t.setData({
-            sliderchange: sliderchange,
+            evaluateScore: evaluateScore,
             tab1Index: tab1Index
         })
     },
@@ -115,11 +116,34 @@ Page({
             evaluateLabel: e.detail.value.join(',')
         })
     },
+    evaluations() {
+        const t = this;
+        app.evaluations().then((res) => {
+            t.data.evaluationList.forEach((v, i)=>{
+                let item = res.filter((val)=>{
+                    return val.evaluateScore == v.evaluateScore
+                })
+                if(!item.length){
+                    item = [t.data.evaluationList[i-1]]
+                }
+                v.evaluateLabel = item[0].evaluateLabel
+
+            })
+            t.data.evaluationList.forEach((v)=>{
+                v.evaluateLabel = v.evaluateLabel.split(',')
+            })
+            t.setData({
+                evaluationList: t.data.evaluationList
+            })
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
+    
     onLoad: function (options) {
         const t = this;
+        t.evaluations();
         t.setData({
             nowOrder: app.globalData.nowOrder
         })

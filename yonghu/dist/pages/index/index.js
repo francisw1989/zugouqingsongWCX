@@ -52,7 +52,7 @@ exports.default = Page({
                 if (!res.nowOrder){
                     setTimeout(()=>{
                         _do()
-                    }, 1000)
+                    }, 10*60*1000)
                 }else{
                     t.setData({
                         jxzShow: true,
@@ -97,11 +97,15 @@ exports.default = Page({
             })
         })
     },
-    onLoad(opt) {
+    onShow(){
         const t = this;
-        if(wx.getStorageSync('openId')){
+        if (wx.getStorageSync('openId')) {
             t.nowOrder();
         }
+    },
+    onLoad(opt) {
+        const t = this;
+        
         t.getIndex();
         t.getItemClass();
     }

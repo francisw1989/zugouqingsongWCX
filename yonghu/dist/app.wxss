@@ -1320,6 +1320,9 @@ a.colGreen,
 .pad10TB {
   padding: 20rpx 0;
 }
+.pad5TB {
+  padding: 10rpx 0;
+}
 .pad10RL {
   padding: 0 20rpx;
 }

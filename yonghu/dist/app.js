@@ -39,6 +39,21 @@ exports.default = App({
         chooseCoupon: {},
         stores:[]
     },
+
+    // 续时订单生成  continuation
+    continuation(time) {
+        const t = this;
+        let params = {
+            orderItemsId: t.globalData.nowOrder.storeId,
+            time: time
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('continuation?' + t.jsonToParameters(params) , params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // 商品列表查询
     goods() {
         const t = this;
@@ -90,11 +105,8 @@ exports.default = App({
     // 加载客户对用户评价管理表
     evaluations(){
         const t = this;
-        let params = {
-            userId: t.globalData.userInfo.userId
-        }
         let p = new Promise((resolve, reject) => {
-            t.getRequest('evaluations', params).then((res) => {
+            t.getRequest('evaluations', {}).then((res) => {
                 resolve(res);
             })
         })
