@@ -336,26 +336,26 @@ exports.default = App({
     //我的考勤
     employeeAttendance:function employeeAttendance(obj){
         const t = this;
+        let employeeId = t.globalData.userInfo.userId || "13";
         let params = {
-            employeeId: t.globalData.userInfo.userId || "13",
-            monthDate:"2019-09"
+            monthDate:obj.monthDate
         }
         let p = new Promise((resolve, reject) => {
-            t.getRequest('employeeAttendance', params).then((res) => {
+            t.getRequest('employeeAttendance/'+employeeId, params).then((res) => {
                 resolve(res);
             })
         })
         return p;
     },
     //排班信息
-    employeeSchedule:function employeeSchedule(){
+    employeeSchedule:function employeeSchedule(obj){
         const t = this;
+        let employeeId = t.globalData.userInfo.userId || "13";
         let params = {
-            employeeId: t.globalData.userInfo.userId || "13",
-            monthDate:"2019-09"
+            monthDate:obj.monthDate
         }
         let p = new Promise((resolve, reject) => {
-            t.getRequest('employeeSchedule', params).then((res) => {
+            t.getRequest('employeeSchedule/'+employeeId, params).then((res) => {
                 resolve(res);
             })
         })
@@ -406,4 +406,24 @@ exports.default = App({
         })
         return p;
     },
+    //技师端用户历史消费
+    employeeUserConsume:function employeeUserConsume(obj){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeUserConsume', obj).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //技师端加载用户信息及标签
+    employeeUserTag:function employeeUserTag(obj){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeUserTag', obj).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    }
 });

@@ -34,7 +34,6 @@ exports.default = Page({
         },
         list: []
     },
-    
     handleChange: function handleChange(e) {
         var index = e.detail.index;
         this.setData({

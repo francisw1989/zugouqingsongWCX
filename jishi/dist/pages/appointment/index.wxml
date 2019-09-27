@@ -2,7 +2,6 @@
     <ui-tabs index="{{ choosedRange-1 }}" bindchange="handleChange" class="bgfff" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
         <ui-tab wx:for="{{tabs}}" _pid="{{_pid}}" data-id="{{item.id}}" bindtap="chooseRange">{{item.text}}</ui-tab>
     </ui-tabs>
-    
     <view wx:if="{{list.length > 0}}">
         <block wx:for="{{list}}">
             <navigator url='detail?orderId={{item.orderId}}' class="pad10TB bor_btm_so relative">
