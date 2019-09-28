@@ -7,7 +7,7 @@ exports.default = Page({
     data: {
         I: {},
         list: [],
-        statusName: ['待开团（待支付）', '进行中', '已完成', '已失败']
+        statusName: ['待开团', '进行中', '已完成', '已失败']
     },
     onLoad(opt) {
         const t = this;

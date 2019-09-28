@@ -34,7 +34,7 @@
                             <view wx:for="{{item.orderTechnicians}}" wx:for-item='techItem'>
                                 <text>{{techItem.employeeName}}</text>
                                 <text class="col999 left20">|</text>
-                                <text class="left20">¥{{techItem.pricePerMinute}}/1分钟</text>
+                                <text class="left20">¥{{techItem.pricePerMinute}}/分钟</text>
                             </view>
                         </view>
                     </view>

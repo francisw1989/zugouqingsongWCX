@@ -2,6 +2,8 @@
    
     "pages": [
         "pages/index/index",
+        "pages/index/pageView",
+        
         "pages/index/continuation",
         
         "pages/wode/index",

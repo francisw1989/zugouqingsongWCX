@@ -21,10 +21,10 @@ exports.default = Page({
     assembleRecordByUser(){
         const t = this;
         app.assembleRecordByUser().then((res)=>{
-            
+            debugger
             
             t.setData({
-                list: res
+                list: res.records
             })
         });
     },

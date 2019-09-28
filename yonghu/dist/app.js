@@ -251,7 +251,7 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('assembleRecordByUser', params).then((res) => {
-                for (const v of res) {
+                for (const v of res.records) {
                     v.item.imgs = v.item.imgs.split(',')[0];
                     v.leftPeople = v.assemblePeople - v.members.length;
                 }
@@ -549,7 +549,8 @@ exports.default = App({
         let p = new Promise((resolve, reject) => {
             t.getRequest('stores', params).then((res) => {
                 for (const v of res) {
-                    v.imgs = v.imgs.split(',')[0]
+                    v.imgs = v.imgs.split(',')[0];
+                    v.distance = (v.distance / 1000).toFixed(1);
                     v.x = v.x - 0.0065;
                     v.y = v.y - 0.0060;
                 }
@@ -800,6 +801,7 @@ exports.default = App({
             t.getRequest('index', params).then((res) => {
                 for (const v of res.nearbyStore) {
                     v.imgs && (v.imgs = v.imgs.split(',')[0])
+                    v.distance = (v.distance / 1000).toFixed(1)
                     v.x = v.x - 0.0065;
                     v.y = v.y - 0.0060;
                 }

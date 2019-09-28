@@ -14,9 +14,9 @@
         <view class="">
             <text class="col000 font2">{{item.name}}</text>
             <view class="right ">
-                <text class="col999 verMid font0">距您{{item.distance}}m | </text>
+                <text class="col999 verMid font0">距您{{item.distance}}km | </text>
                 <image src="../../static/images/16.png" class="icoAll ico16 left5" />
-                <text class="colGreen left5 verMid font0">咨询</text>
+                <text catchtap="makePhoneCall" data-phonenum="{{item.phoneNum}}" class="colGreen left5 verMid font0">咨询</text>
             </view>
         </view>
         <view class="">
