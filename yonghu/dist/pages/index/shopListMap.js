@@ -105,7 +105,7 @@ exports.default = Page({
         });
         // 设置中心点
         t.setData({
-            item: app.globalData.stores[0]
+            item: app.globalData.stores[2]
         })
         console.log(t.data.item)
         t.setData({
