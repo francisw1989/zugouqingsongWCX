@@ -550,6 +550,8 @@ exports.default = App({
             t.getRequest('stores', params).then((res) => {
                 for (const v of res) {
                     v.imgs = v.imgs.split(',')[0]
+                    v.x = v.x - 0.0065;
+                    v.y = v.y - 0.0060;
                 }
                 t.globalData.stores = res;
                 resolve(res);
@@ -798,6 +800,8 @@ exports.default = App({
             t.getRequest('index', params).then((res) => {
                 for (const v of res.nearbyStore) {
                     v.imgs && (v.imgs = v.imgs.split(',')[0])
+                    v.x = v.x - 0.0065;
+                    v.y = v.y - 0.0060;
                 }
                 for (const v of res.itemRecommendList) {
                     v.imgs && (v.imgs = v.imgs.split(',')[0])
