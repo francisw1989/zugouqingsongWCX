@@ -16,7 +16,7 @@ exports.default = App({
         colors: ['#409c8a', '#fdbd75', '#8f6eff'],
         color: '#459E8C',
         u: 'https://zzh.hzysofti.com/employeeApi/v1/',
-        userInfo: {}
+        userInfo: {},
     },
     setBg: function setBg() {
         var t = this;
@@ -291,6 +291,19 @@ exports.default = App({
         })
         return p;
     },
+    //首页-打卡
+    employeePunch:function employeePunch(){
+        const t = this;
+        let params = {
+            employeeId: t.globalData.userInfo.userId || "13"
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('employeePunch?'+t.jsonToParameters(params), {}).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
     //首页-开始服务
     employeeStartServie:function employeeStartServie(obj){
         const t = this;
@@ -385,12 +398,21 @@ exports.default = App({
     //收益情况
     employeeStatistics:function employeeStatistics(obj){
         const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeIncome', obj).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //师徒信息
+    employeeMentor:function employeeMentor(obj){
+        const t = this;
         let params = {
-            employeeId: t.globalData.userInfo.userId || "13",
-            type:0//类别（0本周1本月2本年）
+            employeeId: t.globalData.userInfo.userId
         }
         let p = new Promise((resolve, reject) => {
-            t.getRequest('employeeStatistics', params).then((res) => {
+            t.getRequest('employeeMentor', params).then((res) => {
                 resolve(res);
             })
         })

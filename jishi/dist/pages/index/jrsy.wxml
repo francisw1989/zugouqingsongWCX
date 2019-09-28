@@ -45,7 +45,7 @@
         <view class=" pad10 col333 bor_btm_so">
             徒弟贡献收益
         </view>
-        <view class="bor_btm_so pad10 bgfff ui-row" style="">
+        <view class="bor_btm_so pad10 bgfff ui-row" style="" wx:for="{{employeeTodyIncome.disciples}}">
             <view class="ui-col" style="flex:0 0 60px;">
                 <view class="ui-col-content">
                     <image src="../../static/images/18.png" mode="aspectFit" class="tx2" />
@@ -53,31 +53,13 @@
             </view>
             <view class="ui-col" style="">
                 <view class="ui-col-content">
-                    <view class="col333 top5">徒弟二</view>
-                    <view class="col999">08-26 9:23</view>
+                    <view class="col333 top5">{{item.mentorName}}</view>
+                    <view class="col999">{{item.date}}</view>
                 </view>
             </view>
             <view class="ui-col ui-col-align-right align-right" style="flex:0 0 60px;">
                 <view class="ui-col-content align-right">
-                    <view class="colYe font3 top10">+100.0</view>
-                </view>
-            </view>
-        </view>
-        <view class="bor_btm_so pad10 bgfff ui-row" style="">
-            <view class="ui-col" style="flex:0 0 60px;">
-                <view class="ui-col-content">
-                    <image src="../../static/images/19.png" mode="aspectFit" class="tx2" />
-                </view>
-            </view>
-            <view class="ui-col" style="">
-                <view class="ui-col-content">
-                    <view class="col333 top5">徒弟二</view>
-                    <view class="col999">08-26 9:23</view>
-                </view>
-            </view>
-            <view class="ui-col ui-col-align-right align-right" style="flex:0 0 60px;">
-                <view class="ui-col-content align-right">
-                    <view class="colYe font3 top10">+100.0</view>
+                    <view class="colYe font3 top10">+{{item.contribution}}</view>
                 </view>
             </view>
         </view>

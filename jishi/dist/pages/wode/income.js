@@ -16,7 +16,7 @@ Page({
             'width': '30%'
         },
         width: wx.WIN_WIDTH,
-        tabs: ['本周',' 本月','本季度'],
+        tabs: ['本周',' 本月','本年'],//1本周2本月3本年
         tab: '本周'
     },
     handleChange: function handleChange(e) {
@@ -26,6 +26,7 @@ Page({
             current: index,
             tab: t.data.tabs[t.data.current]
         });
+        t.employeeStatistics();
     },
     moveHandler1: function (e) {
         lineChart1.scroll(e);
@@ -49,16 +50,19 @@ Page({
     },
     initMap1(){
         const t = this;
+        console.log(t.data.incomeData)
         lineChart1 = new wxCharts({
             enableScroll: true,
             canvasId: 'lineCanvas1',
             type: 'line',
-            categories: ['2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12', '2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12', '2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12',],
+            // categories: ['2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12', '2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12', '2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12',],
+            categories:t.data.incomeData.date,
             animation: true,
             // background: '#f5f5f5',
             series: [{
                 name: '收益',
-                data: ['20', '32', '34', '43', '30', '63', '50', '20', '32', '34', '43', '30', '63', '50', '20', '32', '34', '43', '30', '63', '50',],
+                // data: ['20', '32', '34', '43', '30', '63', '50', '20', '32', '34', '43', '30', '63', '50', '20', '32', '34', '43', '30', '63', '50',],
+                data:t.data.incomeData.record,
                 format: function (val, name) {
                     return parseFloat(val).toFixed(2) + '元';
                 },
@@ -109,12 +113,14 @@ Page({
             enableScroll: true,
             canvasId: 'lineCanvas2',
             type: 'line',
-            categories: ['2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12'],
+            // categories: ['2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12'],
+            categories:t.data.serviceData.date,
             animation: true,
             // background: '#f5f5f5',
             series: [{
                 name: '服务人次',
-                data: ['20', '32', '34', '43', '30', '63', '50'],
+                // data: ['20', '32', '34', '43', '30', '63', '50'],
+                data:t.data.serviceData.record,
                 format: function (val, name) {
                     return val + '次';
                 },
@@ -165,12 +171,14 @@ Page({
             enableScroll: true,
             canvasId: 'lineCanvas3',
             type: 'line',
-            categories: ['2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12'],
+            // categories: ['2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12'],
+            categories:t.data.goodsData.date,
             animation: true,
             // background: '#f5f5f5',
             series: [{
                 name: '好评数',
-                data: ['20', '32', '34', '43', '30', '63', '50'],
+                // data: ['20', '32', '34', '43', '30', '63', '50'],
+                data:t.data.goodsData.record,
                 format: function (val, name) {
                     return val + '次';
                 },
@@ -196,40 +204,20 @@ Page({
         });
     },
     initPie(){
+        const t = this;
         pieChart = new wxCharts({
             animation: true,
             canvasId: 'pieCanvas',
             type: 'pie',
             series: [{
-                name: '成交量1',
-                data: 15,
+                name: '项目收益',
+                data: t.data.totalData.myIncome,
             }, {
-                name: '成交量2',
-                data: 35,
+                name: '一级徒弟贡献',
+                data: t.data.totalData.levelOne,
             }, {
-                name: '成交量3',
-                data: 78,
-            }, {
-                name: '成交量4',
-                data: 63,
-            }, {
-                name: '成交量2',
-                data: 35,
-            }, {
-                name: '成交量3',
-                data: 78,
-            }, {
-                name: '成交量4',
-                data: 63,
-            }, {
-                name: '成交量2',
-                data: 35,
-            }, {
-                name: '成交量3',
-                data: 78,
-            }, {
-                name: '成交量3',
-                data: 78,
+                name: '二级徒弟贡献',
+                data: t.data.totalData.levelTwo,
             }],
             width: 300,
             height: 300,
@@ -244,11 +232,34 @@ Page({
      */
     onLoad: function (options) {
         const t = this;
-        t.initMap1()
-        t.initMap2()
-        t.initMap3()
-        t.initPie();
-        app.employeeStatistics();
+        t.setData({
+            current: 0
+        })
+        t.employeeStatistics();
+        
+        
+    },
+    //处理数据
+    employeeStatistics:function(){
+        const t = this;
+        let params = {
+            employeeId: app.globalData.userInfo.userId,
+            type:t.data.current+1//类别（0本周1本月2本年）
+        }
+        //
+       
+        app.employeeStatistics(params).then((res)=>{
+            t.setData({
+                incomeData: res[0],
+                serviceData: res[2],
+                goodsData:res[1],
+                totalData:res[3]
+            })
+            t.initMap1()
+            t.initMap2()
+            t.initMap3()
+            t.initPie();
+        })
     },
 
     /**

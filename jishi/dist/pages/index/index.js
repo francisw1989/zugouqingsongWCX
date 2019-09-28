@@ -54,6 +54,21 @@ exports.default = Page({
               t.onLoad();
         })
     },
+    //打卡
+    employeePunch(e){
+        const t = this;
+        let params = {
+           employeeId: app.globalData.userInfo.userId || "13"
+       }
+        app.employeePunch(params).then(()=>{
+           wx.showToast({
+               title:'服务已开始',
+               icon:"success",
+               duration:2000
+             })
+             t.onLoad();
+       })
+   },
     //给用户打标签，去往标签页面
     addTag(e){
         var t = this;

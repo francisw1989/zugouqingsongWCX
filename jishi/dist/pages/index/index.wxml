@@ -8,7 +8,7 @@
                 <image src="../../static/images/2.png" class="icoAll" style="width: 27rpx; height: 32rpx;" />
                 <text class="col333 verMid font0 left10">今日考勤提醒：</text>
                 <text class="verMid font0">{{nowSignText}}</text>
-                <text class="left20 colGreen verMid" wx:if="{{nowSign==2}}">去打卡</text>
+                <text class="left20 colGreen verMid" bindtap='employeePunch'>去打卡</text>
                 <image src="../../static/images/3.png" class="icoAll left10" style="width: 11rpx; height: 19rpx;" />
             </view>
         </view>
@@ -28,8 +28,8 @@
         </navigator>
     </view>
     <view class="footerBox" style="bottom: 10rpx">
-        <view class="inWap1 pad15RL" style="padding-bottom: 30rpx;" wx:if="{{employeeIndex.nowOrder.length > 0}}">
-            <view class="bor_btm_so ui-row" style="">
+        <view class="inWap1 pad15RL" style="padding-bottom: 30rpx;">
+            <view class="bor_btm_so ui-row" style="" wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length > 0}}">
                <view class="ui-col" style="">
                     <view class="ui-col-content">
                         <view>
@@ -137,7 +137,7 @@
                 <view class="font0">矿泉水*2</view>
             </view>
             <view class='align-right pad15 top10' wx:if="{{employeeIndex.nowOrder[1].status == 2 }}">
-                <view class='btns btns-green btns-small' data-orderItemId="{{item.orderItemId}}" bindtap='employeeStartServie'>开始服务</view>
+                <view class='btns btns-green btns-small' data-orderitemid="{{employeeIndex.nowOrder[1].orderItemId}}" bindtap='employeeStartServie'>开始服务</view>
             </view>
         </view>
     </view>
