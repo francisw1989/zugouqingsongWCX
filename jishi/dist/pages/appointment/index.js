@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Page({
     data: {
+        menuShow: false,
         choosedRange: 2,
         //1历史2今天3明天
         tabs: [
@@ -33,6 +34,13 @@ exports.default = Page({
             'width': '30%'
         },
         list: []
+    },
+    choose(e){
+        const t = this;
+        console.log(e.target.dataset.index)
+        t.setData({
+            menuShow: false
+        })
     },
     handleChange: function handleChange(e) {
         var index = e.detail.index;
@@ -77,9 +85,15 @@ exports.default = Page({
     chooseRange(e){//1历史2今天3明天   0表示全部
         // console.log(e.currentTarget.dataset);
         const t = this;
-        debugger
         let choosedRange = e.currentTarget.dataset.id;
         // console.log(choosedRange);
+        if (choosedRange==0){
+            choosedRange = 4
+            t.setData({
+                menuShow: true
+            })
+            return
+        }
         t.setData({
             choosedRange:choosedRange,
             page:1
