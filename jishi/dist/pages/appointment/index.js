@@ -77,6 +77,7 @@ exports.default = Page({
     chooseRange(e){//1历史2今天3明天   0表示全部
         // console.log(e.currentTarget.dataset);
         const t = this;
+        debugger
         let choosedRange = e.currentTarget.dataset.id;
         // console.log(choosedRange);
         t.setData({

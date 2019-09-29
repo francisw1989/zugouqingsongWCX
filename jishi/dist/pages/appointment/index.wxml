@@ -38,7 +38,7 @@
         </block>
     </view>
     
-    <view wx:else>暂无数据</view>
+    <view wx:else class="center top40 col999">暂无数据</view>
    
 </view>
 
