@@ -6,7 +6,7 @@
                 支付成功！
             </view>
             <view class="colfff align-left">
-                感谢您的购买！
+                感谢您调预约！
             </view>
         </view>
     </view>
@@ -78,7 +78,7 @@
     </view>
     <view class="padSp1">
         <label class="checkbox">
-            <checkbox checked="{{jsChecked}}" color="#459e8c">
+            <checkbox checked="{{jsChecked}}" color="#459e8c" bindchange="checkboxChange">
                 <text class="let10">接受短信预约提醒</text>
             </checkbox>
         </label>
@@ -129,6 +129,6 @@
     </view>
     <view class="pad10 align-right">
         <view class="btns btns-small btns-green-bor">继续下单</view>
-        <view class="btns btns-small btns-green left15">完成</view>
+        <view class="btns btns-small btns-green left15" bindtap='finish'>完成</view>
     </view>
 </view>

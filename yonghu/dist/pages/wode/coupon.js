@@ -14,6 +14,8 @@ exports.default = Page({
             wx.navigateBack({
                 
             })
+        }else{
+            
         }
     },
     getList(){

@@ -21,16 +21,35 @@ exports.default = Page({
             cIndex: e.target.dataset.index,
             date: t.data.dates[e.target.dataset.index]
         });
+        t.cal();
     },
     cal(){
         const t = this;
-        let min = Number(t.data.I.openStartTime.split(':')[0]);
+        t.data.hours = [];
+        let now = new Date();
+        let nowHour = now.getHours();
+        let nowMin = now.getMinutes();
+        let min;
+        if(t.data.cIndex == 0){
+            min = Number(t.data.I.openStartTime.split(':')[0]) > nowHour ? Number(t.data.I.openStartTime.split(':')[0]) : nowHour;
+            if (nowMin > t.data.I.openEndTime.split(':')[1]) {
+                min = min + 1;
+            } else {
+
+            }
+        }else{
+            min = Number(t.data.I.openStartTime.split(':')[0])
+        }
+
         let max = Number(t.data.I.openEndTime.split(':')[0]);
-        for (let i = min; i < max+1; i++) {
-            let h = i<10?'0'+i:i
+        for (let i = min; i < max + 1; i++) {
+            let h = i < 10 ? '0' + i : i
             t.data.hours.push(h)
         }
-        t.data.mins = ['00' ,'10', '20', '30', '40' , '50']
+
+
+
+        t.data.mins = ['00' ,'30']
         t.setData({
             hours: t.data.hours,
             mins: t.data.mins
@@ -47,7 +66,12 @@ exports.default = Page({
         const t = this;
         t.setData({
             I: app.globalData.chooseStore,
-            dates: app.get_tomorrow_data()
+            dates: app.get_tomorrow_data(),
+            
+        })
+        t.setData({
+            cIndex: 0,
+            date: t.data.dates[0]
         })
         t.cal();
         

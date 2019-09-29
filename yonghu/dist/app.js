@@ -39,7 +39,35 @@ exports.default = App({
         chooseCoupon: {},
         stores:[]
     },
-
+    
+    // 是否接受短信提醒
+    isSms() {
+        const t = this;
+        let params = {
+            orderId: t.globalData.outTradeNo,
+            isSms: 0
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('isSms?' + t.jsonToParameters(params) , params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 用户取消预约订单
+    removeOrder() {
+        const t = this;
+        let params = {
+            orderId: t.globalData.outTradeNo,
+            userId: t.globalData.userInfo.userId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('removeOrder?' + t.jsonToParameters(params) , params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // 续时订单生成  continuation
     continuation(time) {
         const t = this;
@@ -254,6 +282,10 @@ exports.default = App({
                 for (const v of res.records) {
                     v.item.imgs = v.item.imgs.split(',')[0];
                     v.leftPeople = v.assemblePeople - v.members.length;
+                    v.leftMember = [];
+                    for (let i = 0; i < v.leftPeople; i++) {
+                        v.leftMember.push('')
+                    }
                 }
                 resolve(res);
             })
@@ -337,12 +369,8 @@ exports.default = App({
         return p;
     },
     // 获取用户专属技师
-    userTechnicians(itemId){
+    userTechnicians(params){
         const t = this;
-        let params = {
-            itemId: itemId,
-            userId: t.globalData.userInfo.userId,
-        }
         let p = new Promise((resolve, reject) => {
             t.getRequest('userTechnicians', params).then((res) => {
                 res.imgs && (res.imgs = res.imgs.split(','));
@@ -806,7 +834,8 @@ exports.default = App({
                     v.y = v.y - 0.0060;
                 }
                 for (const v of res.itemRecommendList) {
-                    v.imgs && (v.imgs = v.imgs.split(',')[0])
+                    v.imgs && (v.imgs = v.imgs.split(',')[0]);
+                    v.conditioningMethod = v.conditioningMethod.length > 35 ? v.conditioningMethod.substring(0, 35) + '...' : v.conditioningMethod
                 }
                 resolve(res);
             })

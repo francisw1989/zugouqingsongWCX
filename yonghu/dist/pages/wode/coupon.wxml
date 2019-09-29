@@ -22,5 +22,9 @@
                 {{item.couponScopeDesc}}
             </view>
         </view>
+        <view wx:if="{{!list.length}}" class="center top40 ">
+            <image src='../../static/images/9.png' class='inline' style='width: 60rpx; height: 60rpx; opacity: 0.4; filter: grayscale(100%);'></image>
+            <view class='col999'>暂无数据</view>
+        </view>
     </view>
 </view>

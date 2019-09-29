@@ -8,10 +8,23 @@
             </swiper-item>
         </block>
     </swiper>
-    <view class="box1 bgfff claerfix">
-        <image src="../../static/images/15.png" class="right ico15 top18 right20" />
+    <view class="box1 bgfff claerfix" style='overflow: hidden'>
         <image src="../../static/images/14.png" class="ico14 left top12 left20" />
-        <text class="left20">今日有更多套餐可享受优惠活动</text>
+        <view style='width: 480rpx; overflow: hidden' class='inline'>
+            <view class="marquee_box">
+                 <view class="marquee_text" style="{{orientation}}:{{marqueeDistance}}px; font-size: {{size}}px;">
+                  {{D.notic}}
+                 </view>
+             </view>
+        </view>
+        <!-- <ui-roller _pid="{{_pid}}" style='width: 480rpx;'  class='left10' autoplay='3000'>
+            <ui-roller-item _pid="{{_pid}}">
+                <view>{{D.notic}}</view>
+            </ui-roller-item>
+            <ui-roller-item _pid="{{_pid}}">
+                <view>今日有更多套餐可享受优惠活动</view>
+            </ui-roller-item>
+        </ui-roller> -->
     </view>
     <view class="padSp1">
         <view class="title font2 col000">服务分类</view>
@@ -26,12 +39,12 @@
         <view class="title top10 font2 col000">推荐项目</view>
     </view>
     <view url="projectDetail?itemId={{item.id}}" wx:for='{{D.itemRecommendList}}' class="pad10 tjxmWap bgfff top5 clearfix" data-index="{{index}}" data-id="{{item.id}}" catchtap="chooseProject">
-        <view class=" right10 left" style="width: 183rpx">
+        <view class=" right10 left" style="width: 160rpx">
             <image src="{{item.imgs}}" class="img " mode='aspectFill' />
         </view>
-        <view style="width: 482rpx" class="left">
+        <view style="width: 520rpx" class="left">
             <view class=" bor_btm_so" style="padding-bottom: 10rpx">
-                <text class="col000 ">{{item.itemName}}</text>
+                <text class="col000 inline" style='width: 180rpx'>{{item.itemName}}</text>
                 <text class="left10  col000">默认：{{item.defaultDuration}}分钟</text>
                 <text class="left15 colPink font3">¥{{item.defaultPrice/100}}</text>
             </view>
@@ -67,7 +80,7 @@
         </view>
 
     </view>
-    <button open-type="contact" class='ico4 icoAll'><image src="../../static/images/4.png" style='width: 110rpx; height: 110rpx;' /></button>
+    <button open-type="contact" class='ico4 icoAll'  catchtouchmove="bindtouchmove" catchtouchstart="bindtouchstart" catchtouchend="bindtouchend"><image src="../../static/images/4.png" style='width: 55px; height: 55px; margin: {{top}}px 0 0 {{left}}px'     /></button>
     
     <ui-popup show="{{jxzShow}}" wx:if='{{O}}' background="transparent" _pid="{{_pid}}">
         <view class="padSp1 clearfix" style="background-color:#fff; border-radius: 10rpx 10rpx 0 0; overflow: hidden; padding-bottom: 100rpx;">

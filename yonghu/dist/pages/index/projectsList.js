@@ -60,6 +60,7 @@ Page({
             }
             for (const v of res.records){
                 v.imgs = v.imgs.split(',')[0]
+                v.conditioningMethod = v.conditioningMethod.length > 35 ? v.conditioningMethod.substring(0, 35) + '...' : v.conditioningMethod
                 v.checked = false;
             }
             t.setData({
@@ -84,7 +85,7 @@ Page({
             })
         }else if(t.data.pageFrom == 'index'){
             // page from index, do navigate to projectDetail
-            app.globalData.chooseProject = t.data.list[e.currentTarget.dataset.index];
+            app.globalData.chooseProject = [t.data.list[e.currentTarget.dataset.index]];
             app.globalData.appointFromProject = true;
             wx.navigateTo({
                 url: 'projectDetail?itemId=' + e.currentTarget.dataset.id,

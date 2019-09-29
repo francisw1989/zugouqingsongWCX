@@ -26,11 +26,11 @@
         </view>
     </view>
     <!--选择单项 专属调理师-->
-    <view class='pad10 font2 line18'  wx:if="{{chooseProject.length==1}}">
+    <view class='pad10 font2 line18'  wx:if="{{chooseProject.length==1 && userTechniciansList.length}}">
         专属调理师
     </view>
     <view class="pad10 bgfff" wx:if="{{chooseProject.length==1}}">
-        <navigator url="technician" class="tx5Wap inline" wx:for='{{userTechniciansList}}'>
+        <navigator url="technician?id={{item.id}}" class="tx5Wap inline" wx:for='{{userTechniciansList}}'>
             <image src="{{item.photo}}" mode="aspectFill" class="tx5" />
             <view class="dj">
                 <block wx:for="{{gradeArr[item.grade]}}">
@@ -53,7 +53,7 @@
         <view  class="ui-row" style="">
             <view class="ui-col" style="flex:0 0 70px;">
                 <view class="ui-col-content">
-                    <navigator url="technician" class="tx5Wap">
+                    <navigator url="technician?id={{item.id}}" class="tx5Wap">
                         <image src="{{item.photo}}" mode="aspectFill" class="tx5" />
                         <view class="dj">
                             <block wx:for="{{gradeArr[item.grade]}}">
@@ -83,8 +83,9 @@
             </view>
         </view>
     </view>
-    <view class='top20 center col999'>
-        暂无调理师，请选择其他项目或时间
+     <view wx:if="{{!list.length}}" class="center top20 ">
+        <image src='../../static/images/9.png' class='inline' style='width: 60rpx; height: 60rpx; opacity: 0.4; filter: grayscale(100%);'></image>
+        <view class='col999'>暂无数据</view>
     </view>
 
     <ui-popup bindhide="onHide" show="{{show}}" background="transparent" _pid="{{_pid}}">
@@ -94,7 +95,7 @@
             </view>
             <view class="pad10TB">
                 <view class="tx5Wap inline right5" wx:for='{{chooseProject[cIndex].technicianChoose}}'>
-                    <icon type="clear" size="16" color="#333" class="close"></icon>
+                    <icon type="clear" size="16" color="#333" class="close" bindtap='clearTechnician' data-index='{{index}}'></icon>
                     <image src="{{item.photo}}" mode="aspectFill" class="tx5" />
                     <view class="dj">
                         <block wx:for="{{gradeArr[item.grade]}}">

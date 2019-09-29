@@ -1540,8 +1540,8 @@ view.btns-green,button.btns-green {
   height: 110rpx;
 }
 .ico4 {
-  width: 110rpx;
-  height: 110rpx;
+  width: 55px;
+  height: 55px;
   position: fixed;
   bottom: 20%;
   right: 40rpx;
@@ -1623,8 +1623,8 @@ view.btns-green,button.btns-green {
 }
 .tjxmWap {border: 4rpx solid #fff; box-sizing: border-box}
 .tjxmWap .img {
-  width: 183rpx;
-  height: 183rpx;
+  width: 150rpx;
+  height: 150rpx;
   border-radius: 5px;
 }
 .fjmdWap {

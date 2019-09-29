@@ -13,7 +13,7 @@
                 <view class="ui-row" style="height:80px;">
                     <view class="ui-col ui-col-align-center align-center valign-middle" style="flex:0 0 60px;">
                         <view class="ui-col-content align-center valign-middle">
-                            <image src="../../static/images/20.png" class="tx2" mode="aspectFill" />
+                            <image src="{{v.imgs[0]}}" class="tx2" mode="aspectFill" />
                         </view>
                     </view>
                     <view class="text ui-col ui-col-align-left align-left valign-middle" style="padding-left: 15px; padding-right: 15px;">
@@ -27,7 +27,7 @@
             <view class="pad20">
                 <view class="">
                     <image src="../../static/images/21.png" class="icoAll ico21" />
-                    <text class="left10 col333">电话：{{v.phoneNum}}</text>
+                    <text class="left10 col333" catchtap="makePhoneCall" data-phonenum="{{v.phoneNum}}" >电话：{{v.phoneNum}}</text>
                 </view>
                 <view class="top10">
                     <image src="../../static/images/22.png" class="icoAll ico22" />
