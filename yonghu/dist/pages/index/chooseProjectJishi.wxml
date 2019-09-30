@@ -27,7 +27,7 @@
     </view>
     <!--选择单项 专属调理师-->
     <view class='pad10 font2 line18'  wx:if="{{chooseProject.length==1 && userTechniciansList.length}}">
-        专属调理师
+        专属{{chooseProject[0].itemEmployeeName}}
     </view>
     <view class="pad10 bgfff" wx:if="{{chooseProject.length==1}}">
         <navigator url="technician?id={{item.id}}" class="tx5Wap inline" wx:for='{{userTechniciansList}}'>
@@ -42,7 +42,7 @@
     </view>
     <!--选择调理师-->
     <view class="pad10 font2 line18">
-        选择调理师
+        选择{{chooseProject[cIndex].itemEmployeeName}}
     </view>
     <view wx:if='{{chooseProject.length>1}}'  class="bor_btm_so bgfff" style="height: 45px;">
         <ui-tabs index="{{ cIndex }}" bindchange="handleChange" ink-bar="true" tab-style="{{tabStyle}}" active-tab-style="{{activeTabStyle}}" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
