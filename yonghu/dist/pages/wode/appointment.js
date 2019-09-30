@@ -16,19 +16,26 @@ exports.default = Page({
             color: '#F88A0B'
         }
     },
-    pay(){
+    gotoDetail(e){
         const t = this;
-        app.globalData.outTradeNo = e.target.dataset.outtradeno;
-        app.orderDetail(res).then((res)=>{
+        wx.navigateTo({
+            url: 'appointmentDetail?id=' + e.currentTarget.dataset.id,
+        })
+
+    },
+    pay(e){
+        const t = this;
+        app.globalData.outTradeNo = e.currentTarget.dataset.outtradeno;
+        app.orderDetail().then((res)=>{
             app.globalData.orderDetail = res;
             wx.navigateTo({
-                url: '../pay/pay',
+                url: '../index/pay',
             })
         })
     },
     removeOrder(e){
         const t = this;
-        app.globalData.outTradeNo = e.target.dataset.outtradeno;
+        app.globalData.outTradeNo = e.currentTarget.dataset.outtradeno;
         app.removeOrder().then((res)=>{
             t.getList();
         })

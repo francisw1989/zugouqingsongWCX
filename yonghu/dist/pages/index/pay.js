@@ -8,7 +8,18 @@ exports.default = Page({
     data: {
         D: {},
         type: null,
-        checkedTypes: []
+        checkedTypes: [],
+        numberStyle: {
+            color: '#F88A0B',
+            fontSize: '30rpx'
+        },
+        wxDisable: false,
+        wxChecked: false
+    },
+    bindtimeup(){
+        wx.switchTab({
+            url: '../index/index'
+        })
     },
     showMore: function showMore(e) {
         var t = this;
@@ -78,11 +89,20 @@ exports.default = Page({
     
     onLoad(opt){
         const t = this;
+        
         t.setData({
             pageFrom: opt.pageFrom,
             D: app.globalData.orderDetail,
             U: app.globalData.userInfo
         })
+        if (t.data.U.totalAccount < t.data.D.totalPrice) {
+            t.setData({
+                checkedTypes: ['2'],
+                wxDisable: true,
+                wxChecked: true,
+                type: 2
+            })
+        }
     }
 
     

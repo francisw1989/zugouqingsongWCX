@@ -5,13 +5,36 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Page({
 	data: {
-		jsChecked: true
+		jsChecked: true,
+        leveList:[
+            {
+                name: '普通会员',
+                img: '../../static/images/42.png'
+            },
+            {
+                name: '一星会员',
+                img: '../../static/images/43.png'
+            },
+            {
+                name: '二星会员',
+                img: '../../static/images/44.png'
+            },
+            {
+                name: '三星会员',
+                img: '../../static/images/45.png'
+            },
+        ]
 	},
     checkboxChange: function (e) {
         const t = this;
-        console.log('checkbox发生change事件，携带value值为：', e.detail.value)
         t.setData({
-            jsChecked: e.detail.value
+            jsChecked: t.data.jsChecked?false: true
+        })
+    },
+    gotoProject(){
+        app.globalData.appointFromProject = true;
+        wx.reLaunch({
+            url: '../index/index'
         })
     },
     onLoad(){
@@ -26,16 +49,14 @@ exports.default = Page({
     finish(){
         const t = this;
         if (!t.data.jsChecked){
-            app.isSms().then((res)=>{
+            app.isSms(t.data.D.id).then((res)=>{
                 wx.switchTab({
                     url: '../index/index'
                 })
             })
         }else{
-            app.isSms().then((res) => {
-                wx.switchTab({
-                    url: '../index/index'
-                })
+            wx.switchTab({
+                url: '../index/index'
             })
         }
     }

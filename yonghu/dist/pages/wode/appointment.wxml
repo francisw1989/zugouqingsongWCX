@@ -4,11 +4,11 @@
     </ui-tabs>
     <view>
         <block wx:for="{{list}}">
-            <view class="pad10 bor_btm_so relative">
+            <view catchtap='gotoDetail' data-id='{{item.id}}' class="pad10 bor_btm_so relative">
                 <view class="ui-row" style="">
                     <view class="ui-col" style="flex:0 0 50px;">
                         <view class="ui-col-content">
-                            <image src="../../static/images/47.png" mode="aspectFill" class="tx6" />
+                            <image src="{{item.imgs}}" mode="aspectFill" class="tx6" />
                         </view>
                     </view>
                     <view class="ui-col" style="">
@@ -17,7 +17,7 @@
                             <view class="top5 font0 col999">门店：{{item.storeName}}</view>
                             <view class="col999 font0">时间：{{item.orderStartTime}}</view>
                             <view class="col999 font0">技师：{{item.employeeNames}}</view>
-                            <view class="col999 font0">总价：¥{{item.totalPrice}}</view>
+                            <view class="col999 font0">总价：¥{{item.totalPrice/100}}</view>
                         </view>
                     </view>
                     <view class="ui-col ui-col-align-right align-right" style="flex:0 0 100px;">
@@ -27,8 +27,8 @@
                                 <ui-count-down class="inline" doneText='0s' time="{{item.orderStartTime2}}" number-style="{{numberStyle}}" format="{%h}:{%m}:{%s}" _pid="{{_pid}}"></ui-count-down>
                                 后自动取消
                             </view>
-                            <view bindtap='pay' class="btns btns-green-bor top5 btns-small" data-outtradeno='{{item.outTradeNo}}' wx:if='{{item.status==1}}'>继续支付</view>
-                            <view bindtap='removeOrder' data-outtradeno='{{item.outTradeNo}}' class="btns btns-green-bor top5 btns-small" wx:if='{{item.status==2}}'>取消订单</view>
+                            <view catchtap='pay' class="btns btns-green-bor top5 btns-small" data-outtradeno='{{item.outTradeNo}}' wx:if='{{item.status==1}}'>继续支付</view>
+                            <view catchtap='removeOrder' data-outtradeno='{{item.outTradeNo}}' class="btns btns-green-bor top5 btns-small left10" wx:if='{{item.status==2 || item.status==1}}'>取消订单</view>
                         </view>
                     </view>
                 </view>

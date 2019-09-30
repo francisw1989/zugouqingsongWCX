@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+      "ui-count-down": "../../packages/touchui-wx-components/ui-count-down/dist/index"
+  },
   "navigationBarTitleText": "支付"
 }

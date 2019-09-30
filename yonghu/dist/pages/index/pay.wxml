@@ -1,7 +1,8 @@
 <view class="col333" style="min-height: 100%; background-color:#F3F3F3; padding-bottom: 100rpx;">
     <view class="pad20 center bgfff">
         <text class=" font2">支付剩余时间：</text>
-        <text class="colYe font2">4:59</text>
+        <ui-count-down class="inline" timetype="second" time="300" format="{%m}:{%s}" number-style="{{numberStyle}}" _pid="{{_pid}}" bindtimeup="bindtimeup">
+        </ui-count-down>
     </view>
     <view wx:if="{{pageFrom!='goods'}}">
         <view class="pad20">
@@ -29,12 +30,12 @@
                 <view class=" font0 ui-col ui-col-align-right align-right" style="">
                     <view class="ui-col-content align-right">
                         <view class="top5">{{item.orderTime}}分钟</view>
-                        <view class="colPink">¥{{item.orderPrice}}</view>
+                        <view class="colPink">¥{{item.orderPrice/100}}</view>
                         <view class="top5" wx:if="{{item.showMore}}">
                             <view wx:for="{{item.orderTechnicians}}" wx:for-item='techItem'>
                                 <text>{{techItem.employeeName}}</text>
-                                <text class="col999 left20">|</text>
-                                <text class="left20">¥{{techItem.pricePerMinute}}/分钟</text>
+                                <!-- <text class="col999 left20">|</text> -->
+                                <text class="left20">¥{{techItem.pricePerMinute/100}}/分钟</text>
                             </view>
                         </view>
                     </view>
@@ -92,7 +93,7 @@
                 </view>
                 <view class="ui-col ui-col-align-right align-right" style="flex:0 0 50px;">
                     <view class="ui-col-content align-right">
-                        <checkbox value="2" class="inline top5" />
+                        <checkbox value="2" class="inline top5" disabled='{{wxDisable}}' checked="{{wxChecked}}" />
                     </view>
                 </view>
             </view>

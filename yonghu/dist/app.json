@@ -1,7 +1,9 @@
 {
    
     "pages": [
+        
         "pages/index/index",
+        "pages/wode/appointmentDetail",
         "pages/index/pageView",
         
         "pages/index/continuation",

@@ -1,0 +1,58 @@
+<!--pages/wode/appointmentDetail.wxml-->
+<view style="min-height: 100%; background-color: #F3F3F3">
+    <view class='pad10 bgFFF'>{{D.storeName}}</view>
+    <view class='top10 bgfff'>
+        <view class="padSp1  bor_btm_so" wx:for="{{D.orderItems}}" catchtap="showMore" data-index="{{index}}">
+            <view class="ui-row" style="">
+                <view class="ui-col" style="flex:0 0 50px;">
+                    <view class="ui-col-content">
+                        <image src="{{item.itemImags || '../../static/images/32.png'}}" class="icoAll tx6" />
+                    </view>
+                </view>
+                <view class="ui-col" style="">
+                    <view class="ui-col-content">
+                        <view class="top10">{{item.itemName}}</view>
+                    </view>
+                </view>
+                <view class=" font0 ui-col ui-col-align-right align-right" style="">
+                    <view class="ui-col-content align-right">
+                        <view class="top5">{{item.orderTime}}分钟</view>
+                        <view class="colBlue">¥{{item.orderPrice/100}}</view>
+                        <view class="top5" wx:if="{{item.showMore}}">
+                            <view wx:for="{{item.orderTechnicians}}" wx:for-item='techItem'>
+                                <text>{{techItem.employeeName}}</text>
+                                <!-- <text class="col999 left20">|</text> -->
+                                <text class="left20">¥{{techItem.pricePerMinute/100}}/分钟</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="ui-col ui-col-align-right align-right" style="flex:0 0 15px;">
+                    <view class="ui-col-content align-right">
+                        <image wx:if="{{!item.showMore}}" src="../../static/images/37.png" class="icoAll top8" style="width: 11rpx; height: 17rpx;" />
+                        <image wx:if="{{item.showMore}}" src="../../static/images/37.png" class="icoAll top8" style="width: 11rpx; height: 17rpx;" />
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='top10 bgFFF'>
+        <view class='clearfix relative' style='padding: 30rpx 20rpx;'>
+            <view class="btns btns-2" style='top: 20rpx;'>{{tabs[D.status-1]}}</view>
+            <text>订单状态</text>
+        </view>
+        <view>
+            <ui-timeline class="" style="width:100%" _pid="{{_pid}}">
+                <ui-timeline-item wx:for="{{D.orderRecordList}}" wx:key="index" point-color="#459E8C" line-color="#BFBFBF" show-line="{{index === (D.orderRecordList.length - 1) ? false : true}}" shadow="{{false}}" _pid="{{_pid}}">
+                    <view class="left40 relative" style="padding: 30rpx 0">
+                        <view class="absolute" style="top: -8rpx"><text class='colBlue'>{{item.updateTime}}</text> <text class='left10'>{{item.content}}</text></view>
+                    </view>
+                </ui-timeline-item>
+            </ui-timeline>
+        </view>
+        <view class='pad15 align-right' wx:if='{{D.status==1 || D.status==2}}'>
+            <view catchtap='pay' class="btns btns-green-bor top5 btns-small" data-outtradeno='{{D.outTradeNo}}' wx:if='{{D.status==1}}'>继续支付</view>
+            <view catchtap='removeOrder' data-outtradeno='{{D.outTradeNo}}' class="btns btns-green-bor top5 btns-small left10" wx:if='{{D.status==2 || D.status==1}}'>取消订单</view>
+        </view>
+    </view>
+</view>

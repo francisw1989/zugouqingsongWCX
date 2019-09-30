@@ -40,11 +40,24 @@ exports.default = App({
         stores:[]
     },
     
-    // 是否接受短信提醒
-    isSms() {
+    // 我的预约订单详情
+    orderInfo(orderId){
         const t = this;
         let params = {
-            orderId: t.globalData.outTradeNo,
+            orderId: orderId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('orderInfo', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 是否接受短信提醒
+    isSms(id) {
+        const t = this;
+        let params = {
+            orderId: id,
             isSms: 0
         }
         let p = new Promise((resolve, reject) => {
@@ -263,6 +276,7 @@ exports.default = App({
         let p = new Promise((resolve, reject) => {
             t.getRequest('reservations', params).then((res) => {
                 for (const v of res.records){
+                    v.imgs = v.imgs.split(',')[0];
                     v.orderStartTime2 = v.orderStartTime.replace(/-/g, "/")
                 }
                 resolve(res);
@@ -387,6 +401,21 @@ exports.default = App({
         };
         let p = new Promise((resolve, reject) => {
             t.getRequest('orderDetail', params).then((res) => {
+                let payObjList = [];
+                if (res.payType){
+                    let payTypeList = ['', '虚拟账户', '现金账户', '微信支付', '现金', '微信转账', '支付宝转账'];
+                    res.payType.split('-').forEach((v, i)=>{
+                        if (v) {
+                            payObjList.push({
+                                payType: v,
+                                payTypeName: payTypeList[v],
+                                payAmount: res.payAmount.split('-')[i]
+                            })
+                        }
+                    })
+                       
+                }
+                res.payObjList = payObjList;
                 if (res && res.orderItems) {
                     for (const v of res.orderItems) {
                         if (v.itemImags){

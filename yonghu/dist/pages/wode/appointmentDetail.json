@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+      "ui-timeline": "../../packages/touchui-wx-components/ui-timeline/dist/index",
+    "ui-timeline-item": "../../packages/touchui-wx-components/ui-timeline-item/dist/index"
+  }
+}
