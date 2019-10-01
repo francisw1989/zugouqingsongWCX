@@ -3,26 +3,32 @@
         <ui-tab wx:for='{{itemClassList}}'>{{item.itemClassName}}</ui-tab>
     </ui-tabs>
     <view class="clearfix">
-        <view wx:for='{{list}}' data-index="{{index}}" data-id='{{item.id}}' catchtap="itemClick" style="border-color:{{item.checked?'#459E8C':'#fff'}}" class="pad10 tjxmWap bgfff clearfix btm5">
-            <view url="projectDetail?itemId={{item.id}}" class=" right10 left" style="width: 183rpx">
+        <view wx:if="{{list.length}}" wx:for='{{list}}' data-index="{{index}}" data-id='{{item.id}}' catchtap="itemClick" style="border-color:{{item.checked?'#459E8C':'#fff'}}" class="pad10 tjxmWap bgfff clearfix btm5">
+            <view url="projectDetail?itemId={{item.id}}" class=" right10 left" style="width: 150rpx">
                 <image mode="aspectFill" src="{{item.imgs}}" class="img " />
             </view>
-            <view style="width: 482rpx" class="left">
+            <view style="width: 532rpx" class="left">
                 <view class=" bor_btm_so" style="padding-bottom: 10rpx">
-                    <text class="col000 ">{{item.itemName}}</text>
+                    <text class="col000 inline" style='width: 180rpx'>{{item.itemName}}</text>
                     <text class="left10  col000">默认：{{item.defaultDuration}}分钟</text>
-                    <text class="left15 colPink font3">¥{{item.defaultPrice/100 * item.defaultDuration}}</text>
+                    <text class="left15 colPink font3">¥{{item.defaultPrice/100}}</text>
                 </view>
                 <view class="top5 line24">{{item.conditioningMethod}}</view>
-                <view class="top5">
-                    <view class="tag1">好评9999+</view>
+                <view class="top5" wx:if="{{item.evaluateCount}}">
+                    <view class="tag1" wx:if="{{item.evaluateCount<100}}">好评{{item.evaluateCount}}</view>
+                    <view class="tag1" wx:else>好评 100+</view>
+                    <image wx:if='{{item.isRecommend == 1}}' src="../../static/images/31.png" style="width: 34rpx; height: 33rpx" class="icoAll left10" />
                 </view>
                 <view class="align-right">
                     <!-- <image src="../../static/images/30.png" style="width: 32rpx; height: 37rpx" class="icoAll" /> -->
-                    <image wx:if='{{item.isRecommend == 1}}' src="../../static/images/31.png" style="width: 34rpx; height: 33rpx" class="icoAll left10" />
+                    
                     <view bindtap='gotoGroup' wx:if="{{pageFrom=='group'}}" url='../wode/doGroup' class="btns btns-small btns-green left10" data-index='{{index}}'>发起拼团</view>
                 </view>
             </view>
+        </view>
+        <view wx:if="{{!list.length}}" class="center top40 ">
+            <image src='../../static/images/9.png' class='inline' style='width: 60rpx; height: 60rpx; opacity: 0.4; filter: grayscale(100%);'></image>
+            <view class='col999'>暂无数据</view>
         </view>
     </view>
     <view wx:if="{{pageFrom == 'store' || pageFrom == 'appointment'}}" bindtap="confirmChoosen" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">确认选择</view>

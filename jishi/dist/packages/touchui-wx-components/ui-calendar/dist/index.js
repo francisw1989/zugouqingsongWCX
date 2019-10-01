@@ -302,6 +302,8 @@ exports.default = Component({
         _obj.dayIndex = count;
         _obj.value = _obj.year + '/' + (_obj.month < 10 ? '0' : '') + _obj.month + '/' + (_obj.day < 10 ? '0' : '') + _obj.day;
         this.data.workingdays.length && this.data.workingdays[_i] && (_obj.yes = this.data.workingdays[_i].yes);
+        this.data.workingdays.length && this.data.workingdays[_i] && (_obj.absent = this.data.workingdays[_i].absent);
+        this.data.workingdays.length && this.data.workingdays[_i] && (_obj.night = this.data.workingdays[_i].night);
         if ([0, 6].indexOf(moment(_obj.value).weekday()) !== -1) {
           _obj.isHoliday = true;
         }
@@ -365,6 +367,7 @@ exports.default = Component({
         monthArray.monthHeight = 250;
       }
       this.data.heightCount += monthArray.monthHeight;
+      console.log(monthArray);
       return monthArray;
     }
   }

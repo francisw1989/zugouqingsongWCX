@@ -2,43 +2,57 @@
     <swiper class="swiper" indicator-dots="true"
     autoplay="true">
         <block wx:for="{{D.banners}}">
+        <!-- 类别（1 门店,2项目,3技师,4链接5.无链接 -->
             <swiper-item>
-                <image src="{{item.path}}" mode="aspectFit" />
+                <image bindtap="bannerGo" data-index="{{index}}" src="{{item.path}}" mode="aspectFit" />
             </swiper-item>
         </block>
     </swiper>
-    <view class="box1 bgfff claerfix">
-        <image src="../../static/images/15.png" class="right ico15 top18 right20" />
+    <view class="box1 bgfff claerfix" style='overflow: hidden'>
         <image src="../../static/images/14.png" class="ico14 left top12 left20" />
-        <text class="left20">今日有更多套餐可享受优惠活动</text>
+        <view style='width: 480rpx; overflow: hidden' class='inline'>
+            <view class="marquee_box">
+                 <view class="marquee_text" style="{{orientation}}:{{marqueeDistance}}px; font-size: {{size}}px;">
+                  {{D.notic}}
+                 </view>
+             </view>
+        </view>
+        <!-- <ui-roller _pid="{{_pid}}" style='width: 480rpx;'  class='left10' autoplay='3000'>
+            <ui-roller-item _pid="{{_pid}}">
+                <view>{{D.notic}}</view>
+            </ui-roller-item>
+            <ui-roller-item _pid="{{_pid}}">
+                <view>今日有更多套餐可享受优惠活动</view>
+            </ui-roller-item>
+        </ui-roller> -->
     </view>
     <view class="padSp1">
         <view class="title font2 col000">服务分类</view>
         <view class="top15 clearfix">
             <view wx:for='{{itemClassList}}' class="left right20" style="">
-                <navigator url="projectsList?id={{item.id}}&pageFrom=index">
+                <view bindtap="goProjectsList" data-id="{{item.id}}" url="projectsList?id={{item.id}}&pageFrom=index">
                     <image src="{{item.icon}}" class="ico1" mode='aspectFit' />
                     <view class="top5 col999">{{item.itemClassName}}</view>
-                </navigator>
+                </view>
             </view>
         </view>
         <view class="title top10 font2 col000">推荐项目</view>
     </view>
-    <navigator url="projectDetail?itemId={{item.id}}" wx:for='{{D.itemRecommendList}}' class="pad10 tjxmWap bgfff top5 clearfix" data-index="{{index}}" data-id="{{item.id}}" catchtap="chooseProject">
-        <view class=" right10 left" style="width: 183rpx">
+    <view url="projectDetail?itemId={{item.id}}" wx:for='{{D.itemRecommendList}}' class="pad10 tjxmWap bgfff top5 clearfix" data-index="{{index}}" data-id="{{item.id}}" catchtap="chooseProject">
+        <view class=" right10 left" style="width: 160rpx">
             <image src="{{item.imgs}}" class="img " mode='aspectFill' />
         </view>
-        <view style="width: 482rpx" class="left">
+        <view style="width: 520rpx" class="left">
             <view class=" bor_btm_so" style="padding-bottom: 10rpx">
-                <text class="col000 ">{{item.itemName}}</text>
+                <text class="col000 inline" style='width: 180rpx'>{{item.itemName}}</text>
                 <text class="left10  col000">默认：{{item.defaultDuration}}分钟</text>
-                <text class="left15 colPink font3">¥{{item.defaultPrice/100 * item.defaultDuration}}</text>
+                <text class="left15 colPink font3">¥{{item.defaultPrice/100}}</text>
             </view>
             <view class="top5 line24">{{item.conditioningMethod}}</view>
         </view>
-    </navigator>
+    </view>
     <view class="padSp1 clearfix">
-        <navigator url="shopList?pageFrom=index" class="right top2">更多 ></navigator>
+        <view bindtap="moreStore" url="shopList?pageFrom=index" class="right top2">更多 ></view>
         <text class="title font2 col000 ">附近门店</text>
     </view>
     <view class="bgfff" style="padding: 0 40rpx">
@@ -50,9 +64,9 @@
             <view class="">
                 <text class="col000 font2">{{item.name}}</text>
                 <view class="right ">
-                    <text class="col999 verMid font0">距您{{item.distance}}m | </text>
+                    <text class="col999 verMid font0">距您{{item.distance}}km | </text>
                     <image src="../../static/images/16.png" class="icoAll ico16 left5" />
-                    <text class="colGreen left5 verMid font0">咨询</text>
+                    <text catchtap="makePhoneCall" data-phonenum="{{item.phoneNum}}" class="colGreen left5 verMid font0">咨询</text>
                 </view>
             </view>
             <view class="">
@@ -66,44 +80,43 @@
         </view>
 
     </view>
-    <button open-type="contact" class='ico4 icoAll'><image src="../../static/images/4.png" style='width: 110rpx; height: 110rpx;' /></button>
+    <button open-type="contact" class='ico4 icoAll'  catchtouchmove="bindtouchmove" catchtouchstart="bindtouchstart" catchtouchend="bindtouchend"><image src="../../static/images/4.png" style='width: 55px; height: 55px; margin: {{top}}px 0 0 {{left}}px'     /></button>
     
-    <ui-popup show="{{jxzShow}}" background="transparent" _pid="{{_pid}}">
-        <view class="padSp1 clearfix" style="background-color:#fff; border-radius: 10rpx 10rpx 0 0; overflow: hidden;">
+    <ui-popup show="{{jxzShow}}" wx:if='{{O}}' background="transparent" _pid="{{_pid}}">
+        <view class="padSp1 clearfix" style="background-color:#fff; border-radius: 10rpx 10rpx 0 0; overflow: hidden; padding-bottom: 100rpx;">
             <view class="bor_btm_so" style="padding-bottom: 20rpx;">
-                <text class="font2 bold col333">{{statusName[O.status]}}</text>
-                <navigator class="top5 right" url="pingjia"> <image src="../../static/images/17.png" class="ico17 " /></navigator>
+                <text class="col333 bold">{{statusName[O.status]}}</text>
+                <!-- <navigator class="top5 right" url="pingjia"> <image src="../../static/images/17.png" class="ico17 " /></navigator> -->
             </view>
-            <view class="col333 font2 top15 bold">编号：{{O.outTradeNo}}</view>
-            <view class="clearfix top15">
-                <image src="../../static/images/13.png" class="tx1 left right15" />
-                <view class="top10">
-                    <text class="col333 font2">{{O.itemNames}}</text>
-                    <image src="../../static/images/12.png" class="ico12 icoAll left10" />
-                    <text class="left5 verMid">推荐：</text>
-                    <text class="colRed">60分钟</text>
-                </view>
-                <view class="top5 font0">这是一段介绍，足疗30分钟，颈部按摩20分钟</view>
+            <view class='pad10TB bor_btm_so' z>
+                <view class=""><text class='bold'>编号：</text>{{O.outTradeNo}}</view>
+                <view class="top5 "><text class='bold'>预约门店：</text>{{O.storeName}}</view>
             </view>
-            <view class="top15 col333 font2 bold">
-                {{O.storeName}}
+            <view class='pad10TB bor_btm_so' wx:for='{{O.orderItems}}'>
+                <view class=" "><text class='bold'>预约项目：</text>{{item.itemName}}</view>
+                <view class=" top5 "><text class='bold'>技师：</text><text wx:for='{{item.orderTechnicians}}' wx:for-item="tecItem">{{tecItem.employeeName}}</text></view>
+                <view class="top5  "><text class='bold'>预约开始时间：</text>{{O.orderStartTime}}</view>
+                <view class="top5  "><text class='bold'>预计结束时间：</text>{{O.orderEndTime}}</view>
             </view>
-            <ui-timeline class="top10" style="width:100%" _pid="{{_pid}}">
+
+            <!-- <ui-timeline class="top10" style="width:100%" _pid="{{_pid}}">
                 <ui-timeline-item wx:for="{{lcList}}" wx:key="index" point-color="#459E8C" line-color="#BFBFBF" show-line="{{index === (lcList.length - 1) ? false : true}}" shadow="{{false}}" _pid="{{_pid}}">
                     <view class="left40 relative" style="padding: 30rpx 0">
                         <view class="absolute" style="top: -8rpx">{{item.content}}</view>
                     </view>
                 </ui-timeline-item>
-            </ui-timeline>
-            <view class=" col333 font2 bold" style="margin-top: -10rpx">
+            </ui-timeline> -->
+            <view class=" col333 bold pad10TB bor_btm_so" >
                 已购商品：
             </view>
-            <view class="top5 ">矿泉水*2</view>
-            <view class="">矿泉水*2</view>
+            <view class="pad5TB " wx:for='{{O.articleList}}'>{{item.articleName}}*{{item.count}}</view>
             <view class="top10 align-right">
-                <view class="btns btns-small btns-green">续时</view>
-                <navigator url="goods" class="btns btns-small btns-green left20">商品</navigator>
+                <!-- <view class="btns btns-small btns-green">续时</view> -->
+                <navigator v-if='{{O.status == 5}}' url="pingjia" class="btns btns-small btns-green">去评价  </navigator>
+                <navigator url="goods" open-type='switchTab' class="btns btns-small btns-green left20">商品</navigator>
+                
             </view>
+            
         </view>
 
 

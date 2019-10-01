@@ -14,21 +14,45 @@ exports.default = Page({
     dateday: null,
     monthrange: [],
     contentHeight: wx.DEFAULT_CONTENT_HEIGHT,
-    workingdays: [{ yes: 'true' }, { yes: 'true' }, { yes: 'true' }, { yes: 'true' }, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+    // workingdays: [
+    //   { yes: false,
+    //     absent:true
+    //  }, { yes: true }, { yes: true }, { yes: true }, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+    workingdays:[],
+
   },
   // 选择日期
   selectedHandler: function selectedHandler(val) {
-    var e = val.detail;
+    const t = this;
+    console.log(val);
+    var e = val.detail;//“2019/09/03”
     this.init(e);
+    t.initWorkInfo();
+    
   },
 
   // 滑动时变化
   monthChangeHandler: function monthChangeHandler(val) {
+    const t = this;
+    console.log(val)
     var e = val.detail;
     this.changeDate(e);
+
+    let workInfo = {
+      shiftsName:"",
+      startTime:"",
+      endTime:"",
+      checkInTime:"",
+      checkOutTime:""
+    }
+    t.setData({
+      workInfo: workInfo
+    });
   },
   bindselectedstart: function bindselectedstart(val) {
+    
     var e = val.detail;
+     console.log(e);
   },
   bindselectedend: function bindselectedend(val) {
     var e = val.detail;
@@ -90,6 +114,7 @@ exports.default = Page({
 
   // 根据参数，改变dateobj。dateobj用来临时存储改变的时间。并且生成数组。
   init: function init(date) {
+    const t = this;
     this.data.dateobj.date = date;
     this.data.dateobj.arr = date.split('/');
     this.setData({
@@ -100,7 +125,24 @@ exports.default = Page({
       dateday: this.data.dateobj.arr[2]
     });
   },
+  initWorkInfo(){
+    const t = this;
+    //处理班次信息
+    const index = t.data.dateday-1;
+    console.log(t.data.workingdays);
+    let workInfo = {
+      shiftsName:t.data.workingdays[index].shiftsName,
+      startTime:t.data.workingdays[index].startTime,
+      endTime:t.data.workingdays[index].endTime,
+      checkInTime:t.data.workingdays[index].checkInTime,
+      checkOutTime:t.data.workingdays[index].checkInTime
+    }
+    t.setData({
+      workInfo: workInfo
+    });
+  },
   changeDate: function changeDate(date) {
+    const t = this;
     this.data.dateobj.date = date;
     this.data.dateobj.arr = date.split('/');
     this.setData({
@@ -108,8 +150,10 @@ exports.default = Page({
       dateyear: this.data.dateobj.arr[0],
       datemonth: this.data.dateobj.arr[1]
     });
+    t.employeeAttendance();
   },
   onLoad: function onLoad() {
+    const t = this;
     var start = void 0,
         end = void 0;
     var rangedate = new Date();
@@ -123,9 +167,37 @@ exports.default = Page({
       monthrange: this.data.monthrange
     });
     var date = new Date();
+   
     this.init(this.format(date));
-
-    app.employeeAttendance();
-
+    t.employeeAttendance();
+   
+    
+  },
+  employeeAttendance:function employeeAttendance(){
+    const t = this;
+    let params = {
+      employeeId:app.globalData.userInfo.userId,
+      monthDate:t.data.dateyear+"-"+t.data.datemonth
+    }
+    app.employeeAttendance(params).then((res)=>{
+      let data = res.employeeAttendances;
+       //处理服务项目中是否展开
+       let newRes = res.employeeAttendances.filter((element,index) => {
+        if(element.status == 0 ||element.status == 1||element.status == 3){
+          element.yes = true;
+          element.absent = false;
+        }else{
+          element.yes = false;
+          element.absent = true;
+        }
+      });
+      t.setData({
+        workingdays: res.employeeAttendances,
+        normal:res.normal,
+        warn:res.warn
+      });
+      console.log(t.data);
+      t.initWorkInfo();
+    })
   }
 });

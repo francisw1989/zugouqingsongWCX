@@ -1,7 +1,13 @@
 {
    
     "pages": [
+        
         "pages/index/index",
+        "pages/wode/appointmentDetail",
+        "pages/index/pageView",
+        
+        "pages/index/continuation",
+        
         "pages/wode/index",
         "pages/index/blank",
         "pages/index/pingjia",

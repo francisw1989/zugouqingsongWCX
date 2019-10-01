@@ -16,7 +16,7 @@ exports.default = App({
         colors: ['#409c8a', '#fdbd75', '#8f6eff'],
         color: '#459E8C',
         u: 'https://zzh.hzysofti.com/employeeApi/v1/',
-        userInfo: {}
+        userInfo: {},
     },
     setBg: function setBg() {
         var t = this;
@@ -258,7 +258,6 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeIndex', params).then((res) => {
-                console.log(res)
                 resolve(res);
             })
         })
@@ -273,7 +272,6 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeTodyService', params).then((res) => {
-                console.log(res)
                 resolve(res);
             })
         })
@@ -288,7 +286,29 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeTodyIncome', params).then((res) => {
-                console.log(res)
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //首页-打卡
+    employeePunch:function employeePunch(){
+        const t = this;
+        let params = {
+            employeeId: t.globalData.userInfo.userId || "13"
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('employeePunch?'+t.jsonToParameters(params), {}).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //首页-开始服务
+    employeeStartServie:function employeeStartServie(obj){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('employeeStartServie?'+t.jsonToParameters(obj), {}).then((res) => {
                 resolve(res);
             })
         })
@@ -297,13 +317,19 @@ exports.default = App({
     //技师端加载用户信息及标签
     employeeUserTag:function employeeUserTag(){
         const t = this;
-        console.log(t.globalData.userInfo);
-        let params = {
-            userId: "65"
-        }
         let p = new Promise((resolve, reject) => {
-            t.getRequest('employeeUserTag', params).then((res) => {
-                console.log(res)
+            t.getRequest('userTags/list').then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //技师给用户打标签
+    employeeTagUser:function employeeTagUser(obj){
+        const t = this;
+
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('employeeTagUser?'+t.jsonToParameters(obj), {}).then((res) => {
                 resolve(res);
             })
         })
@@ -315,39 +341,111 @@ exports.default = App({
         const t = this;
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeOrder', obj).then((res) => {
-                console.log(res)
                 resolve(res);
             })
         })
         return p;
     },
     //我的考勤
-    employeeAttendance:function employeeAttendance(){
+    employeeAttendance:function employeeAttendance(obj){
         const t = this;
+        let employeeId = t.globalData.userInfo.userId || "13";
         let params = {
-            employeeId: t.globalData.userInfo.userId || "13"
+            monthDate:obj.monthDate
         }
         let p = new Promise((resolve, reject) => {
-            t.getRequest('employeeAttendance', params).then((res) => {
-                console.log(res)
+            t.getRequest('employeeAttendance/'+employeeId, params).then((res) => {
                 resolve(res);
             })
         })
         return p;
     },
     //排班信息
-    employeeSchedule:function employeeSchedule(){
+    employeeSchedule:function employeeSchedule(obj){
         const t = this;
+        let employeeId = t.globalData.userInfo.userId || "13";
         let params = {
-            employeeId: t.globalData.userInfo.userId || "13"
+            monthDate:obj.monthDate
         }
         let p = new Promise((resolve, reject) => {
-            t.getRequest('employeeSchedule', params).then((res) => {
+            t.getRequest('employeeSchedule/'+employeeId, params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //评价列表  
+    employeeTodyPraise:function employeeTodyPraise(obj){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeTodyPraise', obj).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //预约详情  
+    orderInfo:function orderInfo(obj){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('orderInfo', obj).then((res) => {
                 console.log(res)
                 resolve(res);
             })
         })
         return p;
+    },
+    //收益情况
+    employeeStatistics:function employeeStatistics(obj){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeIncome', obj).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //师徒信息
+    employeeMentor:function employeeMentor(obj){
+        const t = this;
+        let params = {
+            employeeId: t.globalData.userInfo.userId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeMentor', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //结束服务
+    employeeEndServie:function employeeEndServie(obj){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('employeeEndServie?'+t.jsonToParameters(obj), {}).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //技师端用户历史消费
+    employeeUserConsume:function employeeUserConsume(obj){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeUserConsume', obj).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    //技师端加载用户信息及标签
+    employeeUserTag:function employeeUserTag(obj){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('employeeUserTag', obj).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
     }
-
 });

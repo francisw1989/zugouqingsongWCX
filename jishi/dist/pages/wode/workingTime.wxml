@@ -20,40 +20,40 @@
                 </view>
             </view>
         </view>
-        <ui-calendar disable-past-days select-range-mode="{{false}}" bindmonthchange="monthChangeHandler" bindchange="selectedHandler" value="{{date}}" show-month-range="{{['2017/12/01', '2018/12/01']}}" max-range="60" date-page="{{datePage}}" bindselectedstart="bindselectedstart"
+        <ui-calendar disable-past-days="{{false}}" select-range-mode="{{false}}" bindmonthchange="monthChangeHandler" bindchange="selectedHandler" value="{{date}}" show-month-range="{{['2017/12/01', '2018/12/01']}}" max-range="60" date-page="{{datePage}}" bindselectedstart="bindselectedstart"
             bindselectedend="bindselectedend" workingdays="{{workingdays}}" _pid="{{_pid}}"></ui-calendar>
         <view class="left20 top20">
             <image src="../../static/images/15.png" class="icoAll" style="width: 16rpx; height: 16rpx;" />
             <text class="left10 verMid col999">考勤正常</text>
             <image src="../../static/images/16.png" class="icoAll left20" style="width: 16rpx; height: 16rpx;" />
             <text class="left10 verMid col999">考勤异常</text>
-            <image src="../../static/images/17.png" class="icoAll left20" style="width: 16rpx; height: 16rpx;" />
-            <text class="left10 verMid col999">正常班次</text>
         </view>
     </view>
     <view class="pad10 top10 bgfff">
         <view class="font2 col333">当月考勤</view>
         <view class="colGreen clearfix top10">
             正常考勤
-            <text class="right">25次</text>
+            <text class="right">{{normal}}次</text>
         </view>
         <view class="col999 clearfix">
             异常考勤
-            <text class="right">25次</text>
+            <text class="right">{{warn}}次</text>
         </view>
     </view>
     <view class="pad10 top10 bgfff">
         <view class="clearfix top10 col333">
-            <text>班次：5号</text>
-            <text class="left10">8:00-12：00</text>
+            <text>班次：{{workInfo.shiftsName}}</text>
+            <text class="left10">{{workInfo.startTime}}-{{workInfo.endTime}}</text>
         </view>
         <view class="clearfix top10">
             <text class="col999">上班：</text>
-            <text class="left10 colGreen">07:52</text>
+            <text class="left10 colGreen" wx:if="{{workInfo.checkInTime}}">{{workInfo.checkInTime}}</text>
+            <text class="left10 colRed" wx:else>异常</text>
         </view>
         <view class="clearfix">
             <text class="col999">下班：</text>
-            <text class="left10 colRed">异常</text>
+            <text class="left10 colRed" wx:if="{{workInfo.checkOutTime}}">{{workInfo.checkOutTime}}</text>
+            <text class="left10 colRed" wx:else>异常</text>
         </view>
     </view>
 </view>

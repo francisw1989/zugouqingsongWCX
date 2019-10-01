@@ -3,7 +3,7 @@
     <view class="relative">
         <image src="../../static/images/1-{{leve}}.png" mode="top" style="width: 100%; height: 240rpx;" />
         <view class="abCover clearfix center colfff">
-            <view class='font5 top20'>{{employeeTodyService.serviceTotal}}</view>
+            <view class='font5 top20'>{{useemployeeTodyServicerInfo.serviceTotal}}</view>
             <view class='top10'>今日服务人次</view>
         </view>
     </view>
@@ -12,8 +12,8 @@
             <view class="ui-col-content align-center relative">
                 <canvas class='canvas' style='height: {{perW}}px' canvas-id="ringCanvas1" class="canvas" ></canvas>
                 <view class='abCover center clearfix'>
-                    <view class='font0' style='margin-top: 55px'>男性:{{employeeTodyService.serviceMan}}次</view>
-                    <view class='font0' style='color: #7E65FF'>女性:{{employeeTodyService.serviceGirl}}次</view>
+                    <view class='font0' style='margin-top: 55px'>男性:{{useemployeeTodyServicerInfo.serviceMan}}次</view>
+                    <view class='font0' style='color: #7E65FF'>女性:{{useemployeeTodyServicerInfo.serviceGirl}}次</view>
                 </view>
             </view>
         </view>
@@ -21,8 +21,8 @@
             <view class="ui-col-content align-center relative">
                 <canvas class='canvas' style='height: {{perW}}px' canvas-id="ringCanvas2" class="canvas" ></canvas>
                 <view class='abCover center clearfix'>
-                    <view class='font0' style='margin-top: 55px'>普通会员:10次</view>
-                    <view class='font0' style='color: #FEC07A'>三星会员:10次</view>
+                    <view class='font0' style='margin-top: 55px'>普通会员:{{useemployeeTodyServicerInfo.zeroVip}}次</view>
+                    <view class='font0' style='color: #FEC07A'>三星会员:{{useemployeeTodyServicerInfo.threeVip}}次</view>
                 </view>
             </view>
         </view>
@@ -37,25 +37,13 @@
         </view>
     </view>
     <view class='pad10 bgfff clearfix line0'>
-        <text class='right colYe'>{{employeeTodyService.unitPrice}}元</text>
+        <text class='right colYe'>{{useemployeeTodyServicerInfo.unitPrice}}元</text>
         <text class='col000'>客单价</text>
     </view>
     <view class='top10'>
-        <view class='pad10 bgfff clearfix line0 bor_btm_so'>
-            颈椎放松
-            <text class='right'>15次</text>
-        </view>
-        <view class='pad10 bgfff clearfix line0 bor_btm_so'>
-            颈椎放松
-            <text class='right'>15次</text>
-        </view>
-        <view class='pad10 bgfff clearfix line0 bor_btm_so'>
-            颈椎放松
-            <text class='right'>15次</text>
-        </view>
-        <view class='pad10 bgfff clearfix line0 bor_btm_so'>
-            颈椎放松
-            <text class='right'>15次</text>
+        <view class='pad10 bgfff clearfix line0 bor_btm_so' wx:for="{{useemployeeTodyServicerInfo.items}}">
+            {{item.itemName}}
+            <text class='right'>{{item.num}}次</text>
         </view>
     </view>
 </view>

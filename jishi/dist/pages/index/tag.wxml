@@ -1,13 +1,20 @@
 <!--pages/index/tag.wxml-->
 <view class=' bor_btm_so'>
     <ui-tabs index="{{ current }}" bindchange="handleChange" class="bgfff" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
-        <ui-tab wx:for="{{tabs}}" _pid="{{_pid}}">{{item}}</ui-tab>
+        <ui-tab wx:for="{{tabs}}" _pid="{{_pid}}">{{item.tagsClassName}}</ui-tab>
     </ui-tabs>
-    <view class=" pad10">
-        <view class="btns btns-small btns-green-bor" style="margin: 10rpx" wx:for='{{list}}'>红茶</view>
+    <view class="pad10">
+        <checkbox-group name="checkbox" class="check">
+          <label bindtap='chooseTags' wx:for="{{tagsList}}" wx:for-index="index" wx:key="{{index}}" data-index="{{index}}" class='{{item.checked?"is_checked":""}}' wx:if="{{item.tagsIndex == current}}">
+            <checkbox value="{{item.tagName}}" data-val="{{item.tagName}}" hidden='false' checked='{{item.checked}}'/> {{item.tagName}}
+          </label>
+        </checkbox-group>
     </view>
+    <view>
+          
+    </view> 
     
 </view>
 <view class='align-right pad15 top10'>
-        <view class='btns btns-green btns-small' bindtap='confirm'>保存</view>
+        <view class='btns btns-green btns-small' bindtap='submitTags'>保存</view>
     </view>

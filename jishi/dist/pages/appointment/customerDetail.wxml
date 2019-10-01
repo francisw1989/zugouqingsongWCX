@@ -3,17 +3,17 @@
     <image src="../../static/images/49.png" class="" style=" width:100%; height: 353rpx; " />
     <view style="top: 0; left: 0; width: 100%; box-sizing: border-box" class="pad20 absolute">
       <view class="font3 clearfix">
-        <text>许三妹</text>
+        <text>{{userDetail.userName}}</text>
         <image src="../../static/images/22.png" class="icoAll left10" style=" width:30rpx; height: 22rpx; " />
-        <text class="colYe2 left5 font0">3天后生日</text>
-        <view class="btns font0 right">普通会员</view>
+        <text class="colYe2 left5 font0">生日：{{userDetail.birthday}}  {{showBirText}}</text>
+        <view class="btns font0 right">{{memberLevelText}}</view>
       </view>
-      <view>1828784784</view>
-      <view class="top40">积分：500</view>
+      <view>{{userDetail.telephoneNum}}</view>
+      <view class="top40">积分：{{userDetail.score}}</view>
       <view class="clearfix">
-        储蓄账户：¥500
+        储蓄账户：¥{{userDetail.savingsAccount}}
       </view>
-      <view class="clearfix">充值 > <text class="right colYe2 top5 font0">NO：Z1124565465</text></view>
+      <view class="clearfix">充值 > <text class="right colYe2 top5 font0">NO：{{userDetail.memberNum}}</text></view>
 
 
     </view>
@@ -30,28 +30,28 @@
     <view class="col333 font2">历史消费</view>
     <view class="top20">
       <text class="col999">本周消费：</text>
-      <text class="colYe">4次</text>
+      <text class="colYe">{{employeeUserConsume.nowMonthAvg}}次</text>
       <text class="left20 col999">均价：</text>
-      <text class="colYe">4次</text>
+      <text class="colYe">{{employeeUserConsume.nowMonthSize}}次</text>
     </view>
     <view class="top10">
       <text class="col999">本次消费：</text>
-      <text class="colYe">4次</text>
+      <text class="colYe">{{employeeUserConsume.nowWeekAvg}}次</text>
       <text class="left20 col999">均价：</text>
-      <text class="colYe">4次</text>
+      <text class="colYe">{{employeeUserConsume.nowWeekSize}}次</text>
     </view>
     <view class="top10">
       <text class="col999">距离上次消费消费：</text>
-      <text class="colYe">2天</text>
+      <text class="colYe">{{employeeUserConsume.lastDays}}天</text>
     </view>
 
     <view class="top10">
       <text class="col999">消费最多的项目：</text>
-      <text class="colYe">【颈椎放松】</text>
+      <text class="colYe">【{{employeeUserConsume.maxItem}}】</text>
     </view>
     <view class="top10">
       <text class="col999">上次消费的门店：</text>
-      <text class="colYe">中华路旗舰店</text>
+      <text class="colYe">{{employeeUserConsume.lastStore}}</text>
     </view>
   </view>
   <ui-popup show="{{showSR}}" background="transparent" _pid="{{_pid}}">

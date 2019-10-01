@@ -60,6 +60,10 @@ exports.default = Page({
     joinGroup(){
         app.joinGroup().then((res) => {
             app.wxPay().then(() => {
+                wx.showModal({
+                    title: '提示',
+                    content: '参团成功',
+                })
                 wx.switchTab({
                     url: '../index/index',
                 })

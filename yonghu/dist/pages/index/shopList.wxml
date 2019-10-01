@@ -9,14 +9,14 @@
             <view>地图</view>
         </navigator>
     </view>
-    <view url="shopDetail?id={{item.id}}" data-index="{{index}}" data-id="{{item.id}}" catchtap="go" class="fjmdWap fjmdWap2 bgfff bor_btm_so" wx:for='{{list}}'>
+    <view wx:if="{{list.length}}" url="shopDetail?id={{item.id}}" data-index="{{index}}" data-id="{{item.id}}" catchtap="go" class="fjmdWap fjmdWap2 bgfff bor_btm_so" wx:for='{{list}}'>
         <image src="{{item.imgs}}" class="img left right10" />
         <view class="">
             <text class="col000 font2">{{item.name}}</text>
             <view class="right ">
-                <text class="col999 verMid font0">距您{{item.distance}}m | </text>
+                <text class="col999 verMid font0">距您{{item.distance}}km | </text>
                 <image src="../../static/images/16.png" class="icoAll ico16 left5" />
-                <text class="colGreen left5 verMid font0">咨询</text>
+                <text catchtap="makePhoneCall" data-phonenum="{{item.phoneNum}}" class="colGreen left5 verMid font0">咨询</text>
             </view>
         </view>
         <view class="">
@@ -27,6 +27,10 @@
             <image src="../../static/images/11.png" class="ico11 icoAll" />
             <text class="col999 left5 font0 verMid">{{item.detailAddress}}</text>
         </view>
+    </view>
+    <view wx:if="{{!list.length}}" class="center top40 ">
+        <image src='../../static/images/9.png' class='inline' style='width: 60rpx; height: 60rpx; opacity: 0.4; filter: grayscale(100%);'></image>
+        <view class='col999'>暂无数据</view>
     </view>
 
 </view>

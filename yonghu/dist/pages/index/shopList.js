@@ -9,7 +9,7 @@ exports.default = Page({
         const t = this;
         let index = e.currentTarget.dataset.index;
         let id = e.currentTarget.dataset.id;
-        app.globalData.appointFromProject = false;
+        // app.globalData.appointFromProject = false;
         app.globalData.chooseStore = t.data.list[index];
         if(t.data.pageFrom == 'index'){
             wx.navigateTo({
@@ -30,6 +30,11 @@ exports.default = Page({
             t.setData({
                 list: res
             })
+        })
+    },
+    makePhoneCall(e) {
+        wx.makePhoneCall({
+            phoneNumber: e.currentTarget.dataset.phonenum //仅为示例，并非真实的电话号码
         })
     },
 });

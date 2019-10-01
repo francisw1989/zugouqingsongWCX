@@ -1,15 +1,15 @@
 <view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
-    <view wx:for="{{list}}" class="shaodwBox top10">
+    <view catchtap='gotoDetail' data-index='{{index}}' data-id="{{item.id}}" url='groupSuccess?pageFrom=' wx:if="{{list.length}}" wx:for="{{list}}" class="shaodwBox top10">
         <view class="tag2">{{statusName[item.status]}}</view>
         <image src="{{item.item.imgs}}" mode="aspectFill" style="width: 100%; height: 270rpx; " />
         <view class="pad10 ui-row" style="">
             <view class="line20 ui-col" style="">
                 <view class="ui-col-content">
-                    <view class="col333">{{item.item.itemName}}</view>
+                    <view class="col000">{{item.item.itemName}}</view>
                     <view>拼团截止：{{item.assembleEndTime}}</view>
                     <view>{{item.assemblePeople}}人团，还差{{item.leftPeople}}人</view>
-                    <view class="top5 text-through">¥{{item.primeCost/100}}</view>
-                    <view class="colYe font3">¥ {{item.assemblePrice/100}}</view>
+                    <view class="top5 "><text class='text-through'>¥{{item.assemblePrice/100}}</text> <text class="colYe font3 left10">¥ {{item.primeCost/100}}</text></view>
+                    
                 </view>
             </view>
             <view class="ui-col" style="">
@@ -19,12 +19,19 @@
                             <image src="{{pItem.photo}}" class="tx3" />
                             <view class="btns btns-green" wx:if="{{pItem.isSponsor==1}}">团长</view>
                         </view>
+                        <!-- <block wx:for='{{item.leftMember}}'>
+                            <image src="../../static/images/62.png" class="tx3 left5 inline" />
+                        </block> -->
                     </view>
                     <view class="align-right top15">
-                        <view bindtap="goShare" data-index='{{index}}' data-id="{{item.id}}" url='invitation?assembleId={{item.id}}' class="btns btns-nomal btns-green" style="border-radius: 32rpx">邀请好友继续拼图 > </view>
+                        <view catchtap="goShare" data-index='{{index}}' data-id="{{item.id}}" url='invitation?assembleId={{item.id}}' class="btns btns-nomal btns-green" style="border-radius: 32rpx">邀请好友继续拼图 > </view>
                     </view>
                 </view>
             </view>
         </view>
+    </view>
+    <view wx:if="{{!list.length}}" class="center top40 ">
+        <image src='../../static/images/9.png' class='inline' style='width: 60rpx; height: 60rpx; opacity: 0.4; filter: grayscale(100%);'></image>
+        <view class='col999'>暂无数据</view>
     </view>
 </view>

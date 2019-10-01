@@ -4,39 +4,49 @@
     </ui-tabs>
     <view wx:if="{{list.length > 0}}">
         <block wx:for="{{list}}">
-            <navigator url='detail' class="pad10TB bor_btm_so relative">
-                <view class="ui-row" style="">
-                    <view class="ui-col" style="padding-left: 20px;flex:0 0 100px;">
-                        <view class="ui-col-content">
-                            <image src="{{item.itemImgs}}" mode="aspectFill" class="tx6" />
-                        </view>
-                    </view>
-                    <view class="ui-col" style="">
-                        <view class="ui-col-content">
-                            <view class=" clearfix">
-                                <text class="left col333 font2 bold">张女士</text>
-                                <view class="left left5" style="margin-top: -15rpx;">
-                                    <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
-                                    <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
-                                    <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
-                                </view>
-                            </view>
-                            <view class="top5 font0 col999">门店：{{item.storeName}}</view>
-                            <view class="col999 font0">预约时间：{{item.orderStartTime}}</view>
-                            <view class="col999 font0" wx:if="item.actualStartTime">开始时间：{{item.actualStartTime}}</view>
-                            <view class="col999 font0">技师：{{item.employeeNames}}</view>
-                            <view class="col999 font0">项目：【{{item.itemNames}}】</view>
-                        </view>
-                    </view>
-                    <view class="ui-col ui-col-align-right align-right" style="flex:0 0 100px;">
-                        <view class="ui-col-content align-right">
-                            <view class="btns btns-2" style="background-color: #F3532F">{{item.status}}</view>
-                        </view>
+            <navigator url='detail?orderId={{item.orderId}}' class="pad10TB bor_btm_so relative">
+            <view class="ui-row" style="">
+                <view class="ui-col" style="padding-left: 20px;flex:0 0 100px;">
+                    <view class="ui-col-content">
+                        <image src="{{item.itemImags}}" mode="aspectFill" class="tx6" />
                     </view>
                 </view>
+                <view class="ui-col" style="">
+                    <view class="ui-col-content">
+                        <view class=" clearfix">
+                            <text class="left col333 font2 bold">{{item.user.userName}}</text>
+                            <view class="left left5" style="margin-top: -15rpx;">
+                                <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
+                                <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
+                                <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />
+                            </view>
+                        </view>
+                        <view class="top5 font0 col999">门店：{{item.storeName}}</view>
+                        <view class="col999 font0">预约时间：{{item.orderStartTime}}</view>
+                        <view class="col999 font0" wx:if="item.actualStartTime">开始时间：{{item.actualStartTime}}</view>
+                        <view class="col999 font0">技师：{{userInfo.employeeName}}</view>
+                        <view class="col999 font0">项目：【{{item.itemName}}】</view>
+                    </view>
+                </view>
+                <view class="ui-col ui-col-align-right align-right" style="flex:0 0 100px;">
+                    <view class="ui-col-content align-right">
+                        <view class="btns btns-2" style="background-color: #F3532F">{{item.statusText}}</view>
+                    </view>
+                </view>
+            </view>
             </navigator>
         </block>
     </view>
-    <view wx:else>暂无数据</view>
+    
+    <view wx:else class="center top40 ">
+        <image src='../../static/images/9.png' class='inline' style='width: 60rpx; height: 60rpx; opacity: 0.4; filter: grayscale(100%);'></image>
+        <view class='col999'>暂无数据</view>
+    </view>
+    <ui-popup show="{{menuShow}}" position='right'  _pid="{{_pid}}" width='100px'>
+        <view wx:for="{{statusList}}" class='pad10' bindtap='choose' data-index='{{index}}'>
+            {{item}}
+        </view>
+    </ui-popup>
+   
 </view>
 

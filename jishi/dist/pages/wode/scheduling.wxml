@@ -24,19 +24,16 @@
             bindselectedend="bindselectedend" workingdays="{{workingdays}}" _pid="{{_pid}}"></ui-calendar>
         <view class="left20 top20">
             <image src="../../static/images/15.png" class="icoAll" style="width: 16rpx; height: 16rpx;" />
-            <text class="left10 verMid col999">全天</text>
+            <text class="left10 verMid col999">早班</text>
             <image src="../../static/images/16.png" class="icoAll left20" style="width: 16rpx; height: 16rpx;" />
-            <text class="left10 verMid col999">上午</text>
+            <text class="left10 verMid col999">中班</text>
             <image src="../../static/images/17.png" class="icoAll left20" style="width: 16rpx; height: 16rpx;" />
-            <text class="left10 verMid col999">下午</text>
+            <text class="left10 verMid col999">晚班</text>
         </view>
     </view>
     <view class="pad10RL top10 bgfff">
-        <view class=" bor_btm_so pad10TB">
-            上午班:08:00-12:00
-        </view>
-        <view class=" pad10TB">
-            下午班:12:00-23:00
+        <view class=" {{index != shiftsSettings.length-1?'bor_btm_so':''}} pad10TB" wx:for="{{shiftsSettings}}">
+            {{item.shiftsName}}:{{item.startTime}}-{{item.endTime}}
         </view>
     </view>
 </view>

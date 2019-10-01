@@ -39,6 +39,62 @@ exports.default = App({
         chooseCoupon: {},
         stores:[]
     },
+    
+    // 我的预约订单详情
+    orderInfo(orderId){
+        const t = this;
+        let params = {
+            orderId: orderId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('orderInfo', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 是否接受短信提醒
+    isSms(id) {
+        const t = this;
+        let params = {
+            orderId: id,
+            isSms: 0
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('isSms?' + t.jsonToParameters(params) , params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 用户取消预约订单
+    removeOrder() {
+        const t = this;
+        let params = {
+            orderId: t.globalData.outTradeNo,
+            userId: t.globalData.userInfo.userId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('removeOrder?' + t.jsonToParameters(params) , params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
+    // 续时订单生成  continuation
+    continuation(time) {
+        const t = this;
+        let params = {
+            orderItemsId: t.globalData.nowOrder.storeId,
+            time: time
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('continuation?' + t.jsonToParameters(params) , params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // 商品列表查询
     goods() {
         const t = this;
@@ -90,11 +146,8 @@ exports.default = App({
     // 加载客户对用户评价管理表
     evaluations(){
         const t = this;
-        let params = {
-            userId: t.globalData.userInfo.userId
-        }
         let p = new Promise((resolve, reject) => {
-            t.getRequest('evaluations', params).then((res) => {
+            t.getRequest('evaluations', {}).then((res) => {
                 resolve(res);
             })
         })
@@ -223,6 +276,7 @@ exports.default = App({
         let p = new Promise((resolve, reject) => {
             t.getRequest('reservations', params).then((res) => {
                 for (const v of res.records){
+                    v.imgs = v.imgs.split(',')[0];
                     v.orderStartTime2 = v.orderStartTime.replace(/-/g, "/")
                 }
                 resolve(res);
@@ -239,9 +293,13 @@ exports.default = App({
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('assembleRecordByUser', params).then((res) => {
-                for (const v of res) {
+                for (const v of res.records) {
                     v.item.imgs = v.item.imgs.split(',')[0];
                     v.leftPeople = v.assemblePeople - v.members.length;
+                    v.leftMember = [];
+                    for (let i = 0; i < v.leftPeople; i++) {
+                        v.leftMember.push('')
+                    }
                 }
                 resolve(res);
             })
@@ -325,12 +383,8 @@ exports.default = App({
         return p;
     },
     // 获取用户专属技师
-    userTechnicians(itemId){
+    userTechnicians(params){
         const t = this;
-        let params = {
-            itemId: itemId,
-            userId: t.globalData.userInfo.userId,
-        }
         let p = new Promise((resolve, reject) => {
             t.getRequest('userTechnicians', params).then((res) => {
                 res.imgs && (res.imgs = res.imgs.split(','));
@@ -347,6 +401,21 @@ exports.default = App({
         };
         let p = new Promise((resolve, reject) => {
             t.getRequest('orderDetail', params).then((res) => {
+                let payObjList = [];
+                if (res.payType){
+                    let payTypeList = ['', '虚拟账户', '现金账户', '微信支付', '现金', '微信转账', '支付宝转账'];
+                    res.payType.split('-').forEach((v, i)=>{
+                        if (v) {
+                            payObjList.push({
+                                payType: v,
+                                payTypeName: payTypeList[v],
+                                payAmount: res.payAmount.split('-')[i]
+                            })
+                        }
+                    })
+                       
+                }
+                res.payObjList = payObjList;
                 if (res && res.orderItems) {
                     for (const v of res.orderItems) {
                         if (v.itemImags){
@@ -537,7 +606,10 @@ exports.default = App({
         let p = new Promise((resolve, reject) => {
             t.getRequest('stores', params).then((res) => {
                 for (const v of res) {
-                    v.imgs = v.imgs.split(',')[0]
+                    v.imgs = v.imgs.split(',')[0];
+                    v.distance = (v.distance / 1000).toFixed(1);
+                    v.x = v.x - 0.0065;
+                    v.y = v.y - 0.0060;
                 }
                 t.globalData.stores = res;
                 resolve(res);
@@ -786,9 +858,13 @@ exports.default = App({
             t.getRequest('index', params).then((res) => {
                 for (const v of res.nearbyStore) {
                     v.imgs && (v.imgs = v.imgs.split(',')[0])
+                    v.distance = (v.distance / 1000).toFixed(1)
+                    v.x = v.x - 0.0065;
+                    v.y = v.y - 0.0060;
                 }
                 for (const v of res.itemRecommendList) {
-                    v.imgs && (v.imgs = v.imgs.split(',')[0])
+                    v.imgs && (v.imgs = v.imgs.split(',')[0]);
+                    v.conditioningMethod = v.conditioningMethod.length > 35 ? v.conditioningMethod.substring(0, 35) + '...' : v.conditioningMethod
                 }
                 resolve(res);
             })

@@ -1166,7 +1166,7 @@ view.colYe2 {
 .colBlue,
 a.colBlue,
 .colBlue a {
-  color: #6372ed;
+  color: #459E8C;
 }
 .colPink,
 a.colPink {
@@ -1319,6 +1319,9 @@ a.colGreen,
 }
 .pad10TB {
   padding: 20rpx 0;
+}
+.pad5TB {
+  padding: 10rpx 0;
 }
 .pad10RL {
   padding: 0 20rpx;
@@ -1537,8 +1540,8 @@ view.btns-green,button.btns-green {
   height: 110rpx;
 }
 .ico4 {
-  width: 110rpx;
-  height: 110rpx;
+  width: 55px;
+  height: 55px;
   position: fixed;
   bottom: 20%;
   right: 40rpx;
@@ -1620,8 +1623,8 @@ view.btns-green,button.btns-green {
 }
 .tjxmWap {border: 4rpx solid #fff; box-sizing: border-box}
 .tjxmWap .img {
-  width: 183rpx;
-  height: 183rpx;
+  width: 150rpx;
+  height: 150rpx;
   border-radius: 5px;
 }
 .fjmdWap {
@@ -1832,8 +1835,8 @@ view.btns-green,button.btns-green {
   box-sizing: border-box;
 }
 .payInfo {
-  width: 604rpx;
-  padding: 60rpx 0 20rpx 0;
+  width: 630rpx;
+  padding: 40rpx 0 20rpx 0;
   margin: 0 auto;
   background: #ffffff;
   box-shadow: 0rpx 4rpx 33rpx 0rpx rgba(48, 47, 47, 0.18);
@@ -1940,3 +1943,5 @@ view.btns-green,button.btns-green {
 
 .input1{ display: block; border: 1px solid #ddd; padding: 15rpx 30rpx; box-sizing: border-box;}
 
+.leveleImg{ filter: grayscale(100%);}
+.leveleImg.active{ filter: grayscale(0);}

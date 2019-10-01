@@ -64,13 +64,19 @@ exports.default = Page({
                 } else {
                     wx.hideLoading();
                     app.globalData.orderDetail = res;
-                    wx.redirectTo({
+                    wx.navigateTo({
                         url: 'pay',
                     })
                 }
             })
         }
         _do()
+    },
+    onShow(){
+        const t = this;
+        if (app.globalData.outTradeNo){
+            app.removeOrder();
+        }
     },
     onLoad(){
         const t = this;
@@ -90,9 +96,15 @@ exports.default = Page({
     // 专属调理师
     userTechnicians() {
         const t = this;
-        let itemId = app.globalData.chooseProject[0].id;
-        
-        app.userTechnicians(itemId).then((res) => {
+        let params = {
+            storeId: app.globalData.chooseStore.id,
+            userId: app.globalData.userInfo.userId,
+            itemId: app.globalData.chooseProject[t.data.cIndex].id,
+            times: app.globalData.chooseProject[t.data.cIndex].defaultDuration,
+            dateTime: app.globalData.chooseStore.appointTime
+            
+        }
+        app.userTechnicians(params).then((res) => {
             t.setData({
                 userTechniciansList: res
             })
@@ -136,6 +148,14 @@ exports.default = Page({
         }
         t.setData({
             chooseProject: t.data.chooseProject,
+        })
+    },
+    clearTechnician(e){
+        const t = this;
+        let _index = e.target.dataset.index;
+        t.data.chooseProject[t.data.cIndex].technicianChoose.splice(index, 1);
+        t.setData({
+            chooseProject: t.data.chooseProject
         })
     },
     submit: function submit() {

@@ -24,8 +24,8 @@
 </view>
 <view class="pad20 bgfff bor_btm_so" style="padding-top: 20rpx" wx:if='{{score!=1}}'>
     <checkbox-group bindchange="checkboxChange">
-        <label class="top10" style="display: block" wx:for="{{tab2}}">
-            <checkbox value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+        <label class="top10" style="display: block" wx:for="{{evaluationList[evaluateScore-1].evaluateLabel}}">
+            <checkbox value="{{item}}" checked="{{item.checked}}"/>{{item}}
         </label>
     </checkbox-group>
 </view>

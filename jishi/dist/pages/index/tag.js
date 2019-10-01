@@ -8,56 +8,129 @@ Page({
     data: {
         title: '标签',
         value: '',
-        tabs: ['基础特征', '消费特征' ,'时空特征', '偏好特征' ,'渠道特征'],
+        tabs: [],
         list: ['','','','','',''],
         inkBarStyle: {
             'width': '30%'
         },
+        tagsList:[]
     },
     handleChange: function handleChange(e) {
+        const t = this;
         var index = e.detail.index;
-        this.setData({
-            tabIndex: index
+        t.setData({
+            current: index
         });
     },
-    confirm(){
+    //保存标签
+    submitTags(){
         const t = this;
+        //选中的标签以字符串提交
+        let newRes = t.data.tagsList.filter((element,index) => {
+            return element.checked == true;
+        });
+        console.log(newRes);
+        let tags = [];
+        newRes.forEach(element => {
+            tags.push(element.tagName);
+        });
+        if(tags.length == 0){
+            wx.showToast({
+                title:'请选择标签提交',
+                icon:"none",
+                duration:2000
+              })
+        }else{
+            let params = {
+                userId:Number(t.data.userId),
+                employeeId: app.globalData.userInfo.userId || "13",
+                orderId:Number(t.data.orderId),
+                orderItemId:Number(t.data.orderItemId),
+                content:tags.join(",")
+            }
+            app.employeeTagUser(params).then(()=>{
+                wx.showToast({
+                    title:'标签添加成功',
+                    icon:"success",
+                    duration:2000
+                  })
+            })
+        }
         
-        wx.navigateBack({
-            
-        })
+        
     },
     //initTagsData 数据初始化
     initTagsData(){
         const t = this;
         app.employeeUserTag().then((res)=>{
             console.log(res);
+            var tagsList = [];
+            //处理标签子分类
+            res.forEach((item,i) => {
+                let tagsListArray = item.tagList.split(",")
+                tagsListArray.forEach((tag,index)=>{
+                    tagsList.push({
+                        tagsIndex:i,
+                        tagName:tag,
+                        checked:false
+                    })
+                })
+            });
+            console.log(tagsList);
+            // let newRes = res.records.filter((element,index) => {
+                
+            //     let tagsListArray = element[index].tagList.split(",")
+            // });
             t.setData({
-                employeeUserTag: res
+                tabs: res,
+                tagsList:tagsList
             })
         })
-        console.log(t.data);
     },
+    //选中标签
+    chooseTags: function (e) {
+        const t = this;
+        let index = e.currentTarget.dataset.index;
+        let arrs = this.data.tagsList;
+        if (arrs[index].checked == false) {
+          arrs[index].checked = true;
+        } else {
+          arrs[index].checked = false;
+        }
+        this.setData({
+            tagsList: arrs
+        })
+        console.log(t.data.tagsList)
+      },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        console.log(options);
         const t = this;
+        
         t.initTagsData();
+        t.setData({
+            current:0,
+            userId:options.userId,
+            employeeId:options.employeeId,
+            orderId:options.orderId,
+            orderItemId:options.orderItemId
+        })
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
-
+    onReady: function (options) {
+       
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
-
+    onShow: function (options) {
+       
     },
 
     /**

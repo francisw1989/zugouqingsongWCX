@@ -1,11 +1,11 @@
 'use strict';
-
+const app = getApp();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-const app = getApp();
 exports.default = Page({
     data: {
+        menuShow: false,
         choosedRange: 2,
         //1历史2今天3明天
         tabs: [
@@ -35,7 +35,13 @@ exports.default = Page({
         },
         list: []
     },
-    
+    choose(e){
+        const t = this;
+        console.log(e.target.dataset.index)
+        t.setData({
+            menuShow: false
+        })
+    },
     handleChange: function handleChange(e) {
         var index = e.detail.index;
         this.setData({
@@ -44,8 +50,8 @@ exports.default = Page({
     },
     //状态为中文显示
     settingStatus: function setting(statusId) {
-        console.log(t.data.statusList[statusId-1]);
-        return t.data.statusList[statusId]
+        const t = this;
+        return t.data.statusList[statusId-1]
     },
     onShow() {
         const t = this;
@@ -54,24 +60,21 @@ exports.default = Page({
     //获取数据
     initData(){
         const t = this;
-        let params;
-        if(t.data.choosedRange == 0){
-            params = {
-                employeeId: app.globalData.userInfo.userId || "13",
-                page:t.data.page,
-                size:t.data.size
-            }
-        }else{
-            params = {
+        let params = {
                 employeeId: app.globalData.userInfo.userId || "13",
                 range:t.data.choosedRange,//1历史2今天3明天
                 page:t.data.page,
-                size:t.data.size
-            }
+                size:t.data.size,
+                status:0//状态 0全部 2 未到店 3已到店 4进行中 5已完成
         }
         
         app.employeeOrder(params).then((res)=>{
             console.log(res);
+            //处理数据状态中文显示
+            let newRes = res.records.filter((element,index) => {
+                element.statusText = t.settingStatus(element.status);
+                
+            });
             t.setData({
                 list: res.records
             })
@@ -84,6 +87,13 @@ exports.default = Page({
         const t = this;
         let choosedRange = e.currentTarget.dataset.id;
         // console.log(choosedRange);
+        if (choosedRange==0){
+            choosedRange = 4
+            t.setData({
+                menuShow: true
+            })
+            return
+        }
         t.setData({
             choosedRange:choosedRange,
             page:1
@@ -96,6 +106,9 @@ exports.default = Page({
      */
     onLoad: function (options) {
         const t = this;
+        t.setData({
+            userInfo: app.globalData.userInfo
+        })
         t.initData();
     },
 

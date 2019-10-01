@@ -6,8 +6,8 @@
     <view class='bgfff pad10 top10'>
         <view class='syBox font0' style='background-color: #7E65FF'>
             <view class='colfff ' style='padding: 10rpx 20rpx'>
-                <view>{{tab}}收益：平台最高：120</view>
-                <view>排名：10/30</view>
+                <view>{{tab}}收益：{{incomeData.myIncome}} 平台最高：{{incomeData.max}} </view>
+                <view>排名：{{incomeData.rank}} </view>
             </view>
         </view>
         <canvas canvas-id="lineCanvas1" disable-scroll="true" class="canvas2 top10" bindtouchstart="touchHandler1" bindtouchmove="moveHandler1" bindtouchend="touchEndHandler1"></canvas>
@@ -15,8 +15,8 @@
     <view class='bgfff pad10 top10'>
         <view class='syBox font0' style='background-color: #FEC07A'>
             <view class='colfff ' style='padding: 10rpx 20rpx'>
-                <view>{{tab}}服务人次：平台最高：120</view>
-                <view>排名：10/30</view>
+                <view>{{tab}}服务人次：{{serviceData.myServiceNum}} 平台最高：{{serviceData.max}}</view>
+                <view>排名：{{serviceData.rank}}</view>
             </view>
         </view>
         <canvas canvas-id="lineCanvas2" disable-scroll="true" class="canvas2 top10" bindtouchstart="touchHandler2" bindtouchmove="moveHandler2" bindtouchend="touchEndHandler2"></canvas>
@@ -24,8 +24,8 @@
     <view class='bgfff pad10 top10'>
         <view class='syBox font0' style='background-color: #469F8D'>
             <view class='colfff ' style='padding: 10rpx 20rpx'>
-                <view>{{tab}}好评数：平台最高：120</view>
-                <view>排名：10/30</view>
+                <view>{{tab}}好评数：{{goodsData.myGoodsCounts}} 平台最高：{{goodsData.max}}</view>
+                <view>排名：{{goodsData.rank}}</view>
             </view>
         </view>
         <canvas canvas-id="lineCanvas3" disable-scroll="true" class="canvas2 top10" bindtouchstart="touchHandler3" bindtouchmove="moveHandler3" bindtouchend="touchEndHandler3"></canvas>

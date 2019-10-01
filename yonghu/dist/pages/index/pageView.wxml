@@ -1,0 +1,2 @@
+<!--pages/index/pageView.wxml-->
+<web-view wx:if="{{src}}" src="{{src}}" style="width: 100%; height: 100%; overflow: auto"></web-view>

@@ -14,7 +14,8 @@ exports.default = Page({
     dateday: null,
     monthrange: [],
     contentHeight: wx.DEFAULT_CONTENT_HEIGHT,
-    workingdays: [{ yes: 'true' }, { yes: 'true' }, { yes: 'true' }, { yes: 'true' }, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+    workingdays:[]
+    // workingdays: [{ yes: 'true' }, { yes: 'true' }, { yes: 'true' }, { yes: 'true' }, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
   },
   // 选择日期
   selectedHandler: function selectedHandler(val) {
@@ -90,6 +91,7 @@ exports.default = Page({
 
   // 根据参数，改变dateobj。dateobj用来临时存储改变的时间。并且生成数组。
   init: function init(date) {
+    const t = this;
     this.data.dateobj.date = date;
     this.data.dateobj.arr = date.split('/');
     this.setData({
@@ -101,6 +103,7 @@ exports.default = Page({
     });
   },
   changeDate: function changeDate(date) {
+    const t = this;
     this.data.dateobj.date = date;
     this.data.dateobj.arr = date.split('/');
     this.setData({
@@ -108,8 +111,10 @@ exports.default = Page({
       dateyear: this.data.dateobj.arr[0],
       datemonth: this.data.dateobj.arr[1]
     });
+    t.employeeSchedule();
   },
   onLoad: function onLoad() {
+    const t = this;
     var start = void 0,
         end = void 0;
     var rangedate = new Date();
@@ -126,6 +131,38 @@ exports.default = Page({
     this.init(this.format(date));
 
 
-    app.employeeSchedule();
+    t.employeeSchedule();
+  },
+  employeeSchedule:function employeeSchedule(){
+    const t = this;
+    let params = {
+      employeeId:app.globalData.userInfo.userId,
+      monthDate:t.data.dateyear+"-"+t.data.datemonth
+    }
+    app.employeeSchedule(params).then((res)=>{
+      let data = res.schedules;
+       let newRes = res.schedules.filter((element,index) => {
+        if(element.shiftsId == 1){//早班
+          element.yes = true;
+          element.absent = false;
+          element.night = false;
+        }else if(element.shiftsId == 2){//中班
+          element.yes = false;
+          element.absent = true;
+          element.night = false;
+        }else if(element.shiftsId == 3){//晚班
+          element.yes = false;
+          element.absent = false;
+          element.night = true;
+        }
+      });
+      t.setData({
+        workingdays: res.schedules,
+        shiftsSettings:res.shiftsSettings
+      });
+      console.log(t.data);
+
+    
+    })
   }
 });
