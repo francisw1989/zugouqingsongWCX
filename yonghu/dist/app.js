@@ -12,8 +12,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = App({
     globalData: {
-        u: 'https://zzh.hzysofti.com/userApi/v1/',
-        u_s: 'https://zzh.hzysofti.com/',
+        u: 'http://localhost:8002/userApi/v1/',
+      u_s: 'http://localhost:8002/',
         userInfo: {},
         itemClassList: [],
         memberLevelName: ['普通会员', '一星会员', '二星会员', '三星会员'],
