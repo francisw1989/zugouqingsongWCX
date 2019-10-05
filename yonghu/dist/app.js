@@ -413,10 +413,12 @@ exports.default = App({
                             })
                         }
                     })
+                    res.payObjList = payObjList;
                        
                 }
-                res.payObjList = payObjList;
+                
                 if (res && res.orderItems) {
+                    
                     for (const v of res.orderItems) {
                         if (v.itemImags){
                             v.itemImags = v.itemImags.split(',')[0]

@@ -1,4 +1,4 @@
-<view style="min-height: 100%; background-color:#F3F3F3;">
+<view style="min-height: 100%; background-color:#F3F3F3; padding-bottom: 100rpx;">
     <view class="pad10 font2 line18">
         已选项目
     </view>
@@ -26,7 +26,7 @@
         </view>
     </view>
     <!--选择单项 专属调理师-->
-    <view class='pad10 font2 line18'  wx:if="{{chooseProject.length==1 && userTechniciansList.length}}">
+    <view class='pad10 font2 line18'  wx:if="{{chooseProject.length==1}}">
         专属{{chooseProject[0].itemEmployeeName}}
     </view>
     <view class="pad10 bgfff" wx:if="{{chooseProject.length==1}}">
@@ -39,6 +39,10 @@
             </view>
             <view class="center col333 top5">{{item.employeeName}}</view>
         </navigator>
+        <view wx:if="{{!userTechniciansList.length}}" class="center top20 ">
+            <image src='../../static/images/9.png' class='inline' style='width: 60rpx; height: 60rpx; opacity: 0.4; filter: grayscale(100%);'></image>
+            <view class='col999'>暂无数据</view>
+        </view>
     </view>
     <!--选择调理师-->
     <view class="pad10 font2 line18">
@@ -83,7 +87,7 @@
             </view>
         </view>
     </view>
-     <view wx:if="{{!list.length}}" class="center top20 ">
+    <view wx:if="{{!chooseProject[cIndex].technicianList.length}}" class="center top20 ">
         <image src='../../static/images/9.png' class='inline' style='width: 60rpx; height: 60rpx; opacity: 0.4; filter: grayscale(100%);'></image>
         <view class='col999'>暂无数据</view>
     </view>
