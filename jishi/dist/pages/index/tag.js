@@ -62,7 +62,10 @@ Page({
     //initTagsData 数据初始化
     initTagsData(){
         const t = this;
-        app.employeeUserTag().then((res)=>{
+        let params = {
+            userId: t.data.userId
+          }
+        app.employeeUserTag(params).then((res)=>{
             console.log(res);
             var tagsList = [];
             //处理标签子分类
@@ -108,8 +111,6 @@ Page({
     onLoad: function (options) {
         console.log(options);
         const t = this;
-        
-        t.initTagsData();
         t.setData({
             current:0,
             userId:options.userId,
@@ -117,6 +118,8 @@ Page({
             orderId:options.orderId,
             orderItemId:options.orderItemId
         })
+        t.initTagsData();
+        
     },
 
     /**

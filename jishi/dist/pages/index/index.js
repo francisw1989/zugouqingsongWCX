@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = Page({
     data: {
+        index:0,//预约详情
         leve: 1,
         name: '',
         names: ['一星技师', '二星技师', '三星技师'],
@@ -69,9 +70,18 @@ exports.default = Page({
              t.onLoad();
        })
    },
+   //切换预约，显示不同详情
+   showAppointDetail(e){
+    const t = this;
+    let index = e.currentTarget.dataset.index;
+    t.setData({
+        index: index
+     })
+   },
     //给用户打标签，去往标签页面
     addTag(e){
         var t = this;
+        console.log(e.currentTarget.dataset.userid);
         wx.navigateTo({
             url: 'tag?userId=' + e.currentTarget.dataset.userid + "&employeeId="+app.globalData.userInfo.userId+"&orderId="+e.currentTarget.dataset.orderid+"&orderItemId="+e.currentTarget.dataset.orderitemid
         })
