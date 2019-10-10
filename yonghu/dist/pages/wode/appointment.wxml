@@ -20,15 +20,15 @@
                             <view class="col999 font0">总价：¥{{item.totalPrice/100}}</view>
                         </view>
                     </view>
-                    <view class="ui-col ui-col-align-right align-right" style="flex:0 0 100px;">
-                        <view class="ui-col-content align-right">
+                    <view class="ui-col ui-col-align-right align-right" style="flex:0 0 150px;">
+                        <view class="ui-col-content align-right" style='padding-top: 130rpx;'>
                             <view class="btns btns-2">{{tabs[item.status-1]}}</view>
-                            <view class="top50 font0" wx:if='{{item.orderStartTime && item.status==1}}'>
+                            <view class="font0" wx:if='{{item.orderStartTime && item.status==1}}'>
                                 <ui-count-down class="inline" doneText='0s' time="{{item.orderStartTime2}}" number-style="{{numberStyle}}" format="{%h}:{%m}:{%s}" _pid="{{_pid}}"></ui-count-down>
                                 后自动取消
                             </view>
                             <view catchtap='pay' class="btns btns-green-bor top5 btns-small" data-outtradeno='{{item.outTradeNo}}' wx:if='{{item.status==1}}'>继续支付</view>
-                            <view catchtap='removeOrder' data-outtradeno='{{item.outTradeNo}}' class="btns btns-green-bor top5 btns-small left10" wx:if='{{item.status==2 || item.status==1}}'>取消订单</view>
+                            <view catchtap='removeOrder' data-outtradeno='{{item.outTradeNo}}' class="btns btns-green-bor top5 btns-smaller left10" wx:if='{{item.status==2 || item.status==1}}'>取消订单</view>
                         </view>
                     </view>
                 </view>
