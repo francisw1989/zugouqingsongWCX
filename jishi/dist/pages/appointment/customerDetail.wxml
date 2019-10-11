@@ -5,7 +5,7 @@
       <view class="font3 clearfix">
         <text>{{userDetail.userName}}</text>
         <image src="../../static/images/22.png" class="icoAll left10" style=" width:30rpx; height: 22rpx; " />
-        <text class="colYe2 left5 font0">生日：{{userDetail.birthday}}  {{showBirText}}</text>
+        <text class="colYe2 left5 font0">生日：<text wx:if="{{userDetail.birthday}}">{{userDetail.birthday}}</text>   {{showBirText}}</text>
         <view class="btns font0 right">{{memberLevelText}}</view>
       </view>
       <view>{{userDetail.telephoneNum}}</view>

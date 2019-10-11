@@ -315,7 +315,7 @@ exports.default = App({
         return p;
     },
     //技师端加载用户信息及标签
-    employeeUserTag:function employeeUserTag(){
+    userTagsList:function userTagsList(){
         const t = this;
         let p = new Promise((resolve, reject) => {
             t.getRequest('userTags/list').then((res) => {

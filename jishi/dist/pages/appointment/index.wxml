@@ -8,7 +8,7 @@
             <view class="ui-row" style="">
                 <view class="ui-col" style="padding-left: 20px;flex:0 0 100px;">
                     <view class="ui-col-content">
-                        <image src="{{item.itemImags}}" mode="aspectFill" class="tx6" />
+                        <image src="{{item.user.photo}}" mode="aspectFill" class="tx6" />
                     </view>
                 </view>
                 <view class="ui-col" style="">
@@ -23,7 +23,7 @@
                         </view>
                         <view class="top5 font0 col999">门店：{{item.storeName}}</view>
                         <view class="col999 font0">预约时间：{{item.orderStartTime}}</view>
-                        <view class="col999 font0" wx:if="item.actualStartTime">开始时间：{{item.actualStartTime}}</view>
+                        <view class="col999 font0" wx:if="{{item.actualStartTime}}">开始时间：{{item.actualStartTime}}</view>
                         <view class="col999 font0">技师：{{userInfo.employeeName}}</view>
                         <view class="col999 font0">项目：【{{item.itemName}}】</view>
                     </view>
@@ -43,8 +43,8 @@
         <view class='col999'>暂无数据</view>
     </view>
     <ui-popup show="{{menuShow}}" position='right'  _pid="{{_pid}}" width='100px'>
-        <view wx:for="{{statusList}}" class='pad10' bindtap='choose' data-index='{{index}}'>
-            {{item}}
+        <view wx:for="{{statusList}}" class='pad10' bindtap='choose' data-key='{{item.key}}' wx:if="{{item.isShow}}">
+            {{item.value}}
         </view>
     </ui-popup>
    

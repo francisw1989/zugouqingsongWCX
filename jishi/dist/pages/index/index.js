@@ -51,8 +51,10 @@ exports.default = Page({
                 title:'服务已开始',
                 icon:"success",
                 duration:2000
-              })
-              t.onLoad();
+              }) 
+             setTimeout(()=>{
+                 t.onLoad();
+             }, 1000)
         })
     },
     //打卡
@@ -63,11 +65,14 @@ exports.default = Page({
        }
         app.employeePunch(params).then(()=>{
            wx.showToast({
-               title:'服务已开始',
+               title:'已打卡',
                icon:"success",
                duration:2000
              })
-             t.onLoad();
+             setTimeout(()=>{
+                t.onLoad();
+            }, 1000)
+             
        })
    },
    //切换预约，显示不同详情
@@ -136,8 +141,7 @@ exports.default = Page({
 
                 //处理用户标签数据
                 let tagsArray = element.userTags.tags.split(",");
-                console.log(tagsArray);
-                element.userTags = tagsArray;
+                element.userTagList = tagsArray;
                 
             });
 

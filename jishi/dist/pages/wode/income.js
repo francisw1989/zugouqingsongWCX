@@ -211,13 +211,13 @@ Page({
             type: 'pie',
             series: [{
                 name: '项目收益',
-                data: t.data.totalData.myIncome,
+                data: Number(t.data.totalData.myIncome),
             }, {
                 name: '一级徒弟贡献',
-                data: t.data.totalData.levelOne,
+                data: Number(t.data.totalData.levelOne),
             }, {
                 name: '二级徒弟贡献',
-                data: t.data.totalData.levelTwo,
+                data: Number(t.data.totalData.levelTwo),
             }],
             width: 300,
             height: 300,
