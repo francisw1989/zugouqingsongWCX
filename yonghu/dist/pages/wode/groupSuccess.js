@@ -16,11 +16,15 @@ exports.default = Page({
             textAlign: 'center',
             lineHeight: '20px'
         },
-        leftMember: []
+        leftMember: [],
+        hasjoined: false,
+        opt: {},
+        statusName: ['待开团（待支付）', '进行中', '已完成', '已失败']
     },
-    pageFromDeal(opt){
+    pageFromDeal(){
         const t = this;
-        if (opt.scene) {
+        let opt = t.data.opt;
+        if (opt && opt.scene) {
             // page from share
             let scene = decodeURIComponent(opt.scene);
             // wx.showModal({
@@ -33,7 +37,7 @@ exports.default = Page({
             })
         }else{
             // page form creat group
-            if(opt.pageFrom){
+            if (opt && opt.pageFrom){
                 t.setData({
                     pageFrom: opt.pageFrom
                 })
@@ -43,18 +47,32 @@ exports.default = Page({
             res.item.imgs = res.item.imgs.split(',')[0];
             wx.setStorageSync('shareImg', res.item.imgs)
             let len = res.assemblePeople - res.members.length;
+            t.data.leftMember = [];
             for(let i = 0; i< len; i++){
                 t.data.leftMember.push('')
             }
+            let ids = res.members.map((item)=>{
+                return item.id
+            })
+            if (ids.indexOf(app.globalData.userInfo.userId)>-1){
+                t.data.hasjoined = true
+            }
             t.setData({
                 D: res,
-                leftMember: t.data.leftMember
+                leftMember: t.data.leftMember,
+                hasjoined: t.data.hasjoined
             })
         });
     },
-    onLoad(opt) {
+    onLoad(opt){
         const t = this;
-        t.pageFromDeal(opt);
+        t.setData({
+            opt: opt
+        })
+    },
+    onShow() {
+        const t = this;
+        t.pageFromDeal();
        
     },
     joinGroup(){

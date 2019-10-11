@@ -14,7 +14,7 @@
                     <text class="left15 colPink font3">¥{{item.defaultPrice/100}}</text>
                 </view>
                 <view class="top5 line24">{{item.conditioningMethod}}</view>
-                <view class="top5" wx:if="{{item.evaluateCount}}">
+                <view class="top5">
                     <view class="tag1" wx:if="{{item.evaluateCount<100}}">好评{{item.evaluateCount}}</view>
                     <view class="tag1" wx:else>好评 100+</view>
                     <image wx:if='{{item.isRecommend == 1}}' src="../../static/images/31.png" style="width: 34rpx; height: 33rpx" class="icoAll left10" />
