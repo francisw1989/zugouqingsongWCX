@@ -54,6 +54,12 @@ Page({
                     icon:"success",
                     duration:2000
                   })
+                setTimeout(()=>{
+                    wx.navigateBack({
+    
+                    })
+                }, 1000)
+                
             })
         }
         
@@ -65,7 +71,7 @@ Page({
         let params = {
             userId: t.data.userId
           }
-        app.employeeUserTag(params).then((res)=>{
+        app.userTagsList(params).then((res)=>{
             console.log(res);
             var tagsList = [];
             //处理标签子分类
@@ -103,7 +109,7 @@ Page({
         this.setData({
             tagsList: arrs
         })
-        console.log(t.data.tagsList)
+        // console.log(t.data.tagsList)
       },
     /**
      * 生命周期函数--监听页面加载

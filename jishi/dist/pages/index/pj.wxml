@@ -1,6 +1,7 @@
 <!--pages/index/pj.wxml-->
 <view style="min-height: 100%; background-color:#F3F3F3;">
     <view class='pad15RL top10 bgfff'>
+     <view wx:if="{{list.length > 0}}">
         <view class="ui-row pad15TB bor_btm_so" style="" wx:for='{{praise.records}}'>
             <view class="ui-col" style="flex:0 0 45px;">
                 <view class="ui-col-content ">
@@ -21,6 +22,11 @@
                 </view>
             </view>
         </view>
+    </view>
+    <view wx:else class="center top40 " wx:else>
+        <image src='../../static/images/9.png' class='inline' style='width: 60rpx; height: 60rpx; opacity: 0.4; filter: grayscale(100%);'></image>
+    <view class='col999'>暂无数据</view>
+    </view>
     </view>
 </view>
 
