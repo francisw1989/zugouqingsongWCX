@@ -1,5 +1,5 @@
 <view style="min-height: 100%; background-color:#F3F3F3; padding-bottom: 100rpx;">
-    <view  style='background-color: #F19149; color: #EC4B05' class='center font0 pad5' wx:if="{{showTishi && (!chooseProject[cIndex].technicianList.length && nearbyStore.length>1)}}">
+    <view  style='background-color: #F19149; color: #EC4B05' class='center font0 pad5' wx:if="{{showTishi &&  nearbyStore.length>1 &&  !chooseProject[cIndex].effectiveTechLength}}">
         本店等待时间较长，已为您推荐周边 中华路店，是否切换到该门店？ 
         <text bindtap='gotoOtherStore' style='text-decoration: underline'>切换</text>
     </view>

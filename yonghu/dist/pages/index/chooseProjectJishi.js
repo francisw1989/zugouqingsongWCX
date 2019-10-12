@@ -50,7 +50,8 @@ exports.default = Page({
         canLoad: false,
         gradeArr: ['', '1', '11', '111'],
         nearbyStore: [],
-        showTishi: false
+        showTishi: false,
+        effectiveTechLength: 0
     },
     orderDetail() {
         const t = this;
@@ -151,6 +152,7 @@ exports.default = Page({
         app.selectTechnician(params).then((res)=>{
             
             t.data.chooseProject[cIndex].technicianList = res[0].employees;
+            t.data.chooseProject[cIndex].effectiveTechLength = t.data.chooseProject[cIndex].technicianList.length;
             t.setData({
                 chooseProject: t.data.chooseProject
             })
@@ -182,7 +184,7 @@ exports.default = Page({
     clearTechnician(e){
         const t = this;
         let _index = e.target.dataset.index;
-        t.data.chooseProject[t.data.cIndex].technicianChoose.splice(index, 1);
+        t.data.chooseProject[t.data.cIndex].technicianChoose.splice(_index, 1);
         t.setData({
             chooseProject: t.data.chooseProject
         })
@@ -241,10 +243,14 @@ exports.default = Page({
             }
             
         })
+        t.data.chooseProject[t.data.cIndex].effectiveTechLength = t.data.chooseProject[t.data.cIndex].technicianList.filter((item) => {
+            return !item.hasChoosedByOther
+        }).length;
         t.setData({
             chooseProject: t.data.chooseProject
         })
         // t.selectTechnician();
+        // console.log(t.data.chooseProject[t.data.cIndex].technicianList.length , t.data.nearbyStore.length)
     },
     
     sliderchange: function sliderchange(e) {
