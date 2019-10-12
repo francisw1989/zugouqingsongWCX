@@ -36,7 +36,9 @@ exports.default = Page({
         top: '',
         x:0,
         y:0,
-        overflow: 'auto'
+        overflow: 'auto',
+        w: wx.WIN_WIDTH,
+        h: wx.WIN_HEIGHT
     },
     bindtouchstart(e){
         const t = this;
@@ -46,9 +48,15 @@ exports.default = Page({
     },
     bindtouchmove(e) {
         const t = this;
+        let clientX = e.touches[0].clientX -30;
+        let clientY = e.touches[0].clientY -35;
+        if (clientX > t.data.w - 50) { clientX = t.data.w - 50 }
+        if (clientX < 0) { clientX=0}
+        if (clientY > t.data.h - 200) { clientY = t.data.h - 200 }
+        if (clientY < 0) { clientY = 0 }
         t.setData({
-            left: e.touches[0].clientX-30,
-            top: e.touches[0].clientY-35
+            left: clientX,
+            top: clientY
         })
     },
     bindtouchend(e){
