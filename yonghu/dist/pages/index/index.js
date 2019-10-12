@@ -142,6 +142,7 @@ exports.default = Page({
         const t = this;
         app.getLoaction().then((res) => {
             app.index().then((res) => {
+                app.globalData.nearbyStore = res.nearbyStore;
                 t.setData({
                     D: res
                 })

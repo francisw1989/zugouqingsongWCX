@@ -48,7 +48,9 @@ exports.default = Page({
         },
         show: false,
         canLoad: false,
-        gradeArr: ['', '1', '11', '111']
+        gradeArr: ['', '1', '11', '111'],
+        nearbyStore: [],
+        showTishi: false
     },
     orderDetail() {
         const t = this;
@@ -77,6 +79,33 @@ exports.default = Page({
         if (app.globalData.outTradeNo){
             app.removeOrder();
         }
+        if (app.globalData.nearbyStore){
+            t.setData({
+                nearbyStore: app.globalData.nearbyStore
+            })
+        }
+        setTimeout(()=>{
+            t.setData({
+                showTishi: true
+            })
+        }, 1000)
+    },
+    gotoOtherStore(){
+        const t = this;
+        let ids = t.data.nearbyStore.map((item)=>{
+            return item.id
+        })
+        let appointTime = app.globalData.chooseStore.appointTime;
+        let chooseStore = {};
+        let index = ids.indexOf(app.globalData.chooseStore.id);
+        if (index >-1){
+            chooseStore = t.data.nearbyStore[index + 1] || t.data.nearbyStore[index - 1]
+        }else{
+            chooseStore = t.data.nearbyStore[0]
+        }
+        chooseStore.appointTime = appointTime;
+        app.globalData.chooseStore = chooseStore;
+        t.onLoad();
     },
     onLoad(){
         const t = this;

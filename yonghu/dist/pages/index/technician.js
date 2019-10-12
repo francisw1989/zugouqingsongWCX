@@ -22,6 +22,11 @@ exports.default = Page({
             current: index
         });
     },
+    makePhoneCall(e) {
+        wx.makePhoneCall({
+            phoneNumber: e.currentTarget.dataset.phonenum //仅为示例，并非真实的电话号码
+        })
+    },
     chooseStore(e) {
         const t = this;
         return
