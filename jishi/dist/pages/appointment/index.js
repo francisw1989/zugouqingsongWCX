@@ -26,10 +26,56 @@ exports.default = Page({
                 text:"全部"
             }
         ],
+        status:0,
         page:1,
         size:100,
         //订单状态（1.待支付 2.已支付待到店 3.已到店待服务 4.服务中 5.服务完成 6.系统取消 7.用户取消 ）
-        statusList:["待到店","待到店","待到店","进行中","已完成","取消","取消"],
+        // statusList:["待到店","待到店","待到店","进行中","已完成","取消","取消"],
+        // statusList:["待支付","已支付待到店","已到店待服务","进行中","已完成","系统取消","用户取消"],
+        statusList:[//切换选择的状态 1.待支付 2.已支付待到店 3.已到店待服务 4.服务中 5.服务完成 6.系统取消 7.用户取消
+            {
+                key:0,
+                value:"全部",
+                isShow:true
+            },
+            {
+                key:1,
+                value:"待支付",
+                isShow:false
+            },
+            {
+                key:2,
+                value:"待到店",
+                isShow:false
+            },
+            {
+                key:3,
+                value:"待服务",
+                isShow:true
+            },
+            {
+                key:4,
+                value:"服务中",
+                isShow:true
+            },
+            {
+                key:5,
+                value:"服务完成",
+                isShow:true
+            },
+            {
+                key:6,
+                value:"系统取消",
+                isShow:false
+            },
+            {
+                key:7,
+                value:"用户取消",
+                isShow:false
+            }
+        ],
+        //订单的状态
+        
         inkBarStyle: {
             'width': '30%'
         },
@@ -37,10 +83,12 @@ exports.default = Page({
     },
     choose(e){
         const t = this;
-        console.log(e.target.dataset.index)
+        console.log(e.target.dataset.key)
         t.setData({
-            menuShow: false
+            menuShow: false,
+            status:e.target.dataset.key
         })
+        t.initData();
     },
     handleChange: function handleChange(e) {
         var index = e.detail.index;
@@ -65,15 +113,18 @@ exports.default = Page({
                 range:t.data.choosedRange,//1历史2今天3明天
                 page:t.data.page,
                 size:t.data.size,
-                status:0//状态 0全部 2 未到店 3已到店 4进行中 5已完成
+                status:t.data.status//状态 0全部 2 未到店 3已到店 4进行中 5已完成
         }
         
         app.employeeOrder(params).then((res)=>{
             console.log(res);
             //处理数据状态中文显示
             let newRes = res.records.filter((element,index) => {
-                element.statusText = t.settingStatus(element.status);
-                
+                t.data.statusList.forEach(item => {
+                    if(item.key == element.status){
+                        element.statusText = item.value;
+                    }
+                });
             });
             t.setData({
                 list: res.records

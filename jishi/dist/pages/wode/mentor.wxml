@@ -1,7 +1,7 @@
 <view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
     <view class="padSp1 bgfff">
         我的师傅
-        <text class="colGreen left10">{{ship.master}}</text>
+        <text class="colGreen left10">{{ship.master.employeeName}}</text>
     </view>
     <view class="padSp1 bgfff top10">
         <view>我的徒弟</view>

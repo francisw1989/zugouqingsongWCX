@@ -32,7 +32,7 @@ exports.default = Page({
         let min;
         if(t.data.cIndex == 0){
             min = Number(t.data.I.openStartTime.split(':')[0]) > nowHour ? Number(t.data.I.openStartTime.split(':')[0]) : nowHour;
-            if (nowMin > t.data.I.openEndTime.split(':')[1]) {
+            if (nowMin > t.data.I.openStartTime.split(':')[1]) {
                 min = min + 1;
             } else {
 

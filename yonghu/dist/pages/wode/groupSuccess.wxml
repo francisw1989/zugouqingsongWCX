@@ -1,4 +1,3 @@
-
 <view class="clearfix" style="min-height: 100%; background-color:#F3F3F3; padding-bottom: 100rpx;">
     <view class="center top10" wx:if="{{pageFrom=='group'}}">
         <view>
@@ -40,15 +39,22 @@
                 <image src="../../static/images/62.png" class="tx3 left5 inline" />
             </block>
         </view>
-        <view class="top10 center">仅剩
-            <text class="colGreen">{{leftMember.length}}</text>人，快叫朋友一起拼团吧！</view>
-        <ui-divider padding="20" color="#333" _pid="{{_pid}}">
-            剩余
-            <ui-count-down class="inline" wx:if='{{D.assembleEndTime}}' time="{{D.assembleEndTime}}" format="{%h}:{%m}:{%s}" number-style="{{numberStyle}}" _pid="{{_pid}}">
-            </ui-count-down>
-            结束
-        </ui-divider>
+        <block  wx:if="{{D.status==1}}">
+            <view class="top10 center">
+                <text>仅剩</text>
+                <text class="colGreen">{{leftMember.length}}</text>
+                <text>人，快叫朋友一起拼团吧！</text>
+            </view>
+            <ui-divider padding="20" color="#333" _pid="{{_pid}}" >
+                剩余
+                <ui-count-down class="inline" wx:if='{{D.assembleEndTime}}' time="{{D.assembleEndTime}}" format="{%h}:{%m}:{%s}" number-style="{{numberStyle}}" _pid="{{_pid}}">
+                </ui-count-down>
+                结束
+            </ui-divider>
+        </block>
+        
     </view>
+    <view wx:if="{{D.status!=1}}" class='col999 pad10TB center'>{{statusName[D.status]}}</view>
     <view class="pad10 clearfix bgfff" wx:for="{{D.members}}">
         <text class="right top15">{{item.sponsorTime}}参团</text>
         <view class="tx3Wap  left   {{item.isSponsor==1?'active':''}}">
@@ -89,8 +95,13 @@
         </view>
     </view>
 </view>
-<navigator wx:if="{{pageFrom=='group' || pageFrom=='myGroupList'}}" url="invitation" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">邀请好友拼团</navigator>
-<block wx:if="{{pageFrom=='share' || pageFrom=='projectDetail'}}">
-    <view bindtap='joinGroup' class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">参与拼团</view>
-    <!-- <navigator url="../index/projectsList?pageFrom=group" open-type='redirect' class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">我要开团</navigator> -->
+<block wx:if='{{D.status==1}}'>
+    <navigator wx:if="{{pageFrom=='group' || pageFrom=='myGroupList'}}" url="invitation" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">邀请好友拼团</navigator>
+    <block wx:if="{{(pageFrom=='share' || pageFrom=='projectDetail') && !hasjoined }}">
+        <view bindtap='joinGroup' class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">参与拼团</view>
+        <!-- <navigator url="../index/projectsList?pageFrom=group" open-type='redirect' class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">我要开团</navigator> -->
+    </block>
+    <block wx:if="{{(pageFrom=='share' || pageFrom=='projectDetail') && hasjoined }}">
+        <navigator url="invitation" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">邀请好友拼团</navigator>
+    </block>
 </block>

@@ -3,7 +3,7 @@
             <view class="clearfix">
             <block>
             <navigator url="customerDetail?userId={{detail.user.id}}" hover-class="navigator-hover">
-                <image src="../../static/images/21.png" mode="aspectFill" class="tx3 left" />
+                <image src="{{detail.user.photo}}" mode="aspectFill" class="tx3 left" />
                 <text class="col333 left10 left top5">{{detail.user.userName}}</text>
                 <view class="left left5" style="margin-top: -15rpx;">
                     <image src="../../static/images/4.png" class="icoAll" style="width: 12rpx; height: 16rpx;" />

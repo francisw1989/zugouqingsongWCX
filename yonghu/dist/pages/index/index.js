@@ -32,27 +32,30 @@ exports.default = Page({
         size: 14,
         orientation: 'left', //滚动方向
         interval: 20, // 时间间隔
-        left: 0,
-        top: 0,
+        left: '',
+        top: '',
         x:0,
-        y:0
+        y:0,
+        overflow: 'auto'
     },
     bindtouchstart(e){
         const t = this;
-        t.data.x = t.data.x || e.touches[0].clientX;
-        t.data.y = t.data.y || e.touches[0].clientY;
+        t.setData({
+            overflow: 'hidden'
+        })
     },
     bindtouchmove(e) {
         const t = this;
         t.setData({
-            left: e.touches[0].clientX - t.data.x,
-            top: e.touches[0].clientY - t.data.y
+            left: e.touches[0].clientX-30,
+            top: e.touches[0].clientY-35
         })
     },
     bindtouchend(e){
         const t = this;
-        t.data.x = e.currentTarget.offsetLeft + 50;
-        t.data.y = e.currentTarget.offsetTop + 40;
+        t.setData({
+            overflow: 'auto'
+        })
     },
     goProjectsList(e) {
         let id = e.currentTarget.dataset.id;

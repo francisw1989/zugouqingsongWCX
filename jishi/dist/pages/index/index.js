@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = Page({
     data: {
+        index:0,//预约详情
         leve: 1,
         name: '',
         names: ['一星技师', '二星技师', '三星技师'],
@@ -50,8 +51,10 @@ exports.default = Page({
                 title:'服务已开始',
                 icon:"success",
                 duration:2000
-              })
-              t.onLoad();
+              }) 
+             setTimeout(()=>{
+                 t.onLoad();
+             }, 1000)
         })
     },
     //打卡
@@ -62,16 +65,28 @@ exports.default = Page({
        }
         app.employeePunch(params).then(()=>{
            wx.showToast({
-               title:'服务已开始',
+               title:'已打卡',
                icon:"success",
                duration:2000
              })
-             t.onLoad();
+             setTimeout(()=>{
+                t.onLoad();
+            }, 1000)
+             
        })
+   },
+   //切换预约，显示不同详情
+   showAppointDetail(e){
+    const t = this;
+    let index = e.currentTarget.dataset.index;
+    t.setData({
+        index: index
+     })
    },
     //给用户打标签，去往标签页面
     addTag(e){
         var t = this;
+        console.log(e.currentTarget.dataset.userid);
         wx.navigateTo({
             url: 'tag?userId=' + e.currentTarget.dataset.userid + "&employeeId="+app.globalData.userInfo.userId+"&orderId="+e.currentTarget.dataset.orderid+"&orderItemId="+e.currentTarget.dataset.orderitemid
         })
@@ -126,8 +141,7 @@ exports.default = Page({
 
                 //处理用户标签数据
                 let tagsArray = element.userTags.tags.split(",");
-                console.log(tagsArray);
-                element.userTags = tagsArray;
+                element.userTagList = tagsArray;
                 
             });
 

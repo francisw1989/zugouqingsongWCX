@@ -1,4 +1,4 @@
-<view style="min-height: 100%; padding-bottom: 54px; box-sizing: border-box; background-color:#F3F3F3;">
+<view style="height: 100%; overflow:{{overflow}}; padding-bottom: 54px; box-sizing: border-box; background-color:#F3F3F3;">
     <swiper class="swiper" indicator-dots="true"
     autoplay="true">
         <block wx:for="{{D.banners}}">
@@ -80,7 +80,7 @@
         </view>
 
     </view>
-    <button open-type="contact" class='ico4 icoAll'  catchtouchmove="bindtouchmove" catchtouchstart="bindtouchstart" catchtouchend="bindtouchend"><image src="../../static/images/4.png" style='width: 55px; height: 55px; margin: {{top}}px 0 0 {{left}}px'     /></button>
+    <button open-type="contact" class='ico4 icoAll' style='left:{{left}}px; top:{{top}}px'  bindtouchmove="bindtouchmove" bindtouchstart="bindtouchstart" bindtouchend="bindtouchend"><image src="../../static/images/4.png" style='width: 55px; height: 55px; '     /></button>
     
     <ui-popup show="{{jxzShow}}" wx:if='{{O}}' background="transparent" _pid="{{_pid}}">
         <view class="padSp1 clearfix" style="background-color:#fff; border-radius: 10rpx 10rpx 0 0; overflow: hidden; padding-bottom: 100rpx;">

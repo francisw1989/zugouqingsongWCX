@@ -1437,9 +1437,10 @@ button[type="primary"] {
   border-radius: 10rpx;
 }
 .btns-smaller {
-  padding: 0 30rpx;
+  padding: 0 20rpx;
   line-height: 40rpx;
   border-radius: 10rpx;
+  font-size: 20rpx;
 }
 .btns-nomal {
   padding: 0 30rpx;
@@ -1484,7 +1485,7 @@ view.btns-green,button.btns-green {
     border: none;
 }
 .btns-2 {
-  width: 124rpx;
+  padding: 0 20rpx;
   line-height: 53rpx;
   color: #fff;
   background: #459e8c;
@@ -1548,6 +1549,7 @@ view.btns-green,button.btns-green {
   background: none;
   border: none;
   box-shadow: none;
+  padding: 0
 }
 .ico4::after {
   border: none;
