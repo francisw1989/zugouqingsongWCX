@@ -254,7 +254,8 @@ exports.default = App({
         const t = this;
         console.log(t.globalData.userInfo);
         let params = {
-            employeeId: t.globalData.userInfo.userId || "13"
+            // employeeId: t.globalData.userInfo.userId 
+            employeeId:16
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeIndex', params).then((res) => {

@@ -43,7 +43,8 @@ exports.default = Page({
          let orderItemId = e.currentTarget.dataset.orderitemid;
          console.log(orderItemId);
          let params = {
-            employeeId: app.globalData.userInfo.userId || "13",
+            // employeeId: app.globalData.userInfo.userId,
+            employeeId:16,
             orderItemId:orderItemId
         }
          app.employeeStartServie(params).then(()=>{
