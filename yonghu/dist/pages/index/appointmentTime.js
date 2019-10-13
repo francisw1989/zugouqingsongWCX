@@ -52,7 +52,8 @@ exports.default = Page({
         t.data.mins = ['00' ,'30']
         t.setData({
             hours: t.data.hours,
-            mins: t.data.mins
+            mins: t.data.mins,
+            time: t.data.hours[0] + ':' + t.data.mins[0]
         })
     },
     bindChange(e){

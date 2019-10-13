@@ -39,7 +39,17 @@ exports.default = App({
         chooseCoupon: {},
         stores:[]
     },
-    
+    // / userApi / v1 / qrCode
+    // 获取小程序二维码
+    qrCode(params){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('qrCode', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // 我的预约订单详情
     orderInfo(orderId){
         const t = this;
@@ -866,7 +876,8 @@ exports.default = App({
                 }
                 for (const v of res.itemRecommendList) {
                     v.imgs && (v.imgs = v.imgs.split(',')[0]);
-                    v.conditioningMethod = v.conditioningMethod.length > 35 ? v.conditioningMethod.substring(0, 35) + '...' : v.conditioningMethod
+                    v.conditioningMethod = v.conditioningMethod.length > 35 ? v.conditioningMethod.substring(0, 35) + '...' : v.conditioningMethod;
+                    v.pricePerMinute = (v.defaultPrice / v.defaultDuration).toFixed(0);
                 }
                 resolve(res);
             })
@@ -878,6 +889,9 @@ exports.default = App({
         const t = this;
         let p = new Promise((resolve, reject) => {
             t.getRequest('items', params).then((res) => {
+                for (const v of res.records){
+                    v.pricePerMinute = (v.defaultPrice  / v.defaultDuration).toFixed(0);
+                }
                 resolve(res);
             })
         })

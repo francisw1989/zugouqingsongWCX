@@ -32,27 +32,38 @@ exports.default = Page({
         size: 14,
         orientation: 'left', //滚动方向
         interval: 20, // 时间间隔
-        left: 0,
-        top: 0,
+        left: '',
+        top: '',
         x:0,
-        y:0
+        y:0,
+        overflow: 'auto',
+        w: wx.WIN_WIDTH,
+        h: wx.WIN_HEIGHT
     },
     bindtouchstart(e){
         const t = this;
-        t.data.x = t.data.x || e.touches[0].clientX;
-        t.data.y = t.data.y || e.touches[0].clientY;
+        t.setData({
+            overflow: 'hidden'
+        })
     },
     bindtouchmove(e) {
         const t = this;
+        let clientX = e.touches[0].clientX -30;
+        let clientY = e.touches[0].clientY -35;
+        if (clientX > t.data.w - 50) { clientX = t.data.w - 50 }
+        if (clientX < 0) { clientX=0}
+        if (clientY > t.data.h - 200) { clientY = t.data.h - 200 }
+        if (clientY < 0) { clientY = 0 }
         t.setData({
-            left: e.touches[0].clientX - t.data.x,
-            top: e.touches[0].clientY - t.data.y
+            left: clientX,
+            top: clientY
         })
     },
     bindtouchend(e){
         const t = this;
-        t.data.x = e.currentTarget.offsetLeft + 50;
-        t.data.y = e.currentTarget.offsetTop + 40;
+        t.setData({
+            overflow: 'auto'
+        })
     },
     goProjectsList(e) {
         let id = e.currentTarget.dataset.id;
@@ -139,6 +150,7 @@ exports.default = Page({
         const t = this;
         app.getLoaction().then((res) => {
             app.index().then((res) => {
+                app.globalData.nearbyStore = res.nearbyStore;
                 t.setData({
                     D: res
                 })
