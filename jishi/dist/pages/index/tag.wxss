@@ -5,21 +5,20 @@ label{
    border:2rpx solid #459e8c;
 }
 .check {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-around;
+
  
 }
 .check label {
-  width: 120rpx;
-  height: 60rpx;
+    display: inline-block;
+  min-width: 90rpx; padding: 0 15rpx;
+  height: 50rpx; line-height: 50rpx; text-align: center;
   border-radius: 8rpx;
   /* background-color: #fff;   */
-  display: flex;
+
   color:#459e8c;
-  align-items: center;
-  margin: 0 5rpx;
-  justify-content: center;
+
+  margin: 0 10rpx;
+
   /* color: #aaa; */
   margin-top: 20rpx;
 }

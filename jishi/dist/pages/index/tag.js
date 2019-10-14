@@ -13,7 +13,8 @@ Page({
         inkBarStyle: {
             'width': '30%'
         },
-        tagsList:[]
+        tagsList:[],
+        current: 0
     },
     handleChange: function handleChange(e) {
         const t = this;
