@@ -17,7 +17,7 @@ Page({
     onLoad: function (options) {
         const t = this;
         let params = {
-            employeeId: app.globalData.userInfo.userId || "13",
+            employeeId: app.globalData.userInfo.userId,
             minScore:0,
             page:t.data.page,
             size:t.data.size

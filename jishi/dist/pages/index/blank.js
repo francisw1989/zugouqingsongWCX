@@ -14,12 +14,15 @@ Page({
      */
     onLoad: function (options) {
         console.log(app.globalData.userInfo);
+        app.userInfo()
         if(app.globalData.userInfo){
+            console.log("进首页");
             wx.reLaunch({
                 url: 'index',
             })
         }else{
-            app.userInfo()
+            console.log("请求用户数据");
+            // app.userInfo()
         }
     
     

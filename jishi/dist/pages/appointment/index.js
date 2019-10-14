@@ -103,13 +103,17 @@ exports.default = Page({
     },
     onShow() {
         const t = this;
+        t.setData({
+            userInfo: app.globalData.userInfo
+        })
+        t.initData();
         
     },
     //获取数据
     initData(){
         const t = this;
         let params = {
-                employeeId: app.globalData.userInfo.userId || "13",
+                employeeId: app.globalData.userInfo.userId,
                 range:t.data.choosedRange,//1历史2今天3明天
                 page:t.data.page,
                 size:t.data.size,
@@ -156,11 +160,7 @@ exports.default = Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        const t = this;
-        t.setData({
-            userInfo: app.globalData.userInfo
-        })
-        t.initData();
+       
     },
 
 });

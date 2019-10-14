@@ -37,7 +37,7 @@
         </view>
     </view>
     <view class='pad10 bgfff clearfix line0'>
-        <text class='right colYe'>{{useemployeeTodyServicerInfo.unitPrice}}元</text>
+        <text class='right colYe'>{{useemployeeTodyServicerInfo.unitPrice/100}}元</text>
         <text class='col000'>客单价</text>
     </view>
     <view class='top10'>

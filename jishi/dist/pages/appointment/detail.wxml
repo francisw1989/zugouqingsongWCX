@@ -69,7 +69,10 @@
             </view>
         </ui-timeline-item>
     </ui-timeline>
-    <view class='align-right pad15 top10' wx:if="{{detail.status == 4}}">
+    <!--<view class='align-right pad15 top10' wx:if="{{detail.status == 4}}">
         <view class='btns btns-green btns-small' bindtap='employeeEndServie'>完成服务</view>
     </view>
+    <view class='align-right pad15 top10' wx:if="{{detail.status == 3}}">
+        <view class='btns btns-green btns-small' bindtap='employeeStartServie'>开始服务</view>
+    </view>-->
 </view>

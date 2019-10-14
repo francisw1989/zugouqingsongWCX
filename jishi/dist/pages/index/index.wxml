@@ -124,7 +124,7 @@
                 <view>服务门店：<text wx:if="{{employeeIndex.nowOrder[index].storeName}}"> {{employeeIndex.nowOrder[index].storeName}}</text></view>
                 <view>偏好：</view>
                 <view>
-                    <view class="tag1" wx:for="{{employeeIndex.nowOrder[index].userTagList}}" wx:for-item="tag" style="background-color: {{color}}">{{tag}}</view>
+                    <view class="tag1" wx:for="{{employeeIndex.nowOrder[index].employeesUserTags}}" wx:for-item="tag" style="background-color: {{color}}">{{tag}}</view>
                     <image src="../../static/images/13.png" class="icoAll" style="width: 84rpx; height: 40rpx;" data-userId="{{employeeIndex.nowOrder[index].userId}}" data-orderId="{{employeeIndex.nowOrder[index].orderId}}" data-orderItemId="{{employeeIndex.nowOrder[index].orderItemId}}" bindtap='addTag' />
                 </view>
                 <view></view>
@@ -138,6 +138,9 @@
             </view>
             <view class='align-right pad15 top10' wx:if="{{employeeIndex.nowOrder[index].status == 3 }}">
                 <view class='btns btns-green btns-small' data-orderitemid="{{employeeIndex.nowOrder[index].orderItemId}}" bindtap='employeeStartServie'>开始服务</view>
+            </view>
+            <view class='align-right pad15 top10' wx:if="{{employeeIndex.nowOrder[index].status == 4 }}">
+                <view class='btns btns-green btns-small' data-orderitemid="{{employeeIndex.nowOrder[index].orderItemId}}" bindtap='employeeEndServie'>结束服务</view>
             </view>
         </view>
     </view>

@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = Page({
     data: {
+        intervalTime:3000,
         index:0,//预约详情
         leve: 1,
         name: '',
@@ -35,7 +36,28 @@ exports.default = Page({
                 userInfo: app.globalData.userInfo
             })
         })
-        t.setting();
+    
+        //获取首页技师收益等统计
+        let params = {
+            employeeId: app.globalData.userInfo.userId
+        }
+        app.employeeIndex(params).then((res) => {
+        // const t = this;
+        console.log(res);
+        //处理订单信息的倒计时数据
+        let newRes = res.nowOrder.filter((element,index) => {
+            if(element.status == 2){//已支付待到店状态，计算出倒计时秒数
+                element.countdown = t.getDifferDate(new Date(),element.orderStartTime,4);
+            } 
+        });
+
+        t.setData({
+            employeeIndex: res
+         })
+         console.log(t.data);
+         t.setting();
+         t.employeeIndex();
+    });
     },
     //开始服务
     employeeStartServie(e){
@@ -43,8 +65,7 @@ exports.default = Page({
          let orderItemId = e.currentTarget.dataset.orderitemid;
          console.log(orderItemId);
          let params = {
-            // employeeId: app.globalData.userInfo.userId,
-            employeeId:16,
+            employeeId: app.globalData.userInfo.userId,
             orderItemId:orderItemId
         }
          app.employeeStartServie(params).then(()=>{
@@ -58,11 +79,32 @@ exports.default = Page({
              }, 1000)
         })
     },
+    //结束服务
+    employeeEndServie:function(e){
+        const t = this;
+        let orderItemId = e.currentTarget.dataset.orderitemid;
+         console.log(orderItemId);
+        let params = {
+            employeeId: app.globalData.userInfo.userId,
+            orderItemId:orderItemId
+        }
+        app.employeeEndServie(params).then((res)=>{
+            wx.showToast({
+                title:'已完成服务',
+                icon:"success",
+                duration:2000
+              })
+              setTimeout(()=>{
+                t.onLoad();
+              }, 1000)
+             
+        })
+    },
     //打卡
     employeePunch(e){
         const t = this;
         let params = {
-           employeeId: app.globalData.userInfo.userId || "13"
+           employeeId: app.globalData.userInfo.userId
        }
         app.employeePunch(params).then(()=>{
            wx.showToast({
@@ -125,33 +167,72 @@ exports.default = Page({
         var dayNum = Math.abs(Math.floor(msecNum /t.getDifferScale(differ)));
         return dayNum;
     },
+    employeeIndex:function(){ 
+        let t = this;
+        // console.log(vm);
+        t.data.interval = setInterval(function () {
+            let params = {
+                employeeId: app.globalData.userInfo.userId
+            }
+            //获取首页技师收益等统计
+            app.employeeIndex(params).then((res) => {
+                console.log(res);
+                //处理订单信息的倒计时数据
+                let newRes = res.nowOrder.filter((element,index) => {
+                    if(element.status == 2){//已支付待到店状态，计算出倒计时秒数
+                        element.countdown = t.getDifferDate(new Date(),element.orderStartTime,4);
+                    }
+                    
+                });
+    
+                t.setData({
+                    employeeIndex: res
+                 })
+                 console.log(t.data);
+                 t.setting();
+            });
+        }, t.data.intervalTime);
+
+        
+    },
+    onHide: function onHide() {
+        let t = this;
+        console.log(t.data.interval);
+        if (t.data.interval) {
+          clearInterval(t.data.interval);
+        }
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        const t = this;
-        //获取首页技师收益等统计
-        app.employeeIndex().then((res) => {
-            // const t = this;
-            console.log(res);
-            //处理订单信息的倒计时数据
-            let newRes = res.nowOrder.filter((element,index) => {
-                if(element.status == 2){//已支付待到店状态，计算出倒计时秒数
-                    element.countdown = t.getDifferDate(new Date(),element.orderStartTime,4);
-                }
+    //    const t = this;
+    //     //获取首页技师收益等统计
+    //     let params = {
+    //         employeeId: app.globalData.userInfo.userId || "16"
+    //     }
+    //     app.employeeIndex(params).then((res) => {
+    //     // const t = this;
+    //     console.log(res);
+    //     //处理订单信息的倒计时数据
+    //     let newRes = res.nowOrder.filter((element,index) => {
+    //         if(element.status == 2){//已支付待到店状态，计算出倒计时秒数
+    //             element.countdown = t.getDifferDate(new Date(),element.orderStartTime,4);
+    //         }
 
-                //处理用户标签数据
-                let tagsArray = element.userTags.tags.split(",");
-                element.userTagList = tagsArray;
-                
-            });
+    //         //处理用户标签数据
+    //         let tagsArray = element.userTags.tags.split(",");
+    //         element.userTagList = tagsArray;
+            
+    //     });
 
-            t.setData({
-                employeeIndex: res
-             })
-             console.log(t.data);
-             t.setting();
-        });
+    //     t.setData({
+    //         employeeIndex: res
+    //      })
+    //      console.log(t.data);
+    //      t.setting();
+    //     //  t.employeeIndex();
+    // });
     },
 
     /**
