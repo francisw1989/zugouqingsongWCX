@@ -120,7 +120,7 @@
                         </view>
                         <view wx:elif="{{employeeIndex.nowOrder[1].status == 2 }}">
                             <text style="color: {{color}}">剩余</text>
-                            <ui-count-down employeeIndex.nowOrder[1].countdown number-style="color: {{color}}" class="inline" timetype="second" time="{{employeeIndex.nowOrder[1].countdown}}" format="{%h}:{%m}:{%s}" _pid="{{_pid}}"></ui-count-down>
+                            <ui-count-down  number-style="color: {{color}}" class="inline" timetype="second" time="{{employeeIndex.nowOrder[1].countdown}}" format="{%h}:{%m}:{%s}" _pid="{{_pid}}"></ui-count-down>
                             <text style="color: {{color}}">到店</text>
                         </view>
                         <view wx:elif="{{employeeIndex.nowOrder[1].status == 3 }}">
