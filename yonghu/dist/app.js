@@ -39,7 +39,17 @@ exports.default = App({
         chooseCoupon: {},
         stores:[]
     },
-    
+    // / userApi / v1 / qrCode
+    // 获取小程序二维码
+    qrCode(params){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('qrCode', params).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // 我的预约订单详情
     orderInfo(orderId){
         const t = this;

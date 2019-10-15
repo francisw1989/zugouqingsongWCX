@@ -7,7 +7,7 @@ exports.default = Page({
     data: {
         tags: [],
         //订单状态（1.待支付 2.已支付待到店 3.已到店待服务 4.服务中 5.服务完成 6.系统取消 7.用户取消 ）
-        statusList:["待到店","待到店","待到店","进行中","已完成","取消","取消"],
+        statusList:["待支付","待到店","待服务","服务中","服务完成","系统取消","用户取消"],
     },
     showMore: function showMore(e) {
         var t = this;
@@ -66,12 +66,34 @@ exports.default = Page({
         t.initData();
         
     },
+    //开始服务
+    employeeStartServie(e){
+        const t = this;
+        let orderItemId = e.currentTarget.dataset.orderitemid;
+        console.log(orderItemId);
+        let params = {
+           employeeId: app.globalData.userInfo.userId,
+           orderItemId:orderItemId
+       }
+        app.employeeStartServie(params).then(()=>{
+           wx.showToast({
+               title:'服务已开始',
+               icon:"success",
+               duration:2000
+             }) 
+            setTimeout(()=>{
+                wx.navigateBack({
+                
+                })
+            }, 1000)
+       })
+   },
     //结束服务
     employeeEndServie:function(e){
         const t = this;
         let params = {
-            employeeId: app.globalData.userInfo.userId || "13",
-            orderItemId:t.data.detail.orderItems[0].orderId
+            employeeId: app.globalData.userInfo.userId,
+            orderItemId:t.data.detail.orderItems[0].id
         }
         app.employeeEndServie(params).then((res)=>{
             wx.showToast({
@@ -79,9 +101,12 @@ exports.default = Page({
                 icon:"success",
                 duration:2000
               })
-              wx.navigateBack({
+              setTimeout(()=>{
+                wx.navigateBack({
                 
-            })
+                })
+              }, 1000)
+             
         })
     }
 });

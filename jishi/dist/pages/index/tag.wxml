@@ -1,6 +1,6 @@
 <!--pages/index/tag.wxml-->
 <view class=' bor_btm_so'>
-    <ui-tabs index="{{ current }}" bindchange="handleChange" class="bgfff" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
+    <ui-tabs wx:if='{{tabs.length}}' index="{{ current }}" bindchange="handleChange" class="bgfff" ink-bar="true" ink-bar-style="{{inkBarStyle}}" _pid="{{_pid}}">
         <ui-tab wx:for="{{tabs}}" _pid="{{_pid}}">{{item.tagsClassName}}</ui-tab>
     </ui-tabs>
     <view class="pad10">

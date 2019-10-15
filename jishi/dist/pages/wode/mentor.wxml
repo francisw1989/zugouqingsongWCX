@@ -68,7 +68,7 @@
             </view>
             <view class="ui-col ui-col-align-right align-right" style="flex:0 0 60px;">
                 <view class="ui-col-content align-right">
-                    <view class="colYe font3 top10">+{{item.contribution}}</view>
+                    <view class="colYe font3 top10">+{{item.contribution/100}}</view>
                 </view>
             </view>
         </view>

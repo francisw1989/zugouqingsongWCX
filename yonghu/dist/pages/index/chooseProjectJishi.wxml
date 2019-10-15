@@ -1,4 +1,16 @@
 <view style="min-height: 100%; background-color:#F3F3F3; padding-bottom: 100rpx;">
+    <view  style='background-color: #F19149; color: #EC4B05' class='center font0 pad5' wx:if="{{showTishi &&  nearbyStore.length>1 &&  !chooseProject[cIndex].effectiveTechLength}}">
+        本店等待时间较长，已为您推荐周边 中华路店，是否切换到该门店？ 
+        <text bindtap='gotoOtherStore' style='text-decoration: underline'>切换</text>
+    </view>
+    
+    
+<wxs module="m1">
+  var numberToFix= function (value) {
+    return value.toFixed(2)
+  }
+ module.exports.numberToFix=numberToFix;
+</wxs>
     <view class="pad10 font2 line18">
         已选项目
     </view>
@@ -19,7 +31,7 @@
                thumb-down-style="{{ tbdObj2 }}"></ui-slider>
                 </view>
                 <view class="" style='margin-top: -13px'>
-                    <text class="colPink font3 left5">¥{{item.pricePerMinute/100*item.defaultDuration}}</text>
+                    <text class="colPink font3 left5">¥{{m1.numberToFix(item.pricePerMinute/100*item.defaultDuration)}}</text>
                     <text class="left10">¥{{item.pricePerMinute/100}}元/分钟</text>
                 </view>
             </view>
@@ -55,19 +67,19 @@
     </view>
     <view wx:for='{{chooseProject[cIndex].technicianList}}' class="bor_btm_so pad10 bgfff" wx:if='{{!item.hasChoosedByOther}}'>
         <view  class="ui-row" style="">
-            <view class="ui-col" style="flex:0 0 70px;">
+            <navigator url="technician?id={{item.id}}" class="ui-col" style="flex:0 0 70px;">
                 <view class="ui-col-content">
-                    <navigator url="technician?id={{item.id}}" class="tx5Wap">
+                    <view class="tx5Wap">
                         <image src="{{item.photo}}" mode="aspectFill" class="tx5" />
                         <view class="dj">
                             <block wx:for="{{gradeArr[item.grade]}}">
                                 <image src="../../static/images/34.png" class="icoAll img left5" />
                             </block>
                         </view>
-                    </navigator>
+                    </view>
                 </view>
-            </view>
-            <view class="ui-col" style="padding-left: 10px;">
+            </navigator>
+            <navigator url="technician?id={{item.id}}" class="ui-col" style="padding-left: 10px;">
                 <view class="ui-col-content">
                     <view class="col000">{{item.employeeName}}</view>
                     <view wx:if='{{item}}'>
@@ -76,7 +88,7 @@
                     </view>
                     <view class="text-over font0 " style="width: 100%">{{item.info}}</view>
                 </view>
-            </view>
+            </navigator>
             <view class="ui-col ui-col-align-right align-right" style="padding-left: 10px;flex:0 0 100px;">
                 <view class="ui-col-content align-right">
                     <view class="colRed">¥{{item.pricePerMinute/100}}元/分钟</view>

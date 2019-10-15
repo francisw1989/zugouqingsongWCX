@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+      "ui-popup": "../../packages/touchui-wx-components/ui-popup/dist/index",
+      "ui-mask": "../../packages/touchui-wx-components/ui-mask/dist/index"
+  },
   "navigationBarTitleText": "邀请好友"
 }

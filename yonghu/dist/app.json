@@ -3,6 +3,7 @@
     "pages": [
         
         "pages/index/index",
+        "pages/wode/invitation",
         "pages/wode/appointmentDetail",
         "pages/index/pageView",
         
@@ -37,7 +38,7 @@
         "pages/wode/myGroup",
         "pages/index/projectDetail",
         "pages/wode/coupon",
-        "pages/wode/invitation",
+        
         "pages/wode/memberGrade",
         "pages/index/technician",
         

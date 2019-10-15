@@ -39,7 +39,7 @@
             <view class="">
                 <text class="col000 font2">{{item.name}}</text>
                 <view class="right ">
-                    <text class="col999 verMid font0">距您{{item.distance}} | </text>
+                    <!--<text class="col999 verMid font0">距您{{item.distance}} | </text>-->
                     <image src="../../static/images/33.png" class="icoAll ico16 left5" />
                     <text class="colGreen left5 verMid font0"><a tel="{{item.phoneNum}}">咨询</a></text>
                 </view>

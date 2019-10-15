@@ -33,15 +33,15 @@
         <ui-tab _pid="{{_pid}}">培训历程</ui-tab>
         <ui-tab _pid="{{_pid}}">晋升历程</ui-tab>
     </ui-tabs>
-    <view wx:if="{{current == 0}}" class="pad20RL">
-       <view wx:for='{{D.serviceStore}}' class="fjmdWap bgfff bor_btm_so" data-index='{{index}}' data-id="{{item.id}}" catchtap='chooseStore'>
+    <view wx:if="{{current == 0}}" class="">
+       <view wx:for='{{D.serviceStore}}' class="fjmdWap bgfff bor_btm_so" style='padding: 30rpx 40rpx' data-index='{{index}}' data-id="{{item.id}}" catchtap='chooseStore'>
             <view>
                 <image src="{{item.imgs}}" class="img left right10" mode='aspectFill' />
             </view>
             <view class="">
                 <text class="col000 font2">{{item.name}}</text>
                 <view class="right ">
-                    <text class="col999 verMid font0">距您{{item.distance}}km | </text>
+                    <text class="col999 verMid font0" wx:if="{{item.distance}}">距您{{item.distance}}km | </text>
                     <image src="../../static/images/16.png" class="icoAll ico16 left5" />
                     <text catchtap="makePhoneCall" data-phonenum="{{item.phoneNum}}" class="colGreen left5 verMid font0">咨询</text>
                 </view>

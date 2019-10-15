@@ -13,7 +13,8 @@ Page({
         inkBarStyle: {
             'width': '30%'
         },
-        tagsList:[]
+        tagsList:[],
+        current: 0
     },
     handleChange: function handleChange(e) {
         const t = this;
@@ -43,7 +44,7 @@ Page({
         }else{
             let params = {
                 userId:Number(t.data.userId),
-                employeeId: app.globalData.userInfo.userId || "13",
+                employeeId: app.globalData.userInfo.userId,
                 orderId:Number(t.data.orderId),
                 orderItemId:Number(t.data.orderItemId),
                 content:tags.join(",")
