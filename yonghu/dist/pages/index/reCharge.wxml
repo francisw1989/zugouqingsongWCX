@@ -1,7 +1,7 @@
 <view style="min-height: 100%; background-color:#F3F3F3;">
   <view class="pad15 bgfff">
     <view class="font5 col000 bor_btm_so">¥ {{mList[mIndex].amount/100}}</view>
-    <view class="col333 top5">当前账户余额<text class="colPink">{{U.account/100}}</text>，充值后<text class="colPink">{{U.accountAll/100}}</text></view>
+    <view class="col333 top5">当前账户余额<text class="colPink">{{U.account/100}}</text></view>
   </view>
   <view class="pad15 bgfff top20">
     <ui-divider _pid="{{_pid}}">请选择充值金额</ui-divider>
