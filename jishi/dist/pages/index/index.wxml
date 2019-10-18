@@ -20,11 +20,11 @@
         </navigator>
         <navigator url='jrsy' class="inBox1 inBox2 left20">
             <view class="colfff top8">今日收益</view>
-            <view class="font5 colfff">{{employeeIndex.employee.todayIncome}}</view>
+            <view class="font5 colfff">{{employeeIndex.employee.todayIncome/100}}</view>
         </navigator>
         <navigator url='pj' class="inBox1 inBox3 left20">
             <view class="colfff top8">收到好评</view>
-            <view class="font5 colfff">{{employeeIndex.employee.todayPraise/100}}</view>
+            <view class="font5 colfff">{{employeeIndex.employee.todayPraise}}</view>
         </navigator>
     </view>
     <view class="footerBox" style="bottom: 10rpx">

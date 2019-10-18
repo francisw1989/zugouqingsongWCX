@@ -167,8 +167,8 @@ exports.default = App({
 
             t.geWxtUserInfo().then(()=>{
                 t.getRequest('employeeInfo', params).then((res) => {
-                    res.userId = res.id;
-                    // res.userId = 12;
+                    // res.userId = res.id;
+                    res.userId = 12;
                     t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
                     console.log(t.globalData.userInfo)
                     resolve();

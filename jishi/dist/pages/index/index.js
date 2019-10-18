@@ -159,10 +159,12 @@ exports.default = Page({
     getDifferDate: function(firstDate, secondDate, differ) {
         const t = this;
         //1)将两个日期字符串转化为日期对象
-        var startDate = new Date(firstDate);
-        var endDate = new Date(secondDate);
+        var startDate = new Date(firstDate).getTime();
+        console.log(startDate);
+        var endDate = new Date(secondDate).getTime();
+        console.log(endDate);
         //2)计算两个日期相差的毫秒数
-        var msecNum = endDate.getTime() - startDate.getTime();
+        var msecNum = endDate - startDate;
         //3)计算两个日期相差的天数
         var dayNum = Math.abs(Math.floor(msecNum / t.getDifferScale(differ)));
         return dayNum;
@@ -180,7 +182,7 @@ exports.default = Page({
                 //处理订单信息的倒计时数据
                 let newRes = res.nowOrder.filter((element, index) => {
                     if (element.status == 2) { //已支付待到店状态，计算出倒计时秒数
-                        element.countdown = t.getDifferDate(new Date(), element.orderStartTime, 4);
+                        element.countdown = t.getDifferDate(new Date(), element.orderStartTime.replace(/\-/g, '/'), 4);
                     }
 
                 });
@@ -206,6 +208,9 @@ exports.default = Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        // let t = this;
+        // let a  = t.getDifferDate("2019-10-19 20:39", "2019-10-19 20:40", 4);
+        // console.log(a)
         //    const t = this;
         //     //获取首页技师收益等统计
         //     let params = {

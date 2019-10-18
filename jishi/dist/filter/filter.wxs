@@ -18,7 +18,11 @@ module.exports = {
     //获取时间的时分
     getHourAndMin:function(time){
         if (!time) return '';
-        var date = getDate(time);
+        var reg = getRegExp("-", "g"); // 获取正则表达式，全局替换
+        var str = time.replace(reg, '/'); // 时间格式转换
+        // 将字符串转换成时间格式
+        var date = getDate(str);
+       
         var Hour = date.getHours() < 10? "0"+date.getHours():date.getHours();
         var Min = date.getMinutes()< 10? "0"+date.getMinutes():date.getMinutes();
         return Hour + ":" + Min;
