@@ -24,7 +24,7 @@
         </navigator>
         <navigator url='pj' class="inBox1 inBox3 left20">
             <view class="colfff top8">收到好评</view>
-            <view class="font5 colfff">{{employeeIndex.employee.todayPraise}}</view>
+            <view class="font5 colfff">{{employeeIndex.employee.todayPraise/100}}</view>
         </navigator>
     </view>
     <view class="footerBox" style="bottom: 10rpx">
@@ -71,7 +71,7 @@
                     </view>
                 </view>
             </view>
-            <view wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length >1 && index==0}}">
+            <view wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length >0 && index==0}}">
                 <view class="line30 top10">
                     <view>编号：{{employeeIndex.nowOrder[index].orderId}}</view>
                     <view>
@@ -93,9 +93,8 @@
                     <view></view>
                 </view>
                 <view class="top15 line20" wx:if="{{employeeIndex.nowOrder[index].status == 4 }}">
-                    <view class="col000 btm5">已购商品：</view>
-                    <view class="font0">矿泉水*2</view>
-                    <view class="font0">矿泉水*2</view>
+                    <view class="col000 btm5" wx:if="{{employeeIndex.nowOrder[index].articleOrderItems && employeeIndex.nowOrder[index].articleOrderItems.length >0}}">已购商品：</view>
+                    <view class="font0" wx:for="{{employeeIndex.nowOrder[index].articleOrderItems}}" wx:for-item="articleOrderItems">{{articleOrderItems.articleName}}*{{articleOrderItems.count}}</view>
                 </view>
                 <view class='align-right top5 ' style='padding: 10rpx 0; border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;' wx:if="{{employeeIndex.nowOrder[index].status == 3 }}">
                     <view class='btns btns-green btns-small' data-orderitemid="{{employeeIndex.nowOrder[index].orderItemId}}" bindtap='employeeStartServie'>开始服务</view>
@@ -146,7 +145,7 @@
                     </view>
                 </view>
             </view>
-            <view wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length >1 && index==1}}">
+            <view wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length >0 && index==1}}">
                 <view class="line30 top10">
                     <view>编号：{{employeeIndex.nowOrder[index].orderId}}</view>
                     <view>
@@ -168,9 +167,8 @@
                     <view></view>
                 </view>
                 <view class="top15 line20" wx:if="{{employeeIndex.nowOrder[index].status == 4 }}">
-                    <view class="col000 btm5">已购商品：</view>
-                    <view class="font0">矿泉水*2</view>
-                    <view class="font0">矿泉水*2</view>
+                    <view class="col000 btm5" wx:if="{{employeeIndex.nowOrder[index].articleOrderItems}}">已购商品：</view>
+                    <view class="font0" wx:for="{{employeeIndex.nowOrder[index].articleOrderItems}}" wx:for-item="articleOrderItems">{{articleOrderItems.articleName}}*{{articleOrderItems.count}}</view>
                 </view>
                 <view class='align-right top5 ' style='padding: 10rpx 0; border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;' wx:if="{{employeeIndex.nowOrder[index].status == 3 }}">
                     <view class='btns btns-green btns-small' data-orderitemid="{{employeeIndex.nowOrder[index].orderItemId}}" bindtap='employeeStartServie'>开始服务</view>

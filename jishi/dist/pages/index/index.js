@@ -75,7 +75,7 @@ exports.default = Page({
                 duration: 2000
             })
             setTimeout(() => {
-                t.onLoad();
+                t.onShow();
             }, 1000)
         })
     },
@@ -95,7 +95,7 @@ exports.default = Page({
                 duration: 2000
             })
             setTimeout(() => {
-                t.onLoad();
+                t.onShow();
             }, 1000)
 
         })
@@ -113,7 +113,7 @@ exports.default = Page({
                 duration: 2000
             })
             setTimeout(() => {
-                t.onLoad();
+                t.onShow();
             }, 1000)
 
         })
