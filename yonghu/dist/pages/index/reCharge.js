@@ -7,7 +7,14 @@ exports.default = Page({
     data: {
         wxChecked: true,
         mList: [],
-        mIndex: 0
+        mIndex: 0,
+        price: ''
+    },
+    priceInput(e){
+        const t = this;
+        t.setData({
+            price: e.detail.value
+        })
     },
     tagClick: function tagClick(e) {
         var t = this;
@@ -41,7 +48,8 @@ exports.default = Page({
         t.setData({
             mIndex: mIndex,
             mList: t.data.mList,
-            U: t.data.U
+            U: t.data.U,
+            price: t.data.mList[mIndex].amount / 100
         });
     },
     vipRecharge(){
@@ -54,7 +62,8 @@ exports.default = Page({
             U.savingsAccount = U.savingsAccount || 0;
             U.accountAll = U.savingsAccount + Number(t.data.mList[t.data.mIndex].amount)
             t.setData({
-                U: U
+                U: U,
+                price: t.data.mList[t.data.mIndex].amount / 100
             })
         })
     },
@@ -67,8 +76,8 @@ exports.default = Page({
     },
     vipRechargePost(){
         const t = this;
-        let price = t.data.mList[t.data.mIndex].amount
-        app.vipRechargePost(price).then(()=>{
+        let price = t.data.price;
+        app.vipRechargePost(price*100).then(()=>{
             app.wxPay().then(()=>{
                 wx.navigateBack({
                     

@@ -102,7 +102,7 @@
     <view wx:if="pageFrom!=group" class="padSp1 bgfff bor_btm_so clea rfix">
         <text class="font2 ">选择优惠券</text>
         <view class="right">
-            <navigator url="../wode/coupon?pageFrom=pay" class="colYe inline font0">查看更多优惠券</navigator>
+            <navigator url="../wode/coupon?pageFrom=pay" class="colYe inline font0">{{couponName?couponName:'查看更多优惠券'}}</navigator>
             <text class="font0 left5"> >></text>
         </view>
     </view>

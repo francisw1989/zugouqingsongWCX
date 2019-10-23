@@ -1,7 +1,11 @@
 {
    
     "pages": [
+        
         "pages/index/index",
+        "pages/index/reCharge",
+        "pages/wode/appointment",
+        
         "pages/wode/memberGrade",
         
         "pages/wode/invitation",
@@ -28,7 +32,7 @@
         "pages/wode/information",
         
         
-        "pages/wode/appointment",
+        
         
         "pages/index/projectsList",
         
@@ -43,7 +47,7 @@
         
         "pages/index/technician",
         
-        "pages/index/reCharge",
+        
         "pages/index/paySuccess",
         "pages/index/projectsChoose",
         "pages/index/shopListMap",

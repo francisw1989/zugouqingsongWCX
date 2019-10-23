@@ -14,7 +14,10 @@ exports.default = Page({
         list: [],
         numberStyle: {
             color: '#F88A0B'
-        }
+        },
+        page: 1,
+        size: 10,
+        total: 0
     },
     gotoDetail(e){
         const t = this;
@@ -48,11 +51,18 @@ exports.default = Page({
         });
         t.getList();
     },
+    onReachBottom(){
+        const t = this
+        console.log('bottom')
+        t.data.page ++ ;
+        t.getList()
+    },
     getList(){
         const t = this;
-        app.reservations(Number(t.data.current) + 1).then((res)=>{
+        app.reservations(Number(t.data.current) + 1, t.data.page, t.data.size).then((res)=>{
             t.setData({
-                list: res.records
+                list: [...t.data.list, ...res.records],
+                total: res.total
             })
         })
     },

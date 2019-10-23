@@ -14,7 +14,8 @@ exports.default = Page({
             fontSize: '30rpx'
         },
         wxDisable: false,
-        wxChecked: false
+        wxChecked: false,
+        couponName: ''
     },
     bindtimeup(){
         wx.switchTab({
@@ -89,7 +90,7 @@ exports.default = Page({
     
     onLoad(opt){
         const t = this;
-        
+        app.globalData.chooseCoupon = ''
         t.setData({
             pageFrom: opt.pageFrom,
             D: app.globalData.orderDetail,
@@ -102,6 +103,15 @@ exports.default = Page({
                 wxChecked: true,
                 type: 2
             })
+        }
+    },
+    onShow(){
+        const t = this;
+        if (app.globalData.chooseCoupon){
+            t.setData({
+                couponName: app.globalData.chooseCoupon.couponName
+            })
+            
         }
     }
 

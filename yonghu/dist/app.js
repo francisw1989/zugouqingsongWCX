@@ -287,13 +287,13 @@ exports.default = App({
     },
     
     // 我的预约列表
-    reservations(status){
+    reservations(status, page, size){
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId,
             status: status,
-            page: 1,
-            size: 100
+            page: page,
+            size: size
         };
         let p = new Promise((resolve, reject) => {
             t.getRequest('reservations', params).then((res) => {
@@ -507,7 +507,7 @@ exports.default = App({
         const t = this;
         let params = {
             orderId: t.globalData.orderDetail.id,
-            couponRecordId: t.globalData.chooseCoupon.id || '',
+            couponRecordId: t.globalData.chooseCoupon.couponId || '',
             type: type
         }
         let p = new Promise((resolve, reject) => {
