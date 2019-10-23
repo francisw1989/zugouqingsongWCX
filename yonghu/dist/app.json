@@ -1,8 +1,9 @@
 {
    
     "pages": [
-        "pages/wode/memberGrade",
         "pages/index/index",
+        "pages/wode/memberGrade",
+        
         "pages/wode/invitation",
         "pages/wode/appointmentDetail",
         "pages/index/pageView",
