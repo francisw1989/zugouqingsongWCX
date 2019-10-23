@@ -1,7 +1,7 @@
 {
    
     "pages": [
-        
+        "pages/wode/memberGrade",
         "pages/index/index",
         "pages/wode/invitation",
         "pages/wode/appointmentDetail",
@@ -39,7 +39,7 @@
         "pages/index/projectDetail",
         "pages/wode/coupon",
         
-        "pages/wode/memberGrade",
+        
         "pages/index/technician",
         
         "pages/index/reCharge",

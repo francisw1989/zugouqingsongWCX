@@ -1,55 +1,34 @@
-<view>
-    <image src="../../static/images/h{{userInfo.memberLevel + 1}}.png" style="width: 100%; height: 553rpx" />
-    <view class="pad20">
-        <view class="col333 font2">会员等级</view>
-        <view class="relative">
-            <ui-slider thumb-style="{{thumbStyle}}" danwei="元" show-tooltip width="330" bar-border-radius="2" value="{{value1}}" active-color="#B99063" background-color="#E5E2E3" min="0" max="1000" slider-weight="4" _pid="{{_pid}}"></ui-slider>
-            <view class="absolute" style=" width: 100%; height: 100%; top: 0; left: 0"></view>
-            <view class="absolute" style="left: 310px; top: 25px">
-                <image src="../../static/images/56.png" class="icoAll" style="width: 32rpx; height: 32rpx; " />
-                <view class="tag4" wx:if="{{memberLevelName[userInfo.memberLevel+1]}}">{{memberLevelName[userInfo.memberLevel+1]}}</view>
+<view style="min-height: 100%; background-color: #F3F3F3">
+    <view class="ui-row pad10 bgfff" style="">
+        <view class="ui-col ui-col-align-center align-center" style="" wx:for="{{list}}" catchtap='tabclick' data-index='{{index}}'>
+            <view class="ui-col-content align-center">
+                <image src="../../static/images/c{{index}}.png" style='width: 99rpx; height: 95rpx;' />
+                <view class="leveItem {{current==index?'active':''}}">{{item.memberLevelName}}</view>
             </view>
-
-        </view>
-        <view class="colYe2" style="margin-top: -40rpx;">{{memberLevelName[userInfo.memberLevel]}}会员</view>
-        <view class="top10">
-            再消费3420元升级为
-            <text class="colYe2 left10">{{memberLevelName[userInfo.memberLevel+1]}}会员</text>
-            <image src="../../static/images/55.png" class="icoAll left5" style="width: 10rpx; height: 20rpx" />
-        </view>
-        <view class="relative top10">
-            <ui-slider thumb-style="{{thumbStyle}}" mark="消费" danwei="次" show-tooltip width="330" bar-border-radius="2" value="{{value2}}" active-color="#B99063" background-color="#E5E2E3" min="0" max="20" slider-weight="4" _pid="{{_pid}}"></ui-slider>
-            <view class="absolute" style=" width: 100%; height: 100%; top: 0; left: 0"></view>
-            <view class="absolute" style="left: 310px; top: 25px">
-                <image src="../../static/images/56.png" class="icoAll" style="width: 32rpx; height: 32rpx; " />
-                <view class="tag4" wx:if="{{memberLevelName[userInfo.memberLevel+1]}}">{{memberLevelName[userInfo.memberLevel + 1]}}</view>
-            </view>
-        </view>
-        <view class="colYe2" style="margin-top: -40rpx;">{{memberLevelName[userInfo.memberLevel]}}会员</view>
-        <view class="top10">
-            再消费15次升级为
-            <text class="colYe2 left10">{{memberLevelName[userInfo.memberLevel+1]}}会员</text>
-            <image src="../../static/images/55.png" class="icoAll left5" style="width: 10rpx; height: 20rpx" />
-        </view>
-        <view class="center top20">
-            <image src="../../static/images/50.png" class="icoAll" style="width: 27rpx; height: 17rpx" />
-            <text class="col000 font3 left10 right10 verMid">等级权益</text>
-            <image src="../../static/images/51.png" class="icoAll" style="width: 27rpx; height: 17rpx" />
-        </view>
-        <view class="center top20">
-            <text class="font2 verMid">会员礼物</text>
-            <text class="font2 left20 right20 verMid">|</text>
-            <image src="../../static/images/52.png" mode="aspectFit" class="icoAll" style="width: 60rpx; height: 60rpx" />
-        </view>
-        <view class="center top5">
-            <text class="font2 verMid">优先预约</text>
-            <text class="font2 left20 right20 verMid">|</text>
-            <image src="../../static/images/53.png" mode="aspectFit" class="icoAll" style="width: 60rpx; height: 60rpx" />
-        </view>
-        <view class="center top5">
-            <text class="font2 verMid">专属客服</text>
-            <text class="font2 left20 right20 verMid">|</text>
-            <image src="../../static/images/54.png" mode="aspectFit" class="icoAll" style="width: 60rpx; height: 60rpx" />
         </view>
     </view>
+    <view class='top10 bgfff pad10'>
+        <view class=''>会员等级：<text class='colYe'>{{list[current].memberLevelName}}</text></view> 
+        <view class='font0 top5'>消费需满 <text class='colYe'>{{list[current+1].amountCondition/100}}</text> 元升级为 {{list[current+1].memberLevelName}} </view>
+        <view class='font0'>消费需满 <text class='colYe'>{{list[current+1].frequencyCondition}}</text> 次升级为 {{list[current+1].memberLevelName}} </view>
+    </view>
+    <view class="center pad15">
+        <image src="../../static/images/50.png" class="icoAll" style="width: 27rpx; height: 17rpx" />
+        <text class="col000 font3 left10 right10 verMid">等级权益</text>
+        <image src="../../static/images/51.png" class="icoAll" style="width: 27rpx; height: 17rpx" />
+    </view>
+    <view class='pad10 bgfff'>{{list[current].interestsContent}}</view>
+    <!-- <view class="ui-row pad10 bgfff" style="margin-bottom: 5rpx;">
+        <view class="ui-col ui-col-align-center align-center valign-middle" style="flex:0 0 250rpx; height: 111rpx; ">
+            <view class="ui-col-content align-center valign-middle">
+                <image src="../../static/images/c4.png" style='width: 97rpx; height: 111rpx;' />
+            </view>
+        </view>
+        <view class="ui-col ui-col-align-center align-center valign-middle" style="height: 111rpx">
+            <view class="ui-col-content align-left valign-middle">
+                会员均赠送xx元优惠券或小礼品一份，有效期15天
+            </view>
+        </view>
+    </view> -->
+    
 </view>

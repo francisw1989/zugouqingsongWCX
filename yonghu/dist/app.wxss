@@ -1947,3 +1947,6 @@ view.btns-green,button.btns-green {
 
 .leveleImg{ filter: grayscale(100%);}
 .leveleImg.active{ filter: grayscale(0);}
+
+.leveItem{ padding: 10rpx 0; border-bottom: 2px solid #fff;}
+.leveItem.active{ border-color: #459E8C}

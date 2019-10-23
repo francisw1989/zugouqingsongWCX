@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "ui-slider": "../../packages/touchui-wx-components/ui-slider/dist/index"
+    "ui-slider": "../../packages/touchui-wx-components/ui-slider/dist/index",
+    "ui-tabs": "../../packages/touchui-wx-components/ui-tabs/dist/index",
+    "ui-tab": "../../packages/touchui-wx-components/ui-tab/dist/index"
   },
   "navigationBarTitleText": "会员等级"
 }
