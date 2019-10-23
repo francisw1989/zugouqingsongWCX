@@ -37,7 +37,8 @@ exports.default = App({
         nowOrder: {}, // 当前正在进行中的订单,
         orderDetail: {}, // 订单详情
         chooseCoupon: {},
-        stores:[]
+        stores:[],
+        friendUserId: ''
     },
 
     //     / userApi / v1 / memberLevel / list
@@ -264,7 +265,9 @@ exports.default = App({
         };
         let p = new Promise((resolve, reject) => {
             t.getRequest('nowOrder', params, true).then((res) => {
-                t.globalData.nowOrder = res.nowOrder;
+                if (res.nowOrder){
+                    t.globalData.nowOrder = res.nowOrder;
+                }
                 resolve(res);
             })
         })
@@ -779,7 +782,8 @@ exports.default = App({
         let params = {
             code: t.globalData.code,
             phone: t.globalData.phone,
-            userInfo: t.globalData.userInfo
+            userInfo: t.globalData.userInfo,
+            friendUserId: wx.getStorageSync('friendUserId')
         }
         console.log(JSON.stringify(params))
         t.postRequest('userLogin', params).then((res)=>{
@@ -787,6 +791,7 @@ exports.default = App({
             t.globalData.userInfo = Object.assign(t.globalData.userInfo, res)
             t.globalData.userInfo.account = t.globalData.userInfo.virtualAccount + t.globalData.userInfo.savingsAccount;
             wx.setStorageSync('openId', res.openId)
+            wx.setStorageSync('friendUserId', '')
             wx.navigateBack({
                 
             })

@@ -23,7 +23,7 @@ exports.default = Page({
         wx.setStorageSync('assembleId', id)
         wx.setStorageSync('shareImg', t.data.list[index].item.imgs)
         wx.navigateTo({
-            url: 'invitation',
+            url: 'invitation?pageFrom=group',
         })
     },
     assembleRecordByUser(){

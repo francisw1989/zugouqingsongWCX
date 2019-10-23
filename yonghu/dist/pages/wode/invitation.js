@@ -45,7 +45,7 @@ exports.default = Page({
         const t = this;
         let params = {
             page: '/pages/wode/groupSuccess',
-            scene: wx.getStorageSync('assembleId')
+            scene: wx.getStorageSync('assembleId') + ',' + globalData.userInfo.userId
         }
         app.qrCode(params).then((res)=>{
             t.data.ewmImg = res;
@@ -106,9 +106,18 @@ exports.default = Page({
     onShareAppMessage(e) {
         const t = this;
          //p ---pageFrom  id --- assembleId
+        let path = '';
+        let title = ''
+        if(t.pageFrom == 'group'){
+            path = '/pages/wode/groupSuccess?scene=' + wx.getStorageSync('assembleId') + ',' + app.globalData.userInfo.userId;
+            title = '团购分享'
+        }else if(t.pageFrom=='wode'){
+            path = '/pages/index/index?scene=' +  app.globalData.userInfo.userId;
+            title = '足够轻松'
+        }
         return {
-            title: '团购分享',
-            path: '/pages/wode/groupSuccess?scene=' + wx.getStorageSync('assembleId'),
+            title: title,
+            path: path,
             imageUrl: wx.getStorageSync('shareImg'),
             success: (res) => {
                 console.log("转发成功", res);

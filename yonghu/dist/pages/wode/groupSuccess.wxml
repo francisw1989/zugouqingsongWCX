@@ -96,12 +96,12 @@
     </view>
 </view>
 <block wx:if='{{D.status==1}}'>
-    <navigator wx:if="{{pageFrom=='group' || pageFrom=='myGroupList'}}" url="invitation" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">邀请好友拼团</navigator>
+    <navigator wx:if="{{pageFrom=='group' || pageFrom=='myGroupList'}}" url="invitation?pageFrom=group" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">邀请好友拼团</navigator>
     <block wx:if="{{(pageFrom=='share' || pageFrom=='projectDetail') && !hasjoined }}">
         <view bindtap='joinGroup' class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">参与拼团</view>
         <!-- <navigator url="../index/projectsList?pageFrom=group" open-type='redirect' class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">我要开团</navigator> -->
     </block>
     <block wx:if="{{(pageFrom=='share' || pageFrom=='projectDetail') && hasjoined }}">
-        <navigator url="invitation" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">邀请好友拼团</navigator>
+        <navigator url="invitation?pageFrom=group" class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;">邀请好友拼团</navigator>
     </block>
 </block>

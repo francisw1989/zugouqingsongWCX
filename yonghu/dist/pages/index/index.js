@@ -241,6 +241,11 @@ exports.default = Page({
     },
     onLoad(opt) {
         const t = this;
+        if (opt && opt.scene) {
+            // 通过分享进来的页面
+            let scene = decodeURIComponent(opt.scene).split(',');
+            wx.setStorageSync('friendUserId', scene[0]);
+        }
         wx.getSystemInfo({
             success: function(res) {
                 t.setData({

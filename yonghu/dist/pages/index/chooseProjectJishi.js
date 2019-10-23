@@ -78,7 +78,17 @@ exports.default = Page({
     onShow(){
         const t = this;
         if (app.globalData.outTradeNo){
+            // 下过单的要去掉下单
             app.removeOrder();
+            app.globalData.outTradeNo = '';
+            for (const i in t.data.chooseProject) {
+                t.selectTechnician(i);
+            }
+            setTimeout(() => {
+                t.setData({
+                    canLoad: true
+                })
+            }, 100)
         }
         if (app.globalData.nearbyStore){
             t.setData({

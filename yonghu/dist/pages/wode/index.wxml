@@ -66,7 +66,7 @@
             </navigator>
         </view>
         <view class="ui-col ui-col-align-center align-center" style="">
-            <navigator url='invitation' class="ui-col-content align-center">
+            <navigator url='invitation?pageFrom=wode' class="ui-col-content align-center">
                 <image src="../../static/images/a7.png" mode="aspectFit" class="woIcoimg" />
                 <view class="top10">邀请好友</view>
             </navigator>

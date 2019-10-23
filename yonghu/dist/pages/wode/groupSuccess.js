@@ -26,12 +26,13 @@ exports.default = Page({
         let opt = t.data.opt;
         if (opt && opt.scene) {
             // page from share
-            let scene = decodeURIComponent(opt.scene);
+            let scene = decodeURIComponent(opt.scene).split(',');
             // wx.showModal({
             //     title: '',
             //     content: scene,
             // })
-            wx.setStorageSync('assembleId', scene);
+            wx.setStorageSync('assembleId', scene[0]);
+            wx.setStorageSync('friendUserId', scene[1]);
             t.setData({
                 pageFrom: 'share'
             })
