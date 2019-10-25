@@ -40,7 +40,22 @@ exports.default = App({
         stores:[],
         friendUserId: ''
     },
-
+    // / userApi / v1 / checkPrice
+    // 选择完优惠券 更新价格接口
+    checkPrice() {
+        const t = this;
+        let params = {
+            orderId: t.globalData.orderDetail.id,
+            couponRecordId: t.globalData.chooseCoupon.couponId
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('checkPrice?' + t.jsonToParameters(params), {}).then((res) => {
+                t.globalData.orderDetail = res;
+                resolve(res);
+            })
+        })
+        return p;
+    },
     //     / userApi / v1 / memberLevel / list
     // 会员权益列表查询
     memberLevel(params) {
@@ -105,10 +120,10 @@ exports.default = App({
         return p;
     },
     // 续时订单生成  continuation
-    continuation(time) {
+    continuation(time, orderItemsId) {
         const t = this;
         let params = {
-            orderItemsId: t.globalData.nowOrder.storeId,
+            orderItemsId: orderItemsId,
             time: time
         }
         let p = new Promise((resolve, reject) => {

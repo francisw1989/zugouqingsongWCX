@@ -115,6 +115,9 @@ exports.default = Page({
     onShow(){
         const t = this;
         if (app.globalData.chooseCoupon){
+            app.checkPrice().then(()=>{
+                D: app.globalData.orderDetail
+            })
             t.setData({
                 couponName: app.globalData.chooseCoupon.couponName
             })

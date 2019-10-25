@@ -6,7 +6,10 @@ Page({
      * 页面的初始数据
      */
     data: {
-        mins: [10, 20, 30, 40]
+        mins: [10, 20, 30, 40],
+        orderItems: [],
+        cIndex: 0,
+        showModal: false
     },
     bindChange(e) {
         const t = this;
@@ -17,14 +20,8 @@ Page({
     },
     sub(){
         const t = this;
-        if(!t.data.min){
-            wx.showModal({
-                title: '提示',
-                content: '请选择时长',
-            })
-            return
-        }
-        app.continuation(t.data.min).then((res)=>{
+        let currObj = t.data.orderItems[t.data.cIndex];
+        app.continuation(currObj.time, currObj.id).then((res)=>{
             wx.showToast({
                 title: '加时成功',
             })
@@ -38,8 +35,36 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
+    sliderchange(e){
+        const t = this;
+        t.data.orderItems[t.data.cIndex].time = e.detail.value;
+        t.setData({
+            orderItems: t.data.orderItems
+        })
+    },
+    choose(e){
+        const t = this;
+        let cIndex = e.target.dataset.index;
+        t.setData({
+            cIndex: cIndex,
+            showModal: true
+        })
+    },
     onLoad: function (options) {
-
+        const t = this;
+        let orderItems = app.globalData.nowOrder.orderItems;
+        for (const v of orderItems){
+            v.orderTechniciansName = v.orderTechnicians.map((res)=>{
+                return res.employeeName
+            }).join(',')
+            
+            v.mixDuration = v.mixDuration ? v.mixDuration: 10;
+            v.maxDuration = v.maxDuration ? v.maxDuration : 60;
+            v.time = v.mixDuration || 0;
+        }
+        t.setData({
+            orderItems: orderItems
+        })
     },
 
     /**

@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+      "ui-popup": "../../packages/touchui-wx-components/ui-popup/dist/index",
+      "ui-slider": "../../packages/touchui-wx-components/ui-slider/dist/index"
+  },
   "navigationBarTitleText": "续时"
 }
