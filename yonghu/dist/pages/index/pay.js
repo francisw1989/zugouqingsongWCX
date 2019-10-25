@@ -58,13 +58,17 @@ exports.default = Page({
                 app.wxPay().then(() => {
                     wx.showModal({
                         title: '提示',
-                        content: '支付成功，即将返回首页！'
+                        content: '支付成功，即将返回首页！',
+                        success(res) {
+                            if (res.confirm) {
+                                wx.switchTab({
+                                    url: 'index',
+                                })
+                            } else if (res.cancel) {
+                                console.log('用户点击取消')
+                            }
+                        }
                     })
-                    setTimeout(()=>{
-                        wx.switchTab({
-                            url: 'index',
-                        })
-                    }, 2000)
                     
                 });
             })

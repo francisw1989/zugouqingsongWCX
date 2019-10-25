@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = Page({
     data: {
         // 1.待支付 2.已支付待到店 3.已到店待服务 4.服务中 5.服务完成 6.系统取消 7.用户取消
-        tabs: ['待支付', '已支付待到店', '已到店待服务', '服务中', '服务完成', '系统取消', '用户取消'],
+        tabs: ['待支付', '待到店', '待服务', '服务中', '服务完成', '已取消'],
         current: 0,
         inkBarStyle: {
             'width': '30%'

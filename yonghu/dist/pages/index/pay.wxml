@@ -99,16 +99,16 @@
             </view>
         </view>
     </checkbox-group>
-    <view wx:if="pageFrom!=group && pageFrom!=goods" class="padSp1 bgfff bor_btm_so clea rfix">
+    <view wx:if="{{pageFrom!='group' && pageFrom!='goods'}}" class="padSp1 bgfff bor_btm_so clea rfix">
         <text class="font2 ">选择优惠券</text>
         <view class="right">
-            <navigator url="../wode/coupon?pageFrom=pay" class="colYe inline font0">{{couponName?couponName:'查看更多优惠券'}}</navigator>
+            <navigator  url="../wode/coupon?pageFrom=pay" class="colYe inline font0">{{couponName?couponName:'查看更多优惠券'}}</navigator>
             <text class="font0 left5"> >></text>
         </view>
     </view>
     <view class="padSp1 bgfff align-right clearfix font2">
         <text>总计</text>
-        <text class="colPink">：¥ {{D.payPrice/100}} 元</text>
+        <text class="colPink">：¥ {{D.payPrice/100 || D.totalPrice/100}} 元</text>
     </view>
     <view class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;" bindtap="orderPay">立即支付</view>
 </view>
