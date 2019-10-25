@@ -40,7 +40,7 @@
                         <text class="col000 left20">{{orderItems[cIndex].time}}分钟</text>
                     </view>
                     <view style="height: 110rpx; margin-top: -35rpx; margin-left: -3px">
-                        <ui-slider bar-border-radius="2" step="5" show-value show-max-value data-index="{{index}}" bindchange="sliderchange" value="{{orderItems[cIndex].time}}" background-color="#3A9C88" min="{{orderItems[cIndex].mixDuration}}" max="{{orderItems[cIndex].maxDuration}}" slider-weight="4" _pid="{{_pid}}" thumb-style="{{ tbObj1 }}" 
+                        <ui-slider bar-border-radius="2" step="5" show-value show-max-value data-index="{{index}}" bindchange="sliderchange" value="{{orderItems[cIndex].time}}" background-color="#3A9C88" min="{{orderItems[cIndex].item.mixDuration}}" max="{{orderItems[cIndex].item.maxDuration}}" slider-weight="4" _pid="{{_pid}}" thumb-style="{{ tbObj1 }}" 
                 thumb-down-style="{{ tbdObj2 }}"></ui-slider>
                     </view>
                     <view class="" style='margin-top: -13px'>
