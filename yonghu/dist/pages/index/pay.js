@@ -52,7 +52,7 @@ exports.default = Page({
             })
             return
         }
-        if (t.data.pageFrom == 'goods' || t.data.pageFrom == 'continuation'){
+        if (t.data.pageFrom == 'goods'){
             app.articleOrderPay(t.data.type).then((res)=>{
                 app.globalData.wxObj = res;
                 app.wxPay().then(() => {
@@ -115,12 +115,15 @@ exports.default = Page({
     onShow(){
         const t = this;
         if (app.globalData.chooseCoupon){
-            app.checkPrice().then(()=>{
-                D: app.globalData.orderDetail
-            })
             t.setData({
-                couponName: app.globalData.chooseCoupon.couponName
+                couponName: app.globalData.chooseCoupon.couponName,
             })
+            app.checkPrice().then(()=>{
+                t.setData({
+                    D: app.globalData.orderDetail
+                })
+            })
+            
             
         }
     }

@@ -108,7 +108,7 @@
     </view>
     <view class="padSp1 bgfff align-right clearfix font2">
         <text>总计</text>
-        <text class="colPink">：¥ {{D.totalPrice/100}} 元</text>
+        <text class="colPink">：¥ {{D.payPrice/100}} 元</text>
     </view>
     <view class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;" bindtap="orderPay">立即支付</view>
 </view>

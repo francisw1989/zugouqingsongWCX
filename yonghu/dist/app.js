@@ -46,7 +46,7 @@ exports.default = App({
         const t = this;
         let params = {
             orderId: t.globalData.orderDetail.id,
-            couponRecordId: t.globalData.chooseCoupon.couponId
+            couponRecordId: t.globalData.chooseCoupon.recordId
         }
         let p = new Promise((resolve, reject) => {
             t.postRequest('checkPrice?' + t.jsonToParameters(params), {}).then((res) => {
@@ -525,7 +525,7 @@ exports.default = App({
         const t = this;
         let params = {
             orderId: t.globalData.orderDetail.id,
-            couponRecordId: t.globalData.chooseCoupon.couponId || '',
+            couponRecordId: t.globalData.chooseCoupon.recordId || '',
             type: type
         }
         let p = new Promise((resolve, reject) => {
