@@ -48,7 +48,8 @@ exports.default = Page({
         var index = e.detail.index;
         this.setData({
             current: index,
-            page: 1
+            page: 1,
+            list: []
         });
         t.getList();
     },
