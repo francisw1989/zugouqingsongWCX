@@ -56,9 +56,16 @@ exports.default = Page({
             app.articleOrderPay(t.data.type).then((res)=>{
                 app.globalData.wxObj = res;
                 app.wxPay().then(() => {
-                    wx.switchTab({
-                        url: 'index',
+                    wx.showModal({
+                        title: '提示',
+                        content: '购买成功，即将返回首页！'
                     })
+                    setTimeout(()=>{
+                        wx.switchTab({
+                            url: 'index',
+                        })
+                    }, 2000)
+                    
                 });
             })
         }else{

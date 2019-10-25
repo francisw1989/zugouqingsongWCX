@@ -112,7 +112,7 @@
             <view class="pad5TB " wx:for='{{O.articleList}}'>{{item.articleName}}*{{item.count}}</view>
             <view class="top10 align-right">
                 <!-- <view class="btns btns-small btns-green">续时</view> -->
-                <navigator wx:if='{{O.status == 5}}' url="pingjia" class="btns btns-small btns-green">去评价  </navigator>
+                <navigator  url="pingjia" class="btns btns-small btns-green">去评价  </navigator>
                 <navigator wx:if='{{O.status == 3 || O.status == 3==4}}' url="goods" open-type='switchTab' class="btns btns-small btns-green left20">商品</navigator>
                 
             </view>

@@ -47,7 +47,8 @@ exports.default = Page({
         const t = this;
         var index = e.detail.index;
         this.setData({
-            current: index
+            current: index,
+            page: 1
         });
         t.getList();
     },
@@ -59,15 +60,22 @@ exports.default = Page({
     },
     getList(){
         const t = this;
-        app.reservations(Number(t.data.current) + 1, t.data.page, t.data.size).then((res)=>{
-            t.setData({
-                list: [...t.data.list, ...res.records],
-                total: res.total
+        if(t.data.list.length<t.data.total || t.data.total == 0){
+            app.reservations(Number(t.data.current) + 1, t.data.page, t.data.size).then((res) => {
+                t.setData({
+                    list: [...t.data.list, ...res.records],
+                    total: res.total
+                })
             })
-        })
+        }
+        
     },
     onShow(){
         const t = this;
+        t.setData({
+            page: 1,
+            list: []
+        })
         t.getList();
     }
 });

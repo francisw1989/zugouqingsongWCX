@@ -57,23 +57,26 @@ Page({
         }
         if (params.evaluateScore == 1){
             let employeeIds = [];
-            for (const v of t.data.nowOrder.orderTechnicians) {
-                if (v.choosed) {
-                    employeeIds.push(v.id)
-                }
+            if (t.data.nowOrder.orderTechnicians){
+                for (const v of t.data.nowOrder.orderTechnicians) {
+                    if (v.choosed) {
+                        employeeIds.push(v.id)
+                    }
+                }    
             }
             params.employeeIds = employeeIds;
-        }else{
-            params.evaluateLabel = t.data.evaluateLabel
         }
+        params.evaluateLabel = t.data.evaluateLabel
         app.evaluation(params).then((res)=>{
             wx.showToast({
                 icon: 'none',
                 title: '感谢评价',
             })
-            wx.navigateBack({
-                
-            })
+            setTimeout(()=>{
+                wx.navigateBack({
+
+                })
+            }, 2000)
         })
     },
     tab1click(e){

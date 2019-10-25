@@ -71,11 +71,16 @@ exports.default = Page({
         });
     },
     onShow() {
+        const t = this;
         this.getTabBar().setData({
             selected: 1,
             list: app.globalData.barList
         })
-
+        t.goods();
+        t.setData({
+            totalMouny: 0,
+            totalNum: 0
+        })
     },
     goods(){
         const t = this;
