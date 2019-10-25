@@ -52,13 +52,13 @@ exports.default = Page({
             })
             return
         }
-        if(t.data.pageFrom=='goods'){
+        if (t.data.pageFrom == 'goods' || t.data.pageFrom == 'continuation'){
             app.articleOrderPay(t.data.type).then((res)=>{
                 app.globalData.wxObj = res;
                 app.wxPay().then(() => {
                     wx.showModal({
                         title: '提示',
-                        content: '购买成功，即将返回首页！'
+                        content: '支付成功，即将返回首页！'
                     })
                     setTimeout(()=>{
                         wx.switchTab({

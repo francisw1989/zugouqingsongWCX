@@ -22,14 +22,18 @@ Page({
         const t = this;
         let currObj = t.data.orderItems[t.data.cIndex];
         app.continuation(currObj.time, currObj.id).then((res)=>{
-            wx.showToast({
-                title: '加时成功',
+            app.globalData.orderDetail = res;
+            wx.navigateTo({
+                url: 'pay?pageFrom=continuation',
             })
-            setTimeout(()=>{
-                wx.navigateBack({
+            // wx.showToast({
+            //     title: '加时成功',
+            // })
+            // setTimeout(()=>{
+            //     wx.navigateBack({
 
-                })
-            }, 1000)
+            //     })
+            // }, 1000)
         })
     },
     /**
