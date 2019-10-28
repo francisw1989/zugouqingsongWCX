@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Page({
     data: {
-        colors: ['#459E8C' , '#FF7D55' , '#FEB974']
+      colors: ['#459E8C', '#FF7D55', '#FEB974',  '#FEB974']
     },
     goto(e){
         const t = this;
@@ -23,6 +23,7 @@ exports.default = Page({
     },
     getList(){
         const t = this;
+      console.log(t.data.pageFrom);
         if (t.data.pageFrom =='pay'){
             app.optimalCoupon().then((res) => {
                 t.setData({

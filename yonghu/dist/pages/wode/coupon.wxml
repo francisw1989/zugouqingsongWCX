@@ -1,22 +1,26 @@
 <view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
     <view class="pad10 clearfix">
         <view catchtap="goto" data-index="{{index}}"  class="yhqWap bgfff top10 clearfix" wx:for="{{list}}" wx:if='{{item.isUse==0}}'>
-            <view wx:if="{{item.canUse==1}}" class="left leftA " style="background-color: {{colors[item.couponType - 1]}}">
+            <view wx:if="{{item.canUse==1 || pageFrom == 'wode'}}" class="left leftA " style="background-color: {{colors[item.couponType - 1]}}">
                 <image src="../../static/images/59.png" class="img" />
                 <view class="abCover colfff center">
                     <view>
-                        <text class="font5">￥</text>
+                        <text class="font5" wx:if="{{item.couponType==1||item.couponType==2}}">￥</text>
                         <text class="bold" style="font-size: 100rpx;">{{item.couponDenomination}}</text>
+                        <text class="font4"wx:if="{{item.couponType==3}}">折</text>
+                        <text class="font3"wx:if="{{item.couponType==4}}">分钟</text>
                     </view>
                     <view class="center" wx:if='{{item.couponConditionStr}}'>{{item.couponConditionStr || ''}}</view>
                 </view>
             </view>
-            <view wx:if="{{item.canUse==0 || item.isExpired==1}}" class="left leftA " style="background-color: #E6E6E6">
+            <view wx:if="{{(item.canUse==0 && pageFrom == 'pay') || item.isExpired==1 || isUse==1}}" class="left leftA " style="background-color: #E6E6E6">
                 <image src="../../static/images/59.png" class="img" />
                 <view class="abCover colfff center">
                     <view>
-                        <text class="font5">￥</text>
+                        <text class="font5" wx:if="{{item.couponType==1||item.couponType==2}}">￥</text>
                         <text class="bold" style="font-size: 100rpx;">{{item.couponDenomination}}</text>
+                        <text class="font4"wx:if="{{item.couponType==3}}">折</text>
+                        <text class="font3"wx:if="{{item.couponType==4}}">分钟</text>
                     </view>
                     <view class="center" wx:if='{{item.couponConditionStr}}'>{{item.couponConditionStr || ''}}</view>
                 </view>
