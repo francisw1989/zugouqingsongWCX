@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = App({
     globalData: {
-        u: 'https://zzh.hzysofti.com/userApi/v1/',
+      u: 'https://zzh.hzysofti.com/userApi/v1/',
         u_s: 'https://zzh.hzysofti.com/',
         userInfo: {},
         itemClassList: [],
@@ -39,6 +39,19 @@ exports.default = App({
         chooseCoupon: {},
         stores:[],
         friendUserId: ''
+    },
+    cancelCoupon(){
+      const t = this;
+      let params = {
+        orderId: t.globalData.orderDetail.id,
+      }
+      let p = new Promise((resolve, reject) => {
+        t.postRequest('checkPrice?' + t.jsonToParameters(params), {}).then((res) => {
+          t.globalData.orderDetail = res;
+          resolve(res);
+        })
+      })
+      return p;
     },
     // / userApi / v1 / checkPrice
     // 选择完优惠券 更新价格接口
