@@ -73,7 +73,7 @@
                 <view class="ui-col align-right">
                     <view class="ui-col-content">
                         <view>
-                            <picker mode="date" value="{{birthday}}" name='birthday' start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                            <picker mode="date" value="{{birthday}}" name='birthday' start="1900-01-01" end="2022-12-31" bindchange="bindDateChange">
                                 {{birthday?birthday:'请选择出生日期'}}
                                 <image src="../../static/images/15.png" class="ico15 icoAll left10" />
                             </picker>

@@ -185,7 +185,12 @@ exports.default = App({
         // }
         params = Object.assign(params, {
             userId: t.globalData.userInfo.userId,
-            orderId: t.globalData.nowOrder.id
+
+
+
+
+
+
         })
         let p = new Promise((resolve, reject) => {
             t.postRequest('evaluation?' + t.jsonToParameters(params), {}).then((res) => {
@@ -328,11 +333,18 @@ exports.default = App({
         };
         let p = new Promise((resolve, reject) => {
             t.getRequest('reservations', params).then((res) => {
-                for (const v of res.records){
-                    v.imgs = v.imgs.split(',')[0];
-                    v.orderStartTime2 = v.orderStartTime.replace(/-/g, "/")
-                }
-                resolve(res);
+              let nowDate = new Date();
+              let year= nowDate.getFullYear();
+              for (const v of res.records){
+                  v.imgs = v.imgs.split(',')[0];
+                let min = parseInt(v.createTime.split(":")[1]) + 5;
+                let tsArr = v.createTime.split(":");
+                tsArr[1] = min;
+                v.orderStartTime2 = year + "-" + tsArr.join(":")+":00";
+                console.log(v.createTime);
+                console.log(v.orderStartTime2);
+              }
+              resolve(res);
             })
         })
         return p;
