@@ -84,15 +84,15 @@
     
     <ui-popup show="{{jxzShow}}" wx:if='{{O}}' background="transparent" _pid="{{_pid}}">
         <view class="padSp1 clearfix" style="background-color:#fff; border-radius: 10rpx 10rpx 0 0; overflow: hidden; padding-bottom: 150rpx;">
-            <view class="bor_btm_so" style="padding-bottom: 20rpx;">
+            <view  style="padding-bottom: 20rpx;">
                 <text class="col333 bold">{{statusName[O.status]}}</text>
                 <!-- <navigator class="top5 right" url="pingjia"> <image src="../../static/images/17.png" class="ico17 " /></navigator> -->
             </view>
-            <view class='pad10TB bor_btm_so' z>
+            <view class='pad10TB bor_top_so' z>
                 <view class=""><text class='bold'>编号：</text>{{O.outTradeNo}}</view>
                 <view class="top5 "><text class='bold'>预约门店：</text>{{O.storeName}}</view>
             </view>
-            <view class='pad10TB bor_btm_so' wx:for='{{O.orderItems}}'>
+            <view class='pad10TB bor_top_so' wx:for='{{O.orderItems}}'>
                 <view class=" "><text class='bold'>预约项目：</text>{{item.itemName}}</view>
                 <view class=" top5 "><text class='bold'>技师：</text><text wx:for='{{item.orderTechnicians}}' wx:for-item="tecItem">{{tecItem.employeeName}}</text></view>
                 <view class="top5  "><text class='bold'>预约开始时间：</text>{{O.orderStartTime}}</view>
@@ -106,7 +106,7 @@
                     </view>
                 </ui-timeline-item>
             </ui-timeline> -->
-            <view class=" col333 bold pad10TB bor_btm_so" wx:if="{{O.articleList!=null && O.articleList.length>0}}">
+            <view class=" col333 bold pad10TB bor_top_so" wx:if="{{O.articleList!=null && O.articleList.length>0}}">
                 已购商品：
             </view>
             <view class="pad5TB " wx:for='{{O.articleList}}'>{{item.articleName}}*{{item.count}}</view>

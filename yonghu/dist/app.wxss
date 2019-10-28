@@ -1365,6 +1365,9 @@ a.colGreen,
 .bor_btm_so {
   border-bottom: 1px solid #E0E0E0;
 }
+.bor_top_so {
+  border-top: 1px solid #E0E0E0;
+}
 .bor_btm_da {
   border-bottom: 1px dashed #E0E0E0;
 }
