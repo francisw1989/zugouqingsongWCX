@@ -107,6 +107,16 @@ exports.default = Page({
             D: app.globalData.orderDetail,
             U: app.globalData.userInfo
         })
+        if (app.globalData.orderDetail.isCoupon == 1 || app.globalData.orderDetail.isAssemble == 1){
+          t.setData({
+            couponName: app.globalData.orderDetail.coupon.couponName
+          })
+        }else{
+          t.setData({
+            couponName: ''
+          })
+        }
+
         if (t.data.U.totalAccount < t.data.D.totalPrice) {
             t.setData({
                 checkedTypes: ['2'],
@@ -128,9 +138,26 @@ exports.default = Page({
                 })
             })
             
-            
         }
+    },
+    //取消优惠券
+    cancelCoupon(){
+      const t = this;
+      app.cancelCoupon().then(() => {
+        console.log(app.globalData.orderDetail);
+        t.setData({
+          D: app.globalData.orderDetail
+        });
+        if (app.globalData.orderDetail.isCoupon == 1 || app.globalData.orderDetail.isAssemble == 1) {
+          t.setData({
+            couponName: app.globalData.orderDetail.coupon.couponName
+          })
+        } else {
+          t.setData({
+            couponName: ''
+          })
+        }
+      });
+      
     }
-
-    
 });

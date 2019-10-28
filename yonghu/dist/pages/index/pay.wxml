@@ -30,7 +30,7 @@
                 <view class=" font0 ui-col ui-col-align-right align-right" style="">
                     <view class="ui-col-content align-right">
                         <view class="top5">{{item.orderTime}}分钟</view>
-                        <view class="colPink">¥{{item.orderPrice/100}}</view>
+                        <view class="colPink">¥{{item.payPrice!=null ? item.payPrice/100 : item.orderPrice/100}}</view>
                         <view class="top5" wx:if="{{item.showMore}}">
                             <view wx:for="{{item.orderTechnicians}}" wx:for-item='techItem'>
                                 <text>{{techItem.employeeName}}</text>
@@ -103,7 +103,7 @@
         <text class="font2 ">选择优惠券</text>
         <view class="right">
             <navigator  url="../wode/coupon?pageFrom=pay" class="colYe inline font0">{{couponName?couponName:'查看更多优惠券'}}</navigator>
-            <text class="font0 left5"> >></text>
+            <text class="font0 left5" bindtap="cancelCoupon"> {{couponName?'X':'>>'}}</text>
         </view>
     </view>
     <view class="padSp1 bgfff align-right clearfix font2">
