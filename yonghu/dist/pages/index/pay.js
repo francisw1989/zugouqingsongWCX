@@ -55,22 +55,39 @@ exports.default = Page({
         if (t.data.pageFrom == 'goods'){
             app.articleOrderPay(t.data.type).then((res)=>{
                 app.globalData.wxObj = res;
+              if (res.needWxPay == 1) {
                 app.wxPay().then(() => {
-                    wx.showModal({
-                        title: '提示',
-                        content: '支付成功，即将返回首页！',
-                        success(res) {
-                            if (res.confirm) {
-                                wx.switchTab({
-                                    url: 'index',
-                                })
-                            } else if (res.cancel) {
-                                console.log('用户点击取消')
-                            }
-                        }
-                    })
-                    
+                  wx.showModal({
+                    title: '提示',
+                    content: '支付成功，即将返回首页！',
+                    success(res) {
+                      if (res.confirm) {
+                        wx.switchTab({
+                          url: 'index',
+                        })
+                      } else if (res.cancel) {
+                        console.log('用户点击取消')
+                      }
+                    }
+                  })
+
                 });
+              }else{
+                wx.showModal({
+                  title: '提示',
+                  content: '支付成功，即将返回首页！',
+                  success(res) {
+                    if (res.confirm) {
+                      wx.switchTab({
+                        url: 'index',
+                      })
+                    } else if (res.cancel) {
+                      console.log('用户点击取消')
+                    }
+                  }
+                })
+              }
+                
             })
         }else{
             app.orderPay(t.data.type).then((res) => {

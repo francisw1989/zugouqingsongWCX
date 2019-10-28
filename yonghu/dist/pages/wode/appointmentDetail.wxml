@@ -1,6 +1,14 @@
 <!--pages/wode/appointmentDetail.wxml-->
 <view style="min-height: 100%; background-color: #F3F3F3">
-    <view class='pad10 bgFFF'>{{D.storeName}}</view>
+    
+    <view class='pad10 bgFFF'>
+        <image src="../../static/images/35.png" class="icoAll" style="width: 22rpx; height: 28rpx;" />
+        <text class=" left10 verMid">{{D.storeName}}</text>
+    </view>
+    <view class="pad10 top10 bgFFF">
+        <image src="../../static/images/36.png" class="icoAll" style="width: 22rpx; height: 22rpx;" />
+        <text class=" left10 verMid">{{D.orderStartTime}}</text>
+    </view>
     <view class='top10 bgfff'>
         <view class="padSp1  bor_btm_so" wx:for="{{D.orderItems}}" catchtap="showMore" data-index="{{index}}">
             <view class="ui-row" style="">
@@ -17,8 +25,8 @@
                 <view class=" font0 ui-col ui-col-align-right align-right" style="">
                     <view class="ui-col-content align-right">
                         <view class="top5">{{item.orderTime}}分钟</view>
-                        <view class="colBlue">¥{{item.orderPrice/100}}</view>
-                        <view class="top5" wx:if="{{item.showMore}}">
+                        <view class="colBlue">¥{{item.payPrice!=null ? item.payPrice/100 : item.orderPrice/100}}</view>
+                        <view class="top5" wx:if="{{!item.showMore}}">
                             <view wx:for="{{item.orderTechnicians}}" wx:for-item='techItem'>
                                 <text>{{techItem.employeeName}}</text>
                                 <!-- <text class="col999 left20">|</text> -->

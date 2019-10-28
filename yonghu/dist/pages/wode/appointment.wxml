@@ -22,7 +22,7 @@
                     </view>
                     <view class="ui-col ui-col-align-right align-right" style="flex:0 0 150px;">
                         <view class="ui-col-content align-right" style='padding-top: 130rpx;'>
-                            <view class="btns btns-2">{{tabs[item.status-1]}}</view>
+                            <view class="btns btns-2">{{item.status==7?tabs[item.status-2]:tabs[item.status-1]}}</view>
                             <view class="font0" wx:if='{{item.orderStartTime && item.status==1}}'>
                                 <ui-count-down class="inline" doneText='0s' time="{{item.orderStartTime2}}" number-style="{{numberStyle}}" format="{%h}:{%m}:{%s}" _pid="{{_pid}}"></ui-count-down>
                                 后自动取消

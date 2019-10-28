@@ -83,7 +83,7 @@
     <button open-type="contact" class='ico4 icoAll' style='left:{{left}}px; top:{{top}}px'  bindtouchmove="bindtouchmove" bindtouchstart="bindtouchstart" bindtouchend="bindtouchend"><image src="../../static/images/4.png" style='width: 55px; height: 55px; '     /></button>
     
     <ui-popup show="{{jxzShow}}" wx:if='{{O}}' background="transparent" _pid="{{_pid}}">
-        <view class="padSp1 clearfix" style="background-color:#fff; border-radius: 10rpx 10rpx 0 0; overflow: hidden; padding-bottom: 100rpx;">
+        <view class="padSp1 clearfix" style="background-color:#fff; border-radius: 10rpx 10rpx 0 0; overflow: hidden; padding-bottom: 150rpx;">
             <view class="bor_btm_so" style="padding-bottom: 20rpx;">
                 <text class="col333 bold">{{statusName[O.status]}}</text>
                 <!-- <navigator class="top5 right" url="pingjia"> <image src="../../static/images/17.png" class="ico17 " /></navigator> -->
