@@ -111,11 +111,7 @@
             </view>
             <view class="pad5TB " wx:for='{{O.articleList}}'>{{item.articleName}}*{{item.count}}</view>
             <view class="top10 align-right">
-<<<<<<< HEAD
-                <navigator  url='continuation' class="btns btns-small btns-green">续时</navigator>
-=======
                 <navigator wx:if="{{O.status == 4}}" url='continuation' class="btns btns-small btns-green">续时</navigator>
->>>>>>> 49211536fc59dcf0f25fc911fc5b5d58c17889a9
                 <navigator wx:if='{{O.status == 5}}' url="pingjia" class="btns btns-small btns-green left20">去评价  </navigator>
                 <navigator wx:if='{{O.status == 3 || O.status == 4}}' url="goods" open-type='switchTab' class="btns btns-small btns-green left20">商品</navigator>
                 
