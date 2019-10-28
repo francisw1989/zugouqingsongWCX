@@ -1,8 +1,9 @@
 <view>
+  <!--
   <view class="seachWap2" id="seachWap2">
     <image class="img" src="../../static/images/18.png" style="width: 34rpx; height:34rpx; " />
     <input class="input" placeholder="搜索商品"></input>
-  </view>
+  </view>-->
   <view style="overflow: hidden;height:{{height}}px;" class="ui-row">
     <view class="ui-col ui-col-3" style="flex: 0 0 20%;">
       <view class="ui-col-content">
