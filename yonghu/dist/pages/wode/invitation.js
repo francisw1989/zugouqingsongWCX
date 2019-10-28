@@ -17,6 +17,10 @@ exports.default = Page({
     onLoad(opt){
         const t = this;
         t.qrCode();
+        console.log(opt.pageFrom)
+        t.setData({
+            pageFrom: opt.pageFrom
+        })
         app.invitationReward().then((res)=>{
             t.setData({
                 invitationRewardList: res
@@ -45,7 +49,7 @@ exports.default = Page({
         const t = this;
         let params = {
             page: '/pages/wode/groupSuccess',
-            scene: wx.getStorageSync('assembleId') + ',' + globalData.userInfo.userId
+            scene: wx.getStorageSync('assembleId') + ',' + app.globalData.userInfo.userId
         }
         app.qrCode(params).then((res)=>{
             t.data.ewmImg = res;
@@ -107,11 +111,11 @@ exports.default = Page({
         const t = this;
          //p ---pageFrom  id --- assembleId
         let path = '';
-        let title = ''
-        if(t.pageFrom == 'group'){
+        let title = '';
+        if(t.data.pageFrom == 'group'){
             path = '/pages/wode/groupSuccess?scene=' + wx.getStorageSync('assembleId') + ',' + app.globalData.userInfo.userId;
             title = '团购分享'
-        }else if(t.pageFrom=='wode'){
+        }else if(t.data.pageFrom=='wode'){
             path = '/pages/index/index?scene=' +  app.globalData.userInfo.userId;
             title = '足够轻松'
         }

@@ -5,11 +5,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Page({
     data: {
-        colors: ['#459E8C' , '#FF7D55' , '#FEB974' , '#E6E6E6']
+      colors: ['#459E8C', '#FF7D55', '#FEB974',  '#FEB974']
     },
     goto(e){
         const t = this;
         if(t.data.pageFrom == 'pay'){
+            if (t.data.list[e.currentTarget.dataset.index].canUse==0){
+                return
+            }
             app.globalData.chooseCoupon = t.data.list[e.currentTarget.dataset.index]
             wx.navigateBack({
                 
@@ -20,6 +23,7 @@ exports.default = Page({
     },
     getList(){
         const t = this;
+      console.log(t.data.pageFrom);
         if (t.data.pageFrom =='pay'){
             app.optimalCoupon().then((res) => {
                 t.setData({

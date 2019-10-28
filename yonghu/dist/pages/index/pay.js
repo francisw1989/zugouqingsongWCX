@@ -52,19 +52,23 @@ exports.default = Page({
             })
             return
         }
-        if(t.data.pageFrom=='goods'){
+        if (t.data.pageFrom == 'goods'){
             app.articleOrderPay(t.data.type).then((res)=>{
                 app.globalData.wxObj = res;
                 app.wxPay().then(() => {
                     wx.showModal({
                         title: '提示',
-                        content: '购买成功，即将返回首页！'
+                        content: '支付成功，即将返回首页！',
+                        success(res) {
+                            if (res.confirm) {
+                                wx.switchTab({
+                                    url: 'index',
+                                })
+                            } else if (res.cancel) {
+                                console.log('用户点击取消')
+                            }
+                        }
                     })
-                    setTimeout(()=>{
-                        wx.switchTab({
-                            url: 'index',
-                        })
-                    }, 2000)
                     
                 });
             })
@@ -103,6 +107,16 @@ exports.default = Page({
             D: app.globalData.orderDetail,
             U: app.globalData.userInfo
         })
+        if (app.globalData.orderDetail.isCoupon == 1 || app.globalData.orderDetail.isAssemble == 1){
+          t.setData({
+            couponName: app.globalData.orderDetail.coupon.couponName
+          })
+        }else{
+          t.setData({
+            couponName: ''
+          })
+        }
+
         if (t.data.U.totalAccount < t.data.D.totalPrice) {
             t.setData({
                 checkedTypes: ['2'],
@@ -115,15 +129,35 @@ exports.default = Page({
     onShow(){
         const t = this;
         if (app.globalData.chooseCoupon){
-            app.checkPrice().then(()=>{
-                D: app.globalData.orderDetail
-            })
             t.setData({
-                couponName: app.globalData.chooseCoupon.couponName
+                couponName: app.globalData.chooseCoupon.couponName,
+            })
+            app.checkPrice().then(()=>{
+                t.setData({
+                    D: app.globalData.orderDetail
+                })
             })
             
         }
+    },
+    //取消优惠券
+    cancelCoupon(){
+      const t = this;
+      app.cancelCoupon().then(() => {
+        console.log(app.globalData.orderDetail);
+        t.setData({
+          D: app.globalData.orderDetail
+        });
+        if (app.globalData.orderDetail.isCoupon == 1 || app.globalData.orderDetail.isAssemble == 1) {
+          t.setData({
+            couponName: app.globalData.orderDetail.coupon.couponName
+          })
+        } else {
+          t.setData({
+            couponName: ''
+          })
+        }
+      });
+      
     }
-
-    
 });

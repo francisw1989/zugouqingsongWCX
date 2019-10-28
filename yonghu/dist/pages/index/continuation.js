@@ -18,18 +18,46 @@ Page({
             min: t.data.mins[val[0]]
         })
     },
+    orderDetail() {
+        const t = this;
+        let _do = function () {
+            app.orderDetail().then((res) => {
+                if (!res) {
+                    setTimeout(() => {
+                        _do()
+                    }, 1000)
+                    wx.showLoading({
+                        title: '加载中'
+                    });
+                } else {
+                    wx.hideLoading();
+                    app.globalData.orderDetail = res;
+                    wx.navigateTo({
+                        url: 'pay?pageFrom=continuation',
+                    })
+                }
+            })
+        }
+        _do()
+    },
     sub(){
         const t = this;
         let currObj = t.data.orderItems[t.data.cIndex];
         app.continuation(currObj.time, currObj.id).then((res)=>{
-            wx.showToast({
-                title: '加时成功',
-            })
-            setTimeout(()=>{
-                wx.navigateBack({
+            app.globalData.outTradeNo = res.outTradeNo;
+            t.orderDetail();
+            // app.globalData.orderDetail = res;
+            // wx.navigateTo({
+            //     url: 'pay?pageFrom=continuation',
+            // })
+            // wx.showToast({
+            //     title: '加时成功',
+            // })
+            // setTimeout(()=>{
+            //     wx.navigateBack({
 
-                })
-            }, 1000)
+            //     })
+            // }, 1000)
         })
     },
     /**
