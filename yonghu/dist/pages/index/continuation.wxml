@@ -45,7 +45,7 @@
                     </view>
                     <view class="" style='margin-top: -13px'>
                         <text class="colPink font3 left5">¥{{m1.numberToFix(orderItems[cIndex].itemUnitPrice/100*orderItems[cIndex].time)}}</text>
-                        <text class="left10">¥{{orderItems[cIndex].itemUnitPrice/100}}元/分钟</text>
+                        <!--<text class="left10">¥{{orderItems[cIndex].itemUnitPrice/100}}元/分钟</text>-->
                     </view>
                 </view>
             </view>
