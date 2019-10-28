@@ -106,7 +106,7 @@
                     </view>
                 </ui-timeline-item>
             </ui-timeline> -->
-            <view class=" col333 bold pad10TB bor_btm_so" >
+            <view class=" col333 bold pad10TB bor_btm_so" wx:if="{{O.articleList!=null && O.articleList.length>0}}">
                 已购商品：
             </view>
             <view class="pad5TB " wx:for='{{O.articleList}}'>{{item.articleName}}*{{item.count}}</view>
