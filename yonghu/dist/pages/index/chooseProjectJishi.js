@@ -79,7 +79,7 @@ exports.default = Page({
         const t = this;
         if (app.globalData.outTradeNo){
             // 下过单的要去掉下单
-            app.removeOrder();
+            // app.removeOrder();
             app.globalData.outTradeNo = '';
             for (const i in t.data.chooseProject) {
                 t.selectTechnician(i);

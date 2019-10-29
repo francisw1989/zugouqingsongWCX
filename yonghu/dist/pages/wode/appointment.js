@@ -40,6 +40,10 @@ exports.default = Page({
         const t = this;
         app.globalData.outTradeNo = e.currentTarget.dataset.outtradeno;
         app.removeOrder().then((res)=>{
+          t.setData({
+            list: [],
+            total: 0
+          })
             t.getList();
         })
     },

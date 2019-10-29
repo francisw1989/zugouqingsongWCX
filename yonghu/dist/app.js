@@ -550,7 +550,7 @@ exports.default = App({
         const t = this;
         let params = {
             orderId: t.globalData.orderDetail.id,
-            couponRecordId: t.globalData.chooseCoupon.recordId || '',
+          couponRecordId: (t.globalData.chooseCoupon == null || t.globalData.chooseCoupon.recordId==undefined)?'':t.globalData.chooseCoupon.recordId,
             type: type
         }
         let p = new Promise((resolve, reject) => {

@@ -55,6 +55,21 @@ exports.default = Page({
         if (t.data.pageFrom == 'goods'){
             app.articleOrderPay(t.data.type).then((res)=>{
                 app.globalData.wxObj = res;
+              if (res==null) {
+                wx.showModal({
+                  title: '提示',
+                  content: '支付成功，即将返回首页！',
+                  success(res) {
+                    if (res.confirm) {
+                      wx.switchTab({
+                        url: 'index',
+                      })
+                    } else if (res.cancel) {
+                      console.log('用户点击取消')
+                    }
+                  }
+                })
+              }
               if (res.needWxPay == 1) {
                 app.wxPay().then(() => {
                   wx.showModal({
@@ -72,20 +87,6 @@ exports.default = Page({
                   })
 
                 });
-              }else{
-                wx.showModal({
-                  title: '提示',
-                  content: '支付成功，即将返回首页！',
-                  success(res) {
-                    if (res.confirm) {
-                      wx.switchTab({
-                        url: 'index',
-                      })
-                    } else if (res.cancel) {
-                      console.log('用户点击取消')
-                    }
-                  }
-                })
               }
                 
             })
@@ -160,6 +161,7 @@ exports.default = Page({
     //取消优惠券
     cancelCoupon(){
       const t = this;
+      app.globalData.chooseCoupon = null;
       app.cancelCoupon().then(() => {
         console.log(app.globalData.orderDetail);
         t.setData({
@@ -175,6 +177,5 @@ exports.default = Page({
           })
         }
       });
-      
     }
 });

@@ -92,9 +92,10 @@
                     </view>
                 </view>
             </block>
-          
         </view>
-        <view class="top10 font0">*距离{{D.memberInterests[D.currentMemLevel.currentLevel + 1].memberLevelName}}会员还需消费{{(D.memberInterests[D.currentMemLevel.currentLevel + 1].amountCondition-D.currentMemLevel.money)/100}}元</view>
+        <view class="top10 font0" wx:if="{{D.currentMemLevel.currentLevel==3}}">*您已是三星会员，继续保持哦</view>
+        <view class="top10 font0" wx:if="{{D.currentMemLevel.currentLevel<3}}">*距离{{D.memberInterests[D.currentMemLevel.currentLevel + 1].memberLevelName}}会员还需消费{{(D.memberInterests[D.currentMemLevel.currentLevel+1].amountCondition-D.currentMemLevel.money)/100}}元
+        或者消费{{(D.memberInterests[D.currentMemLevel.currentLevel+1].frequencyCondition-D.currentMemLevel.count)}}次</view>
     </view>
     <view class="pad10 align-right">
         <view bindtap='gotoProject' url='index'  class="btns btns-small btns-green-bor">继续下单</view>
