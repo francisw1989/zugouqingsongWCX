@@ -74,7 +74,7 @@
                 </view>
                 <view class="ui-col ui-col-align-right align-right" style="flex:0 0 50px;">
                     <view class="ui-col-content align-right">
-                        <checkbox value="1" class="inline top5" disabled="{{U.totalAccount?false:true}}" />
+                        <checkbox value="1" class="inline top5" checked='{{yeChecked}}' disabled="{{U.totalAccount?false:true}}" />
                     </view>
                 </view>
             </view>

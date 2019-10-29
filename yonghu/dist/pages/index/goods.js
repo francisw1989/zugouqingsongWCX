@@ -109,7 +109,7 @@ exports.default = Page({
     },
     onLoad: function onLoad() {
         var t = this;
-        t.setSize();
+        // t.setSize();
         t.goods();
         
     }

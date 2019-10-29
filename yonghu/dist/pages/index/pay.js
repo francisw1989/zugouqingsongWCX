@@ -8,13 +8,13 @@ exports.default = Page({
     data: {
         D: {},
         type: null,
-        checkedTypes: [],
         numberStyle: {
             color: '#F88A0B',
             fontSize: '30rpx'
         },
         wxDisable: false,
         wxChecked: false,
+        yeChecked: false,
         couponName: ''
     },
     bindtimeup(){
@@ -33,18 +33,41 @@ exports.default = Page({
     radioChange: function (e) {
         console.log(e.detail.value);
         const t = this;
-        let type;
-        if (e.detail.value.length == 1){
-            type = e.detail.value[0]
-        } else if (e.detail.value.length == 2){
-            type = 0
+        // 1.余额为0时，只能选择微信支付    
+        // 2.余额 > 0且小于订单总价时，选择账户支付 同时必须选择微信支付   
+        // 3.余额 >= 订单总价时  选择了余额支付  则不可以选择微信支付。
+        if (t.data.U.totalAccount == 0) {
+            t.setData({
+                wxChecked: true,
+                type: 2
+            })
         }
-        t.setData({
-            type: type
-        })
+        if (t.data.U.totalAccount>0 && t.data.U.totalAccount < t.data.D.totalPrice) {
+            t.setData({
+                wxChecked: true,
+                type: 0
+            })
+        }
+        if (t.data.U.totalAccount >= t.data.D.totalPrice){
+            if (e.detail.value[e.detail.value.length-1]==1){
+                t.setData({
+                    wxChecked: false,
+                    yeChecked: true,
+                    type: 1
+                })
+            } else if (e.detail.value[e.detail.value.length - 1] == 2){
+                t.setData({
+                    wxChecked: true,
+                    yeChecked: false,
+                    type: 1
+                })
+            }
+        }
+        
     },
     orderPay(){
         const t = this;
+        debugger
         if (!t.data.type && t.data.type!=0){
             wx.showModal({
                 title: '提示',
@@ -119,7 +142,12 @@ exports.default = Page({
     
     onLoad(opt){
         const t = this;
+        // 1.余额为0时，只能选择微信支付    
+        // 2.余额 > 0且小于订单总价时，选择账户支付 同时必须选择微信支付   
+        // 3.余额 >= 订单总价时  选择了余额支付  则不可以选择微信支付。
         app.globalData.chooseCoupon = ''
+        // app.globalData.userInfo.totalAccount = 300;
+        // app.globalData.orderDetail.totalPrice = 200;
         t.setData({
             pageFrom: opt.pageFrom,
             D: app.globalData.orderDetail,
@@ -135,14 +163,12 @@ exports.default = Page({
           })
         }
 
-        if (t.data.U.totalAccount < t.data.D.totalPrice) {
-            t.setData({
-                checkedTypes: ['2'],
-                wxDisable: true,
-                wxChecked: true,
-                type: 2
-            })
-        }
+        // if (t.data.U.totalAccount < t.data.D.totalPrice) {
+        //     t.setData({
+        //         wxChecked: true,
+        //         type: 2
+        //     })
+        // }
     },
     onShow(){
         const t = this;

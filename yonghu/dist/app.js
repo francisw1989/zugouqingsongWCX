@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = App({
     globalData: {
-      u: 'https://zzh.hzysofti.com/userApi/v1/',
+        u: 'https://zzh.hzysofti.com/userApi/v1/',
         u_s: 'https://zzh.hzysofti.com/',
         userInfo: {},
         itemClassList: [],
@@ -37,21 +37,21 @@ exports.default = App({
         nowOrder: {}, // 当前正在进行中的订单,
         orderDetail: {}, // 订单详情
         chooseCoupon: {},
-        stores:[],
+        stores: [],
         friendUserId: ''
     },
-    cancelCoupon(){
-      const t = this;
-      let params = {
-        orderId: t.globalData.orderDetail.id,
-      }
-      let p = new Promise((resolve, reject) => {
-        t.postRequest('checkPrice?' + t.jsonToParameters(params), {}).then((res) => {
-          t.globalData.orderDetail = res;
-          resolve(res);
+    cancelCoupon() {
+        const t = this;
+        let params = {
+            orderId: t.globalData.orderDetail.id,
+        }
+        let p = new Promise((resolve, reject) => {
+            t.postRequest('checkPrice?' + t.jsonToParameters(params), {}).then((res) => {
+                t.globalData.orderDetail = res;
+                resolve(res);
+            })
         })
-      })
-      return p;
+        return p;
     },
     // / userApi / v1 / checkPrice
     // 选择完优惠券 更新价格接口
@@ -82,7 +82,7 @@ exports.default = App({
     },
     // / userApi / v1 / qrCode
     // 获取小程序二维码
-    qrCode(params){
+    qrCode(params) {
         const t = this;
         let p = new Promise((resolve, reject) => {
             t.getRequest('qrCode', params).then((res) => {
@@ -92,7 +92,7 @@ exports.default = App({
         return p;
     },
     // 我的预约订单详情
-    orderInfo(orderId){
+    orderInfo(orderId) {
         const t = this;
         let params = {
             orderId: orderId
@@ -112,7 +112,7 @@ exports.default = App({
             isSms: 0
         }
         let p = new Promise((resolve, reject) => {
-            t.postRequest('isSms?' + t.jsonToParameters(params) , params).then((res) => {
+            t.postRequest('isSms?' + t.jsonToParameters(params), params).then((res) => {
                 resolve(res);
             })
         })
@@ -126,7 +126,7 @@ exports.default = App({
             userId: t.globalData.userInfo.userId
         }
         let p = new Promise((resolve, reject) => {
-            t.postRequest('removeOrder?' + t.jsonToParameters(params) , params).then((res) => {
+            t.postRequest('removeOrder?' + t.jsonToParameters(params), params).then((res) => {
                 resolve(res);
             })
         })
@@ -140,7 +140,7 @@ exports.default = App({
             time: time
         }
         let p = new Promise((resolve, reject) => {
-            t.postRequest('continuation?' + t.jsonToParameters(params) , params).then((res) => {
+            t.postRequest('continuation?' + t.jsonToParameters(params), params).then((res) => {
                 resolve(res);
             })
         })
@@ -160,7 +160,7 @@ exports.default = App({
         return p;
     },
     // 根据技师ID加载技师信息
-    employee(employeeId){
+    employee(employeeId) {
         const t = this;
         let params = {
             employeeId: employeeId
@@ -173,7 +173,7 @@ exports.default = App({
         return p;
     },
     // 评价
-    evaluation(params){
+    evaluation(params) {
         const t = this;
         // let params = {
         //     userId: t.globalData.userInfo.userId,
@@ -200,7 +200,7 @@ exports.default = App({
         return p;
     },
     // 加载客户对用户评价管理表
-    evaluations(){
+    evaluations() {
         const t = this;
         let p = new Promise((resolve, reject) => {
             t.getRequest('evaluations', {}).then((res) => {
@@ -210,7 +210,7 @@ exports.default = App({
         return p;
     },
     // 加载用户邀请奖励列表
-    invitationReward(){
+    invitationReward() {
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId
@@ -223,7 +223,7 @@ exports.default = App({
         return p;
     },
     // 我的订单状态记录
-    orderStatus(){
+    orderStatus() {
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId,
@@ -253,7 +253,7 @@ exports.default = App({
         return p;
     },
     // 会员充值记录
-    vipRechargeRecord(){
+    vipRechargeRecord() {
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId,
@@ -268,7 +268,7 @@ exports.default = App({
         return p;
     },
     // 会员充值活动信息
-    vipRecharge(){
+    vipRecharge() {
         const t = this;
         let p = new Promise((resolve, reject) => {
             t.getRequest('vipRecharge', {}).then((res) => {
@@ -278,7 +278,7 @@ exports.default = App({
         return p;
     },
     // 加载用户优惠卷列表
-    userCoupon(){
+    userCoupon() {
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId
@@ -291,14 +291,14 @@ exports.default = App({
         return p;
     },
     // 用户端首页当前订单
-    nowOrder(){
+    nowOrder() {
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId
         };
         let p = new Promise((resolve, reject) => {
             t.getRequest('nowOrder', params, true).then((res) => {
-                if (res.nowOrder){
+                if (res.nowOrder) {
                     t.globalData.nowOrder = res.nowOrder;
                 }
                 resolve(res);
@@ -307,7 +307,7 @@ exports.default = App({
         return p;
     },
     // 加载订单项目使用的优惠卷，及最优优惠卷
-    optimalCoupon(){
+    optimalCoupon() {
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId,
@@ -321,9 +321,9 @@ exports.default = App({
         })
         return p;
     },
-    
+
     // 我的预约列表
-    reservations(status, page, size){
+    reservations(status, page, size) {
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId,
@@ -333,25 +333,27 @@ exports.default = App({
         };
         let p = new Promise((resolve, reject) => {
             t.getRequest('reservations', params).then((res) => {
-              let nowDate = new Date();
-              let year= nowDate.getFullYear();
-              for (const v of res.records){
-                  v.imgs = v.imgs.split(',')[0];
-                let min = parseInt(v.createTime.split(":")[1]) + 5;
-                let tsArr = v.createTime.split(":");
-                tsArr[1] = min;
-                v.orderStartTime2 = year + "-" + tsArr.join(":")+":00";
-                console.log(v.createTime);
-                console.log(v.orderStartTime2);
-              }
-              resolve(res);
+                let nowDate = new Date();
+                let year = nowDate.getFullYear();
+                for (const v of res.records) {
+                    v.imgs = v.imgs.split(',')[0];
+                    let min = parseInt(v.createTime.split(":")[1]) + 5;
+                    let tsArr = v.createTime.split(":");
+                    tsArr[1] = min;
+                    v.orderStartTime2 = year + "-" + tsArr.join(":") + ":00";
+                    v.orderStartTime2 = v.orderStartTime2.replace(/-/g, "/");
+                    v.showJxzf = true;
+                    console.log(v.createTime);
+                    console.log(v.orderStartTime2); 
+                }
+                resolve(res);
             })
         })
         return p;
     },
-    
+
     // 加载我的项目拼团列表
-    assembleRecordByUser(){
+    assembleRecordByUser() {
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId,
@@ -389,7 +391,7 @@ exports.default = App({
         return p;
     },
     // 获取拼团信息
-    assembleRecordInfo(){
+    assembleRecordInfo() {
         const t = this;
         let params = {
             assembleId: wx.getStorageSync('assembleId')
@@ -402,7 +404,7 @@ exports.default = App({
         return p;
     },
     // 参团接口
-    joinGroup(){
+    joinGroup() {
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId,
@@ -416,9 +418,9 @@ exports.default = App({
         })
         return p;
     },
-    
+
     // 开团接口
-    createGroup(){
+    createGroup() {
         const t = this;
         let params = {
             userId: t.globalData.userInfo.userId,
@@ -434,12 +436,12 @@ exports.default = App({
         return p;
     },
     // 选择技师页面
-    selectTechnician(params){
+    selectTechnician(params) {
         const t = this;
         let p = new Promise((resolve, reject) => {
             // params.dateTime = '2019-09-18 09:30:00'
             t.getRequest('selectTechnician', params).then((res) => {
-                for(const v of res){
+                for (const v of res) {
                     v.imgs = v.imgs.split(',')[0]
                 }
                 resolve(res);
@@ -448,7 +450,7 @@ exports.default = App({
         return p;
     },
     // 获取用户专属技师
-    userTechnicians(params){
+    userTechnicians(params) {
         const t = this;
         let p = new Promise((resolve, reject) => {
             t.getRequest('userTechnicians', params).then((res) => {
@@ -467,9 +469,9 @@ exports.default = App({
         let p = new Promise((resolve, reject) => {
             t.getRequest('orderDetail', params).then((res) => {
                 let payObjList = [];
-                if (res.payType){
+                if (res.payType) {
                     let payTypeList = ['', '虚拟账户', '现金账户', '微信支付', '现金', '微信转账', '支付宝转账'];
-                    res.payType.split('-').forEach((v, i)=>{
+                    res.payType.split('-').forEach((v, i) => {
                         if (v) {
                             payObjList.push({
                                 payType: v,
@@ -479,16 +481,16 @@ exports.default = App({
                         }
                     })
                     res.payObjList = payObjList;
-                       
+
                 }
-                
+
                 if (res && res.orderItems) {
-                    
+
                     for (const v of res.orderItems) {
-                        if (v.itemImags){
+                        if (v.itemImags) {
                             v.itemImags = v.itemImags.split(',')[0]
                         }
-                        
+
                     }
                 }
                 resolve(res);
@@ -497,7 +499,7 @@ exports.default = App({
         return p;
     },
     // 订单商品下单接口
-    orderGoods(){
+    orderGoods() {
         const t = this;
         let data = [];
         for (const v of t.globalData.chooseGoods) {
@@ -520,15 +522,15 @@ exports.default = App({
         return p;
     },
     // 服务项目下单接口
-    order(){
+    order() {
         const t = this;
         let data = [];
-        for (const v of t.globalData.chooseProject){
+        for (const v of t.globalData.chooseProject) {
             data.push({
                 itemId: v.id,
                 orderStartTime: t.globalData.chooseStore.appointTime,
                 orderTime: v.defaultDuration,
-                technicianIds: v.technicianChoose.map((res)=>{
+                technicianIds: v.technicianChoose.map((res) => {
                     return res.id
                 })
             })
@@ -550,7 +552,7 @@ exports.default = App({
         const t = this;
         let params = {
             orderId: t.globalData.orderDetail.id,
-          couponRecordId: (t.globalData.chooseCoupon == null || t.globalData.chooseCoupon.recordId==undefined)?'':t.globalData.chooseCoupon.recordId,
+            couponRecordId: (t.globalData.chooseCoupon == null || t.globalData.chooseCoupon.recordId == undefined) ? '' : t.globalData.chooseCoupon.recordId,
             type: type
         }
         let p = new Promise((resolve, reject) => {
@@ -561,7 +563,7 @@ exports.default = App({
         return p;
     },
     // 商品订单服务支付接口
-    articleOrderPay(type){
+    articleOrderPay(type) {
         const t = this;
         let params = {
             articleOrderId: t.globalData.orderDetail.id,
@@ -607,8 +609,8 @@ exports.default = App({
                     wx.showToast({
                         title: '支付成功'
                     });
-                    setTimeout(()=>{
-                        resolve();    
+                    setTimeout(() => {
+                        resolve();
                     }, 1000)
                     resolve();
                     // setTimeout(function () {
@@ -631,11 +633,11 @@ exports.default = App({
             });
         })
         return p;
-        
+
     },
-    
+
     // 根据项目ID获得项目详情
-    getItem(itemId){
+    getItem(itemId) {
         const t = this;
         let params = {
             itemId: itemId
@@ -664,7 +666,7 @@ exports.default = App({
         return p;
     },
     // 用户端加载所有周边门店
-    stores(){
+    stores() {
         const t = this;
         let params = {
             x: t.globalData.x,
@@ -685,7 +687,7 @@ exports.default = App({
         return p;
     },
     // 编辑用户信息
-    user(params){
+    user(params) {
         const t = this;
         let _params = t.jsonToParameters(params);
         let p = new Promise((resolve, reject) => {
@@ -699,29 +701,29 @@ exports.default = App({
     upload(Base64) {
         const t = this;
         let p = new Promise((resolve, reject) => {
-            t.postRequest('common/v1/file/upload?suffix=jpg&dir=images', Base64, 'spe').then((res)=>{
+            t.postRequest('common/v1/file/upload?suffix=jpg&dir=images', Base64, 'spe').then((res) => {
                 resolve(res)
             })
         })
         return p;
     },
-    
+
     onLaunch: function onLaunch() {
         _system2.default.attachInfo();
-        
+
     },
     onShow: function onShow() { },
     onHide: function onHide() { },
     getRequest: function getRequest(url, params, noNeedLoading) {
         var t = this;
-        if (!noNeedLoading){
+        if (!noNeedLoading) {
             wx.showLoading({
                 title: '加载中'
             });
         }
         var _url = t.globalData.u + url;
         var p = new Promise(function (resolve, reject) {
-            let _do = ()=>{
+            let _do = () => {
                 wx.request({
                     url: _url,
                     data: params,
@@ -751,15 +753,15 @@ exports.default = App({
                     complete: function complete() { }
                 });
             }
-            if (params.hasOwnProperty('userId') && url !='userInfo'){
-                t.userInfo().then(()=>{
+            if (params.hasOwnProperty('userId') && url != 'userInfo') {
+                t.userInfo().then(() => {
                     params.userId = t.globalData.userInfo.userId;
                     _do();
                 })
-            }else{
+            } else {
                 _do();
             }
-            
+
         });
         return p;
     },
@@ -769,9 +771,9 @@ exports.default = App({
             title: '加载中'
         });
         let _url = '';
-        if(type && type == 'spe'){
+        if (type && type == 'spe') {
             _url = t.globalData.u_s + url
-        }else{
+        } else {
             _url = t.globalData.u + url
         }
         var p = new Promise(function (resolve, reject) {
@@ -809,15 +811,15 @@ exports.default = App({
                 t.userInfo().then(() => {
                     _do()
                 })
-            }else{
+            } else {
                 _do()
             }
-            
-            
+
+
         });
         return p;
     },
-    userLogin(){
+    userLogin() {
         const t = this;
         let params = {
             code: t.globalData.code,
@@ -826,36 +828,36 @@ exports.default = App({
             friendUserId: wx.getStorageSync('friendUserId')
         }
         console.log(JSON.stringify(params))
-        t.postRequest('userLogin', params).then((res)=>{
+        t.postRequest('userLogin', params).then((res) => {
             res.userId = res.id;
             t.globalData.userInfo = Object.assign(t.globalData.userInfo, res)
             t.globalData.userInfo.account = t.globalData.userInfo.virtualAccount + t.globalData.userInfo.savingsAccount;
             wx.setStorageSync('openId', res.openId)
             wx.setStorageSync('friendUserId', '')
             wx.navigateBack({
-                
+
             })
         })
     },
     // 获取用户信息
-    userInfo(reload){
+    userInfo(reload) {
         const t = this;
         var p = new Promise(function (resolve, reject) {
             let openId = wx.getStorageSync('openId');
-            if (!openId){
+            if (!openId) {
                 wx.navigateTo({
                     url: '../index/wxdl',
                 })
                 return;
             }
-            if (t.globalData.userInfo.userId && !reload){
+            if (t.globalData.userInfo.userId && !reload) {
                 resolve();
                 return
             }
             let params = {
                 openId: openId
             }
-            t.geWxtUserInfo().then(()=>{
+            t.geWxtUserInfo().then(() => {
                 t.getRequest('userInfo', params).then((res) => {
                     res.userId = res.id;
                     t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
@@ -887,8 +889,8 @@ exports.default = App({
         });
         return p;
     },
-    
-    getLoaction(){
+
+    getLoaction() {
         const t = this;
         let p = new Promise((resolve, reject) => {
             wx.getLocation({
@@ -906,9 +908,9 @@ exports.default = App({
         return p;
     },
     // 获取服务分类
-    itemClass(){
+    itemClass() {
         const t = this;
-        let p = new Promise((resolve, reject)=>{
+        let p = new Promise((resolve, reject) => {
             t.getRequest('itemClass', {}).then((res) => {
                 t.globalData.itemClassList = res;
                 resolve(res);
@@ -917,7 +919,7 @@ exports.default = App({
         return p;
     },
     // 获取首页数据
-    index(){
+    index() {
         const t = this;
         let p = new Promise((resolve, reject) => {
             let params = {
@@ -946,22 +948,22 @@ exports.default = App({
         const t = this;
         let p = new Promise((resolve, reject) => {
             t.getRequest('items', params).then((res) => {
-                for (const v of res.records){
-                    v.pricePerMinute = (v.defaultPrice  / v.defaultDuration).toFixed(0);
+                for (const v of res.records) {
+                    v.pricePerMinute = (v.defaultPrice / v.defaultDuration).toFixed(0);
                 }
                 resolve(res);
             })
         })
         return p;
     },
-    jsonToParameters(parmas){
+    jsonToParameters(parmas) {
         let _parmas = Object.keys(parmas).map(function (key) {
             // body...
             return encodeURIComponent(key) + "=" + encodeURIComponent(parmas[key]);
         }).join("&");
         return _parmas;
     },
-    get_tomorrow_data(){
+    get_tomorrow_data() {
         //昨天的时间
         var day1 = new Date();
         day1.setTime(day1.getTime() - 24 * 60 * 60 * 1000);

@@ -24,11 +24,11 @@
                         <view class="ui-col-content align-right" style='padding-top: 130rpx;'>
                             <view class="btns btns-2">{{item.status==7?tabs[item.status-2]:tabs[item.status-1]}}</view>
                             <view class="font0" wx:if='{{item.orderStartTime && item.status==1}}'>
-                                <ui-count-down class="inline" doneText='0s' time="{{item.orderStartTime2}}" number-style="{{numberStyle}}" format="{%h}:{%m}:{%s}" _pid="{{_pid}}"></ui-count-down>
+                                <ui-count-down data-index='{{index}}' class="inline" bindtimeup="timeUp" doneText='0s' time="{{item.orderStartTime2}}" number-style="{{numberStyle}}" format="{%h}:{%m}:{%s}" _pid="{{_pid}}"></ui-count-down>
                                 后自动取消
                             </view>
                             <view class="top5">
-                                <view catchtap='pay' class="btns btns-green-bor  btns-smaller" data-outtradeno='{{item.outTradeNo}}' wx:if='{{item.status==1}}'>继续支付</view>
+                                <view catchtap='pay' class="btns btns-green-bor  btns-smaller" data-outtradeno='{{item.outTradeNo}}' wx:if='{{item.status==1 && item.showJxzf}}'>继续支付</view>
                                 <view catchtap='removeOrder' data-outtradeno='{{item.outTradeNo}}' class="btns btns-green-bor btns-smaller left10" wx:if='{{item.status==2 || item.status==1}}'>取消订单</view>
                             </view>
                         </view>

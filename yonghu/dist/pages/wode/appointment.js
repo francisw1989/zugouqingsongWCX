@@ -19,6 +19,14 @@ exports.default = Page({
         size: 10,
         total: 0
     },
+    timeUp(e){
+        console.log(e)
+        const t = this;
+        t.data.list[e.currentTarget.dataset.index].showJxzf = false;
+        t.setData({
+            list: t.data.list
+        })
+    },
     gotoDetail(e){
         const t = this;
         wx.navigateTo({
