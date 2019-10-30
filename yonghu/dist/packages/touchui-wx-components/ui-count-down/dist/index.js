@@ -149,11 +149,11 @@ exports.default = Component({
             diffSecond = diffSecond % (60 * 60);
           }
           if (_this2.data.minute) {
-            _this2.data.minute.value = Math.floor(diffSecond / 60);
+              _this2.data.minute.value = Math.floor(diffSecond / 60) < 10 ? '0' + Math.floor(diffSecond / 60) : Math.floor(diffSecond / 60);
             diffSecond = diffSecond % 60;
           }
           if (_this2.data.second) {
-            _this2.data.second.value = Math.floor(diffSecond);
+              _this2.data.second.value = Math.floor(diffSecond) < 10 ? '0' + Math.floor(diffSecond) : Math.floor(diffSecond);
           }
           _this2.setData({
             itemArray: _this2.data.itemArray
