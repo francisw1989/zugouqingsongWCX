@@ -154,12 +154,14 @@ exports.default = Page({
         // 2.余额 > 0且小于订单总价时，选择账户支付 同时必须选择微信支付   
         // 3.余额 >= 订单总价时  选择了余额支付  则不可以选择微信支付。
         app.globalData.chooseCoupon = ''
+
         // app.globalData.userInfo.totalAccount = 300;
         // app.globalData.orderDetail.totalPrice = 200;
         t.setData({
             pageFrom: opt.pageFrom,
             D: app.globalData.orderDetail,
-            U: app.globalData.userInfo
+            U: app.globalData.userInfo,
+            count: opt.count
         })
         if (app.globalData.orderDetail.isCoupon == 1 || app.globalData.orderDetail.isAssemble == 1){
           t.setData({

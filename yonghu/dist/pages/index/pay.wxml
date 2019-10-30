@@ -1,7 +1,9 @@
 <view class="col333" style="min-height: 100%; background-color:#F3F3F3; padding-bottom: 100rpx;">
     <view class="pad20 center bgfff">
         <text class=" font2">支付剩余时间：</text>
-        <ui-count-down class="inline" timetype="second" time="300" format="{%m}:{%s}" number-style="{{numberStyle}}" _pid="{{_pid}}" bindtimeup="bindtimeup">
+        <ui-count-down wx:if="{{!count}}" class="inline" timetype="second" time="300" format="{%m}:{%s}" number-style="{{numberStyle}}" _pid="{{_pid}}" bindtimeup="bindtimeup">
+        </ui-count-down>
+        <ui-count-down wx:if="{{count}}" class="inline" time="{{count}}" format="{%m}:{%s}" number-style="{{numberStyle}}" _pid="{{_pid}}" bindtimeup="bindtimeup">
         </ui-count-down>
     </view>
     <view wx:if="{{pageFrom!='goods'}}">

@@ -40,7 +40,7 @@ exports.default = Page({
         app.orderDetail().then((res)=>{
             app.globalData.orderDetail = res;
             wx.navigateTo({
-                url: '../index/pay',
+                url: '../index/pay?count=' + e.currentTarget.dataset.count,
             })
         })
     },

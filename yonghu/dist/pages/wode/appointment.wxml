@@ -28,7 +28,7 @@
                                 后自动取消
                             </view>
                             <view class="top5">
-                                <view catchtap='pay' class="btns btns-green-bor  btns-smaller" data-outtradeno='{{item.outTradeNo}}' wx:if='{{item.status==1 && item.showJxzf}}'>继续支付</view>
+                                <view catchtap='pay' class="btns btns-green-bor  btns-smaller" data-count='{{item.orderStartTime2}}' data-outtradeno='{{item.outTradeNo}}' wx:if='{{item.status==1 && item.showJxzf}}'>继续支付</view>
                                 <view catchtap='removeOrder' data-outtradeno='{{item.outTradeNo}}' class="btns btns-green-bor btns-smaller left10" wx:if='{{item.status==2 || item.status==1}}'>取消订单</view>
                             </view>
                         </view>
