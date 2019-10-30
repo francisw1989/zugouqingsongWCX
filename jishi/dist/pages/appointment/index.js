@@ -103,11 +103,14 @@ exports.default = Page({
     },
     onShow() {
         const t = this;
-        t.setData({
-            userInfo: app.globalData.userInfo
-        })
-        t.initData();
-        
+        if (wx.getStorageSync('openId')) {
+            app.userInfo().then(() => {
+                t.setData({
+                    userInfo: app.globalData.userInfo
+                })
+                t.initData();
+            })
+        }
     },
     //获取数据
     initData(){

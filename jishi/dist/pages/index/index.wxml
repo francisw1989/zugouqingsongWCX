@@ -3,7 +3,8 @@
     <view class="relative">
         <image src="../../static/images/1-{{leve}}.png" mode="top" style="width: 100%; height: 200rpx;" />
         <view class="abCover clearfix center">
-            <view class="center colfff font2 top30">{{name}}</view>
+            <view class="center colfff font2 top30" wx:if="{{name}}">{{name}}</view>
+            <view  class="center colfff font2 top30" wx:if="{{!name}}"><navigator class='inline' url='wxdl'>请登录</navigator></view>
             <view class="inInf">
                 <image src="../../static/images/2.png" class="icoAll" style="width: 27rpx; height: 32rpx;" />
                 <text class="col333 verMid font0 left10">今日考勤提醒：</text>
@@ -16,15 +17,15 @@
     <view class="center top30">
         <navigator url='fwrc' class="inBox1 clearfix">
             <view class="colfff top8">今日服务人次</view>
-            <view class="font5 colfff">{{employeeIndex.employee.todayServices}}</view>
+            <view class="font5 colfff">{{employeeIndex.employee.todayServices || 0}}</view>
         </navigator>
         <navigator url='jrsy' class="inBox1 inBox2 left20">
             <view class="colfff top8">今日收益</view>
-            <view class="font5 colfff">{{employeeIndex.employee.todayIncome/100}}</view>
+            <view class="font5 colfff">{{employeeIndex.employee.todayIncome/100 || 0}}</view>
         </navigator>
         <navigator url='pj' class="inBox1 inBox3 left20">
             <view class="colfff top8">收到好评</view>
-            <view class="font5 colfff">{{employeeIndex.employee.todayPraise}}</view>
+            <view class="font5 colfff">{{employeeIndex.employee.todayPraise || 0}}</view>
         </navigator>
     </view>
     <view class="footerBox" style="bottom: 10rpx">

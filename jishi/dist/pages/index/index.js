@@ -29,14 +29,8 @@ exports.default = Page({
             color: app.globalData.color
         });
     },
-    onShow() {
-        var t = this;
-        app.userInfo().then(() => {
-            t.setData({
-                userInfo: app.globalData.userInfo
-            })
-        })
-
+    getemployeeIndex(){
+        const t = this;
         //获取首页技师收益等统计
         let params = {
             employeeId: app.globalData.userInfo.userId
@@ -58,6 +52,20 @@ exports.default = Page({
             t.setting();
             t.employeeIndex();
         });
+    },
+    onShow() {
+        var t = this;
+        if (wx.getStorageSync('openId')){
+            app.userInfo().then(() => {
+                t.setData({
+                    userInfo: app.globalData.userInfo
+                })
+                t.getemployeeIndex();
+            })
+        }
+        
+
+        
     },
     //开始服务
     employeeStartServie(e) {

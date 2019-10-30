@@ -6,8 +6,10 @@
                 <image src="../../static/images/4.png" class="img icoAll" />
             </view>
         </view>
-        <view class="top10 font2">{{userInfo.employeeName}}</view>
-        <view class="top5">{{name}} </view>
+        <view class="top10 font2" wx:if="{{userInfo.employeeName}}">{{userInfo.employeeName}}</view>
+        <navigator url='../index/wxdl' class="top10 font2" wx:if="{{!userInfo.employeeName}}">登录</navigator>
+
+        <view class="top5" wx:if="{{userInfo.employeeName}}">{{name}} </view>
 
     </view>
     <view class="bgfff clearfix">

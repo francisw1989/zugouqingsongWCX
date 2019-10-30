@@ -42,11 +42,15 @@
         <image src='../../static/images/9.png' class='inline' style='width: 60rpx; height: 60rpx; opacity: 0.4; filter: grayscale(100%);'></image>
         <view class='col999'>暂无数据</view>
     </view>
+    
     <ui-popup show="{{menuShow}}" position='right'  _pid="{{_pid}}" width='100px'>
         <view wx:for="{{statusList}}" class='pad10' bindtap='choose' data-key='{{item.key}}' wx:if="{{item.isShow}}">
             {{item.value}}
         </view>
     </ui-popup>
    
+</view>
+<view class='pad20 top40' wx:if="{{!userInfo}}" >
+    <navigator url='../index/wxdl'  class="btns btns-biggest btns-green ">请先登录</navigator>
 </view>
 

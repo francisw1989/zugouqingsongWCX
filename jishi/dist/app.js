@@ -44,34 +44,45 @@ exports.default = App({
         }
         var _url = t.globalData.u + url;
         var p = new Promise(function (resolve, reject) {
-            wx.request({
-                url: _url,
-                data: params,
-                method: 'get',
-                header: {
-                    'Content-Type': 'application/json'
-                },
-                dataType: 'json',
-                success: function success(res) {
-                    wx.hideLoading();
-                    if (res.data && res.data.msg) {
-                        wx.showModal({
-                            content: res.data.msg
-                        });
-                        return
-                    }
-                    resolve(res.data);
+            let _do = () => {
+                wx.request({
+                    url: _url,
+                    data: params,
+                    method: 'get',
+                    header: {
+                        'Content-Type': 'application/json'
+                    },
+                    dataType: 'json',
+                    success: function success(res) {
+                        wx.hideLoading();
+                        if (res.data && res.data.msg) {
+                            wx.showModal({
+                                content: res.data.msg
+                            });
+                            return
+                        }
+                        resolve(res.data);
 
-                },
-                fail: function fail(res) {
-                    wx.hideLoading();
-                    wx.showModal({
-                        content: JSON.stringify(res)
-                    });
-                    reject();
-                },
-                complete: function complete() { }
-            });
+                    },
+                    fail: function fail(res) {
+                        wx.hideLoading();
+                        wx.showModal({
+                            content: JSON.stringify(res)
+                        });
+                        reject();
+                    },
+                    complete: function complete() { }
+                });
+            }
+            if (params.hasOwnProperty('employeeId') && url != 'userInfo') {
+                t.userInfo().then(() => {
+                    params.employeeId = t.globalData.userInfo.userId;
+                    _do();
+                })
+            } else {
+                _do();
+            }
+
         });
         return p;
     },
@@ -86,35 +97,47 @@ exports.default = App({
         } else {
             _url = t.globalData.u + url
         }
+
         var p = new Promise(function (resolve, reject) {
-            wx.request({
-                url: _url,
-                data: params,
-                method: 'POST',
-                header: {
-                    // 'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
-                    'Content-Type': 'application/json'
-                },
-                dataType: 'json',
-                success: function success(res) {
-                    wx.hideLoading();
-                    if (res.data && res.data.msg) {
+            let _do = () => {
+                wx.request({
+                    url: _url,
+                    data: params,
+                    method: 'POST',
+                    header: {
+                        // 'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                        'Content-Type': 'application/json'
+                    },
+                    dataType: 'json',
+                    success: function success(res) {
+                        wx.hideLoading();
+                        if (res.data && res.data.msg) {
+                            wx.showModal({
+                                content: res.data.msg
+                            });
+                            return
+                        }
+                        resolve(res.data)
+                    },
+                    fail: function fail(res) {
+                        wx.hideLoading();
                         wx.showModal({
-                            content: res.data.msg
+                            content: JSON.stringify(res)
                         });
-                        return
-                    }
-                    resolve(res.data)
-                },
-                fail: function fail(res) {
-                    wx.hideLoading();
-                    wx.showModal({
-                        content: JSON.stringify(res)
-                    });
-                    reject(res);
-                },
-                complete: function complete() { }
-            });
+                        reject(res);
+                    },
+                    complete: function complete() { }
+                });
+            }
+            if (url != 'employeeLogin') {
+                t.userInfo().then(() => {
+                    _do()
+                })
+            } else {
+                _do()
+            }
+
+
         });
         return p;
     },
@@ -127,7 +150,6 @@ exports.default = App({
     },
     userLogin() {
         const t = this;
-        console.l
         let params = {
             code: t.globalData.code,
             phone: t.globalData.phone,
@@ -146,7 +168,6 @@ exports.default = App({
     },
     userInfo(reload) {
         const t = this;
-        console.log(t);
         var p = new Promise(function (resolve, reject) {
             let openId = wx.getStorageSync('openId');
 
