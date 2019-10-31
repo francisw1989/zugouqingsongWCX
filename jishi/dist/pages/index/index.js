@@ -33,6 +33,7 @@ exports.default = Page({
         //获取首页技师收益等统计
         let params = {
             employeeId: app.globalData.userInfo.id
+            // employeeId: 16
         }
         app.employeeIndex(params).then((res) => {
             // const t = this;

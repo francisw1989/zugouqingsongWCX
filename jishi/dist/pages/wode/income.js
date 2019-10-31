@@ -51,6 +51,13 @@ Page({
     initMap1(){
         const t = this;
         console.log(t.data.incomeData)
+        var disabled=false;
+        var max = Math.max.apply(null, t.data.incomeData.record);
+        console.log(max);
+        if(max==0){
+            max=0.1;
+            disabled=true;
+        }
         lineChart1 = new wxCharts({
             enableScroll: true,
             canvasId: 'lineCanvas1',
@@ -76,7 +83,9 @@ Page({
                 // format: function (val) {
                 //     return val.toFixed(2);
                 // },
-                // min: 0
+                min: 0,
+                max:max,
+                disabled: disabled
             },
             width: t.data.width-40,
             height: 200,
@@ -109,6 +118,13 @@ Page({
     },
     initMap2() {
         const t = this;
+        var disabled=false;
+        var max = Math.max.apply(null, t.data.serviceData.record);
+        console.log(max);
+        if(max==0){
+            max=0.1;
+            disabled=true;
+        }
         lineChart2 = new wxCharts({
             enableScroll: true,
             canvasId: 'lineCanvas2',
@@ -134,7 +150,9 @@ Page({
                 // format: function (val) {
                 //     return val.toFixed(2);
                 // },
-                // min: 0
+                min: 0,
+                max:max,
+                disabled: disabled
             },
             width: t.data.width - 40,
             height: 200,
@@ -167,6 +185,13 @@ Page({
     },
     initMap3() {
         const t = this;
+        var disabled=false;
+        var max = Math.max.apply(null, t.data.goodsData.record);
+        console.log(max);
+        if(max==0){
+            max=0.1;
+            disabled=true;
+        }
         lineChart3 = new wxCharts({
             enableScroll: true,
             canvasId: 'lineCanvas3',
@@ -192,7 +217,9 @@ Page({
                 // format: function (val) {
                 //     return val.toFixed(2);
                 // },
-                // min: 0
+                min: 0,
+                max:max,
+                disabled: disabled
             },
             width: t.data.width - 40,
             height: 200,
