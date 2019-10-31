@@ -28,7 +28,12 @@
         <view style="width: 594rpx; margin: 0 auto;">
             <view class="colfff" style="padding: 20rpx 0; border-bottom: 1px solid #fff;" wx:if='{{invitationRewardList.length}}' wx:for='{{invitationRewardList}}'>
                 <view>{{item.receivingTime}}</view>
-                <view>好友（{{item.inviteeName}}）已注册，赠送您{{item.coupon.couponDenomination}}元优惠券！</view>
+                <view>
+                好友（{{item.inviteeName}}）注册，赠送您
+                  <text wx:if="{{item.score!='' && item.score!=null}}">{{item.score}}积分,</text>
+                  <text wx:if="{{item.amount!='' && item.amount!=null}}">{{item.amount/100}}元,</text>
+                  <text wx:if="{{item.couponIds!='' && item.couponIds!=null}}">及优惠券!</text>
+                </view>
             </view>
 
 
