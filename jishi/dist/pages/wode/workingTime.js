@@ -131,11 +131,11 @@ exports.default = Page({
     const index = t.data.dateday-1;
     console.log(t.data.workingdays);
     let workInfo = {
-      shiftsName:t.data.workingdays[index].shiftsName,
-      startTime:t.data.workingdays[index].startTime,
-      endTime:t.data.workingdays[index].endTime,
-      checkInTime:t.data.workingdays[index].checkInTime,
-      checkOutTime:t.data.workingdays[index].checkInTime
+        shiftsName: t.data.workingdays[index]?t.data.workingdays[index].shiftsName:'',
+        startTime: t.data.workingdays[index]?t.data.workingdays[index].startTime:'',
+        endTime: t.data.workingdays[index]?t.data.workingdays[index].endTime: '',
+        checkInTime: t.data.workingdays[index]?t.data.workingdays[index].checkInTime: '',
+        checkOutTime: t.data.workingdays[index]?t.data.workingdays[index].checkInTime: ''
     }
     t.setData({
       workInfo: workInfo
