@@ -21,7 +21,6 @@ exports.default = Page({
     },
     setting: function setting() {
         var t = this;
-        console.log(t.data.employeeIndex.nowSign);
         t.setData({
             leve: app.globalData.grade,
             nowSignText: t.data.nowSigns[t.data.employeeIndex.nowSign],
@@ -34,30 +33,28 @@ exports.default = Page({
         app.userInfo().then(() => {
             t.setData({
                 userInfo: app.globalData.userInfo
-            })
-        })
-
-        //获取首页技师收益等统计
-        let params = {
-            employeeId: app.globalData.userInfo.userId
-        }
-        app.employeeIndex(params).then((res) => {
-            // const t = this;
-            console.log(res);
-            //处理订单信息的倒计时数据
-            let newRes = res.nowOrder.filter((element, index) => {
-                if (element.status == 2) { //已支付待到店状态，计算出倒计时秒数
-                    element.countdown = t.getDifferDate(new Date(), element.orderStartTime, 4);
-                }
             });
 
+          //获取首页技师收益等统计
+          let params = {
+            employeeId: app.globalData.userInfo.id
+          }
+          app.employeeIndex(params).then((res) => {
+            //处理订单信息的倒计时数据
+            try {
+              let newRes = res.nowOrder.filter((element, index) => {
+                if (element.status == 2) { //已支付待到店状态，计算出倒计时秒数
+                  element.countdown = t.getDifferDate(new Date(), element.orderStartTime, 4);
+                }
+              });
+            } catch (e) { }
             t.setData({
-                employeeIndex: res
+              employeeIndex: res
             })
-            console.log(t.data);
             t.setting();
             t.employeeIndex();
-        });
+          });
+        })
     },
     //开始服务
     employeeStartServie(e) {
@@ -65,7 +62,7 @@ exports.default = Page({
         let orderItemId = e.currentTarget.dataset.orderitemid;
         console.log(orderItemId);
         let params = {
-            employeeId: app.globalData.userInfo.userId,
+            employeeId: app.globalData.userInfo.id,
             orderItemId: orderItemId
         }
         app.employeeStartServie(params).then(() => {
@@ -85,7 +82,7 @@ exports.default = Page({
         let orderItemId = e.currentTarget.dataset.orderitemid;
         console.log(orderItemId);
         let params = {
-            employeeId: app.globalData.userInfo.userId,
+            employeeId: app.globalData.userInfo.id,
             orderItemId: orderItemId
         }
         app.employeeEndServie(params).then((res) => {
@@ -104,7 +101,7 @@ exports.default = Page({
     employeePunch(e) {
         const t = this;
         let params = {
-            employeeId: app.globalData.userInfo.userId
+            employeeId: app.globalData.userInfo.id
         }
         app.employeePunch(params).then(() => {
             wx.showToast({
@@ -131,7 +128,7 @@ exports.default = Page({
         var t = this;
         console.log(e.currentTarget.dataset.userid);
         wx.navigateTo({
-            url: 'tag?userId=' + e.currentTarget.dataset.userid + "&employeeId=" + app.globalData.userInfo.userId + "&orderId=" + e.currentTarget.dataset.orderid + "&orderItemId=" + e.currentTarget.dataset.orderitemid
+            url: 'tag?userId=' + e.currentTarget.dataset.userid + "&employeeId=" + app.globalData.userInfo.id + "&orderId=" + e.currentTarget.dataset.orderid + "&orderItemId=" + e.currentTarget.dataset.orderitemid
         })
     },
     //获取与毫秒数的转化比例（相差天数：1，相差小时数：2，相差分钟数：3，相差秒数：4）
@@ -174,11 +171,11 @@ exports.default = Page({
         // console.log(vm);
         t.data.interval = setInterval(function() {
             let params = {
-                employeeId: app.globalData.userInfo.userId
+                employeeId: app.globalData.userInfo.id
             }
             //获取首页技师收益等统计
             app.employeeIndex(params).then((res) => {
-                console.log(res);
+             
                 //处理订单信息的倒计时数据
                 let newRes = res.nowOrder.filter((element, index) => {
                     if (element.status == 2) { //已支付待到店状态，计算出倒计时秒数

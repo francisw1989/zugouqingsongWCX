@@ -136,7 +136,7 @@ exports.default = Page({
   employeeSchedule:function employeeSchedule(){
     const t = this;
     let params = {
-      employeeId:app.globalData.userInfo.userId,
+      employeeId:app.globalData.userInfo.id,
       monthDate:t.data.dateyear+"-"+t.data.datemonth
     }
     app.employeeSchedule(params).then((res)=>{

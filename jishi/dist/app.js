@@ -134,8 +134,9 @@ exports.default = App({
             userInfo: t.globalData.userInfo
         }
         t.postRequest('employeeLogin', params).then((res) => {
-            console.log(res);
+         
             t.globalData.userInfo = Object.assign(t.globalData.userInfo, res)
+            
             console.log(t.globalData.userInfo)
             console.log(res.openId)
             wx.setStorageSync('openId', res.openId)
@@ -156,7 +157,7 @@ exports.default = App({
                 })
                 return;
             }
-            if (t.globalData.userInfo.userId && !reload){
+            if (t.globalData.userInfo.id && !reload){
                 resolve();
                 return
             }
@@ -167,8 +168,6 @@ exports.default = App({
 
             t.geWxtUserInfo().then(()=>{
                 t.getRequest('employeeInfo', params).then((res) => {
-                    // res.userId = res.id;
-                    res.userId = 12;
                     t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
                     console.log(t.globalData.userInfo)
                     resolve();
@@ -253,13 +252,7 @@ exports.default = App({
     //首页技师信息
     employeeIndex: function employeeIndex(obj){
         const t = this;
-        // let userInfo = t.globalData.userInfo;
-        // let userId = userInfo.userInfo;
-        // console.log(userInfo);
-        // console.log(userId);
-        // let params = {
-        //     employeeId: t.globalData.userInfo.userId  
-        // }
+       
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeIndex', obj,false).then((res) => {
                 resolve(res);
@@ -272,7 +265,7 @@ exports.default = App({
         const t = this;
         console.log(t.globalData.userInfo);
         let params = {
-            employeeId: t.globalData.userInfo.userId
+            employeeId: t.globalData.userInfo.id
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeTodyService', params).then((res) => {
@@ -286,7 +279,7 @@ exports.default = App({
         const t = this;
         console.log(t.globalData.userInfo);
         let params = {
-            employeeId: t.globalData.userInfo.userId
+            employeeId: t.globalData.userInfo.id
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeTodyIncome', params).then((res) => {
@@ -299,7 +292,7 @@ exports.default = App({
     employeePunch:function employeePunch(){
         const t = this;
         let params = {
-            employeeId: t.globalData.userInfo.userId
+            employeeId: t.globalData.userInfo.id
         }
         let p = new Promise((resolve, reject) => {
             t.postRequest('employeePunch?'+t.jsonToParameters(params), {}).then((res) => {
@@ -353,7 +346,7 @@ exports.default = App({
     //我的考勤
     employeeAttendance:function employeeAttendance(obj){
         const t = this;
-        let employeeId = t.globalData.userInfo.userId;
+        let employeeId = t.globalData.userInfo.id;
         let params = {
             monthDate:obj.monthDate
         }
@@ -367,7 +360,7 @@ exports.default = App({
     //排班信息
     employeeSchedule:function employeeSchedule(obj){
         const t = this;
-        let employeeId = t.globalData.userInfo.userId;
+        let employeeId = t.globalData.userInfo.id;
         let params = {
             monthDate:obj.monthDate
         }
@@ -413,7 +406,7 @@ exports.default = App({
     employeeMentor:function employeeMentor(obj){
         const t = this;
         let params = {
-            employeeId: t.globalData.userInfo.userId
+            employeeId: t.globalData.userInfo.id
         }
         let p = new Promise((resolve, reject) => {
             t.getRequest('employeeMentor', params).then((res) => {

@@ -243,7 +243,7 @@ Page({
     employeeStatistics:function(){
         const t = this;
         let params = {
-            employeeId: app.globalData.userInfo.userId,
+            employeeId: app.globalData.userInfo.id,
             type:t.data.current+1//类别（0本周1本月2本年）
         }
         //

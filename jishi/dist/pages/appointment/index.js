@@ -113,7 +113,7 @@ exports.default = Page({
     initData(){
         const t = this;
         let params = {
-                employeeId: app.globalData.userInfo.userId,
+                employeeId: app.globalData.userInfo.id,
                 range:t.data.choosedRange,//1历史2今天3明天
                 page:t.data.page,
                 size:t.data.size,

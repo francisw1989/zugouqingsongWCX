@@ -26,7 +26,7 @@ exports.default = Page({
         const t = this;
         let params = {
             orderId: t.data.orderId,
-            employeeId:app.globalData.userInfo.userId
+            employeeId:app.globalData.userInfo.id
         }
         app.orderInfo(params).then((res)=>{
             //处理用户标签数据
@@ -52,7 +52,7 @@ exports.default = Page({
     addTag(e){
         var t = this;
         wx.navigateTo({
-            url: '../index/tag?userId=' + e.currentTarget.dataset.userid + "&employeeId="+app.globalData.userInfo.userId+"&orderId="+e.currentTarget.dataset.orderid+"&orderItemId="+e.currentTarget.dataset.orderitemid
+            url: '../index/tag?userId=' + e.currentTarget.dataset.userid + "&employeeId="+app.globalData.userInfo.id+"&orderId="+e.currentTarget.dataset.orderid+"&orderItemId="+e.currentTarget.dataset.orderitemid
         })
     },
     /**
@@ -72,7 +72,7 @@ exports.default = Page({
         let orderItemId = e.currentTarget.dataset.orderitemid;
         console.log(orderItemId);
         let params = {
-           employeeId: app.globalData.userInfo.userId,
+           employeeId: app.globalData.userInfo.id,
            orderItemId:orderItemId
        }
         app.employeeStartServie(params).then(()=>{
@@ -92,7 +92,7 @@ exports.default = Page({
     employeeEndServie:function(e){
         const t = this;
         let params = {
-            employeeId: app.globalData.userInfo.userId,
+            employeeId: app.globalData.userInfo.id,
             orderItemId:t.data.detail.orderItems[0].id
         }
         app.employeeEndServie(params).then((res)=>{
