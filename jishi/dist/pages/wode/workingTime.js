@@ -33,6 +33,7 @@ exports.default = Page({
 
   // 滑动时变化
   monthChangeHandler: function monthChangeHandler(val) {
+    // console.log(3);
     const t = this;
     console.log(val)
     var e = val.detail;
@@ -48,6 +49,7 @@ exports.default = Page({
     t.setData({
       workInfo: workInfo
     });
+    t.employeeAttendance();
   },
   bindselectedstart: function bindselectedstart(val) {
     
@@ -59,6 +61,7 @@ exports.default = Page({
     console.log(e);
   },
   nextchange: function nextchange() {
+    // console.log(1);
     // 结束时间范围的时间戳
     var endrange = Date.parse(new Date(this.data.monthrange[1]));
 
@@ -82,6 +85,7 @@ exports.default = Page({
     }
   },
   prevchange: function prevchange() {
+    // console.log(2);
     // let date = new Date(this.dateobj.date)
     // 开始时间范围的时间戳
     var startrange = Date.parse(new Date(this.data.monthrange[0]));
@@ -150,7 +154,7 @@ exports.default = Page({
       dateyear: this.data.dateobj.arr[0],
       datemonth: this.data.dateobj.arr[1]
     });
-    t.employeeAttendance();
+    
   },
   onLoad: function onLoad() {
     const t = this;

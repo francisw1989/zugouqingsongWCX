@@ -25,8 +25,10 @@ exports.default = Page({
 
   // 滑动时变化
   monthChangeHandler: function monthChangeHandler(val) {
+    const t = this;
     var e = val.detail;
     this.changeDate(e);
+    t.employeeSchedule();
   },
   bindselectedstart: function bindselectedstart(val) {
     var e = val.detail;
@@ -111,7 +113,7 @@ exports.default = Page({
       dateyear: this.data.dateobj.arr[0],
       datemonth: this.data.dateobj.arr[1]
     });
-    t.employeeSchedule();
+    
   },
   onLoad: function onLoad() {
     const t = this;
