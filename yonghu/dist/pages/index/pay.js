@@ -87,7 +87,7 @@ exports.default = Page({
         if (t.data.pageFrom == 'goods'){
             app.articleOrderPay(t.data.type).then((res)=>{
                 app.globalData.wxObj = res;
-              if (res==null) {
+              if (res=='' || res == null || res.needWxPay == 0) {
                 wx.showModal({
                   title: '提示',
                   content: '支付成功，即将返回首页！',
@@ -102,7 +102,7 @@ exports.default = Page({
                   }
                 })
               }
-              if (res.needWxPay == 1) {
+              if (res!='' && res!=null && res.appId!=null) {
                 app.wxPay().then(() => {
                   wx.showModal({
                     title: '提示',
