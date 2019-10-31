@@ -29,8 +29,8 @@
         </navigator>
     </view>
     <view class="footerBox" style="bottom: 10rpx">
-        <view class="inWap1 pad15RL" style="padding-bottom: 30rpx;">
-            <view class="bor_btm_so ui-row" style="" wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length > 0}}" data-index="0" catchtap='showAppointDetail'>
+        <view class="inWap1 pad15RL" style="padding-bottom: 30rpx;" wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length > 0}}">
+            <view class="bor_btm_so ui-row" style=""  data-index="0" catchtap='showAppointDetail'>
                 <view class="ui-col" style="">
                     <view class="ui-col-content">
                         <view>

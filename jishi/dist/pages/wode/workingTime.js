@@ -176,7 +176,7 @@ exports.default = Page({
   employeeAttendance:function employeeAttendance(){
     const t = this;
     let params = {
-      employeeId:app.globalData.userInfo.userId,
+      employeeId:app.globalData.userInfo.id,
       monthDate:t.data.dateyear+"-"+t.data.datemonth
     }
     app.employeeAttendance(params).then((res)=>{

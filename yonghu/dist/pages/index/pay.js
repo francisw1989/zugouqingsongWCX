@@ -59,24 +59,25 @@ exports.default = Page({
     },
     orderPay(){
         const t = this;
-        if (!t.wxChecked && !t.yeChecked) {
+      console.log(t.data.wxChecked);
+      if (!t.data.wxChecked && !t.data.yeChecked) {
             wx.showModal({
                 title: '提示',
                 content: '请选择支付方式',
             })
             return
         }
-        if (t.wxChecked && t.yeChecked) {
+      if (t.data.wxChecked && t.data.yeChecked) {
             t.setData({
                 type: 0
             })
         }else{
-            if (t.yeChecked) {
+        if (t.data.yeChecked) {
                 t.setData({
                     type: 1
                 })
             }
-            if (t.wxChecked){
+        if (t.data.wxChecked){
                 t.setData({
                     type: 2
                 })
@@ -86,7 +87,7 @@ exports.default = Page({
         if (t.data.pageFrom == 'goods'){
             app.articleOrderPay(t.data.type).then((res)=>{
                 app.globalData.wxObj = res;
-              if (res==null) {
+              if (res=='' || res == null || res.needWxPay == 0) {
                 wx.showModal({
                   title: '提示',
                   content: '支付成功，即将返回首页！',
@@ -101,7 +102,7 @@ exports.default = Page({
                   }
                 })
               }
-              if (res.needWxPay == 1) {
+              if (res!='' && res!=null && res.appId!=null) {
                 app.wxPay().then(() => {
                   wx.showModal({
                     title: '提示',
@@ -154,12 +155,14 @@ exports.default = Page({
         // 2.余额 > 0且小于订单总价时，选择账户支付 同时必须选择微信支付   
         // 3.余额 >= 订单总价时  选择了余额支付  则不可以选择微信支付。
         app.globalData.chooseCoupon = ''
+
         // app.globalData.userInfo.totalAccount = 300;
         // app.globalData.orderDetail.totalPrice = 200;
         t.setData({
             pageFrom: opt.pageFrom,
             D: app.globalData.orderDetail,
-            U: app.globalData.userInfo
+            U: app.globalData.userInfo,
+            count: opt.count
         })
         if (app.globalData.orderDetail.isCoupon == 1 || app.globalData.orderDetail.isAssemble == 1){
           t.setData({
