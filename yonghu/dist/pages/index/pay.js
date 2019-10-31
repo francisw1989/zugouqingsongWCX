@@ -59,24 +59,25 @@ exports.default = Page({
     },
     orderPay(){
         const t = this;
-        if (!t.wxChecked && !t.yeChecked) {
+      console.log(t.data.wxChecked);
+      if (!t.data.wxChecked && !t.data.yeChecked) {
             wx.showModal({
                 title: '提示',
                 content: '请选择支付方式',
             })
             return
         }
-        if (t.wxChecked && t.yeChecked) {
+      if (t.data.wxChecked && t.data.yeChecked) {
             t.setData({
                 type: 0
             })
         }else{
-            if (t.yeChecked) {
+        if (t.data.yeChecked) {
                 t.setData({
                     type: 1
                 })
             }
-            if (t.wxChecked){
+        if (t.data.wxChecked){
                 t.setData({
                     type: 2
                 })
