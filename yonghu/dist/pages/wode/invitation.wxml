@@ -16,7 +16,7 @@
                     <button open-type="share" class='btns-1'>分享至好友</button>
                     <view class="btns-1 left20" bindtap='drawCanvas'>分享至朋友圈</view>
                 </view>
-                <view class="top20">分享给新用户，对方注册，您可获得代金券</view>
+                <view class="top20">分享给新用户，对方注册，您可获得奖励</view>
             </view>
         </view>
         <view class="center top20">
