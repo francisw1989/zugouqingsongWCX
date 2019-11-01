@@ -166,7 +166,7 @@ exports.default = Page({
     //获取两个日期的相差日期数(differ 相差天数：1、相差小时数：2、相差分钟数：3、相差秒数：4)
     getDifferDate: function(firstDate, secondDate, differ) {
         // firstDate = firstDate.replace(/-/g, "/");
-        // secondDate = secondDate.replace(/-/g, "/");
+        secondDate = secondDate.replace(/-/g, "/");
         const t = this;
         //1)将两个日期字符串转化为日期对象
         var startDate = new Date(firstDate).getTime();
