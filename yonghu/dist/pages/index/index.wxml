@@ -4,7 +4,7 @@
         <block wx:for="{{D.banners}}">
         <!-- 类别（1 门店,2项目,3技师,4链接5.无链接 -->
             <swiper-item>
-                <image bindtap="bannerGo" data-index="{{index}}" src="{{item.path}}" mode="aspectFit" />
+                <image bindtap="bannerGo" data-index="{{index}}" src="{{item.path}}" mode="aspectFill" />
             </swiper-item>
         </block>
     </swiper>
