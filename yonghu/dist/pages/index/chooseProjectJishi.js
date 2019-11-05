@@ -25,7 +25,7 @@ exports.default = Page({
         tlsList: [
         ],
         tlsChosedIds: [],
-        cIndex: 0,
+        cIndex: '',
         tabStyle: {
             'width': 'auto'
         },
@@ -51,7 +51,8 @@ exports.default = Page({
         gradeArr: ['', '1', '11', '111'],
         nearbyStore: [],
         showTishi: false,
-        effectiveTechLength: 0
+        effectiveTechLength: 0,
+        waitId: ''
     },
     orderDetail() {
         const t = this;
@@ -139,8 +140,8 @@ exports.default = Page({
         let params = {
             storeId: app.globalData.chooseStore.id,
             userId: app.globalData.userInfo.userId,
-            itemId: app.globalData.chooseProject[t.data.cIndex].id,
-            times: app.globalData.chooseProject[t.data.cIndex].defaultDuration,
+            itemId: app.globalData.chooseProject[t.data.cIndex || 0].id,
+            times: app.globalData.chooseProject[t.data.cIndex || 0].defaultDuration,
             dateTime: app.globalData.chooseStore.appointTime
             
         }
@@ -171,25 +172,40 @@ exports.default = Page({
             });
             
             t.data.chooseProject[cIndex].technicianList = res[0].employees;
-            t.data.chooseProject[cIndex].effectiveTechLength = t.data.chooseProject[cIndex].technicianList.length;
+            // 有效能可选技师
+            t.data.chooseProject[cIndex].effectiveTechLength = 0;
             // t.setData({
             //     chooseProject: t.data.chooseProject
             // })
             console.log(t.data.chooseProject)
             let needChooseIndex = 0;
-            
+            let hasNeedChooseIndex = false;
             for (const i in res[0].employees){
+               
                 let v = res[0].employees[i];
-                if (t.data.tlsChosedIds.indexOf(v.id)<0){
+                
+                if (v.waitTime == 0){
+                    // 有效可选技师数量
+                    t.data.chooseProject[cIndex].effectiveTechLength++;
+                }
+
+                // 校验从等待技师点击过来
+                if ((t.data.waitId && t.data.waitId == v.id && !hasNeedChooseIndex) || (t.data.tlsChosedIds.indexOf(v.id) < 0 && v.waitTime == 0 && !hasNeedChooseIndex)){
+                    hasNeedChooseIndex = true;
+                    t.data.waitId = '';
                     needChooseIndex = i;
-                    break
                 }
             }
             t.data.cIndex = cIndex;
             let _d = { target: { dataset: { index: needChooseIndex } } }
+            // 处理默认选中
             t.chooseTlx(_d);
+            // 最后一个循环结束处理handlechange
             if (cIndex == t.data.chooseProject.length-1){
-                t.handleChange({ detail: { index: 0 } })
+                setTimeout(()=>{
+                    t.handleChange({ detail: { index: 0 } })
+                }, 100)
+                
             }
         })
     },
@@ -214,6 +230,15 @@ exports.default = Page({
         t.setData({
             chooseProject: t.data.chooseProject,
         })
+    },
+    waitClick(e){
+        const t = this;
+        let i = e.target.dataset.index;
+        let obj = t.data.chooseProject[t.data.cIndex].technicianList[i];
+        debugger
+        app.globalData.chooseStore.appointTime = app.formatDate(new Date(app.globalData.chooseStore.appointTime).getTime() + obj.waitTime * 60 * 1000);
+        t.waitId = obj.id;
+        t.onLoad();
     },
     clearTechnician(e){
         const t = this;
@@ -261,6 +286,9 @@ exports.default = Page({
     handleChange: function handleChange(e) {
         var t = this;
         var index = e.detail.index;
+        if (t.data.cIndex == index){
+            return
+        }
         t.setData({
             cIndex: index,
         });
@@ -278,7 +306,7 @@ exports.default = Page({
             
         })
         t.data.chooseProject[t.data.cIndex].effectiveTechLength = t.data.chooseProject[t.data.cIndex].technicianList.filter((item) => {
-            return !item.hasChoosedByOther
+            return !item.hasChoosedByOther && item.waitTime == 0
         }).length;
         t.setData({
             chooseProject: t.data.chooseProject
