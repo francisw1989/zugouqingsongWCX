@@ -201,11 +201,16 @@ exports.default = Page({
             // 处理默认选中
             t.chooseTlx(_d);
             // 最后一个循环结束处理handlechange
-            if (cIndex == t.data.chooseProject.length-1){
+            if (t.data.chooseProject.length >1 && cIndex == t.data.chooseProject.length-1){
                 setTimeout(()=>{
                     t.handleChange({ detail: { index: 0 } })
                 }, 100)
                 
+            }else{
+                t.setData({
+                    chooseProject: t.data.chooseProject,
+                    cIndex: cIndex
+                })
             }
         })
     },
