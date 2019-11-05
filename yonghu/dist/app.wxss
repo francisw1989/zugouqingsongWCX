@@ -1359,6 +1359,9 @@ a.colGreen,
 .padSp1 {
   padding: 20rpx 40rpx;
 }
+.padSp2 {
+  padding: 10rpx 40rpx;
+}
 .bor {
   border: 1px solid #E0E0E0;
 }

@@ -201,6 +201,21 @@ exports.default = Page({
             app.globalData.appointFromProject = false;
         }
     },
+  vipPicGo(e) {
+    const t = this;
+    let url = t.data.D.vipUrl;
+    // 类别
+    if (url.indexOf("http:") == 0 || url.indexOf("https:") == 0) {
+      wx.navigateTo({
+        url: 'pageView?src=' + url,
+      })
+    }else {
+      wx.navigateTo({
+        url: url,
+      })
+      app.globalData.appointFromProject = true;
+    }
+  },
     getItemClass() {
         const t = this;
         app.itemClass().then((res) => {
