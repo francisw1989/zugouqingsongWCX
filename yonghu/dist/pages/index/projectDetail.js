@@ -7,7 +7,27 @@ exports.default = Page({
     data: {
         I: {},
         list: [],
-        statusName: ['待开团', '进行中', '已完成', '已失败']
+        statusName: ['待开团', '进行中', '已完成', '已失败'],
+        evaluateList: [],
+        pageSize: 10,
+        pageNumber: 1,
+        total: 0
+    },
+    itemEvaluateList(){
+        const t = this;
+        app.itemEvaluateList({
+            itemId: t.data.itemId,
+            pageSize: t.data.pageSize,
+            pageNumber: t.data.pageNumber
+        }).then((res) => {
+            for (const v of res.records){
+                v.evaluateLabel && (v.evaluateLabel = v.evaluateLabel.split(','))
+            }
+            t.setData({
+                evaluateList: [...t.data.evaluateList, ...res.records],
+                total: res.total
+            })
+        })
     },
     onLoad(opt) {
         const t = this;
@@ -24,6 +44,17 @@ exports.default = Page({
                 list: res
             })
         })
+        t.itemEvaluateList();
+
+        
+    },
+    onReachBottom(){
+        const t = this;
+        if (t.data.evaluateList.length<t.data.total){
+            t.data.pageNumber++;
+            t.itemEvaluateList();
+        }
+        
     },
     joinGroup(e){
         wx.setStorageSync('assembleId', e.target.dataset.id)

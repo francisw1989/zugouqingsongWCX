@@ -155,18 +155,42 @@ exports.default = Page({
         const t = this;
         let params = {
             storeId: app.globalData.chooseStore.id,
-            itemIdsStr: app.globalData.chooseProject[t.data.cIndex].id,
-            timesStr: app.globalData.chooseProject[t.data.cIndex].defaultDuration,
+            itemIdsStr: app.globalData.chooseProject[cIndex].id,
+            timesStr: app.globalData.chooseProject[cIndex].defaultDuration,
             dateTime: app.globalData.chooseStore.appointTime
         }
         app.selectTechnician(params).then((res)=>{
+            res[0].employees.sort(function (a, b) {
+                if (a.pricePerMinute > b.pricePerMinute) {
+                    return -1;
+                } else if (a.pricePerMinute == b.pricePerMinute) {
+                    return 0;
+                } else {
+                    return 1;
+                }
+            });
             
             t.data.chooseProject[cIndex].technicianList = res[0].employees;
             t.data.chooseProject[cIndex].effectiveTechLength = t.data.chooseProject[cIndex].technicianList.length;
-            t.setData({
-                chooseProject: t.data.chooseProject
-            })
+            // t.setData({
+            //     chooseProject: t.data.chooseProject
+            // })
             console.log(t.data.chooseProject)
+            let needChooseIndex = 0;
+            
+            for (const i in res[0].employees){
+                let v = res[0].employees[i];
+                if (t.data.tlsChosedIds.indexOf(v.id)<0){
+                    needChooseIndex = i;
+                    break
+                }
+            }
+            t.data.cIndex = cIndex;
+            let _d = { target: { dataset: { index: needChooseIndex } } }
+            t.chooseTlx(_d);
+            if (cIndex == t.data.chooseProject.length-1){
+                t.handleChange({ detail: { index: 0 } })
+            }
         })
     },
     chooseTlx(e){

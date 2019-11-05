@@ -1,6 +1,6 @@
 <view style="min-height: 100%; background-color:#F3F3F3; padding-bottom: 100rpx;">
     <view  style='background-color: #F19149; color: #EC4B05' class='center font0 pad5' wx:if="{{showTishi &&  nearbyStore.length>1 &&  !chooseProject[cIndex].effectiveTechLength}}">
-        本店等待时间较长，已为您推荐周边 中华路店，是否切换到该门店？ 
+        本店等待时间较长，已为您推荐周边门店，是否切换？ 
         <text bindtap='gotoOtherStore' style='text-decoration: underline'>切换</text>
     </view>
     
@@ -93,7 +93,13 @@
                 <view class="ui-col-content align-right">
                     <view class="colRed">¥{{item.pricePerMinute/100}}元/分钟</view>
                     <view class="top10">
-                        <view bindtap="chooseTlx" data-index="{{index}}" class="btns btns-smaller {{item.chosed?'btns-green':'btns-green-bor'}}">{{item.chosed?'取消':'选择'}}</view>
+                        <view wx:if='{{item.waitTime==0}}' bindtap="chooseTlx" data-index="{{index}}" class="btns btns-smaller {{item.chosed?'btns-green':'btns-green-bor'}}">{{item.chosed?'取消':'选择'}}</view>
+                        
+                        <view wx:if='{{item.waitTime>0}}' class="btns btns-smaller btns-green-bor">等待</view>
+
+                    </view>
+                    <view wx:if='{{item.waitTime>0}}'  class='align-right'>
+                        <text class='colRed'>此技师需等待{{item.waitTime}}分钟</text>
                     </view>
                 </view>
             </view>
@@ -107,7 +113,7 @@
     <ui-popup bindhide="onHide" show="{{show}}" background="transparent" _pid="{{_pid}}">
         <view class="padSp1 clearfix" style="background-color:#fff; border-radius: 10rpx 10rpx 0 0; overflow: hidden;">
             <view class="bor_btm_so" style="padding-bottom: 20rpx;">
-                <text class="font2 bold col333">选择调理师</text>
+                <text class="font2 bold col333">选择{{chooseProject[cIndex].itemEmployeeName}}</text>
             </view>
             <view class="pad10TB">
                 <view class="tx5Wap inline right5" wx:for='{{chooseProject[cIndex].technicianChoose}}'>

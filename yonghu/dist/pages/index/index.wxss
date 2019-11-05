@@ -8,3 +8,36 @@
     position: absolute;
     top: 0;
 }
+
+.mask_wrap .photo {
+    padding: 0;
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ui-icon {
+    display: block;
+    text-align: center;
+    font-size: 96rpx;
+    color: #fff;
+}
+
+.icon_top {
+    text-align: right;
+}
+
+.top_view {
+    position: relative;
+}
+
+.top_line {
+    position: absolute;
+    bottom: 0px;
+    right: 24px;
+    width: 2px;
+    height: 15px;
+    background-color: #fff;
+}

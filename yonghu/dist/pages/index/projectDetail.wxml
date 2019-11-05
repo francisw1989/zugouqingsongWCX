@@ -8,7 +8,7 @@
         </block>
     </swiper>
     
-    <view class="pad20" style="padding-bottom: 100rpx;">
+    <view class="pad20" style='padding-bottom: 10rpx;'>
         <view class="shaodwBox" style="margin-top: -80rpx;">
             <view class="pad10">
                 <view class="font2 col000 bor_btm_so" style="padding-bottom: 20rpx;">适宜人群</view>
@@ -70,6 +70,38 @@
             </view>
         </view>
 
+    </view>
+    <view class="pad20RL font2 col000" wx:if='{{evaluateList.length}}'>评价（{{total}}）</view>
+    <view class='pad20RL top10 bgfff' style="padding-bottom: 100rpx;">
+        <view wx:if="{{evaluateList.length > 0}}">
+            <view class="ui-row pad15TB bor_btm_so" style="" wx:for='{{evaluateList}}'>
+                <view class="ui-col" style="flex:0 0 45px;">
+                    <view class="ui-col-content ">
+                        <image src="{{item.user.photo}}" mode="aspectFill" class='tx10' />
+                    </view>
+                </view>
+                <view class="ui-col">
+                    <view class="ui-col-content">
+                        <view>
+                            <view class='clearfix'>
+                                <text class='right col999 font0'>{{item.updateTime}}</text>
+                                <text class='col333'>{{item.user.userName}}</text>
+                            </view>
+                            <view class='top10'>
+                                {{item.content}}
+                            </view>
+                            <view class='top10' wx:if="{{item.evaluateLabel.length}}">
+                                <view class='tag4' wx:for="{{item.evaluateLabel}}" wx:for-item="tag">{{tag}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- <view wx:else class="center top40 ">
+            <image src='../../static/images/9.png' class='inline' style='width: 60rpx; height: 60rpx; opacity: 0.4; filter: grayscale(100%);'></image>
+            <view class='col999'>暂无数据</view>
+        </view> -->
     </view>
     <view class="footerBox" style="background-color: #459E8C">
         <view class="ui-row" style="">

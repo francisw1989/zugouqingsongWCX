@@ -38,7 +38,14 @@ exports.default = Page({
         y:0,
         overflow: 'auto',
         w: wx.WIN_WIDTH,
-        h: wx.WIN_HEIGHT
+        h: wx.WIN_HEIGHT,
+        imgSrc1: '../../static/images/58.jpg'
+    },
+    handleShowMask1(e) {
+        const t = this;
+        t.setData({
+            showMask1: t.data.showMask1?false: true
+        })
     },
     bindtouchstart(e){
         const t = this;
@@ -256,5 +263,8 @@ exports.default = Page({
         });
         t.getIndex();
         t.getItemClass();
+        setTimeout(()=>{
+            t.handleShowMask1()
+        },2000)
     }
 });

@@ -40,6 +40,18 @@ exports.default = App({
         stores: [],
         friendUserId: ''
     },
+    //     / userApi / v1 / itemEvaluateList
+    // 获取项目评价
+    itemEvaluateList(params){
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('itemEvaluateList', params).then((res) => {
+                
+                resolve(res);
+            })
+        })
+        return p;
+    },
     cancelCoupon() {
         const t = this;
         let params = {

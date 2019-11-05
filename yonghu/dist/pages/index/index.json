@@ -4,7 +4,8 @@
     "ui-timeline": "../../packages/touchui-wx-components/ui-timeline/dist/index",
     "ui-timeline-item": "../../packages/touchui-wx-components/ui-timeline-item/dist/index",
     "ui-roller": "../../packages/touchui-wx-components/ui-roller/dist/index",
-    "ui-roller-item": "../../packages/touchui-wx-components/ui-roller-item/dist/index"
+    "ui-roller-item": "../../packages/touchui-wx-components/ui-roller-item/dist/index",
+    "ui-mask": "../../packages/touchui-wx-components/ui-mask/dist/index"
   },
   "navigationBarTitleText": "足够轻松"
 }
