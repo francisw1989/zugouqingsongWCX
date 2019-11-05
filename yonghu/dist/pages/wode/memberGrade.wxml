@@ -9,9 +9,11 @@
     </view>
     <view class='top10 bgfff pad10'>
         <view class=''>会员等级：<text class='colYe'>{{list[current].memberLevelName}}</text></view> 
-        <view class='top5'  wx:if="{{current!=3}}">
-            <view class='font0 '>消费需满 <text class='colYe'>{{list[current+1].amountCondition/100}}</text> 元升级为 {{list[current+1].memberLevelName}} </view>
-            <view class='font0'>消费需满 <text class='colYe'>{{list[current+1].frequencyCondition}}</text> 次升级为 {{list[current+1].memberLevelName}} </view>
+        <view class='top5'  wx:if="{{current!=0}}">
+            <view class='font0 '>消费满 <text class='colYe'>{{list[current].amountCondition/100}}</text> 元 或 消费满 <text class='colYe'>{{list[current].frequencyCondition}}</text> 次</view>
+        </view>
+        <view class='top5'  wx:if="{{current==0}}">
+            <view class='font0 '><text class='colYe'>注册即可称为初级会员</text></view>
         </view>
     </view>
     <view class="center pad15">
