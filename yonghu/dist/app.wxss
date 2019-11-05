@@ -1511,8 +1511,8 @@ view.btns-green,button.btns-green {
   left: 0;
 }
 .box1 {
-  height: 85rpx;
-  line-height: 85rpx;
+  height: 65rpx;
+  line-height: 65rpx;
 }
 .verBtm {
   vertical-align: bottom;

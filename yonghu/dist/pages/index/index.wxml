@@ -9,7 +9,7 @@
         </block>
     </swiper>
     <view class="box1 bgfff claerfix" style='overflow: hidden'>
-        <image src="../../static/images/14.png" class="ico14 left top12 left20" />
+        <image src="../../static/images/14.png" class="ico14 left top8 left20" />
         <view style='width: 480rpx; overflow: hidden' class='inline'>
             <view class="marquee_box">
                  <view class="marquee_text" style="{{orientation}}:{{marqueeDistance}}px; font-size: {{size}}px;">
