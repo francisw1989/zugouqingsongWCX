@@ -240,7 +240,7 @@ exports.default = Page({
         const t = this;
         let i = e.target.dataset.index;
         let obj = t.data.chooseProject[t.data.cIndex].technicianList[i];
-        debugger
+        
         app.globalData.chooseStore.appointTime = app.formatDate(new Date(app.globalData.chooseStore.appointTime).getTime() + obj.waitTime * 60 * 1000);
         t.waitId = obj.id;
         t.onLoad();
