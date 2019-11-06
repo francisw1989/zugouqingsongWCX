@@ -51,6 +51,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+      const t = this;
         t.setData({
             show: false
         })
