@@ -71,7 +71,7 @@
         </view>
 
     </view>
-    <view class="pad20RL font2 col000" wx:if='{{evaluateList.length}}'>评价（{{total}}）</view>
+    <view class="pad20RL font2 col000" wx:if='{{evaluateList.length}}'>评价</view>
     <view class='pad20RL top10 bgfff' style="padding-bottom: 100rpx;">
         <view wx:if="{{evaluateList.length > 0}}">
             <view class="ui-row pad15TB bor_btm_so" style="" wx:for='{{evaluateList}}'>

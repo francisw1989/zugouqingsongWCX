@@ -1829,6 +1829,7 @@ view.btns-green,button.btns-green {
   display: inline-block;
   background-color: #EED7AD;
   color: #B28F5F;
+  margin-right: 5rpx;
 }
 .shaodwBox {
   width: 100%;
