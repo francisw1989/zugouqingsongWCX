@@ -40,6 +40,17 @@ exports.default = App({
         stores: [],
         friendUserId: ''
     },
+    // / userApi / v1 / getPic
+    // 读取配置项中分享好友图片
+    getPic() {
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('getPic', {}).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
     //     / userApi / v1 / itemEvaluateList
     // 获取项目评价
     itemEvaluateList(params){

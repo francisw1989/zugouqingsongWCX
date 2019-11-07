@@ -16,6 +16,7 @@ exports.default = Page({
     },
     onLoad(opt){
         const t = this;
+        t.getPic();
         t.qrCode();
         console.log(opt.pageFrom)
         t.setData({
@@ -107,6 +108,14 @@ exports.default = Page({
         
        
     },
+    getPic(){
+        const t = this;
+        app.getPic().then((res)=>{
+            t.setData({
+                imageUrl: res
+            })
+        })
+    },
     onShareAppMessage(e) {
         const t = this;
          //p ---pageFrom  id --- assembleId
@@ -122,7 +131,8 @@ exports.default = Page({
         return {
             title: title,
             path: path,
-            imageUrl: wx.getStorageSync('shareImg'),
+            // imageUrl: wx.getStorageSync('shareImg'),
+            imageUrl: t.data.imageUrl,
             success: (res) => {
                 console.log("转发成功", res);
             },
