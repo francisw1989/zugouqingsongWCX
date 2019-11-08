@@ -55,14 +55,15 @@
         </view>
     </view>
     <view wx:if="{{current == 1}}" class="pad20">
-        <view wx:for="{{userInfo.peixunCourseList}}" class="ui-row" style="" wx:for-item="item1">
+        <view wx:for="{{userInfo.peixunCourseList}}" class="ui-row" style="overflow: hidden; padding-bottom: 30px" wx:for-item="item1">
+            <view class="line2" wx:if="{{index!=userInfo.peixunCourseList.length-1}}"></view>
             <view class="ui-col ui-col-align-center align-center" style="flex:0 0 70px;">
                 <view class="ui-col-content align-center">
                     <view class="tx8 clearfix font0">
                         <view class="colfff top10">{{filter.getYear(item1.courseTime)}}年</view>
                         <view class="colfff">{{filter.getMonth(item1.courseTime)}}月</view>
                     </view>
-                    <view class="line2" wx:if="{{index!=userInfo.peixunCourseList.length-1}}"></view>
+                    
                 </view>
             </view>
             <view class="ui-col" style="">
@@ -74,14 +75,15 @@
         </view>
     </view>
     <view wx:if="{{current == 2}}" class="pad20">
-        <view wx:for="{{userInfo.jinshengCourseList}}" class="ui-row" style="" wx:for-item="item2">
+        <view wx:for="{{userInfo.jinshengCourseList}}" class="ui-row" style="overflow: hidden; padding-bottom: 30px" wx:for-item="item2">
+            <view class="line2" wx:if="{{index!=userInfo.jinshengCourseList.length-1}}"></view>
             <view class="ui-col ui-col-align-center align-center" style="flex:0 0 70px;">
                 <view class="ui-col-content align-center">
                     <view class="tx8 clearfix font0">
                         <view class="colfff top10">{{filter.getYear(item2.courseTime)}}年</view>
                         <view class="colfff">{{filter.getMonth(item2.courseTime)}}月</view>
                     </view>
-                    <view class="line2" wx:if="{{index!=userInfo.jinshengCourseList.length-1}}"></view>
+                    
                 </view>
             </view>
             <view class="ui-col" style="">

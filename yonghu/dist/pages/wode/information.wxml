@@ -99,6 +99,21 @@
                     </view>
                 </view>
             </view>
+            <view class="ui-row pad15 ">
+                <view class="ui-col" >
+                    <view class="ui-col-content">
+                        <text class="col333">身份证</text>
+                    </view>
+                </view>
+                <view class="ui-col align-right">
+                    <view class="ui-col-content">
+                        <view>
+                            <input value="{{U.cardNumber}}" name='cardNumber' type='number'></input>
+                            <image src="../../static/images/15.png" class="ico15 icoAll left10" />
+                        </view>
+                    </view>
+                </view>
+            </view>
         </view>
         <view class='pad10'>
             <button form-type="submit" class='btns btns-biggest btns-green'>保存</button>

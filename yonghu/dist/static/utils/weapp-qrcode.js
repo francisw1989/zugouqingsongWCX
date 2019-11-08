@@ -396,28 +396,28 @@ var QRCode;
         }
 
         _oContext.draw(false, () => {
-            setTimeout(() => {
-                this.exportImage()
-            }, 800)
+          setTimeout(() => {
+            this.exportImage()
+          }, 800)
         })
     };
 
     // 保存为图片，将临时路径传给回调
     QRCode.prototype.exportImage = function (callback) {
-        if (this._htOption.callback && typeof this._htOption.callback === 'function') {
-            wx.canvasToTempFilePath({
-                x: 0,
-                y: 0,
-                width: this._htOption.width,
-                height: this._htOption.height,
-                destWidth: this._htOption.width,
-                destHeight: this._htOption.height,
-                canvasId: this.canvasId,
-                success: (res) => {
-                    this._htOption.callback({ path: res.tempFilePath })
-                }
-            })
-        }
+      if (this._htOption.callback && typeof this._htOption.callback === 'function') {
+        wx.canvasToTempFilePath({
+            x: 0,
+            y: 0,
+            width: this._htOption.width,
+            height: this._htOption.height,
+            destWidth: this._htOption.width,
+            destHeight: this._htOption.height,
+            canvasId: this.canvasId,
+            success: (res) => {
+              this._htOption.callback({path: res.tempFilePath})
+            }
+        })
+      } 
     }
 
     QRCode.CorrectLevel = QRErrorCorrectLevel;

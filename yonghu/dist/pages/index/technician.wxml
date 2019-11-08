@@ -57,14 +57,15 @@
         </view>
     </view>
     <view wx:if="{{current == 1}}" class="pad20">
-        <view wx:for="{{D.training}}" class="ui-row" style="">
+        <view wx:for="{{D.training}}" class="ui-row" style="overflow: hidden; padding-bottom: 30px">
+            <view class="line2" wx:if="{{index!=D.training-1}}"></view>
             <view class="ui-col ui-col-align-center align-center" style="flex:0 0 70px;">
                 <view class="ui-col-content align-center">
                     <view class="tx8 clearfix font0">
                         <view class="colfff top10">{{item.courseTimeArr[0]}}年</view>
                         <view class="colfff">{{item.courseTimeArr[1]}}月</view>
                     </view>
-                    <view class="line2" wx:if="{{index!=pxList.length-1}}"></view>
+                    
                 </view>
             </view>
             <view class="ui-col" style="">
@@ -76,14 +77,15 @@
         </view>
     </view>
     <view wx:if="{{current == 2}}" class="pad20">
-        <view wx:for="{{D.promotion}}" class="ui-row" style="">
+        <view wx:for="{{D.promotion}}" class="ui-row" style="overflow: hidden; padding-bottom: 30px">
+            <view class="line2" wx:if="{{index!=D.promotion.length-1}}"></view>
             <view class="ui-col ui-col-align-center align-center" style="flex:0 0 70px;">
                 <view class="ui-col-content align-center">
                     <view class="tx8 clearfix font0">
                         <view class="colfff top10">{{item.courseTimeArr[0]}}年</view>
                         <view class="colfff">{{item.courseTimeArr[1]}}月</view>
                     </view>
-                    <view class="line2" wx:if="{{index!=pxList.length-1}}"></view>
+                    
                 </view>
             </view>
             <view class="ui-col" style="">

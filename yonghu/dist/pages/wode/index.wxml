@@ -59,12 +59,7 @@
                 <view class="top10">我的拼团</view>
             </navigator>
         </view>
-        <view class="ui-col ui-col-align-center align-center" style="">
-            <navigator url='../index/projectsList?pageFrom=group' class="ui-col-content align-center">
-                <image src="../../static/images/a6.png" mode="aspectFit" class="woIcoimg" />
-                <view class="top10">发起拼团</view>
-            </navigator>
-        </view>
+        
         <view class="ui-col ui-col-align-center align-center" style="">
             <navigator url='invitation?pageFrom=wode' class="ui-col-content align-center">
                 <image src="../../static/images/a7.png" mode="aspectFit" class="woIcoimg" />
@@ -75,6 +70,12 @@
             <navigator url="about" class="ui-col-content align-center">
                 <image src="../../static/images/a8.png" mode="aspectFit" class="woIcoimg" />
                 <view class="top10">关于我们</view>
+            </navigator>
+        </view>
+        <view class="ui-col ui-col-align-center align-center" style="" >
+            <navigator url='../index/projectsList?pageFrom=group' class="ui-col-content align-center" wx:if='{{isTuan==1}}'>
+                <image src="../../static/images/a6.png" mode="aspectFit" class="woIcoimg" />
+                <view class="top10">发起拼团</view>
             </navigator>
         </view>
     </view>

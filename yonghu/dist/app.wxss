@@ -1906,10 +1906,11 @@ view.btns-green,button.btns-green {
 }
 .line2 {
   height: 100%;
-  height: 50px;
+  min-height: 50px;
   width: 7px;
   display: inline-block;
   background: rgba(69, 152, 135, 0.45);
+  position: absolute; top: 50px; left: 32px;
 }
 .title2 {
   display: inline-block;

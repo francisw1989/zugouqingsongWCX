@@ -11,14 +11,16 @@ exports.default = Page({
         evaluateList: [],
         pageSize: 10,
         pageNumber: 1,
-        total: 0
+        total: 0,
+        isTuan: 1
     },
     itemEvaluateList(){
         const t = this;
         app.itemEvaluateList({
             itemId: t.data.itemId,
             pageSize: t.data.pageSize,
-            pageNumber: t.data.pageNumber
+            pageNumber: t.data.pageNumber,
+            userId: app.globalData.userInfo.userId
         }).then((res) => {
             for (const v of res.records){
                 v.evaluateLabel && (v.evaluateLabel = v.evaluateLabel.split(','))
@@ -32,7 +34,8 @@ exports.default = Page({
     onLoad(opt) {
         const t = this;
         t.setData({
-            itemId: opt.itemId
+            itemId: opt.itemId,
+            isTuan: app.globalData.isTuan
         })
         app.getItem(t.data.itemId).then((res)=>{
             t.setData({

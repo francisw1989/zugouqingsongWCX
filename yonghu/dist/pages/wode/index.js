@@ -14,6 +14,9 @@ exports.default = Page({
     onShow() {
         const t = this;
         let len = app.globalData.barList.length;
+        t.setData({
+            isTuan: app.globalData.isTuan
+        })
         if (wx.getStorageSync('openId')){
             app.userInfo(true).then(() => {
                 t.setData({

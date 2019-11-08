@@ -105,10 +105,7 @@ exports.default = Page({
             url: 'shopDetail?id=' + id,
         })
     },
-    onShow() {
 
-
-    },
     makePhoneCall(e) {
         wx.makePhoneCall({
             phoneNumber: e.currentTarget.dataset.phonenum //仅为示例，并非真实的电话号码
@@ -120,10 +117,12 @@ exports.default = Page({
 
         let _do = () => {
             app.nowOrder().then((res) => {
+                setTimeout(() => {
+                    _do()
+                }, 10 * 60 * 1000);
+                
                 if (!res.nowOrder) {
-                    setTimeout(() => {
-                        _do()
-                    }, 10 * 60 * 1000)
+                    
                 } else {
                     t.setData({
                         jxzShow: true,
@@ -161,6 +160,7 @@ exports.default = Page({
                 t.setData({
                     D: res
                 })
+                app.globalData.isTuan = res.isTuan;
                 t.marquee();
             })
         })

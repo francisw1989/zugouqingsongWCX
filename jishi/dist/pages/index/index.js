@@ -111,20 +111,53 @@ exports.default = Page({
     //打卡
     employeePunch(e) {
         const t = this;
-        let params = {
-            employeeId: app.globalData.userInfo.id
-        }
-        app.employeePunch(params).then(() => {
-            wx.showToast({
-                title: '已打卡',
-                icon: "success",
-                duration: 2000
-            })
-            setTimeout(() => {
-                t.onShow();
-            }, 1000)
+        let _do = () => {
+            let params = {
+                employeeId: app.globalData.userInfo.id
+            }
+            app.employeePunch(params).then(() => {
+                wx.showToast({
+                    title: '已打卡',
+                    icon: "success",
+                    duration: 2000
+                })
+                setTimeout(() => {
+                    t.onShow();
+                }, 1000)
 
+            })
+        }
+        wx.startWifi({
+            success(res) {
+                wx.getConnectedWifi({
+                    success: function (e) {
+                        if (t.data.userInfo.stores.wifiSsid == e.wifi.SSID) {
+                            _do();
+                        } else {
+                            wx.showModal({
+                                title: '提示',
+                                content: '请连接所属门店WiFi',
+                            })
+                        }
+                    },
+                    fail: function (e) {
+                        wx.showModal({
+                            title: '提示',
+                            content: JSON.stringify(e),
+                        })
+                    }
+                })
+            },
+            fail: function (res) {
+                wx.showModal({
+                    title: '提示',
+                    content: JSON.stringify(res),
+                })
+            }
         })
+        
+        
+        
     },
     //切换预约，显示不同详情
     showAppointDetail(e) {

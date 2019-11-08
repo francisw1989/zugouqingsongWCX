@@ -48,8 +48,12 @@ exports.default = Page({
         }
 
 
-
-        t.data.mins = ['00' ,'30']
+        if (nowMin <= 30){
+            t.data.mins = [ '30']
+        } else if (nowMin > 30){
+            t.data.mins = ['00', '30']
+        }
+        
         t.setData({
             hours: t.data.hours,
             mins: t.data.mins,
@@ -58,7 +62,12 @@ exports.default = Page({
     },
     bindChange(e){
         const t = this;
-        const val = e.detail.value
+        const val = e.detail.value;
+        if (val[0] > 0){
+            t.setData({
+                mins : ['00', '30']
+            })
+        }
         t.setData({
             time: t.data.hours[val[0]] + ':' + t.data.mins[val[1]]
         })

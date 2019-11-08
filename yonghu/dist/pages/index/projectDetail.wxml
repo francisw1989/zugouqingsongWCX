@@ -40,8 +40,8 @@
 
 
         </view>
-        <view class="pad10 font2 col000" wx:if='{{list.length}}'>拼团列表</view>
-        <view class="shaodwBox btm10" wx:for="{{list}}">
+        <view class="pad10 font2 col000" wx:if='{{list.length && isTuan==1}}'>拼团列表</view>
+        <view class="shaodwBox btm10" wx:for="{{list}}" wx:if="{{isTuan==1}}">
             <view class="tag2">{{statusName[item.status]}}</view>
             <image src="{{item.item.imgs}}" mode='aspectFill' style="width: 100%; height: 270rpx; " />
             <view class="pad10 ui-row" style="">

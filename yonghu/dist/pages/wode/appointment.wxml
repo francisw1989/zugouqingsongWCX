@@ -30,6 +30,7 @@
                             <view class="top5">
                                 <view catchtap='pay' class="btns btns-green-bor  btns-smaller" data-count='{{item.orderStartTime2}}' data-outtradeno='{{item.outTradeNo}}' wx:if='{{item.status==1 && item.showJxzf}}'>继续支付</view>
                                 <view catchtap='removeOrder' data-outtradeno='{{item.outTradeNo}}' class="btns btns-green-bor btns-smaller left10" wx:if='{{item.status==2 || item.status==1}}'>取消订单</view>
+                                <view catchtap='showEwm' data-outtradeno='{{item.outTradeNo}}' wx:if='{{item.status==2}}' class="btns btns-green-bor btns-smaller left10" >二维码</view>
                             </view>
                         </view>
                     </view>
@@ -45,4 +46,14 @@
             <view class='col999'>暂无数据</view>
         </view>
     </view>
+    <ui-mask show="{{ewmShow}}" hide-on-tap="{{false}}" class="mask_wrap" custom-style="{{customStyle}}">
+        <view class="photo" style="">
+            <!-- <navigator url='{{D.vipUrl}}'> -->
+                <canvas class="canvas-code"canvas-id="myQrcode" style="background:#fff;width: 200px;height: 200px;"/>
+            <!-- </navigator> -->
+            <view class='center top10'>
+                <icon type="cancel" color='#fff' size="40" bindtap="handleShowMask1" />
+            </view>
+        </view>
+    </ui-mask>
 </view>
