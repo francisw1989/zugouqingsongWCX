@@ -105,6 +105,9 @@ exports.default = Page({
         wx.showLoading({
             title: '加载中'
         });
+        t.setData({
+            ewmShow: true
+        })
         new QRCode('myQrcode', {
             text: e.target.dataset.outtradeno,
             width: 200,
@@ -115,9 +118,7 @@ exports.default = Page({
                 console.log(res.path)
                 // 接下来就可以直接调用微信小程序的api保存到本地或者将这张二维码直接画在海报上面去，看各自需求
                 wx.hideLoading();
-                t.setData({
-                    ewmShow: true
-                })
+                
             }
         })
     }

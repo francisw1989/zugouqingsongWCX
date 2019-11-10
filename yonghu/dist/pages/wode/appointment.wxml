@@ -49,7 +49,7 @@
     <ui-mask show="{{ewmShow}}" hide-on-tap="{{false}}" class="mask_wrap" custom-style="{{customStyle}}">
         <view class="photo" style="">
             <!-- <navigator url='{{D.vipUrl}}'> -->
-                <canvas class="canvas-code"canvas-id="myQrcode" style="background:#fff;width: 200px;height: 200px;"/>
+                <canvas class="canvas-code"canvas-id="myQrcode" style="background:#fff;width: 200px;height: 200px; display: {{ewmShow?'block':'none'}}"/>
             <!-- </navigator> -->
             <view class='center top10'>
                 <icon type="cancel" color='#fff' size="40" bindtap="handleShowMask1" />
