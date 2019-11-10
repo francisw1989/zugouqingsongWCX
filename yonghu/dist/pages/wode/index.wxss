@@ -1,0 +1,44 @@
+.marquee_box {
+    width: 100%;
+    position: relative;
+}
+
+.marquee_text {
+    white-space: nowrap;
+    position: absolute;
+    top: 0;
+}
+
+.mask_wrap .photo {
+    padding: 0;
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    margin-left: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ui-icon {
+    display: block;
+    text-align: center;
+    font-size: 96rpx;
+    color: #fff;
+}
+
+.icon_top {
+    text-align: right;
+}
+
+.top_view {
+    position: relative;
+}
+
+.top_line {
+    position: absolute;
+    bottom: 0px;
+    right: 24px;
+    width: 2px;
+    height: 15px;
+    background-color: #fff;
+}

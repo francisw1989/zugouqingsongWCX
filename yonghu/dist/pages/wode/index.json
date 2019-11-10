@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+      "ui-mask": "../../packages/touchui-wx-components/ui-mask/dist/index"
+  },
   "navigationBarTitleText": "个人中心"
 }

@@ -100,13 +100,13 @@ exports.default = Page({
         })
         t.getList();
     },
-    showEwm(){
+    showEwm(e){
         const t = this;
         wx.showLoading({
             title: '加载中'
         });
         new QRCode('myQrcode', {
-            text: 'http://www.tongxingschool.com',
+            text: e.target.dataset.outtradeno,
             width: 200,
             height: 200,
             padding: 12, // 生成二维码四周自动留边宽度，不传入默认为0
