@@ -131,6 +131,10 @@ exports.default = Page({
             success(res) {
                 wx.getConnectedWifi({
                     success: function (e) {
+                        // wx.showModal({
+                        //     title: '提示',
+                        //     content: JSON.stringify(e.wifi),
+                        // })
                         if (t.data.userInfo.stores.wifiSsid == e.wifi.SSID) {
                             _do();
                         } else {
