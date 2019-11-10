@@ -186,9 +186,9 @@ exports.default = App({
             let params = {
                 openId: openId
             }
-
             t.geWxtUserInfo().then(()=>{
                 t.getRequest('employeeInfo', params).then((res) => {
+                  
                     t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
                     console.log(t.globalData.userInfo)
                     resolve();
