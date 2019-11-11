@@ -87,13 +87,13 @@
                                 <text class='right col999 font0'>{{item.updateTime}}</text>
                                 <text class='col333'>{{item.user.userName}}</text>
                             </view>
-                            <view class='top10'>
+                            <view class='top10'  wx:if="{{item.content!=''}}">
                                 {{item.content}}
                             </view>
                             <view class='top5' wx:if="{{item.evaluateLabel.length}}">
                                 <view class='tag4' wx:for="{{item.evaluateLabel}}" wx:for-item="tag">{{tag}}</view>
                             </view>
-                            <view class='top5' wx:if="{{item.replyContent!=null && item.replyContent!=''}}">
+                            <view class='top5' style="color: #B28F5F;" wx:if="{{item.replyContent!=null && item.replyContent!=''}}">
                                 回复：{{item.replyContent}}
                             </view>
                         </view>
