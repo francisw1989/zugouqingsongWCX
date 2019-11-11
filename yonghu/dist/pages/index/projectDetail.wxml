@@ -74,7 +74,7 @@
     <view class="pad20RL font2 col000" wx:if='{{evaluateList.length}}'>评价</view>
     <view class='pad20RL top10 bgfff' style="padding-bottom: 100rpx;">
         <view wx:if="{{evaluateList.length > 0}}">
-            <view class="ui-row pad15TB bor_btm_so" style="" wx:for='{{evaluateList}}'>
+            <view class="ui-row pad10TB bor_btm_so" style="" wx:for='{{evaluateList}}'>
                 <view class="ui-col" style="flex:0 0 45px;">
                     <view class="ui-col-content ">
                         <image src="{{item.user.photo}}" mode="aspectFill" class='tx10' />
@@ -90,8 +90,11 @@
                             <view class='top10'>
                                 {{item.content}}
                             </view>
-                            <view class='top10' wx:if="{{item.evaluateLabel.length}}">
+                            <view class='top5' wx:if="{{item.evaluateLabel.length}}">
                                 <view class='tag4' wx:for="{{item.evaluateLabel}}" wx:for-item="tag">{{tag}}</view>
+                            </view>
+                            <view class='top5' wx:if="{{item.replyContent!=null && item.replyContent!=''}}">
+                                回复：{{item.replyContent}}
                             </view>
                         </view>
                     </view>
