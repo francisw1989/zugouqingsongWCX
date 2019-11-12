@@ -1,69 +1,73 @@
 <view class="clearfix" style="min-height: 100%; background-color:#F3F3F3;">
-  <view class="wInfo clearfix colfff ">
-    <image src="../../static/images/49.png" class="" style=" width:100%; height: 353rpx; " />
-    <view style="top: 0; left: 0; width: 100%; box-sizing: border-box" class="pad20 absolute">
-      <view class="font3 clearfix">
-        <text>{{userDetail.userName}}</text>
-        <image src="../../static/images/22.png" class="icoAll left10" style=" width:30rpx; height: 22rpx; " />
-        <text class="colYe2 left5 font0">生日：<text wx:if="{{userDetail.birthday}}">{{userDetail.birthday}}</text>   {{showBirText}}</text>
-        <view class="btns font0 right">{{memberLevelText}}</view>
-      </view>
-      <view>{{userDetail.telephoneNum}}</view>
-      <view class="top40">积分：{{userDetail.score}}</view>
-      <view class="clearfix">
-        储蓄账户：¥{{userDetail.savingsAccount}}
-      </view>
-      <view class="clearfix">充值 > <text class="right colYe2 top5 font0">NO：{{userDetail.memberNum}}</text></view>
+    <view class="wInfo clearfix colfff ">
+        <image src="../../static/images/49.png" class="" style=" width:100%; height: 353rpx; " />
+        <view style="top: 0; left: 0; width: 100%; box-sizing: border-box" class="pad20 absolute">
+            <view class="font3 clearfix">
+                <text>{{userDetail.userName}}</text>
+                <block wx:if='{{nowData==userDetail.birthday}}'>
+                    <image src="../../static/images/22.png" class="icoAll left10" style=" width:30rpx; height: 22rpx; " />
+                    <text class="colYe2 left5 font0">生日：<text wx:if="{{userDetail.birthday}}">{{userDetail.birthday}}</text> {{showBirText}}</text>
+                </block>
+                <view class="btns font0 right">{{memberLevelText}}</view>
+            </view>
+            <view>{{userDetail.telephoneNum}}</view>
+            <view class="top40">积分：{{userDetail.score}}</view>
+            <view class="clearfix">
+                储蓄账户：¥{{userDetail.savingsAccount}}
+            </view>
+            <view class="clearfix">充值 >
+                <text class="right colYe2 top5 font0">NO：{{userDetail.memberNum}}</text>
+            </view>
 
 
-    </view>
+        </view>
 
-  </view>
-  <view class="top10 bgfff pad10">
-    <view class="col333 font2">偏好</view>
-    <view class="center top10">
-      <view class="tag2" wx:for="{{tags}}">{{item}}</view>
-      <view class="tag2Add">+</view>
     </view>
-  </view>
-  <view class="top10 bgfff pad10">
-    <view class="col333 font2">历史消费</view>
-    <view class="top20">
-      <text class="col999">本周消费：</text>
-      <text class="colYe">{{employeeUserConsume.nowMonthAvg}}次</text>
-      <text class="left20 col999">均价：</text>
-      <text class="colYe">{{employeeUserConsume.nowMonthSize}}次</text>
+    <view class="top10 bgfff pad10">
+        <view class="col333 font2">偏好</view>
+        <view class="center top10">
+            <view class="tag2" wx:for="{{tags}}">{{item}}</view>
+            <view class="tag2Add" data-userId="{{orderDetail.user.id}}" data-orderId="{{orderDetail.id}}" data-orderItemId="{{orderDetail.orderItems[0].orderId}}" bindtap='addTag'>+</view>
+        </view>
     </view>
-    <view class="top10">
-      <text class="col999">本次消费：</text>
-      <text class="colYe">{{employeeUserConsume.nowWeekAvg}}次</text>
-      <text class="left20 col999">均价：</text>
-      <text class="colYe">{{employeeUserConsume.nowWeekSize}}次</text>
-    </view>
-    <view class="top10">
-      <text class="col999">距离上次消费消费：</text>
-      <text class="colYe">{{employeeUserConsume.lastDays}}天</text>
-    </view>
+    <view class="top10 bgfff pad10">
+        <view class="col333 font2">历史消费</view>
+        <view class="top20">
+            <text class="col999">本周消费：</text>
+            <text class="colYe">{{employeeUserConsume.nowMonthAvg}}次</text>
+            <text class="left20 col999">均价：</text>
+            <text class="colYe">{{employeeUserConsume.nowMonthSize}}次</text>
+        </view>
+        <view class="top10">
+            <text class="col999">本次消费：</text>
+            <text class="colYe">{{employeeUserConsume.nowWeekAvg}}次</text>
+            <text class="left20 col999">均价：</text>
+            <text class="colYe">{{employeeUserConsume.nowWeekSize}}次</text>
+        </view>
+        <view class="top10">
+            <text class="col999">距离上次消费消费：</text>
+            <text class="colYe">{{employeeUserConsume.lastDays}}天</text>
+        </view>
 
-    <view class="top10">
-      <text class="col999">消费最多的项目：</text>
-      <text class="colYe">【{{employeeUserConsume.maxItem}}】</text>
+        <view class="top10">
+            <text class="col999">消费最多的项目：</text>
+            <text class="colYe">【{{employeeUserConsume.maxItem}}】</text>
+        </view>
+        <view class="top10">
+            <text class="col999">上次消费的门店：</text>
+            <text class="colYe">{{employeeUserConsume.lastStore}}</text>
+        </view>
     </view>
-    <view class="top10">
-      <text class="col999">上次消费的门店：</text>
-      <text class="colYe">{{employeeUserConsume.lastStore}}</text>
-    </view>
-  </view>
-  <ui-popup show="{{showSR}}" background="transparent" _pid="{{_pid}}">
-    <view class="bgfff srWap">
-      <image src="../../static/images/23.png" class="" style=" width:100%; height: 212rpx; margin-top: -120rpx;" />
-      <view class="center">
-        <view class="tit inline">客户生日服务</view>
-      </view>
-      <view class="colYe top5">1.服务术语</view>
-      <view class="font0 top5">客户生日应该怎么说，客户生日应该怎么说，客户生日应该怎么说，客户生日应该怎么说，客户生日应该怎么说，客户生日应。</view>
-      <view class="colYe top5">1.服务术语</view>
-      <view class="font0 top5">客户生日应该怎么说，客户生日应该怎么说，客户生日应该怎么说，客户生日应该怎么说，客户生日应该怎么说，客户生日应。</view>
-    </view>
-  </ui-popup>
+    <ui-popup show="{{showSR}}" background="transparent" _pid="{{_pid}}">
+        <view class="bgfff srWap">
+            <image src="../../static/images/23.png" class="" style=" width:100%; height: 212rpx; margin-top: -120rpx;" />
+            <view class="center">
+                <view class="tit inline">客户生日服务</view>
+            </view>
+            <view class="colYe top5">1.服务术语</view>
+            <view class="font0 top5">客户生日应该怎么说，客户生日应该怎么说，客户生日应该怎么说，客户生日应该怎么说，客户生日应该怎么说，客户生日应。</view>
+            <view class="colYe top5">1.服务术语</view>
+            <view class="font0 top5">客户生日应该怎么说，客户生日应该怎么说，客户生日应该怎么说，客户生日应该怎么说，客户生日应该怎么说，客户生日应。</view>
+        </view>
+    </ui-popup>
 </view>

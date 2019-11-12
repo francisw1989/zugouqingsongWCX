@@ -9,6 +9,13 @@ exports.default = Page({
         //订单状态（1.待支付 2.已支付待到店 3.已到店待服务 4.服务中 5.服务完成 6.系统取消 7.用户取消 ）
         statusList:["待支付","待到店","待服务","服务中","服务完成","系统取消","用户取消"],
     },
+    gotoUserDetail(){
+        const t = this;
+        app.globalData.orderDetail = t.data.detail;
+        wx.navigateTo({
+            url: 'customerDetail?userId=' + t.data.detail.user.id,
+        })
+    },
     showMore: function showMore(e) {
         var t = this;
         var _showMore = t.data.detail.orderItems[e.currentTarget.dataset.index].showMore;
@@ -58,12 +65,16 @@ exports.default = Page({
     /**
      * 生命周期函数--监听页面加载
      */
+    onShow(){
+        const t = this;
+        t.initData();
+    },
     onLoad: function (options) {
         const t = this;
         t.setData({
             orderId:options.orderId
         })
-        t.initData();
+        
         
     },
     //开始服务
