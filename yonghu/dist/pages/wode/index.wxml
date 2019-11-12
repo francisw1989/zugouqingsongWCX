@@ -11,11 +11,11 @@
             <view class="top40">积分：{{userInfo.score || 0}}</view>
             <view class="clearfix">
                 储蓄账户：¥ {{(userInfo.savingsAccount + userInfo.virtualAccount)/100 || 0}}
-                <image src="../../static/images/48.png" class="icoAll right" style=" width:43rpx; height: 43rpx; margin-top: -10rpx;" />
+                <image wx:if='{{userInfo.userId}}' src="../../static/images/48.png" class="icoAll right" style=" width:43rpx; height: 43rpx; margin-top: -10rpx;" />
             </view>
             <view class="clearfix">
                 <navigator class="inline" url="../index/reCharge">充值 ></navigator>
-                <text class="right colYe2 top5 font0">NO：{{userInfo.memberNum||"Z1124565465"}}</text>
+                <text class="right colYe2 top5 font0" wx:if='{{userInfo.userId}}'>NO：{{userInfo.memberNum||""}}</text>
             </view>
 
 
