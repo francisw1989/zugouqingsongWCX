@@ -394,7 +394,7 @@ exports.default = App({
         let p = new Promise((resolve, reject) => {
             t.getRequest('assembleRecordByUser', params).then((res) => {
                 for (const v of res.records) {
-                    v.item.imgs = v.item.imgs.split(',')[0];
+                    v.item.imgs && (v.item.imgs = v.item.imgs.split(',')[0]);
                     v.leftPeople = v.assemblePeople - v.members.length;
                     v.leftMember = [];
                     for (let i = 0; i < v.leftPeople; i++) {
