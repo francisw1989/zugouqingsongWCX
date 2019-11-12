@@ -67,6 +67,17 @@ exports.default = Page({
             t.setData({
                 mins : ['00', '30']
             })
+        }else{
+            let now = new Date();
+            let nowMin = now.getMinutes();
+            if (nowMin <= 30) {
+                t.data.mins = ['30']
+            } else if (nowMin > 30) {
+                t.data.mins = ['00', '30']
+            }
+            t.setData({
+                mins: t.data.mins
+            })
         }
         t.setData({
             time: t.data.hours[val[0]] + ':' + t.data.mins[val[1]]

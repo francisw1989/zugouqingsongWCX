@@ -13,7 +13,7 @@
             </view>
             <view class="ui-col align-right">
                 <view class="ui-col-content">
-                    <text class="col999 font0">松松是一只憨厚可爱的黑熊,他强壮有力,为了美好的生活努力工作.因为手劲儿足,技术好,对客人热情,他成了足够轻松品牌店的头号明星.许多顾客都是冲着松松的手艺来的.</text>
+                    <text class="col999 font0">{{D.companyCulture}}</text>
                 </view>
             </view>
         </view>
@@ -25,7 +25,7 @@
             </view>
             <view class="ui-col align-right">
                 <view class="ui-col-content">
-                    <text class="col999 font0">松松是一只憨厚可爱的黑熊,他强壮有力,为了美好的生活努力工作.</text>
+                    <text class="col999 font0">{{D.mission}}</text>
                 </view>
             </view>
         </view>
@@ -37,7 +37,7 @@
             </view>
             <view class="ui-col align-right">
                 <view class="ui-col-content">
-                    <text class="col999 font0"></text>
+                    <text class="col999 font0">{{D.vision}}</text>
                 </view>
             </view>
         </view>
@@ -49,7 +49,7 @@
             </view>
             <view class="ui-col align-right">
                 <view class="ui-col-content">
-                    <text class="col999 font0"></text>
+                    <text class="col999 font0">{{D.position}}</text>
                 </view>
             </view>
         </view>
@@ -61,7 +61,7 @@
             </view>
             <view class="ui-col align-right">
                 <view class="ui-col-content">
-                    <text class="col999 font0">松松是一只憨厚可爱的黑熊,他强壮有力,为了美好的生活努力工作.因为手劲儿足,技术好,对客人热情,他成了足够轻松品牌店的头号明星.许多顾客都是冲着松松的手艺来的.</text>
+                    <text class="col999 font0">{{D.value}}</text>
                 </view>
             </view>
         </view>
@@ -76,8 +76,7 @@
             </view>
             <view class="ui-col align-right">
                 <view class="ui-col-content">
-                    <view>
-                    </view>
+                    <text class="col999 font0">{{D.mobile}}</text>
                 </view>
             </view>
         </view>

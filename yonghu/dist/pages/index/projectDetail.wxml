@@ -74,7 +74,7 @@
     <view class="pad20RL font2 col000" wx:if='{{evaluateList.length}}'>评价</view>
     <view class='pad20RL top10 bgfff' style="padding-bottom: 100rpx;">
         <view wx:if="{{evaluateList.length > 0}}">
-            <view class="ui-row pad15TB bor_btm_so" style="" wx:for='{{evaluateList}}'>
+            <view class="ui-row pad10TB bor_btm_so" style="" wx:for='{{evaluateList}}'>
                 <view class="ui-col" style="flex:0 0 45px;">
                     <view class="ui-col-content ">
                         <image src="{{item.user.photo}}" mode="aspectFill" class='tx10' />
@@ -87,11 +87,14 @@
                                 <text class='right col999 font0'>{{item.updateTime}}</text>
                                 <text class='col333'>{{item.user.userName}}</text>
                             </view>
-                            <view class='top10'>
+                            <view class='top10'  wx:if="{{item.content!=''}}">
                                 {{item.content}}
                             </view>
-                            <view class='top10' wx:if="{{item.evaluateLabel.length}}">
+                            <view class='top5' wx:if="{{item.evaluateLabel.length}}">
                                 <view class='tag4' wx:for="{{item.evaluateLabel}}" wx:for-item="tag">{{tag}}</view>
+                            </view>
+                            <view class='top5' style="color: #B28F5F;" wx:if="{{item.replyContent!=null && item.replyContent!=''}}">
+                                回复：{{item.replyContent}}
                             </view>
                         </view>
                     </view>
@@ -110,7 +113,7 @@
                     <view bindtap='ljyy' url="shopList?pageFrom=projectDetail" class="btns btns-biggest" style="width: 100%">立即预约</view>
                 </view>
             </view>
-            <view wx:if="{{D.isAssemble==1}}" class="ui-col ui-col-align-center  align-center " style="">
+            <view wx:if="{{D.isAssemble==1 && isTuan==1}}" class="ui-col ui-col-align-center  align-center " style="">
                 <view class="ui-col-content align-center ">
                     <navigator url="../wode/doGroup" class="btns btns-biggest" style="width: 100%">我要拼团</navigator>
                 </view>

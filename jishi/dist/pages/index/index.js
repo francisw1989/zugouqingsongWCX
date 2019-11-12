@@ -38,6 +38,7 @@ exports.default = Page({
         app.employeeIndex(params).then((res) => {
             // const t = this;
             console.log(res);
+          t.data.userInfo.stores = res.employee.stores;
             //处理订单信息的倒计时数据
             try {
               let newRes = res.nowOrder.filter((element, index) => {
@@ -127,13 +128,27 @@ exports.default = Page({
 
             })
         }
+
+      if (!t.data.userInfo.id || !t.data.userInfo) {
+        wx.showModal({
+          title: '提示',
+          content: '请先登录',
+        });
+        return;
+      }
+      
         wx.startWifi({
             success(res) {
                 wx.getConnectedWifi({
                     success: function (e) {
-                        if (t.data.userInfo.stores.wifiSsid == e.wifi.SSID) {
+                        // wx.showModal({
+                        //     title: '提示',
+                        //     content: JSON.stringify(e.wifi),
+                        // })
+                      
+                      if (t.data.userInfo.stores.wifiSsid!='' && t.data.userInfo.stores.wifiSsid == e.wifi.SSID) {
                             _do();
-                        } else {
+                      } else if (t.data.userInfo.stores.wifiSsid != '') {
                             wx.showModal({
                                 title: '提示',
                                 content: '请连接所属门店WiFi',
@@ -143,7 +158,7 @@ exports.default = Page({
                     fail: function (e) {
                         wx.showModal({
                             title: '提示',
-                            content: JSON.stringify(e),
+                          content: '请先打开wifi连接',
                         })
                     }
                 })

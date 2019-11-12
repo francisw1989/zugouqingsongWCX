@@ -100,13 +100,16 @@ exports.default = Page({
         })
         t.getList();
     },
-    showEwm(){
+    showEwm(e){
         const t = this;
         wx.showLoading({
             title: '加载中'
         });
+        t.setData({
+            ewmShow: true
+        })
         new QRCode('myQrcode', {
-            text: 'http://www.tongxingschool.com',
+            text: e.target.dataset.outtradeno,
             width: 200,
             height: 200,
             padding: 12, // 生成二维码四周自动留边宽度，不传入默认为0
@@ -115,9 +118,7 @@ exports.default = Page({
                 console.log(res.path)
                 // 接下来就可以直接调用微信小程序的api保存到本地或者将这张二维码直接画在海报上面去，看各自需求
                 wx.hideLoading();
-                t.setData({
-                    ewmShow: true
-                })
+                
             }
         })
     }

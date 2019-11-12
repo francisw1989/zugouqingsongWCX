@@ -74,6 +74,7 @@ exports.default = App({
                     complete: function complete() { }
                 });
             }
+            
             if (params.hasOwnProperty('employeeId') && url != 'userInfo') {
                 t.userInfo().then(() => {
                     params.employeeId = t.globalData.userInfo.id;
@@ -186,9 +187,9 @@ exports.default = App({
             let params = {
                 openId: openId
             }
-
             t.geWxtUserInfo().then(()=>{
                 t.getRequest('employeeInfo', params).then((res) => {
+                  
                     t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
                     console.log(t.globalData.userInfo)
                     resolve();
@@ -336,7 +337,7 @@ exports.default = App({
     userTagsList:function userTagsList(){
         const t = this;
         let p = new Promise((resolve, reject) => {
-            t.getRequest('userTags/list').then((res) => {
+            t.getRequest('userTags/list',{}).then((res) => {
                 resolve(res);
             })
         })
