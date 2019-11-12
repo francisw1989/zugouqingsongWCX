@@ -13,9 +13,9 @@
             <view>{{userDetail.telephoneNum}}</view>
             <view class="top40">积分：{{userDetail.score}}</view>
             <view class="clearfix">
-                储蓄账户：¥{{userDetail.savingsAccount}}
+                储蓄账户：¥{{userDetail.savingsAccount}} <text wx:if='{{userDetail.savingsAccount<=10}}'>客户账户余额不足，请提醒客户充值</text>
             </view>
-            <view wx:if='{{userDetail.savingsAccount<=10}}'>客户账户余额不足，请提醒客户充值</view>
+            
             <view class="clearfix">充值 >
                 <text class="right colYe2 top5 font0">NO：{{userDetail.memberNum}}</text>
             </view>
