@@ -30,7 +30,7 @@ exports.default = App({
         if (strDate >= 0 && strDate <= 9) {
             strDate = "0" + strDate;
         }
-        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        var currentdate = month + seperator1 + strDate;
         return currentdate;
 
     },
@@ -175,13 +175,15 @@ exports.default = App({
         t.postRequest('employeeLogin', params).then((res) => {
          
             t.globalData.userInfo = Object.assign(t.globalData.userInfo, res)
-            
             console.log(t.globalData.userInfo)
             console.log(res.openId)
             wx.setStorageSync('openId', res.openId)
-            wx.reLaunch({
-                url: 'index',
-            })
+            t.userInfo(true).then(()=>{
+                wx.reLaunch({
+                    url: 'index',
+                })
+            });
+            
         })
     },
     userInfo(reload) {

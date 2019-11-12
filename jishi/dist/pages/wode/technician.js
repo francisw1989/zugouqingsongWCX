@@ -33,8 +33,9 @@ exports.default = Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onShow: function (options) {
         const t = this;
+        debugger
         t.setData({
             userInfo: app.globalData.userInfo,
             current: 0

@@ -9,7 +9,7 @@ exports.default = Page({
         showSR: false,
         memberLevelTexts: ["普通会员", "1星会员", "2星会员", "3星会员"],//0普通会员  1 1星   2 2星   3 3星
         memberLevelText: "",
-        nowData: app.getNowFormatDate()
+        showBir: false
     },
     //给用户打标签
     addTag(e) {
@@ -47,8 +47,8 @@ exports.default = Page({
             //当月生日，计算还剩几天生日
             let showSR = false;
             let showBirText = "";
-            // let birthday = res.birthday;
-            let birthday = "1992-02-31";
+            let birthday = res.birthday;
+            // let birthday = "1992-02-31";
             if (birthday) {
                 let birArr = birthday.split("-");
                 let M = birArr[1];
@@ -60,6 +60,9 @@ exports.default = Page({
                     if (NowD == D) {//生日当天
                         showSR = true;
                         showBirText = "今天生日"
+                        t.setData({
+                            showBir: true
+                        })
                     } else if (NowD > D) {//生日前夕
                         let numD = NowD - D;
                         showBirText = "还有" + numD + "天生日"

@@ -4,7 +4,7 @@
         <view style="top: 0; left: 0; width: 100%; box-sizing: border-box" class="pad20 absolute">
             <view class="font3 clearfix">
                 <text>{{userDetail.userName}}</text>
-                <block wx:if='{{nowData==userDetail.birthday}}'>
+                <block wx:if='{{showBir}}'>
                     <image src="../../static/images/22.png" class="icoAll left10" style=" width:30rpx; height: 22rpx; " />
                     <text class="colYe2 left5 font0">生日：<text wx:if="{{userDetail.birthday}}">{{userDetail.birthday}}</text> {{showBirText}}</text>
                 </block>
@@ -15,6 +15,7 @@
             <view class="clearfix">
                 储蓄账户：¥{{userDetail.savingsAccount}}
             </view>
+            <view wx:if='{{userDetail.savingsAccount<=10}}'>客户账户余额不足，请提醒客户充值</view>
             <view class="clearfix">充值 >
                 <text class="right colYe2 top5 font0">NO：{{userDetail.memberNum}}</text>
             </view>
