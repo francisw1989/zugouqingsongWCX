@@ -101,8 +101,42 @@ exports.default = Component({
             if (app.globalData.pageName == 'scheduling') {
                 this.employeeSchedule(this.momentTransToItem(moment(this.data.value)).monthIndex || this.momentTransToItem(moment(this.data.value[1])).monthIndex)
             }
+            if (app.globalData.pageName == 'workingTime') {
+                this.employeeAttendance(this.momentTransToItem(moment(this.data.value)).monthIndex || this.momentTransToItem(moment(this.data.value[1])).monthIndex)
+            }
             // }, 3000);
         },
+        // 考勤
+        employeeAttendance: function employeeAttendance(index) {
+            const t = this;
+            let params = {
+                employeeId: app.globalData.userInfo.id,
+                monthDate: this.data.monthsArray[index].year + "-" + (this.data.monthsArray[index].month >= 10 ? '' : '0') + this.data.monthsArray[index].month
+            }
+            app.employeeAttendance(params).then((res) => {
+                let data = res.employeeAttendances;
+                let _i = -1;
+                this.data.monthsArray[index].data.forEach((v, i) => {
+                    if (v.isThisMonth) {
+                        _i++;
+                        let element = res.employeeAttendances[_i];
+                        if (element){
+                            if (element.status == 0 || element.status == 1 || element.status == 3) {
+                                v.yes = true;
+                                v.absent = false;
+                            } else {
+                                v.yes = false;
+                                v.absent = true;
+                            }
+                        }
+                    }
+                })
+                this.setData({
+                    monthsArray: this.data.monthsArray,
+                });
+            })
+        },
+        // 排班
         employeeSchedule: function employeeSchedule(index) {
             let params = {
                 employeeId: app.globalData.userInfo.id,
@@ -141,6 +175,9 @@ exports.default = Component({
             this.triggerEvent('monthchange', this.data.monthsArray[index].year + '/' + (this.data.monthsArray[index].month >= 10 ? '' : '0') + this.data.monthsArray[index].month);
             if (app.globalData.pageName == 'scheduling'){
                 this.employeeSchedule(index)
+            }
+            if (app.globalData.pageName == 'workingTime'){
+                this.employeeAttendance(index)
             }
         },
         calendarWrapStyleObj: function calendarWrapStyleObj() {
