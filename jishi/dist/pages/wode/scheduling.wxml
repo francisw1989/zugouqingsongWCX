@@ -21,7 +21,7 @@
             </view>
         </view>
         <ui-calendar disable-past-days select-range-mode="{{false}}" bindmonthchange="monthChangeHandler" bindchange="selectedHandler" value="{{date}}" show-month-range="{{['2017/12/01', '2018/12/01']}}" max-range="60" date-page="{{datePage}}" bindselectedstart="bindselectedstart"
-            bindselectedend="bindselectedend" workingdays="{{workingdays}}" _pid="{{_pid}}"></ui-calendar>
+            bindselectedend="bindselectedend" _pid="{{_pid}}"></ui-calendar>
         <view class="left20 top20">
             <image src="../../static/images/15.png" class="icoAll" style="width: 16rpx; height: 16rpx;" />
             <text class="left10 verMid col999">早班</text>

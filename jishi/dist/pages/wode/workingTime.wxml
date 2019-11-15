@@ -42,8 +42,8 @@
     </view>
     <view class="pad10 top10 bgfff">
         <view class="clearfix top10 col333">
-            <text>班次：{{workInfo.shiftsName}}</text>
-            <text class="left10">{{workInfo.startTime}}-{{workInfo.endTime}}</text>
+            <text>班次：{{workInfo.shiftsName||''}}</text>
+            <text class="left10">{{workInfo.startTime || ''}}-{{workInfo.endTime|| ''}}</text>
         </view>
         <view class="clearfix top10">
             <text class="col999">上班：</text>

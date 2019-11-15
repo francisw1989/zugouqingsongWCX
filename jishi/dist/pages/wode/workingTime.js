@@ -158,6 +158,7 @@ exports.default = Page({
   },
   onLoad: function onLoad() {
     const t = this;
+      app.globalData.pageName = 'workingTime';
     var start = void 0,
         end = void 0;
     var rangedate = new Date();
