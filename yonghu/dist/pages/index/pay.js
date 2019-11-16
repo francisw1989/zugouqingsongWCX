@@ -15,7 +15,8 @@ exports.default = Page({
         wxDisable: false,
         wxChecked: false,
         yeChecked: false,
-        couponName: ''
+        couponName: '',
+        userInfo: {}
     },
     bindtimeup(){
         wx.switchTab({
@@ -161,7 +162,6 @@ exports.default = Page({
         t.setData({
             pageFrom: opt.pageFrom,
             D: app.globalData.orderDetail,
-            U: app.globalData.userInfo,
             count: opt.count
         })
         if (app.globalData.orderDetail.isCoupon == 1 || app.globalData.orderDetail.isAssemble == 1){
@@ -193,6 +193,13 @@ exports.default = Page({
                 })
             })
             
+        }
+        if (wx.getStorageSync('openId')) {
+            app.userInfo(true).then(() => {
+                t.setData({
+                    userInfo: app.globalData.userInfo
+                })
+            })
         }
     },
     //取消优惠券
