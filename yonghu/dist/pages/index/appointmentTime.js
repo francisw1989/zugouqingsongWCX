@@ -49,9 +49,9 @@ exports.default = Page({
 
 
         if (nowMin <= 30){
-            t.data.mins = [ '30']
+            t.data.mins = [ '30', '40', '50']
         } else if (nowMin > 30){
-            t.data.mins = ['00', '30']
+            t.data.mins = ['00', '10', '30', '40', '50']
         }
         
         t.setData({
@@ -65,15 +65,15 @@ exports.default = Page({
         const val = e.detail.value;
         if (val[0] > 0){
             t.setData({
-                mins : ['00', '30']
+                mins: ['00', '10', '30', '40', '50']
             })
         }else{
             let now = new Date();
             let nowMin = now.getMinutes();
             if (nowMin <= 30) {
-                t.data.mins = ['30']
+                t.data.mins = ['30', '40', '50']
             } else if (nowMin > 30) {
-                t.data.mins = ['00', '30']
+                t.data.mins = ['00', '10', '30', '40', '50']
             }
             t.setData({
                 mins: t.data.mins
