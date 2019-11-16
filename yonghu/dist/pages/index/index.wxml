@@ -125,9 +125,9 @@
      <ui-mask wx:if='{{D.vipPic}}' show="{{showMask1}}" hide-on-tap="{{false}}" class="mask_wrap" custom-style="{{customStyle}}">
         <view class="photo" style="">
             <!-- <navigator url='{{D.vipUrl}}'> -->
-                <image style="width:100% ;height:340px"  src="{{D.vipPic}}" bindtap="vipPicGo" mode='aspectFill'></image>
+                <image style="width:100% ;height:340px"  src="{{D.vipPic}}" bindtap="vipPicGo" mode='aspectFit'></image>
             <!-- </navigator> -->
-            <view class='center top10'>
+            <view class='center'>
                 <icon type="cancel" color='#fff' size="40" bindtap="handleShowMask1" />
             </view>
         </view>
