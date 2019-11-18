@@ -39,9 +39,7 @@
   </view>
   <view class="padSp1">
     <view class="font2 btm5">充值说明</view>
-    <view class="col999">充值1000元<text class="left20">赠送300元</text></view>
-    <view class="col999">充值1000元<text class="left20">赠送300元</text></view>
-    <view class="col999">充值1000元<text class="left20">赠送300元</text></view>
+    <view class="col999" wx:for="{{mList}}" >充值{{item.activityCondition/100}}元<text class="left20">赠送{{item.amount/100}}元</text></view>
   </view>
   <view class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;" bindtap="vipRechargePost">立即充值</view>
 </view>

@@ -40,6 +40,17 @@ exports.default = App({
         stores: [],
         friendUserId: ''
     },
+    //  / userApi / v1 / getRechargeExplain
+    // 获得充值说明 grant_type: 赠送类别（0金额1积分2优惠卷）
+    getRechargeExplain() {
+        const t = this;
+        let p = new Promise((resolve, reject) => {
+            t.getRequest('getRechargeExplain', {}).then((res) => {
+                resolve(res);
+            })
+        })
+        return p;
+    },
     // / userApi / v1 / getSysItemDetail
     getSysItemDetail(){
         const t = this;

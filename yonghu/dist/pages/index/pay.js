@@ -197,7 +197,7 @@ exports.default = Page({
         if (wx.getStorageSync('openId')) {
             app.userInfo(true).then(() => {
                 t.setData({
-                    userInfo: app.globalData.userInfo
+                    U: app.globalData.userInfo
                 })
             })
         }
