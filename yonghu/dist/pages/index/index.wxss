@@ -12,8 +12,8 @@
 .mask_wrap .photo {
     padding: 0;
     position: absolute;
-    left: 20%;
-    right: 20%;
+    left: 100rpx;
+    right: 100rpx;
     top: 50%;
     transform: translateY(-50%);
 }
