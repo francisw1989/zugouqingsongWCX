@@ -49,7 +49,7 @@ exports.default = Page({
             mIndex: mIndex,
             mList: t.data.mList,
             U: t.data.U,
-            price: t.data.mList[mIndex].amount / 100
+          price: t.data.mList[mIndex].activityCondition / 100
         });
     },
     vipRecharge(){
