@@ -9,8 +9,8 @@
                 <image src="../../static/images/2.png" class="icoAll" style="width: 27rpx; height: 32rpx;" />
                 <text class="col333 verMid font0 left10">今日考勤提醒：</text>
                 <text class="verMid font0">{{nowSignText}}</text>
-                <text wx:if='{{employeeIndex.employee.status==0||employeeIndex.employee.status==2||employeeIndex.employee.status==3}}' class="left20 colGreen verMid" bindtap='employeePunch'>去打上班卡</text>
-                <text wx:else class="left20 colGreen verMid" bindtap='employeePunch'>去打下班卡</text>
+                <text wx:if='{{employeeIndex.employee.nowSign==1||employeeIndex.employee.nowSign==4}}' class="left20 colGreen verMid" bindtap='employeePunch'>去打下班卡</text>
+                <text wx:else class="left20 colGreen verMid" bindtap='employeePunch'>去打上班卡</text>
                 <image src="../../static/images/3.png" class="icoAll left10" style="width: 11rpx; height: 19rpx;" />
             </view>
         </view>
