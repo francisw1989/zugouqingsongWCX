@@ -63,7 +63,7 @@ exports.default = Page({
             U.accountAll = U.savingsAccount + Number(t.data.mList[t.data.mIndex].amount)
             t.setData({
                 U: U,
-                price: t.data.mList[t.data.mIndex].activityCondition / 100
+                price: ''//t.data.mList[t.data.mIndex].activityCondition / 100
             })
         })
     },

@@ -8,9 +8,9 @@
   <view class="pad15 bgfff top20">
     <ui-divider _pid="{{_pid}}">请选择充值金额</ui-divider>
     <view class="">
-      <view class="tag3 {{index==mIndex?'active':''}}" wx:for="{{mList}}" data-index="{{index}}" catchtap="tagClick">
+      <view class="tag3 {{index==mIndex?'active':''}}" wx:for="{{mList}}" data-index="{{index}}" catchtap="tagClick" wx:if="{{item.grantType==0}}">
         {{item.activityCondition/100}}
-        <text wx:if="{{item.activityCondition}}" class="la">赠{{item.amount/100}}</text>
+        <text wx:if="{{item.grantType==0 && item.activityCondition}}" class="la">赠{{item.amount/100}}</text>
       </view>
     </view>
   </view>
@@ -39,7 +39,11 @@
   </view>
   <view class="padSp1">
     <view class="font2 btm5">充值说明</view>
-    <view class="col999" wx:for="{{mList}}" >充值{{item.activityCondition/100}}元<text class="left20">赠送{{item.amount/100}}元</text></view>
+    <view class="col999" wx:for="{{mList}}" >充值{{item.activityCondition/100}}元
+    <text class="left20" wx:if="{{item.grantType==0}}">赠送{{item.amount/100}}元</text>
+    <text class="left20" wx:if="{{item.grantType==1}}">赠送{{item.amount}}积分</text>
+    <text class="left20" wx:if="{{item.grantType==2}}">赠送优惠券</text>
+    </view>
   </view>
   <view class="btns btns-biggest btns-green " style="position: fixed; left: 0; bottom: 0;" bindtap="vipRechargePost">立即充值</view>
 </view>
