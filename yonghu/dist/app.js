@@ -521,7 +521,7 @@ exports.default = App({
                     let _i = -1
                     res.payType.split('-').forEach((v, i) => {
                         if (v) {
-                            _i ++
+                            _i ++;
                             if (v == 1) {
                                 hasXuni = true;
                                 xuniIndex = _i;
