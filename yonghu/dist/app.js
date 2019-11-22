@@ -514,7 +514,7 @@ exports.default = App({
             t.getRequest('orderDetail', params).then((res) => {
                 let payObjList = [];
                 if (res.payType) {
-                    let payTypeList = ['', '虚拟账户', '现金账户', '微信支付', '现金', '微信转账', '支付宝转账'];
+                  let payTypeList = ['', '储值账户', '储值账户', '微信支付', '现金', '微信转账', '支付宝转账'];
                     // 虚拟账户的值累加到现金账户里
                     let hasXuni = false, xuniIndex = 0;
                     let hasXianJin  = false, xianJinIndex = 0;
@@ -546,7 +546,7 @@ exports.default = App({
                             // 没有现金账户  新增现金账户
                             payObjList.push({
                                 payType: 2,
-                                payTypeName: '现金账户',
+                              payTypeName: '储值账户',
                                 payAmount: payObjList[xuniIndex].payAmount
                             })
                         }
