@@ -518,15 +518,17 @@ exports.default = App({
                     // 虚拟账户的值累加到现金账户里
                     let hasXuni = false, xuniIndex = 0;
                     let hasXianJin  = false, xianJinIndex = 0;
+                    let _i = -1
                     res.payType.split('-').forEach((v, i) => {
                         if (v) {
+                            _i ++
                             if (v == 1) {
                                 hasXuni = true;
-                                xuniIndex = i;
+                                xuniIndex = _i;
                             }
                             if (v == 2) {
                                 hasXianJin = true;
-                                xianJinIndex = i;
+                                xianJinIndex = _i;
                             }
                             payObjList.push({
                                 payType: v,
