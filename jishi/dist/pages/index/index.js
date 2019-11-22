@@ -31,6 +31,9 @@ exports.default = Page({
     getemployeeIndex() {
         const t = this;
         //获取首页技师收益等统计
+      if (app.globalData.userInfo.id==undefined){
+        return;
+      }
         let params = {
             employeeId: app.globalData.userInfo.id
             // employeeId: 16
