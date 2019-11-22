@@ -31,7 +31,7 @@
     </view>
     <view class="footerBox" style="bottom: 10rpx">
         <view class="inWap1 pad15RL" style="padding-bottom: 30rpx;" wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length > 0}}">
-            <view class="bor_btm_so ui-row" style=""  data-index="0" catchtap='showAppointDetail'>
+            <view class="bor_btm_so ui-row" style="" data-index="0" catchtap='showAppointDetail'>
                 <view class="ui-col" style="">
                     <view class="ui-col-content">
                         <view>
@@ -75,37 +75,37 @@
             </view>
             <view wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length >0 && index==0}}">
                 <view class="line30 top10">
-                    <view>编号：{{employeeIndex.nowOrder[index].orderId}}</view>
+                    <view>编号：{{employeeIndex.nowOrder[0].orderId}}</view>
                     <view>
-                        <text class="verMid">服务项目：【{{employeeIndex.nowOrder[index].itemName}}】</text>
+                        <text class="verMid">服务项目：【{{employeeIndex.nowOrder[0].itemName}}】</text>
                         <image src="../../static/images/11.png" class="icoAll left2" style="width: 22rpx; height: 22rpx;" />
-                        <text class="colRed left5 verMid">{{employeeIndex.nowOrder[index].orderTime}}分钟</text>
+                        <text class="colRed left5 verMid">{{employeeIndex.nowOrder[0].orderTime}}分钟</text>
                     </view>
                     <view>服务门店：
-                        <text wx:if="{{employeeIndex.nowOrder[index].storeName}}"> {{employeeIndex.nowOrder[index].storeName}}</text>
+                        <text wx:if="{{employeeIndex.nowOrder[0].storeName}}"> {{employeeIndex.nowOrder[0].storeName}}</text>
                     </view>
                     <view>偏好：</view>
                     <view>
-                        <view class="tag1" wx:for="{{employeeIndex.nowOrder[index].employeesUserTags}}" wx:for-item="tag" style="background-color: {{color}}">{{tag}}</view>
-                        <image src="../../static/images/13.png" class="icoAll" style="width: 84rpx; height: 40rpx;" data-userId="{{employeeIndex.nowOrder[index].userId}}" data-orderId="{{employeeIndex.nowOrder[index].orderId}}" data-orderItemId="{{employeeIndex.nowOrder[index].orderItemId}}"
+                        <view class="tag1" wx:for="{{employeeIndex.nowOrder[0].employeesUserTags}}" wx:for-item="tag" style="background-color: {{color}}">{{tag}}</view>
+                        <image src="../../static/images/13.png" class="icoAll" style="width: 84rpx; height: 40rpx;" data-userId="{{employeeIndex.nowOrder[0].userId}}" data-orderId="{{employeeIndex.nowOrder[0].orderId}}" data-orderItemId="{{employeeIndex.nowOrder[0].orderItemId}}"
                             bindtap='addTag' />
                     </view>
                     <view></view>
                     <view></view>
                     <view></view>
                 </view>
-                <view class="top15 line20" wx:if="{{employeeIndex.nowOrder[index].status == 4 }}">
-                    <view class="col000 btm5" wx:if="{{employeeIndex.nowOrder[index].articleOrderItems && employeeIndex.nowOrder[index].articleOrderItems.length >0}}">已购商品：</view>
-                    <view class="font0" wx:for="{{employeeIndex.nowOrder[index].articleOrderItems}}" wx:for-item="articleOrderItems">{{articleOrderItems.articleName}}*{{articleOrderItems.count}}</view>
+                <view class="top15 line20" wx:if="{{employeeIndex.nowOrder[0].status == 4 }}">
+                    <view class="col000 btm5" wx:if="{{employeeIndex.nowOrder[0].articleOrderItems && employeeIndex.nowOrder[0].articleOrderItems.length >0}}">已购商品：</view>
+                    <view class="font0" wx:for="{{employeeIndex.nowOrder[0].articleOrderItems}}" wx:for-item="articleOrderItems">{{articleOrderItems.articleName}}*{{articleOrderItems.count}}</view>
                 </view>
-                <view class='align-right top5 ' style='padding: 10rpx 0; border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;' wx:if="{{employeeIndex.nowOrder[index].status == 3 }}">
-                    <view class='btns btns-green btns-small' data-orderitemid="{{employeeIndex.nowOrder[index].orderItemId}}" bindtap='employeeStartServie'>开始服务</view>
+                <view class='align-right top5 ' style='padding: 10rpx 0; border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;' wx:if="{{employeeIndex.nowOrder[0].status == 3 }}">
+                    <view class='btns btns-green btns-small' data-orderitemid="{{employeeIndex.nowOrder[0].orderItemId}}" bindtap='employeeStartServie'>开始服务</view>
                 </view>
-                <view class='align-right top5 ' style='padding: 10rpx 0; border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;' wx:if="{{employeeIndex.nowOrder[index].status == 4 }}">
-                    <view class='btns btns-green btns-small' data-orderitemid="{{employeeIndex.nowOrder[index].orderItemId}}" bindtap='employeeEndServie'>结束服务</view>
+                <view class='align-right top5 ' style='padding: 10rpx 0; border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;' wx:if="{{employeeIndex.nowOrder[0].status == 4 }}">
+                    <view class='btns btns-green btns-small' data-orderitemid="{{employeeIndex.nowOrder[0].orderItemId}}" bindtap='employeeEndServie'>结束服务</view>
                 </view>
             </view>
-            <view class="bor_btm_so ui-row" style="" wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length >1}}" data-index="1" catchtap='showAppointDetail'>
+            <view class="bor_btm_so ui-row" style="" data-index="1" catchtap='showAppointDetail' wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length >1}}"  >
                 <view class="ui-col" style="">
                     <view class="ui-col-content">
                         <view>
@@ -121,7 +121,7 @@
                         </view>
                         <view wx:elif="{{employeeIndex.nowOrder[1].status == 2 }}">
                             <text style="color: {{color}}">剩余</text>
-                            <ui-count-down wx:if="employeeIndex.nowOrder[1].countdown" number-style="color: {{color}}" class="inline" timetype="second" time="{{employeeIndex.nowOrder[1].countdown}}" format="{%h}:{%m}:{%s}" _pid="{{_pid}}"></ui-count-down>
+                            <ui-count-down wx:if="{{employeeIndex.nowOrder[1].countdown}}" number-style="color: {{color}}" class="inline" timetype="second" time="{{employeeIndex.nowOrder[1].countdown}}" format="{%h}:{%m}:{%s}" _pid="{{_pid}}"></ui-count-down>
                             <text style="color: {{color}}">到店</text>
                         </view>
                         <view wx:elif="{{employeeIndex.nowOrder[1].status == 3 }}">
@@ -149,34 +149,34 @@
             </view>
             <view wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length >0 && index==1}}">
                 <view class="line30 top10">
-                    <view>编号：{{employeeIndex.nowOrder[index].orderId}}</view>
+                    <view>编号：{{employeeIndex.nowOrder[1].orderId}}</view>
                     <view>
-                        <text class="verMid">服务项目：【{{employeeIndex.nowOrder[index].itemName}}】</text>
+                        <text class="verMid">服务项目：【{{employeeIndex.nowOrder[1].itemName}}】</text>
                         <image src="../../static/images/11.png" class="icoAll left2" style="width: 22rpx; height: 22rpx;" />
-                        <text class="colRed left5 verMid">{{employeeIndex.nowOrder[index].orderTime}}分钟</text>
+                        <text class="colRed left5 verMid">{{employeeIndex.nowOrder[1].orderTime}}分钟</text>
                     </view>
                     <view>服务门店：
-                        <text wx:if="{{employeeIndex.nowOrder[index].storeName}}"> {{employeeIndex.nowOrder[index].storeName}}</text>
+                        <text wx:if="{{employeeIndex.nowOrder[1].storeName}}"> {{employeeIndex.nowOrder[1].storeName}}</text>
                     </view>
                     <view>偏好：</view>
                     <view>
-                        <view class="tag1" wx:for="{{employeeIndex.nowOrder[index].employeesUserTags}}" wx:for-item="tag" style="background-color: {{color}}">{{tag}}</view>
-                        <image src="../../static/images/13.png" class="icoAll" style="width: 84rpx; height: 40rpx;" data-userId="{{employeeIndex.nowOrder[index].userId}}" data-orderId="{{employeeIndex.nowOrder[index].orderId}}" data-orderItemId="{{employeeIndex.nowOrder[index].orderItemId}}"
+                        <view class="tag1" wx:for="{{employeeIndex.nowOrder[1].employeesUserTags}}" wx:for-item="tag" style="background-color: {{color}}">{{tag}}</view>
+                        <image src="../../static/images/13.png" class="icoAll" style="width: 84rpx; height: 40rpx;" data-userId="{{employeeIndex.nowOrder[1].userId}}" data-orderId="{{employeeIndex.nowOrder[1].orderId}}" data-orderItemId="{{employeeIndex.nowOrder[1].orderItemId}}"
                             bindtap='addTag' />
                     </view>
                     <view></view>
                     <view></view>
                     <view></view>
                 </view>
-                <view class="top15 line20" wx:if="{{employeeIndex.nowOrder[index].status == 4 }}">
-                    <view class="col000 btm5" wx:if="{{employeeIndex.nowOrder[index].articleOrderItems}}">已购商品：</view>
-                    <view class="font0" wx:for="{{employeeIndex.nowOrder[index].articleOrderItems}}" wx:for-item="articleOrderItems">{{articleOrderItems.articleName}}*{{articleOrderItems.count}}</view>
+                <view class="top15 line20" wx:if="{{employeeIndex.nowOrder[1].status == 4 }}">
+                    <view class="col000 btm5" wx:if="{{employeeIndex.nowOrder[1].articleOrderItems}}">已购商品：</view>
+                    <view class="font0" wx:for="{{employeeIndex.nowOrder[1].articleOrderItems}}" wx:for-item="articleOrderItems">{{articleOrderItems.articleName}}*{{articleOrderItems.count}}</view>
                 </view>
-                <view class='align-right top5 ' style='padding: 10rpx 0; border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;' wx:if="{{employeeIndex.nowOrder[index].status == 3 }}">
-                    <view class='btns btns-green btns-small' data-orderitemid="{{employeeIndex.nowOrder[index].orderItemId}}" bindtap='employeeStartServie'>开始服务</view>
+                <view class='align-right top5 ' style='padding: 10rpx 0; border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;' wx:if="{{employeeIndex.nowOrder[1].status == 3 }}">
+                    <view class='btns btns-green btns-small' data-orderitemid="{{employeeIndex.nowOrder[1].orderItemId}}" bindtap='employeeStartServie'>开始服务</view>
                 </view>
-                <view class='align-right top5  ' style='padding: 10rpx 0; border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;' wx:if="{{employeeIndex.nowOrder[index].status == 4 }}">
-                    <view class='btns btns-green btns-small' data-orderitemid="{{employeeIndex.nowOrder[index].orderItemId}}" bindtap='employeeEndServie'>结束服务</view>
+                <view class='align-right top5  ' style='padding: 10rpx 0; border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;' wx:if="{{employeeIndex.nowOrder[1].status == 4 }}">
+                    <view class='btns btns-green btns-small' data-orderitemid="{{employeeIndex.nowOrder[1].orderItemId}}" bindtap='employeeEndServie'>结束服务</view>
                 </view>
             </view>
         </view>
