@@ -9,7 +9,7 @@
                 <image src="../../static/images/2.png" class="icoAll" style="width: 27rpx; height: 32rpx;" />
                 <text class="col333 verMid font0 left10">今日考勤提醒：</text>
                 <text class="verMid font0">{{nowSignText}}</text>
-                <text wx:if='{{employeeIndex.employee.nowSign==1||employeeIndex.employee.nowSign==4}}' class="left20 colGreen verMid" bindtap='employeePunch'>去打下班卡</text>
+                <text wx:if='{{employeeIndex.nowSign==1||employeeIndex.nowSign==4}}' class="left20 colGreen verMid" bindtap='employeePunch'>去打下班卡</text>
                 <text wx:else class="left20 colGreen verMid" bindtap='employeePunch'>去打上班卡</text>
                 <image src="../../static/images/3.png" class="icoAll left10" style="width: 11rpx; height: 19rpx;" />
             </view>
@@ -83,6 +83,10 @@
                     </view>
                     <view>服务门店：
                         <text wx:if="{{employeeIndex.nowOrder[index].storeName}}"> {{employeeIndex.nowOrder[index].storeName}}</text>
+                    </view>
+                    <view>服务房间:
+                    <text wx:if="{{employeeIndex.nowOrder[index].roomName}}">{{employeeIndex.nowOrder
+[index].roomName}}</text>
                     </view>
                     <view>偏好：</view>
                     <view>
