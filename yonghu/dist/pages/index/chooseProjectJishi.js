@@ -337,6 +337,7 @@ exports.default = Page({
                 cIndex: t.data.cIndex
             });
             console.log('slider load')
+            t.data.tlsChosedIds = [];
             t.selectTechnician(t.data.cIndex);
         }, 500)
 
