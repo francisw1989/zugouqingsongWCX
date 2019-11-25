@@ -53,7 +53,8 @@ Page({
         
         let params = {
             evaluateScore: t.data.evaluateScore,
-            content: t.data.content
+            content: t.data.content,
+            orderId:t.data.nowOrder.id
         }
         if (params.evaluateScore == 1){
             let employeeIds = [];
