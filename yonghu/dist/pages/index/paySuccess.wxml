@@ -51,7 +51,7 @@
             </view>
         </view>
     </view> -->
-    <view class="padSp1 bgfff bor_btm_so clearfix col333" wx:for='{{D.payObjList}}'>
+    <view class="padSp1 bgfff bor_btm_so clearfix col333" wx:for='{{D.payObjList}}' wx:if="{{item.payType!='1'}}">
         <view class="ui-row" style="">
             <!-- <view class="ui-col" style="flex:0 0 40px;">
                 <view class="ui-col-content">

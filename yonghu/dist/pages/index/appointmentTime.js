@@ -12,7 +12,8 @@ exports.default = Page({
         HH: '',
         MM: '',
         date: '',
-        dates: []
+        dates: [],
+        oMins: []
     },
     chose: function chose(e) {
         console.log('323');
@@ -32,63 +33,81 @@ exports.default = Page({
         let min;
         if(t.data.cIndex == 0){
             min = Number(t.data.I.openStartTime.split(':')[0]) > nowHour ? Number(t.data.I.openStartTime.split(':')[0]) : nowHour;
-            if (nowMin > t.data.I.openStartTime.split(':')[1]) {
-                min = min + 1;
-            } else {
-
-            }
         }else{
             min = Number(t.data.I.openStartTime.split(':')[0])
+            t.setData({
+                mins: t.data.oMins
+            })
         }
-
+        
         let max = Number(t.data.I.openEndTime.split(':')[0]);
         for (let i = min; i < max + 1; i++) {
             let h = i < 10 ? '0' + i : i
             t.data.hours.push(h)
         }
-
-
-        if (nowMin <= 30){
-            t.data.mins = [ '30', '40', '50']
-        } else if (nowMin > 30){
-            t.data.mins = ['00', '10', '20', '30', '40', '50']
-        }
-        
+        t.calMins(t.data.hours[0]);
         t.setData({
             hours: t.data.hours,
-            mins: t.data.mins,
             time: t.data.hours[0] + ':' + t.data.mins[0]
+        })
+    },
+    calMins(currHour){
+        const t = this;
+        let now = new Date();
+        let nowMin = now.getMinutes();
+        let minMins = Number(t.data.I.openStartTime.split(':')[1]) > nowMin ? Number(t.data.I.openStartTime.split(':')[1]) : nowMin;
+        let maxMins = Number(t.data.I.openEndTime.split(':')[1])
+        let mins = [];
+        
+        if (t.data.cIndex == 1){
+            // 明天
+            if (currHour == t.data.hours[t.data.hours.length - 1]){
+                //最后一个小时
+                for (let i = 0; i <= maxMins; i++) {
+                    mins.push(i < 10 ? '0' + i : i)
+                }
+            }else{
+                mins = t.data.oMins;
+            }
+        } else if (t.data.cIndex == 0){
+            //今天
+            if (currHour == t.data.hours[t.data.hours.length-1]){
+                // 最后一个小时
+                for (let i = 0; i <= maxMins; i++) {
+                    mins.push(i < 10 ? '0' + i : i)
+                }
+            } else if (currHour == t.data.hours[0]){
+                // 第一个小时
+                for (let i = minMins + 1; i < 60; i++) {
+                    mins.push(i < 10 ? '0' + i : i)
+                }
+            }else{
+                mins = t.data.oMins;
+            }
+            
+        }
+        t.setData({
+            mins: mins
         })
     },
     bindChange(e){
         const t = this;
         const val = e.detail.value;
-        if (val[0] > 0){
-            t.setData({
-                mins: ['00', '10', '20', '30', '40', '50']
-            })
-        }else{
-            let now = new Date();
-            let nowMin = now.getMinutes();
-            if (nowMin <= 30) {
-                t.data.mins = ['30', '40', '50']
-            } else if (nowMin > 30) {
-                t.data.mins = ['00', '10', '20', '30', '40', '50']
-            }
-            t.setData({
-                mins: t.data.mins
-            })
-        }
+        t.calMins(t.data.hours[val[0]]);
         t.setData({
             time: t.data.hours[val[0]] + ':' + t.data.mins[val[1]]
         })
     },
     onLoad(){
         const t = this;
+        let oMins = []
+        for (let i = 0; i < 60; i++){
+            oMins.push(i < 10 ? '0' + i : i)
+        }
         t.setData({
             I: app.globalData.chooseStore,
             dates: app.get_tomorrow_data(),
-            
+            oMins: oMins
         })
         t.setData({
             cIndex: 0,

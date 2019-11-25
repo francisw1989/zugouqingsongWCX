@@ -514,9 +514,22 @@ exports.default = App({
             t.getRequest('orderDetail', params).then((res) => {
                 let payObjList = [];
                 if (res.payType) {
-                    let payTypeList = ['', '虚拟账户', '现金账户', '微信支付', '现金', '微信转账', '支付宝转账'];
+                  let payTypeList = ['', '储值账户', '储值账户', '微信支付', '现金', '微信转账', '支付宝转账'];
+                    // 虚拟账户的值累加到现金账户里
+                    let hasXuni = false, xuniIndex = 0;
+                    let hasXianJin  = false, xianJinIndex = 0;
+                    let _i = -1
                     res.payType.split('-').forEach((v, i) => {
                         if (v) {
+                            _i ++;
+                            if (v == 1) {
+                                hasXuni = true;
+                                xuniIndex = _i;
+                            }
+                            if (v == 2) {
+                                hasXianJin = true;
+                                xianJinIndex = _i;
+                            }
                             payObjList.push({
                                 payType: v,
                                 payTypeName: payTypeList[v],
@@ -524,6 +537,20 @@ exports.default = App({
                             })
                         }
                     })
+                    if (hasXuni){
+                        // 存在虚拟账户
+                        if (hasXianJin){
+                            // 已有现金账户  累加虚拟账户金额
+                            payObjList[xianJinIndex].payAmount = payObjList[xianJinIndex].payAmount + payObjList[xuniIndex].payAmount
+                        }else{
+                            // 没有现金账户  新增现金账户
+                            payObjList.push({
+                                payType: 2,
+                              payTypeName: '储值账户',
+                                payAmount: payObjList[xuniIndex].payAmount
+                            })
+                        }
+                    }
                     res.payObjList = payObjList;
 
                 }

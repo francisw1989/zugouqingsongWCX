@@ -28,9 +28,12 @@ exports.default = Page({
             color: app.globalData.color
         });
     },
-    getemployeeIndex(){
+    getemployeeIndex() {
         const t = this;
         //获取首页技师收益等统计
+      if (app.globalData.userInfo.id==undefined){
+        return;
+      }
         let params = {
             employeeId: app.globalData.userInfo.id
             // employeeId: 16
@@ -38,17 +41,17 @@ exports.default = Page({
         app.employeeIndex(params).then((res) => {
             // const t = this;
             console.log(res);
-          t.data.userInfo.stores = res.employee.stores;
+            t.data.userInfo.stores = res.employee.stores;
             //处理订单信息的倒计时数据
             try {
-              let newRes = res.nowOrder.filter((element, index) => {
-                if (element.status == 2) { //已支付待到店状态，计算出倒计时秒数
-                  element.countdown = t.getDifferDate(new Date(), element.orderStartTime, 4);
-                }
-              });
+                let newRes = res.nowOrder.filter((element, index) => {
+                    if (element.status == 2) { //已支付待到店状态，计算出倒计时秒数
+                        element.countdown = t.getDifferDate(new Date(), element.orderStartTime, 4);
+                    }
+                });
             } catch (e) { }
             t.setData({
-              employeeIndex: res
+                employeeIndex: res
             })
             t.setting();
             t.employeeIndex();
@@ -56,7 +59,7 @@ exports.default = Page({
     },
     onShow() {
         var t = this;
-        if (wx.getStorageSync('openId')){
+        if (wx.getStorageSync('openId')) {
             app.userInfo().then(() => {
                 t.setData({
                     userInfo: app.globalData.userInfo
@@ -64,9 +67,9 @@ exports.default = Page({
                 t.getemployeeIndex();
             })
         }
-        
 
-        
+
+
     },
     //开始服务
     employeeStartServie(e) {
@@ -89,7 +92,7 @@ exports.default = Page({
         })
     },
     //结束服务
-    employeeEndServie: function(e) {
+    employeeEndServie: function (e) {
         const t = this;
         let orderItemId = e.currentTarget.dataset.orderitemid;
         console.log(orderItemId);
@@ -129,14 +132,14 @@ exports.default = Page({
             })
         }
 
-      if (!t.data.userInfo.id || !t.data.userInfo) {
-        wx.showModal({
-          title: '提示',
-          content: '请先登录',
-        });
-        return;
-      }
-      
+        if (!t.data.userInfo.id || !t.data.userInfo) {
+            wx.showModal({
+                title: '提示',
+                content: '请先登录',
+            });
+            return;
+        }
+
         wx.startWifi({
             success(res) {
                 wx.getConnectedWifi({
@@ -145,10 +148,10 @@ exports.default = Page({
                         //     title: '提示',
                         //     content: JSON.stringify(e.wifi),
                         // })
-                      
-                      if (t.data.userInfo.stores.wifiSsid!='' && t.data.userInfo.stores.wifiSsid == e.wifi.SSID) {
+
+                        if (t.data.userInfo.stores.wifiSsid != '' && t.data.userInfo.stores.wifiSsid == e.wifi.SSID) {
                             _do();
-                      } else if (t.data.userInfo.stores.wifiSsid != '') {
+                        } else if (t.data.userInfo.stores.wifiSsid != '') {
                             wx.showModal({
                                 title: '提示',
                                 content: '请连接所属门店WiFi',
@@ -158,7 +161,7 @@ exports.default = Page({
                     fail: function (e) {
                         wx.showModal({
                             title: '提示',
-                          content: '请先打开wifi连接',
+                            content: '请先打开wifi连接',
                         })
                     }
                 })
@@ -170,9 +173,9 @@ exports.default = Page({
                 })
             }
         })
-        
-        
-        
+
+
+
     },
     //切换预约，显示不同详情
     showAppointDetail(e) {
@@ -191,7 +194,7 @@ exports.default = Page({
         })
     },
     //获取与毫秒数的转化比例（相差天数：1，相差小时数：2，相差分钟数：3，相差秒数：4）
-    getDifferScale: function(value) {
+    getDifferScale: function (value) {
         var format;
         //获取转化比（天数跟毫秒数的比例）
         if (value == 1) {
@@ -212,7 +215,7 @@ exports.default = Page({
         return format;
     },
     //获取两个日期的相差日期数(differ 相差天数：1、相差小时数：2、相差分钟数：3、相差秒数：4)
-    getDifferDate: function(firstDate, secondDate, differ) {
+    getDifferDate: function (firstDate, secondDate, differ) {
         // firstDate = firstDate.replace(/-/g, "/");
         secondDate = secondDate.replace(/-/g, "/");
         const t = this;
@@ -227,16 +230,16 @@ exports.default = Page({
         var dayNum = Math.abs(Math.floor(msecNum / t.getDifferScale(differ)));
         return dayNum;
     },
-    employeeIndex: function() {
+    employeeIndex: function () {
         let t = this;
         // console.log(vm);
-        t.data.interval = setInterval(function() {
+        t.data.interval = setInterval(function () {
             let params = {
                 employeeId: app.globalData.userInfo.id
             }
             //获取首页技师收益等统计
             app.employeeIndex(params).then((res) => {
-             
+
                 //处理订单信息的倒计时数据
                 let newRes = res.nowOrder.filter((element, index) => {
                     if (element.status == 2) { //已支付待到店状态，计算出倒计时秒数
@@ -265,7 +268,7 @@ exports.default = Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
         // let t = this;
         // let a  = t.getDifferDate("2019-10-19 20:39", "2019-10-19 20:40", 4);
         // console.log(a)
@@ -301,7 +304,7 @@ exports.default = Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 });
