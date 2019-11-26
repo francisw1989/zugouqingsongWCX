@@ -77,6 +77,12 @@ exports.default = Page({
     vipRechargePost(){
         const t = this;
         let price = t.data.price;
+        if (!price){
+            wx.showModal({
+                content: '请输入或选择充值金额'
+            });
+            return
+        }
         app.vipRechargePost(price*100).then(()=>{
             app.wxPay().then(()=>{
                 wx.navigateBack({
