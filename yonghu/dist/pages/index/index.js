@@ -118,6 +118,9 @@ exports.default = Page({
         let _do = () => {
             app.nowOrder().then((res) => {
                 setTimeout(() => {
+                    if (res.nowOrder.status == 5){
+                        return
+                    }
                     _do()
                 }, 10 * 60 * 1000);
                 
