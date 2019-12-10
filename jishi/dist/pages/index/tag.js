@@ -54,8 +54,8 @@ Page({
                 employeeId: app.globalData.userInfo.id,
                 orderId:Number(t.data.orderId),
                 orderItemId:Number(t.data.orderItemId),
-                content:tags.join(","),
-                appraise: t.data.appraise
+                content: tags.join(",") + t.data.appraise == "" ? "" : + "," + t.data.appraise,
+//                appraise: t.data.appraise
             }
             app.employeeTagUser(params).then(()=>{
                 wx.showToast({
