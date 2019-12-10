@@ -1963,3 +1963,5 @@ view.btns-green,button.btns-green {
 
 .leveItem{ padding: 10rpx 0; border-bottom: 2px solid #fff;}
 .leveItem.active{ border-color: #459E8C}
+
+.mewMsg{ position: fixed; width: 730rpx; left: 10rpx; bottom: 55px; background-color: #fff; box-shadow: 0 0 3px rgba(0,0,0,0.5)}

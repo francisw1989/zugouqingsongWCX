@@ -1,4 +1,4 @@
-<view style="height: 100%; overflow:{{overflow}}; padding-bottom: 54px; box-sizing: border-box; background-color:#F3F3F3;">
+<view style="height: 100%; overflow:{{overflow}}; padding-bottom: {{jxzShow?120:54}}px; box-sizing: border-box; background-color:#F3F3F3;">
     <swiper class="swiper" indicator-dots="true"
     autoplay="true">
         <block wx:for="{{D.banners}}">
@@ -83,7 +83,7 @@
     </view>
     <button open-type="contact" class='ico4 icoAll' style='left:{{left}}px; top:{{top}}px'  bindtouchmove="bindtouchmove" bindtouchstart="bindtouchstart" bindtouchend="bindtouchend"><image src="../../static/images/4.png" style='width: 55px; height: 55px; '     /></button>
     
-    <ui-popup show="{{jxzShow}}" wx:if='{{O}}' background="transparent" _pid="{{_pid}}">
+    <ui-popup show="{{jxzShow && realShow}}" bindtap="doRealShow" wx:if='{{O}}' background="transparent" _pid="{{_pid}}">
         <view class="padSp1 clearfix" style="background-color:#fff; border-radius: 10rpx 10rpx 0 0; overflow: hidden; padding-bottom: 150rpx;">
             <view  style="padding-bottom: 20rpx;">
                 <text class="col333 bold">{{statusName[O.status]}}</text>
@@ -122,7 +122,7 @@
 
 
     </ui-popup>
-     <ui-mask wx:if='{{D.vipPic}}' show="{{showMask1}}" hide-on-tap="{{false}}" class="mask_wrap" custom-style="{{customStyle}}">
+     <ui-mask wx:if='{{D.vipPic}}'  show="{{showMask1}}" hide-on-tap="{{false}}" class="mask_wrap" custom-style="{{customStyle}}">
         <view class="photo" style="">
             <!-- <navigator url='{{D.vipUrl}}'> -->
                 <image style="width:550rpx ;height:600rpx"  src="{{D.vipPic}}" bindtap="vipPicGo"></image>
@@ -132,4 +132,8 @@
             </view>
         </view>
     </ui-mask>
+    <view class='mewMsg pad10 clearfix' wx:if='{{jxzShow && !realShow}}'> 
+        <view class='right btns btns-small btns-green' bindtap='doRealShow'>查看</view> 
+        <text style='line-height: 51rpx'>您有进行中的订单</text>
+    </view>
 </view>

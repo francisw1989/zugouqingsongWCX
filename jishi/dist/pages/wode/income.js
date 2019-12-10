@@ -59,7 +59,7 @@ Page({
             disabled=true;
         }
         lineChart1 = new wxCharts({
-            enableScroll: true,
+            enableScroll: false,
             canvasId: 'lineCanvas1',
             type: 'line',
             // categories: ['2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12', '2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12', '2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12',],
@@ -126,7 +126,7 @@ Page({
             disabled=true;
         }
         lineChart2 = new wxCharts({
-            enableScroll: true,
+            enableScroll: false,
             canvasId: 'lineCanvas2',
             type: 'line',
             // categories: ['2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12'],
@@ -193,7 +193,7 @@ Page({
             disabled=true;
         }
         lineChart3 = new wxCharts({
-            enableScroll: true,
+            enableScroll: false,
             canvasId: 'lineCanvas3',
             type: 'line',
             // categories: ['2019-05-06', '2019-05-07', '2019-05-08', '2019-05-09', '2019-05-10', '2019-05-11', '2019-05-12'],
@@ -276,6 +276,16 @@ Page({
         //
        
         app.employeeStatistics(params).then((res)=>{
+            res[0].date = res[0].date.map((v)=>{
+                return v.split('-')[2]
+            })
+            res[1].date = res[1].date.map((v) => {
+                return v.split('-')[2]
+            })
+            res[2].date = res[2].date.map((v) => {
+                return v.split('-')[2]
+            })
+            console.log(res[0].date)
             t.setData({
                 incomeData: res[0],
                 serviceData: res[2],

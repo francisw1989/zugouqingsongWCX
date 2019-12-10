@@ -14,7 +14,8 @@ Page({
             'width': '30%'
         },
         tagsList:[],
-        current: 0
+        current: 0,
+        appraise: ''
     },
     handleChange: function handleChange(e) {
         const t = this;
@@ -22,6 +23,12 @@ Page({
         t.setData({
             current: index
         });
+    },
+    oninput(e) {
+        const t = this;
+        t.setData({
+            appraise: e.detail.value
+        })
     },
     //保存标签
     submitTags(){
@@ -47,7 +54,8 @@ Page({
                 employeeId: app.globalData.userInfo.id,
                 orderId:Number(t.data.orderId),
                 orderItemId:Number(t.data.orderItemId),
-                content:tags.join(",")
+                content:tags.join(","),
+                appraise: t.data.appraise
             }
             app.employeeTagUser(params).then(()=>{
                 wx.showToast({

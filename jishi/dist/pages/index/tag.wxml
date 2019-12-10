@@ -9,6 +9,7 @@
             <checkbox value="{{item.tagName}}" data-val="{{item.tagName}}" hidden='false' checked='{{item.checked}}'/> {{item.tagName}}
           </label>
         </checkbox-group>
+        <input class='top10 pad5' style='border: 1px solid #ddd' bindinput='oninput'></input>
     </view>
     <view>
           

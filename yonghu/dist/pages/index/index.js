@@ -7,6 +7,7 @@ const app = getApp()
 exports.default = Page({
     data: {
         jxzShow: false,
+        realShow: false,
         lcList: [{
                 time: '',
                 content: '预约开始时间：2019-06-11 12:00'
@@ -40,6 +41,12 @@ exports.default = Page({
         w: wx.WIN_WIDTH,
         h: wx.WIN_HEIGHT,
         imgSrc1: '../../static/images/58.jpg'
+    },
+    doRealShow(){
+        const t = this;
+        t.setData({
+            realShow: t.data.realShow?false:true
+        })
     },
     handleShowMask1(e) {
         const t = this;
