@@ -277,13 +277,13 @@ Page({
        
         app.employeeStatistics(params).then((res)=>{
             res[0].date = res[0].date.map((v)=>{
-                return v.split('-')[2]
+                return v.split('-')[2] || v.split('-')[1]
             })
             res[1].date = res[1].date.map((v) => {
-                return v.split('-')[2]
+                return v.split('-')[2] || v.split('-')[1]
             })
             res[2].date = res[2].date.map((v) => {
-                return v.split('-')[2]
+                return v.split('-')[2] || v.split('-')[1]
             })
             console.log(res[0].date)
             t.setData({
