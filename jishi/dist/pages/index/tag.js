@@ -49,12 +49,14 @@ Page({
                 duration:2000
               })
         }else{
+            let v = tags.join(",")
+            let s = t.data.appraise == "" ? "" : "," + t.data.appraise
             let params = {
                 userId:Number(t.data.userId),
                 employeeId: app.globalData.userInfo.id,
                 orderId:Number(t.data.orderId),
                 orderItemId:Number(t.data.orderItemId),
-                content: tags.join(",") + t.data.appraise == "" ? "" : + "," + t.data.appraise,
+                content: v+s,
 //                appraise: t.data.appraise
             }
             app.employeeTagUser(params).then(()=>{
