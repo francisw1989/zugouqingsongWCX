@@ -12,12 +12,15 @@ exports.default = Page({
         cW: 0,
         cH: 0,
         ewmImg: '',
-        ewmImgPath: '/static/images/48.png'
+        ewmImgPath: '/static/images/48.jpeg'
     },
     onLoad(opt){
         const t = this;
         t.getPic();
-        t.qrCode();
+        if(opt.pageFrom!='wode'){
+            t.qrCode();
+        }
+        
         console.log(opt.pageFrom)
         t.setData({
             pageFrom: opt.pageFrom
@@ -121,6 +124,7 @@ exports.default = Page({
          //p ---pageFrom  id --- assembleId
         let path = '';
         let title = '';
+        debugger
         if(t.data.pageFrom == 'group'){
             path = '/pages/wode/groupSuccess?scene=' + wx.getStorageSync('assembleId') + ',' + app.globalData.userInfo.userId;
             title = '团购分享'

@@ -71,9 +71,7 @@
     "networkTimeout": {
         "request": 10000
     },
-    "theme": {
-        "theme-color": "#459e8c"
-    },
+    "theme": "#459e8c",
     "tabBar": {
         "custom": true,
         "color": "#333",
