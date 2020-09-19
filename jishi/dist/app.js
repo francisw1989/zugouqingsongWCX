@@ -15,7 +15,7 @@ exports.default = App({
         leve: 1,
         colors: ['#409c8a', '#fdbd75', '#8f6eff'],
         color: '#459E8C',
-        u: 'https://zzh.hzysofti.com/employeeApi/v1/',
+      u: 'https://pc.zugouqingsong.com/employeeApi/v1/',
         userInfo: {},
     },
     getNowFormatDate(){
@@ -221,7 +221,7 @@ exports.default = App({
     wxPay: function wxPay(obj) {
         const t = this;
         obj = {
-            appId: "wx5381d6fd8a98109e",
+            appId: "wx829f64105431f0b",
             nonceStr: "1567252821067",
             packageValue: "prepay_id=wx31200021035821bc7fa776b71138378100",
             paySign: "3EF62B5457927A168A925265602E3A55",

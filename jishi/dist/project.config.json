@@ -4,14 +4,14 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"autoAudits": false,
 		"checkInvalidKey": true,
-		"coverView": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
 		"babelSetting": {
@@ -22,7 +22,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.1",
-	"appid": "wxfdb0bcb481991997",
+	"appid": "wx829f694105431f0b",
 	"projectname": "%E8%B6%B3%E5%A4%9F%E8%BD%BB%E6%9D%BE-%E6%8A%80%E5%B8%88",
 	"cloudfunctionTemplateRoot": "",
 	"debugOptions": {
