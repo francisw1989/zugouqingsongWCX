@@ -5,7 +5,7 @@
 
     <view class="col333 top5">当前账户余额<text class="colPink">{{U.account/100}}</text></view>
   </view>
-  <view class="pad15 bgfff top20">
+  <view class="pad15 bgfff top20" wx:if="{{mList.size>0}}">
     <ui-divider _pid="{{_pid}}">请选择充值金额</ui-divider>
     <view class="">
       <view class="tag3 {{index==mIndex?'active':''}}" wx:for="{{mList}}" data-index="{{index}}" catchtap="tagClick" wx:if="{{item.grantType==0}}">
