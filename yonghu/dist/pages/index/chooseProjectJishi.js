@@ -197,7 +197,7 @@ exports.default = Page({
                 }
             }
             t.data.cIndex = cIndex;
-            let _d = { target: { dataset: { index: needChooseIndex } } }
+            let _d = { target: { dataset: { index: needChooseIndex } }, firstLoad: true }
             // 处理默认选中
             t.chooseTlx(_d);
             // 最后一个循环结束处理handlechange
@@ -217,24 +217,41 @@ exports.default = Page({
     chooseTlx(e){
         const t = this;
         let i = e.target.dataset.index;
-        if (t.data.chooseProject[t.data.cIndex].technicianList[i].chosed){
-            t.data.chooseProject[t.data.cIndex].technicianList[i].chosed = false;
-            t.data.tlsChosedIds = t.data.tlsChosedIds.filter((v)=>{
-                return v != t.data.chooseProject[t.data.cIndex].technicianList[i].id
-            })
-        }else{
-            t.data.chooseProject[t.data.cIndex].technicianList[i].chosed = true;
-            t.data.tlsChosedIds.push(t.data.chooseProject[t.data.cIndex].technicianList[i].id)
-        }
-        t.data.chooseProject[t.data.cIndex].technicianChoose = [];
-        for (const v of t.data.chooseProject[t.data.cIndex].technicianList){
-            if(v.chosed){
-                t.data.chooseProject[t.data.cIndex].technicianChoose.push(v)
+        let _do = ()=>{
+            if (t.data.chooseProject[t.data.cIndex].technicianList[i].chosed){
+                t.data.chooseProject[t.data.cIndex].technicianList[i].chosed = false;
+                t.data.tlsChosedIds = t.data.tlsChosedIds.filter((v)=>{
+                    return v != t.data.chooseProject[t.data.cIndex].technicianList[i].id
+                })
+            }else{
+                t.data.chooseProject[t.data.cIndex].technicianList[i].chosed = true;
+                t.data.tlsChosedIds.push(t.data.chooseProject[t.data.cIndex].technicianList[i].id)
             }
+            t.data.chooseProject[t.data.cIndex].technicianChoose = [];
+            for (const v of t.data.chooseProject[t.data.cIndex].technicianList){
+                if(v.chosed){
+                    t.data.chooseProject[t.data.cIndex].technicianChoose.push(v)
+                }
+            }
+            t.setData({
+                chooseProject: t.data.chooseProject,
+            })
         }
-        t.setData({
-            chooseProject: t.data.chooseProject,
-        })
+        if( e.firstLoad || t.data.chooseProject[t.data.cIndex].technicianList[i].chosed ){
+            _do();
+        }else{
+            wx.showModal({
+                title: '提示',
+                content: '是否确认切换技师',
+                success (res) {
+                  if (res.confirm) {
+                    _do();
+                  } else if (res.cancel) {
+                    
+                  }
+                }
+            })
+        }
     },
     waitClick(e){
         const t = this;

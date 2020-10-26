@@ -93,9 +93,9 @@
                 <view class="ui-col-content align-right">
                     <view class="colRed">¥{{item.pricePerMinute/100}}元/分钟</view>
                     <view class="top10">
-                        <view wx:if='{{item.waitTime==0}}' bindtap="chooseTlx" data-index="{{index}}"  class="btns btns-smaller {{item.chosed?'btns-green':'btns-green-bor'}}">{{item.chosed?'取消':'选择'}}</view>
+                        <view wx:if='{{item.waitTime==0}}' bindtap="chooseTlx" data-index="{{index}}"  class="btns btns-small {{item.chosed?'btns-green':'btns-green-bor'}}">{{item.chosed?'取消':'选择'}}</view>
                         
-                        <view wx:if='{{item.waitTime>0}}' class="btns btns-smaller btns-green-bor" bindtap='waitClick' data-index="{{index}}">等待</view>
+                        <view wx:if='{{item.waitTime>0}}' class="btns btns-small btns-green-bor" bindtap='waitClick' data-index="{{index}}">等待</view>
 
                     </view>
                     <view wx:if='{{item.waitTime>0}}'  class='align-right'>
@@ -117,7 +117,7 @@
             </view>
             <view class="pad10TB">
                 <view class="tx5Wap inline right5" wx:for='{{chooseProject[cIndex].technicianChoose}}'>
-                    <icon type="clear" size="16" color="#333" class="close" bindtap='clearTechnician' data-index='{{index}}'></icon>
+                    <!-- <icon type="clear" size="16" color="#333" class="close" bindtap='clearTechnician' data-index='{{index}}'></icon> -->
                     <image src="{{item.photo}}" mode="aspectFill" class="tx5" />
                     <view class="dj">
                         <block wx:for="{{gradeArr[item.grade]}}">
