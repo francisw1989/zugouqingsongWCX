@@ -41,6 +41,7 @@ exports.default = Page({
         }
         
         let max = Number(t.data.I.openEndTime.split(':')[0]);
+        if(max<min){ max = 24}
         for (let i = min; i < max + 1; i++) {
             let h = i < 10 ? '0' + i : i
             t.data.hours.push(h)
