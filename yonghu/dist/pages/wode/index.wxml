@@ -10,9 +10,12 @@
             <view>{{userInfo.telephoneNum}}</view>
             <view class="top40">积分：{{userInfo.score || 0}}</view>
             <view class="clearfix">
-                储蓄账户：¥ {{(userInfo.savingsAccount + userInfo.virtualAccount)/100 || 0}}
+                虚拟账户:¥ {{userInfo.virtualAccount/100 || 0}}
+                <text class="left5">储蓄账户:</text>¥ {{userInfo.savingsAccount || 0}}
+                <text class="left5">赠送金额不能提现</text>
                 <image wx:if='{{userInfo.userId}}' src="../../static/images/48.png" class="icoAll right" style=" width:43rpx; height: 43rpx; margin-top: -10rpx;" bindtap="showEwm" />
             </view>
+            <view></view>
             <view class="clearfix">
                 <navigator class="inline" url="../index/reCharge">充值 ></navigator>
                 <text class="right colYe2 top5 font0" wx:if='{{userInfo.userId}}'>NO：{{userInfo.memberNum||""}}</text>
