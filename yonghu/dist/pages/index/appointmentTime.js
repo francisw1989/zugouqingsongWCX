@@ -22,79 +22,27 @@ exports.default = Page({
             cIndex: e.target.dataset.index,
             date: t.data.dates[e.target.dataset.index]
         });
-        t.cal();
     },
     cal(){
         const t = this;
         t.data.hours = [];
-        let now = new Date();
-        let nowHour = now.getHours();
-        let nowMin = now.getMinutes();
-        let min;
-        if(t.data.cIndex == 0){
-            min = Number(t.data.I.openStartTime.split(':')[0]) > nowHour ? Number(t.data.I.openStartTime.split(':')[0]) : nowHour;
-        }else{
-            min = Number(t.data.I.openStartTime.split(':')[0])
-            t.setData({
-                mins: t.data.oMins
-            })
-        }
-        
-        let max = Number(t.data.I.openEndTime.split(':')[0]);
-        if(max<min){ max = 24}
-        for (let i = min; i < max + 1; i++) {
+        t.data.mins = [];
+        for (let i = 0; i < 24; i++) {
             let h = i < 10 ? '0' + i : i
             t.data.hours.push(h)
         }
-        t.calMins(t.data.hours[0]);
-        t.setData({
-            hours: t.data.hours,
-            time: t.data.hours[0] + ':' + t.data.mins[0]
-        })
-    },
-    calMins(currHour){
-        const t = this;
-        let now = new Date();
-        let nowMin = now.getMinutes();
-        let minMins = Number(t.data.I.openStartTime.split(':')[1]) > nowMin ? Number(t.data.I.openStartTime.split(':')[1]) : nowMin;
-        let maxMins = Number(t.data.I.openEndTime.split(':')[1])
-        let mins = [];
-        
-        if (t.data.cIndex == 1){
-            // 明天
-            if (currHour == t.data.hours[t.data.hours.length - 1]){
-                //最后一个小时
-                for (let i = 0; i <= maxMins; i++) {
-                    mins.push(i < 10 ? '0' + i : i)
-                }
-            }else{
-                mins = t.data.oMins;
-            }
-        } else if (t.data.cIndex == 0){
-            //今天
-            if (currHour == t.data.hours[t.data.hours.length-1]){
-                // 最后一个小时
-                for (let i = 0; i <= maxMins; i++) {
-                    mins.push(i < 10 ? '0' + i : i)
-                }
-            } else if (currHour == t.data.hours[0]){
-                // 第一个小时
-                for (let i = minMins + 1; i < 60; i++) {
-                    mins.push(i < 10 ? '0' + i : i)
-                }
-            }else{
-                mins = t.data.oMins;
-            }
-            
+        for (let i = 0; i < 60; i++) {
+            t.data.mins.push(i < 10 ? '0' + i : i)
         }
         t.setData({
-            mins: mins
+            hours: t.data.hours,
+            mins: t.data.mins,
+            time: t.data.hours[0] + ':' + t.data.mins[0]
         })
     },
     bindChange(e){
         const t = this;
         const val = e.detail.value;
-        t.calMins(t.data.hours[val[0]]);
         t.setData({
             time: t.data.hours[val[0]] + ':' + t.data.mins[val[1]]
         })

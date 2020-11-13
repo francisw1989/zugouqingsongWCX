@@ -95,7 +95,7 @@
                     <view class="top10">
                         <view wx:if='{{item.waitTime==0}}' bindtap="chooseTlx" data-index="{{index}}"  class="btns btns-small {{item.chosed?'btns-green':'btns-green-bor'}}">{{item.chosed?'取消':'选择'}}</view>
                         
-                        <view wx:if='{{item.waitTime>0}}' class="btns btns-small btns-green-bor" bindtap='waitClick' data-index="{{index}}">等待</view>
+                        <view wx:else class="btns btns-small btns-green-bor" bindtap='waitClick' data-index="{{index}}">等待</view>
 
                     </view>
                     <view wx:if='{{item.waitTime>0}}'  class='align-right'>

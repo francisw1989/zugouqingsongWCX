@@ -8,12 +8,16 @@
                 <view class="btns font0 right">{{memberLevelName[userInfo.memberLevel]}}</view>
             </view>
             <view>{{userInfo.telephoneNum}}</view>
-            <view class="top40">积分：{{userInfo.score || 0}}</view>
+            <view class="top25">积分：{{userInfo.score || 0}}</view>
             <view class="clearfix">
                 虚拟账户:¥ {{userInfo.virtualAccount/100 || 0}}
-                <text class="left5">储蓄账户:</text>¥ {{userInfo.savingsAccount || 0}}
-                <text class="left5">赠送金额不能提现</text>
+                
+                
                 <image wx:if='{{userInfo.userId}}' src="../../static/images/48.png" class="icoAll right" style=" width:43rpx; height: 43rpx; margin-top: -10rpx;" bindtap="showEwm" />
+            </view>
+            <view>
+                <text class="">储蓄账户:</text>¥ {{userInfo.savingsAccount || 0}}
+                <text class="left5 font0" style="color:rgba(255,255,255,0.7)">赠送金额不能提现</text>
             </view>
             <view></view>
             <view class="clearfix">

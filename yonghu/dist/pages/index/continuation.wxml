@@ -12,6 +12,9 @@
     <view class='pad10 bgfff bor_btm_so' wx:for="{{orderItems}}">
         <view class=''>{{item.storeName}}</view>
         <view>
+            订单编号：{{item.outTradeNo}}
+        </view>
+        <view>
             预约时间：{{item.orderStartTime}}
         </view>
         <view>
