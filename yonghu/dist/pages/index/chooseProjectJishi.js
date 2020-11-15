@@ -242,7 +242,7 @@ exports.default = Page({
         }else{
             wx.showModal({
                 title: '提示',
-                content: '是否确认切换技师',
+                content: '是否确认选择技师',
                 success (res) {
                   if (res.confirm) {
                     _do();
