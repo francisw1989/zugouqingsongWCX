@@ -132,7 +132,10 @@ exports.default = Page({
                 }, 10 * 60 * 1000);
                 
                 if (!res.nowOrder) {
-                    
+                    t.setData({
+                        jxzShow: false,
+                        O: {}
+                    })
                 } else {
                     t.setData({
                         jxzShow: true,
