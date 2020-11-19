@@ -255,9 +255,12 @@ exports.default = Page({
     },
     waitClick(e){
         const t = this;
+        let i = e.target.dataset.index;
+        let obj = t.data.chooseProject[t.data.cIndex].technicianList[i];
+        let newappointTime = app.formatDate(new Date(app.globalData.chooseStore.appointTime).getTime() + obj.waitTime * 60 * 1000);
         wx.showModal({
             title: '提示',
-            content: '您选择的技师需要等待，是否确定选择？',
+            content: '您选择的技师需要等待，预约时间为：'+newappointTime+'是否确定选择？',
             success (res) {
                 if (res.confirm) {
                     _do();
@@ -267,13 +270,11 @@ exports.default = Page({
             }
         })
         let _do = ()=>{
-            let i = e.target.dataset.index;
-            let obj = t.data.chooseProject[t.data.cIndex].technicianList[i];
-            app.globalData.chooseStore.appointTime = app.formatDate(new Date(app.globalData.chooseStore.appointTime).getTime() + obj.waitTime * 60 * 1000);
+            
+            app.globalData.chooseStore.appointTime = newappointTime;
             t.data.waitId = obj.id;
-            // t.onLoad();
+            t.onLoad();
         }
-        
     },
     clearTechnician(e){
         const t = this;
@@ -298,21 +299,11 @@ exports.default = Page({
             })
             return
         }
-        wx.showModal({
-            title: '提示',
-            content: '您选择的技师需要等待，预约时间为' + app.globalData.chooseStore.appointTime,
-            success (res) {
-                if (res.confirm) {
-                    app.globalData.chooseProject = t.data.chooseProject;
-                    app.order().then((res)=>{
-                        app.globalData.outTradeNo = res.outTradeNo;
-                        t.orderDetail();
-                        
-                    })
-                } else if (res.cancel) {
-                    console.log('用户点击取消')
-                }
-            }
+        app.globalData.chooseProject = t.data.chooseProject;
+        app.order().then((res)=>{
+            app.globalData.outTradeNo = res.outTradeNo;
+            t.orderDetail();
+            
         })
         
         
