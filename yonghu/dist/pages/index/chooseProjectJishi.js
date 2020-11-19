@@ -271,7 +271,7 @@ exports.default = Page({
             let obj = t.data.chooseProject[t.data.cIndex].technicianList[i];
             app.globalData.chooseStore.appointTime = app.formatDate(new Date(app.globalData.chooseStore.appointTime).getTime() + obj.waitTime * 60 * 1000);
             t.data.waitId = obj.id;
-            t.onLoad();
+            // t.onLoad();
         }
         
     },
