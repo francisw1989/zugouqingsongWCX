@@ -23,7 +23,11 @@ Page({
         const t = this;
         app.globalData.outTradeNo = e.currentTarget.dataset.outtradeno;
         app.removeOrder().then((res) => {
-            t.getList();
+            app.orderInfo(opt.id).then((res)=>{
+                t.setData({
+                    D: res
+                })
+            })
         })
     },
     showMore: function showMore(e) {
