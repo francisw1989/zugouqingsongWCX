@@ -3,7 +3,7 @@
 
     <input class='font5 col000 bor_btm_so pad10TB' bindinput='priceInput' value='{{price}}'></input>
 
-    <view class="col333 top5">当前账户余额<text class="colPink">{{U.account/100}}</text></view>
+    <view class="col333 top5">当前账户余额<text class="colPink">{{U.totalAccount/100}}</text></view>
   </view>
   <view class="pad15 bgfff top20" wx:if="{{mList.size>0}}">
     <ui-divider _pid="{{_pid}}">请选择充值金额</ui-divider>
