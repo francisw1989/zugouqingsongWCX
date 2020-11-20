@@ -23,10 +23,18 @@ Page({
         const t = this;
         app.globalData.outTradeNo = e.currentTarget.dataset.outtradeno;
         app.removeOrder().then((res) => {
-            app.orderInfo(opt.id).then((res)=>{
-                t.setData({
-                    D: res
-                })
+            wx.showModal({
+                title: '提示',
+                content: '您的订单已取消',
+                success (res) {
+                  if (res.confirm) {
+                    wx.navigateBack({
+                      delta: 0,
+                    })
+                  } else if (res.cancel) {
+                    
+                  }
+                }
             })
         })
     },

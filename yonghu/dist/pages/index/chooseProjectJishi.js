@@ -189,12 +189,28 @@ exports.default = Page({
                     t.data.chooseProject[cIndex].effectiveTechLength++;
                 }
 
-                // 校验从等待技师点击过来
-                if ((t.data.waitId && t.data.waitId == v.id && !hasNeedChooseIndex) || (t.data.tlsChosedIds.indexOf(v.id) < 0 && v.waitTime == 0 && !hasNeedChooseIndex)){
-                    hasNeedChooseIndex = true;
-                    t.data.waitId = '';
-                    needChooseIndex = i;
+                // 校验从等待技师点击过来,优先
+                if(t.data.waitId){
+                    if(t.data.waitId == v.id && !hasNeedChooseIndex){
+                        hasNeedChooseIndex = true;
+                        t.data.waitId = '';
+                        needChooseIndex = i;
+                        break;
+                    }
+                }else{
+                    if(t.data.tlsChosedIds.indexOf(v.id) < 0 && v.waitTime == 0 && !hasNeedChooseIndex){
+                        hasNeedChooseIndex = true;
+                        t.data.waitId = '';
+                        needChooseIndex = i;
+                        break;
+                    }
                 }
+                // if ((t.data.waitId && t.data.waitId == v.id && !hasNeedChooseIndex) || (t.data.tlsChosedIds.indexOf(v.id) < 0 && v.waitTime == 0 && !hasNeedChooseIndex)){
+                //     hasNeedChooseIndex = true;
+                //     t.data.waitId = '';
+                //     needChooseIndex = i;
+                //     break;
+                // }
             }
             t.data.cIndex = cIndex;
             let _d = { target: { dataset: { index: needChooseIndex } }, firstLoad: true }

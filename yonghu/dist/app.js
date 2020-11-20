@@ -9,11 +9,13 @@ var _system = require('./static/utils/system.js');
 var _system2 = _interopRequireDefault(_system);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+// "appid": "wxda6daedcf2e1a549",
 exports.default = App({
     globalData: {
         u: 'https://pc.zugouqingsong.com/userApi/v1/',
         u_s: 'https://pc.zugouqingsong.com/',
+        // u: 'https://zzh.hzysofti.com/userApi/v1/',
+        // u_s: 'https://zzh.hzysofti.com/',
         userInfo: {},
         itemClassList: [],
         memberLevelName: ['普通会员', '一星会员', '二星会员', '三星会员'],
