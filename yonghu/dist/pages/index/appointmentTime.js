@@ -13,7 +13,6 @@ exports.default = Page({
         MM: '',
         date: '',
         dates: [],
-        oMins: []
     },
     chose: function chose(e) {
         console.log('323');
@@ -27,13 +26,32 @@ exports.default = Page({
         const t = this;
         t.data.hours = [];
         t.data.mins = [];
-        for (let i = 0; i < 24; i++) {
-            let h = i < 10 ? '0' + i : i
+        // openStartTime openEndTime
+        const OS = t.data.I.openStartTime.split(':');
+        const OE = t.data.I.openEndTime.split(':');
+        let minHour = OS[0];
+        let maxHovur;
+        // 处理凌晨时间
+        if(OS[0] >= OE[0]){
+            maxHovur = 24;
+        }else{
+            maxHovur = Number(OE[0]) + 1
+        }
+        for (let i = minHour; i < maxHovur; i++) {
+            let h = i < 10 ? '0' + Number(i) : i
             t.data.hours.push(h)
         }
-        for (let i = 0; i < 60; i++) {
-            t.data.mins.push(i < 10 ? '0' + i : i)
+        // 处理凌晨时间
+        if(OS[0] >= OE[0]){
+            for (let i = 0; i <= Number(OE[0]); i++) {
+                let h = i < 10 ? '0' + Number(i) : i
+                t.data.hours.push(h)
+            }
         }
+        for (let i = 0; i < 60; i++) {
+            t.data.mins.push(i < 10 ? '0' + Number(i) : i)
+        }
+        t.data.oMins = t.data.mins;
         t.setData({
             hours: t.data.hours,
             mins: t.data.mins,
@@ -43,20 +61,26 @@ exports.default = Page({
     bindChange(e){
         const t = this;
         const val = e.detail.value;
+        const OS = t.data.I.openStartTime.split(':');
+        const OE = t.data.I.openEndTime.split(':');
+        if(val[0] == t.data.hours.length -1){
+            t.data.mins = [];
+            for (let i = 0; i <= OE[1]; i++) {
+                t.data.mins.push(i < 10 ? '0' + Number(i) : i)
+            }
+        }else{
+            t.data.mins = t.data.oMins
+        }
         t.setData({
-            time: t.data.hours[val[0]] + ':' + t.data.mins[val[1]]
+            time: t.data.hours[val[0]] + ':' + t.data.mins[val[1]],
+            mins: t.data.mins
         })
     },
     onLoad(){
         const t = this;
-        let oMins = []
-        for (let i = 0; i < 60; i++){
-            oMins.push(i < 10 ? '0' + i : i)
-        }
         t.setData({
             I: app.globalData.chooseStore,
-            dates: app.get_tomorrow_data(),
-            oMins: oMins
+            dates: app.get_tomorrow_data()
         })
         t.setData({
             cIndex: 0,
