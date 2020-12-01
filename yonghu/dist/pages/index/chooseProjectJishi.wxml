@@ -27,8 +27,13 @@
                     <text class="col000 left20">{{item.defaultDuration}}分钟</text>
                 </view>
                 <view style="height: 110rpx; margin-top: -35rpx; margin-left: -3px">
-                    <ui-slider wx:if='{{item.maxDuration}}' bar-border-radius="2" step="5" show-value show-max-value data-index="{{index}}" bindchange="sliderchange" value="{{item.defaultDuration}}" background-color="#3A9C88" min="{{item.mixDuration}}" max="{{item.maxDuration}}" slider-weight="4" _pid="{{_pid}}" thumb-style="{{ tbObj1 }}" 
+                    <view class="addWap verMid" bindtap="plus" data-index="{{index}}">-</view>
+                    
+                        <ui-slider style="display: inline-block" class="verMid" wx:if='{{item.maxDuration}}' bar-border-radius="2" step="5" show-value show-max-value data-index="{{index}}" bindchange="sliderchange" value="{{item.defaultDuration}}" background-color="#3A9C88" min="{{item.mixDuration}}" max="{{item.maxDuration}}" slider-weight="4" _pid="{{_pid}}" thumb-style="{{ tbObj1 }}" 
                thumb-down-style="{{ tbdObj2 }}"></ui-slider>
+                  
+                    
+                    <view class="addWap verMid" bindtap="add" data-index="{{index}}">+</view>
                 </view>
                 <view class="" style='margin-top: -13px'>
                     <text class="colPink font3 left5">¥{{m1.numberToFix(item.pricePerMinute/100*item.defaultDuration)}}</text>

@@ -76,7 +76,7 @@ module.exports = Behavior({
     },
     width: {
       type: Number,
-      value: 260
+      value: 200
     },
     min: {
       type: Number,

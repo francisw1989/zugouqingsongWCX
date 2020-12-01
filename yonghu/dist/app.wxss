@@ -1965,3 +1965,7 @@ view.btns-green,button.btns-green {
 .leveItem.active{ border-color: #459E8C}
 
 .mewMsg{ position: fixed; width: 730rpx; left: 10rpx; bottom: 55px; background-color: #fff; box-shadow: 0 0 3px rgba(0,0,0,0.5)}
+
+.addWap{ display: inline-block; background-color: #459e8c; width: 40rpx; height: 40rpx; line-height: 40rpx; border-radius: 50%; color: #fff; text-align: center; font-weight: bold;}
+
+.flWap{ display: flex; justify-content: space-between;}

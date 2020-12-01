@@ -5,7 +5,7 @@
     <view class="clearfix">
         <view wx:if="{{list.length}}" wx:for='{{list}}' data-index="{{index}}" data-id='{{item.id}}' catchtap="itemClick" style="border-color:{{item.checked?'#459E8C':'#fff'}}" class="pad10 tjxmWap bgfff clearfix btm5">
             <view url="projectDetail?itemId={{item.id}}" class=" right10 left" style="width: 150rpx">
-                <image mode="aspectFill" src="{{item.imgs}}" class="img " />
+                <image mode="aspectFill" src="{{item.imgs}}" class="img " data-isimg='1' />
             </view>
             <view style="width: 532rpx" class="left">
                 <view class=" bor_btm_so" style="padding-bottom: 10rpx">

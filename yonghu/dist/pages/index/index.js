@@ -92,9 +92,15 @@ exports.default = Page({
         let id = e.currentTarget.dataset.id;
         app.globalData.chooseProject = [t.data.D.itemRecommendList[index]];
         app.globalData.appointFromProject = true;
-        wx.navigateTo({
-            url: 'projectDetail?itemId=' + id,
-        })
+        if(e.target.dataset.isimg == 1){
+            wx.navigateTo({
+                url: 'projectDetail?itemId=' + id,
+            })
+        }else{
+            wx.navigateTo({
+                url: 'shopList?pageFrom=projectDetail',
+            })
+        }
     },
     moreStore() {
         app.globalData.appointFromProject = false;

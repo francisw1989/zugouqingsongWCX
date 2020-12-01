@@ -388,7 +388,29 @@ exports.default = Page({
             t.data.tlsChosedIds = [];
             t.selectTechnician(t.data.cIndex);
         }, 500)
-
-        
+    },
+    add(e){
+        const t = this;
+        let value;
+        let defaultDuration =  t.data.chooseProject[e.currentTarget.dataset.index].defaultDuration;
+        if(defaultDuration + 10 >= t.data.chooseProject[e.currentTarget.dataset.index].maxDuration){
+            value = t.data.chooseProject[e.currentTarget.dataset.index].maxDuration;
+        }else{
+            value = defaultDuration + 10;
+        }
+        e.detail = {value: value}
+        t.sliderchange(e)
+    },
+    plus(e){
+        const t = this;
+        let value;
+        let defaultDuration =  t.data.chooseProject[e.currentTarget.dataset.index].defaultDuration;
+        if(defaultDuration - 10 <= t.data.chooseProject[e.currentTarget.dataset.index].defaultDuration){
+            value = t.data.chooseProject[e.currentTarget.dataset.index].mixDuration;
+        }else{
+            value = defaultDuration - 10;
+        }
+        e.detail = {value: value}
+        t.sliderchange(e)
     }
 });

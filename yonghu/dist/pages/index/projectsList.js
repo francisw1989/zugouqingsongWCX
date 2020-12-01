@@ -62,6 +62,7 @@ Page({
                 v.imgs = v.imgs.split(',')[0]
                 v.conditioningMethod = v.conditioningMethod.length > 35 ? v.conditioningMethod.substring(0, 35) + '...' : v.conditioningMethod
                 v.checked = false;
+                v.mixDuration = v.defaultDuration;
             }
             t.setData({
                 list: res.records
@@ -87,9 +88,16 @@ Page({
             // page from index, do navigate to projectDetail
             app.globalData.chooseProject = [t.data.list[e.currentTarget.dataset.index]];
             app.globalData.appointFromProject = true;
-            wx.navigateTo({
-                url: 'projectDetail?itemId=' + e.currentTarget.dataset.id,
-            })
+            if(e.target.dataset.isimg == 1){
+                wx.navigateTo({
+                    url: 'projectDetail?itemId=' + e.currentTarget.dataset.id,
+                })
+            }else{
+                wx.navigateTo({
+                    url: 'shopList?pageFrom=projectDetail',
+                })
+            }
+            
         }
         
     },

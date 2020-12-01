@@ -30,9 +30,9 @@
         <view class="title font2 col000">服务分类</view>
     </view>
 
-    <view class="padSp2 bgfff clearfix">
+    <view class="padSp2 bgfff flWap">
 
-        <view wx:for='{{itemClassList}}' class="left right20" style="">
+        <view wx:for='{{itemClassList}}' class="" style="width: 110rpx;">
             <view bindtap="goProjectsList" data-id="{{item.id}}" url="projectsList?id={{item.id}}&pageFrom=index">
                 <image src="{{item.icon}}" class="ico1" mode='aspectFill' />
                 <view class="top5 col999">{{item.itemClassName}}</view>
@@ -46,7 +46,7 @@
     <view url="projectDetail?itemId={{item.id}}" wx:for='{{D.itemRecommendList}}' class=" tjxmWap bgfff clearfix"
         style='padding:10rpx 20rpx;' data-index="{{index}}" data-id="{{item.id}}" catchtap="chooseProject">
         <view class=" right10 left" style="width: 160rpx">
-            <image src="{{item.imgs}}" class="img " mode='aspectFill' />
+            <image src="{{item.imgs}}" class="img " mode='aspectFill' data-isimg='1' />
         </view>
         <view style="width: 520rpx" class="left">
             <view class=" bor_btm_so" style="padding-bottom: 10rpx">
