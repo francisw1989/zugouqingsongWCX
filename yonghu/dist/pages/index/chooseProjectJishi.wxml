@@ -35,7 +35,7 @@
                     
                     <view class="addWap verMid" bindtap="add" data-index="{{index}}">+</view>
                 </view>
-                <view class="" style='margin-top: -13px'>
+                <view class="" style='margin-top: -5px'>
                     <text class="colPink font3 left5">¥{{m1.numberToFix(item.pricePerMinute/100*item.defaultDuration)}}</text>
                     <text class="left10">¥{{item.pricePerMinute/100}}元/分钟</text>
                 </view>
