@@ -12,7 +12,8 @@ exports.default = Page({
         pageSize: 10,
         pageNumber: 1,
         total: 0,
-        isTuan: 1
+        isTuan: 1,
+        hidebtn: false
     },
     itemEvaluateList(){
         const t = this;
@@ -37,6 +38,13 @@ exports.default = Page({
             itemId: opt.itemId,
             isTuan: app.globalData.isTuan
         })
+        if(opt.hidebtn){
+            debugger
+            t.setData({
+                hidebtn: true
+            })
+            console.log(t.data.hidebtn)
+        }
         app.getItem(t.data.itemId).then((res)=>{
             t.setData({
                 D: res

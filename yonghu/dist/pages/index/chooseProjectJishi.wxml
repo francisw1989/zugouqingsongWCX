@@ -16,7 +16,7 @@
     </view>
     <view wx:for="{{chooseProject}}" class="btm5 pad10 bgfff ui-row" style='padding-bottom: 5rpx;'>
         <view class="ui-col" style="flex:0 0 80px;">
-            <navigator url="projectDetail" class="ui-col-content">
+            <navigator url="projectDetail?itemId={{item.id}}&hidebtn=1" class="ui-col-content">
                 <image src="{{item.imgs}}" mode="aspectFill" class="tx4" />
             </navigator>
         </view>

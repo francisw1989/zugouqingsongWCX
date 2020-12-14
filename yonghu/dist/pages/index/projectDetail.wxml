@@ -106,7 +106,7 @@
             <view class='col999'>暂无数据</view>
         </view> -->
     </view>
-    <view class="footerBox" style="background-color: #459E8C">
+    <view class="footerBox" style="background-color: #459E8C" wx:if="{{!hidebtn}}">
         <view class="ui-row" style="">
             <view class="ui-col ui-col-border-right ui-col-align-center align-center" style="">
                 <view class="ui-col-content align-center">

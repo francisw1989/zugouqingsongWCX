@@ -1008,8 +1008,8 @@ exports.default = App({
                 }
                 for (const v of res.itemRecommendList) {
                     v.imgs && (v.imgs = v.imgs.split(',')[0]);
-                    v.conditioningMethod = v.conditioningMethod.length > 35 ? v.conditioningMethod.substring(0, 35) + '...' : v.conditioningMethod;
-                    v.pricePerMinute = (v.defaultPrice / v.defaultDuration).toFixed(0);
+                    v.conditioningMethod = v.conditioningMethod.length > 18 ? v.conditioningMethod.substring(0, 18) + '...' : v.conditioningMethod;
+                    v.pricePerMinute = (v.defaultPrice / v.defaultDuration).toFixed(2);
                 }
                 resolve(res);
             })
@@ -1022,7 +1022,7 @@ exports.default = App({
         let p = new Promise((resolve, reject) => {
             t.getRequest('items', params).then((res) => {
                 for (const v of res.records) {
-                    v.pricePerMinute = (v.defaultPrice / v.defaultDuration).toFixed(0);
+                    v.pricePerMinute = (v.defaultPrice / v.defaultDuration).toFixed(2);
                 }
                 resolve(res);
             })

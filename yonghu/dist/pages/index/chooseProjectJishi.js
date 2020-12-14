@@ -405,7 +405,7 @@ exports.default = Page({
         const t = this;
         let value;
         let defaultDuration =  t.data.chooseProject[e.currentTarget.dataset.index].defaultDuration;
-        if(defaultDuration - 10 <= t.data.chooseProject[e.currentTarget.dataset.index].defaultDuration){
+        if(defaultDuration - 10 <= t.data.chooseProject[e.currentTarget.dataset.index].mixDuration){
             value = t.data.chooseProject[e.currentTarget.dataset.index].mixDuration;
         }else{
             value = defaultDuration - 10;

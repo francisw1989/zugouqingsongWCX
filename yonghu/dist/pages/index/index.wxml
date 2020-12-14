@@ -1,3 +1,9 @@
+<wxs module="m1">
+  var numberToFix= function (value) {
+    return value.toFixed(1)
+  }
+ module.exports.numberToFix=numberToFix;
+</wxs>
 <view
     style="height: 100%; overflow:{{overflow}}; padding-bottom: {{jxzShow?120:54}}px; box-sizing: border-box; background-color:#F3F3F3;">
     <swiper class="swiper" indicator-dots="true" autoplay="true">
@@ -51,8 +57,11 @@
         <view style="width: 520rpx" class="left">
             <view class=" bor_btm_so" style="padding-bottom: 10rpx">
                 <text class="col000 inline" style='width: 180rpx'>{{item.itemName}}</text>
-                <text class="left10  col000">默认：{{item.defaultDuration}}分钟</text>
-                <text class="left15 colPink font3">¥{{item.defaultPrice/100}}</text>
+                <text class="left10  col000">推荐时长：{{item.defaultDuration}}分钟</text>
+                
+            </view>
+            <view>
+                <text class="colPink font3">推荐时长价：¥{{m1.numberToFix(item.defaultPrice/100)}}</text>
             </view>
             <view class="top5 line24">{{item.conditioningMethod}}</view>
         </view>
@@ -142,7 +151,7 @@
         custom-style="{{customStyle}}">
         <view class="photo" style="">
             <!-- <navigator url='{{D.vipUrl}}'> -->
-            <image style="width:550rpx ;height:600rpx" src="{{D.vipPic}}" bindtap="vipPicGo"></image>
+            <image style="width:550rpx ;height:600rpx" mode="aspectFit" src="{{D.vipPic}}" bindtap="vipPicGo"></image>
             <!-- </navigator> -->
             <view class='center'>
                 <icon type="cancel" color='#fff' size="40" bindtap="handleShowMask1" />

@@ -39,7 +39,12 @@ exports.default = Page({
         })
     },
     userInfo(){
-        app.userInfo();
+        const t = this;
+        app.userInfo(true).then(()=>{
+            t.setData({
+                userInfo: app.globalData.userInfo
+            })
+        });
     },
     onShow() {
         const t = this;
