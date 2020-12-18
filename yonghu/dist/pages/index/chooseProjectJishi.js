@@ -215,7 +215,7 @@ exports.default = Page({
             t.data.cIndex = cIndex;
             let _d = { target: { dataset: { index: needChooseIndex } }, firstLoad: true }
             // 处理默认选中
-            t.chooseTlx(_d);
+            // t.chooseTlx(_d);
             // 最后一个循环结束处理handlechange
             if (t.data.chooseProject.length >1 && cIndex == t.data.chooseProject.length-1){
                 setTimeout(()=>{

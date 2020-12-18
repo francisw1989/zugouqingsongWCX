@@ -7,9 +7,14 @@
     
 <wxs module="m1">
   var numberToFix= function (value) {
-    return value.toFixed(2)
+    return value.toFixed(1)
   }
  module.exports.numberToFix=numberToFix;
+
+ var numberToFix2= function (value) {
+    return value.toFixed(2)
+  }
+ module.exports.numberToFix2=numberToFix2;
 </wxs>
     <view class="pad10 font2 line18">
         已选项目
@@ -37,7 +42,7 @@
                 </view>
                 <view class="" style='margin-top: -5px'>
                     <text class="colPink font3 left5">¥{{m1.numberToFix(item.pricePerMinute/100*item.defaultDuration)}}</text>
-                    <text class="left10">¥{{item.pricePerMinute/100}}元/分钟</text>
+                    <text class="left10">¥{{m1.numberToFix2(item.pricePerMinute/100)}}元/分钟</text>
                 </view>
             </view>
         </view>
