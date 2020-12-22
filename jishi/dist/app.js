@@ -207,7 +207,10 @@ exports.default = App({
             }
             t.geWxtUserInfo().then(()=>{
                 t.getRequest('employeeInfo', params).then((res) => {
-                  
+                    if(!res){
+                        wx.setStorageSync('openId', null)
+                        return
+                    }
                     t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
                     console.log(t.globalData.userInfo)
                     resolve();

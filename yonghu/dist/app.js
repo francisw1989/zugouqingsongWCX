@@ -932,6 +932,10 @@ exports.default = App({
             }
             t.geWxtUserInfo().then(() => {
                 t.getRequest('userInfo', params).then((res) => {
+                    if(!res){
+                        wx.setStorageSync('openId', null)
+                        return
+                    }
                     res.userId = res.id;
                     t.globalData.userInfo = Object.assign(t.globalData.userInfo, res);
                     t.globalData.userInfo.account = t.globalData.userInfo.virtualAccount + t.globalData.userInfo.savingsAccount;
