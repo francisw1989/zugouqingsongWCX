@@ -6,7 +6,7 @@
                 <view class="ui-col" style="flex:0 0 90px;">
                     <view class="ui-col-content">
                         <view class="tx5Wap" style="width: 90px; height: 90px">
-                            <image src="{{D.employees.photo}}" mode="aspectFill" class="tx5" />
+                            <image src="{{D.employees.photo}}" mode="aspectFill" class="tx5" bindtap="showImg" />
                             <view class="dj">
                                 <block wx:for="{{gradeArr[employees.grade]}}">
                                     <image src="../../static/images/34.png" class="icoAll img left5" />
@@ -17,10 +17,10 @@
                 </view>
                 <view class="colfff font2 ui-col" style="padding-left: 20px;">
                     <view class="ui-col-content">
-                        <view class="top10">{{D.employees.employeeName}}</view>
+                        <view class="top10">{{D.employees.jobNumber}}</view>
                         <view>{{D.employees.postBean.postName}} 丨 从业3年</view>
                         <view>{{D.stroeNames}}
-                            <text class="left20">{{D.employees.telephoneNum}}</text>
+                            <!-- <text class="left20">{{D.employees.telephoneNum}}</text> -->
                         </view>
                     </view>
                 </view>

@@ -59,7 +59,7 @@
                     <image src="../../static/images/34.png" class="icoAll img left5" />
                 </block>
             </view>
-            <view class="center col333 top5">{{item.employeeName}}</view>
+            <view class="center col333 top5">{{item.jobNumber}}</view>
         </navigator>
         <view wx:if="{{!userTechniciansList.length}}" class="center top20 ">
             <image src='../../static/images/9.png' class='inline' style='width: 60rpx; height: 60rpx; opacity: 0.4; filter: grayscale(100%);'></image>
@@ -91,7 +91,7 @@
             </navigator>
             <navigator url="technician?id={{item.id}}" class="ui-col" style="padding-left: 10px;">
                 <view class="ui-col-content">
-                    <view class="col000">{{item.employeeName}}</view>
+                    <view class="col000">{{item.jobNumber}}</view>
                     <view wx:if='{{item}}'>
                         <ui-mini-star class="inline" value="{{item.score}}" data="{{imgData}}" _pid="{{_pid}}"></ui-mini-star>
                         <text class="left10">{{item.score}}分</text>
@@ -134,7 +134,7 @@
                             <image src="../../static/images/34.png" class="icoAll img left5" />
                         </block>
                     </view>
-                    <view class="center col333 top5">{{item.employeeName}}</view>
+                    <view class="center col333 top5">{{item.jobNumber}}</view>
                 </view>
                 
             </view>

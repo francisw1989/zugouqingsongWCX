@@ -111,24 +111,23 @@
                 <!-- <navigator class="top5 right" url="pingjia"> <image src="../../static/images/17.png" class="ico17 " /></navigator> -->
             </view>
             <view class='pad10TB bor_top_so' z>
-                <view class=""><text class='bold'>编号：</text>{{O.outTradeNo}}</view>
+                <view class="" wx:if="{{O.status!=5}}"><text class='bold'>订单号：</text>{{O.outTradeNo}}</view>
+                <view class="" wx:if="{{O.status==5}}"><text class='bold'>编号：</text>{{O.outTradeNo}}</view>
                 <view class="top5 "><text class='bold'>预约门店：</text>{{O.storeName}}</view>
             </view>
             <view class='pad10TB bor_top_so' wx:for='{{O.orderItems}}'>
-                <view class=" "><text class='bold'>预约项目：</text>{{item.itemName}}</view>
+                <view class=" ">
+                    <text class='bold'>预约项目：</text>{{item.itemName}}
+                    <text class="left5">{{item.orderTime}}分钟</text>
+                </view>
                 <view class=" top5 "><text class='bold'>技师：</text><text wx:for='{{item.orderTechnicians}}'
                         wx:for-item="tecItem">{{tecItem.employeeName}}</text></view>
-                <view class="top5  "><text class='bold'>预约开始时间：</text>{{O.orderStartTime}}</view>
-                <view class="top5  "><text class='bold'>预计结束时间：</text>{{O.orderEndTime}}</view>
+                <view wx:if="{{O.status == 3}}">
+                    <view class="top5"><text class='bold'>服务开始时间：</text>{{O.orderStartTime}}</view>
+                    <view class="top5"  wx:if="{{O.status!=5}}"><text class='bold'>预计结束时间：</text>{{O.orderEndTime}}</view>
+                    <view class="top5"  wx:if="{{O.status==5}}"><text class='bold'>服务结束时间：</text>{{O.orderEndTime}}</view>
+                </view>
             </view>
-
-            <!-- <ui-timeline class="top10" style="width:100%" _pid="{{_pid}}">
-                <ui-timeline-item wx:for="{{lcList}}" wx:key="index" point-color="#459E8C" line-color="#BFBFBF" show-line="{{index === (lcList.length - 1) ? false : true}}" shadow="{{false}}" _pid="{{_pid}}">
-                    <view class="left40 relative" style="padding: 30rpx 0">
-                        <view class="absolute" style="top: -8rpx">{{item.content}}</view>
-                    </view>
-                </ui-timeline-item>
-            </ui-timeline> -->
             <view class=" col333 bold pad10TB bor_top_so" wx:if="{{O.articleList!=null && O.articleList.length>0}}">
                 已购商品：
             </view>

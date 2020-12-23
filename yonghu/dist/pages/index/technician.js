@@ -16,6 +16,12 @@ exports.default = Page({
         gradeArr: ['', '1', '11', '111'],
         stroeNames: ''
     },
+    showImg(){
+        wx.previewImage({
+            current: this.data.D.employees.photo,
+            urls: [this.data.D.employees.photo]
+        })
+    },
     handleChange: function handleChange(e) {
         var index = e.detail.index;
         this.setData({

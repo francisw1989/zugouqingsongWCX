@@ -18,7 +18,10 @@
             "ignore": [],
             "disablePlugins": [],
             "outputPath": ""
-        }
+        },
+        "useMultiFrameRuntime": true,
+        "bundle": false,
+        "useApiHook": true
     },
     "compileType": "miniprogram",
     "libVersion": "2.8.1",
@@ -33,22 +36,18 @@
     "simulatorPluginLibVersion": {},
     "condition": {
         "search": {
-            "current": -1,
             "list": []
         },
         "conversation": {
-            "current": -1,
             "list": []
         },
         "plugin": {
-            "current": -1,
             "list": []
         },
         "game": {
             "list": []
         },
         "miniprogram": {
-            "current": -1,
             "list": []
         }
     }

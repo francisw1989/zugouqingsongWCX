@@ -6,7 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = Page({
     data: {
-        intervalTime: 5 * 60 * 1000,
+        intervalTime: 1 * 60 * 1000,
+        interval: null,
         index: 0, //预约详情
         leve: 1,
         name: '',
@@ -28,35 +29,6 @@ exports.default = Page({
             color: app.globalData.color
         });
     },
-    getemployeeIndex() {
-        const t = this;
-        //获取首页技师收益等统计
-      if (app.globalData.userInfo.id==undefined){
-        return;
-      }
-        let params = {
-            employeeId: app.globalData.userInfo.id
-            // employeeId: 16
-        }
-        app.employeeIndex(params).then((res) => {
-            // const t = this;
-            console.log(res);
-            t.data.userInfo.stores = res.employee.stores;
-            //处理订单信息的倒计时数据
-            try {
-                let newRes = res.nowOrder.filter((element, index) => {
-                    if (element.status == 2) { //已支付待到店状态，计算出倒计时秒数
-                        element.countdown = t.getDifferDate(new Date(), element.orderStartTime, 4);
-                    }
-                });
-            } catch (e) { }
-            t.setData({
-                employeeIndex: res
-            })
-            t.setting();
-            t.employeeIndex();
-        });
-    },
     onShow() {
         var t = this;
         if (wx.getStorageSync('openId')) {
@@ -64,7 +36,7 @@ exports.default = Page({
                 t.setData({
                     userInfo: app.globalData.userInfo
                 })
-                t.getemployeeIndex();
+                t.employeeIndex();
             })
         }
 
@@ -232,30 +204,38 @@ exports.default = Page({
     },
     employeeIndex: function () {
         let t = this;
-        // console.log(vm);
-        t.data.interval = setInterval(function () {
+        if (!app.globalData.userInfo.id){
+            return;
+        }
+        let _do = ()=>{
             let params = {
                 employeeId: app.globalData.userInfo.id
             }
             //获取首页技师收益等统计
             app.employeeIndex(params).then((res) => {
-
+                t.data.userInfo.stores = res.employee.stores;
                 //处理订单信息的倒计时数据
-                let newRes = res.nowOrder.filter((element, index) => {
-                    if (element.status == 2) { //已支付待到店状态，计算出倒计时秒数
-                        element.countdown = t.getDifferDate(new Date(), element.orderStartTime.replace(/\-/g, '/'), 4);
-                    }
-
-                });
-
+                try {
+                    let newRes = res.nowOrder.filter((element, index) => {
+                        if (element.status == 2) { //已支付待到店状态，计算出倒计时秒数
+                            element.countdown = t.getDifferDate(new Date(), element.orderStartTime.replace(/\-/g, '/'), 4);
+                        }
+                    });
+                } catch (e) { }
                 t.setData({
                     employeeIndex: res
                 })
                 console.log(t.data);
                 t.setting();
             });
+        }
+        _do()
+        if (t.data.interval) {
+            clearInterval(t.data.interval);
+        }
+        t.data.interval = setInterval(function () {
+            _do()
         }, t.data.intervalTime);
-
 
     },
     onHide: function onHide() {
@@ -269,36 +249,7 @@ exports.default = Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        // let t = this;
-        // let a  = t.getDifferDate("2019-10-19 20:39", "2019-10-19 20:40", 4);
-        // console.log(a)
-        //    const t = this;
-        //     //获取首页技师收益等统计
-        //     let params = {
-        //         employeeId: app.globalData.userInfo.userId || "16"
-        //     }
-        //     app.employeeIndex(params).then((res) => {
-        //     // const t = this;
-        //     console.log(res);
-        //     //处理订单信息的倒计时数据
-        //     let newRes = res.nowOrder.filter((element,index) => {
-        //         if(element.status == 2){//已支付待到店状态，计算出倒计时秒数
-        //             element.countdown = t.getDifferDate(new Date(),element.orderStartTime,4);
-        //         }
-
-        //         //处理用户标签数据
-        //         let tagsArray = element.userTags.tags.split(",");
-        //         element.userTagList = tagsArray;
-
-        //     });
-
-        //     t.setData({
-        //         employeeIndex: res
-        //      })
-        //      console.log(t.data);
-        //      t.setting();
-        //     //  t.employeeIndex();
-        // });
+        
     },
 
     /**

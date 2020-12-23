@@ -75,18 +75,19 @@
             </view>
             <view wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length >0 && index==0}}">
                 <view class="line30 top10">
-                    <view>编号：{{employeeIndex.nowOrder[0].orderId}}</view>
+                    <view>订单号：{{employeeIndex.nowOrder[0].orderId}}</view>
                     <view>
-                        <text class="verMid">服务项目：【{{employeeIndex.nowOrder[0].itemName}}】</text>
+                        <text class="verMid">预约项目：【{{employeeIndex.nowOrder[0].itemName}}】</text>
                         <image src="../../static/images/11.png" class="icoAll left2" style="width: 22rpx; height: 22rpx;" />
+                        <text wx:if="{{employeeIndex.nowOrder[0].status != 4}}">预约时间：</text>
+                        <text wx:if="{{employeeIndex.nowOrder[0].status == 4}}">服务开始时间：</text>
                         <text class="colRed left5 verMid">{{employeeIndex.nowOrder[0].orderTime}}分钟</text>
                     </view>
                     <view>服务门店：
                         <text wx:if="{{employeeIndex.nowOrder[0].storeName}}"> {{employeeIndex.nowOrder[0].storeName}}</text>
                     </view>
                     <view>服务房间:
-                    <text wx:if="{{employeeIndex.nowOrder[index].roomName}}">{{employeeIndex.nowOrder
-[index].roomName}}</text>
+                    <text wx:if="{{employeeIndex.nowOrder[index].roomName}}">{{employeeIndex.nowOrder[index].roomName}}</text>
                     </view>
                     <view>偏好：</view>
                     <view>
@@ -153,10 +154,12 @@
             </view>
             <view wx:if="{{employeeIndex.nowOrder && employeeIndex.nowOrder.length >0 && index==1}}">
                 <view class="line30 top10">
-                    <view>编号：{{employeeIndex.nowOrder[1].orderId}}</view>
+                    <view>订单号：{{employeeIndex.nowOrder[1].orderId}}</view>
                     <view>
-                        <text class="verMid">服务项目：【{{employeeIndex.nowOrder[1].itemName}}】</text>
+                        <text class="verMid">预约项目：【{{employeeIndex.nowOrder[1].itemName}}】</text>
                         <image src="../../static/images/11.png" class="icoAll left2" style="width: 22rpx; height: 22rpx;" />
+                        <text wx:if="{{employeeIndex.nowOrder[0].status != 4}}">预约时间：</text>
+                        <text wx:if="{{employeeIndex.nowOrder[0].status == 4}}">服务开始时间：</text>
                         <text class="colRed left5 verMid">{{employeeIndex.nowOrder[1].orderTime}}分钟</text>
                     </view>
                     <view>服务门店：
